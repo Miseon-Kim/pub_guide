@@ -1,0 +1,224 @@
+@charset "utf-8";
+/****************************************/
+/*	PART: IMPORT CSS
+/****************************************/
+@import 'variables';
+@import 'mixin';
+
+/****************************************/
+/*	PART: GUIDE PAGE STYLE
+/****************************************/
+/* container */
+
+.skipNav { 
+    overflow:hidden;
+    position:relative;
+    width:100%;
+    z-index:2;
+    a{
+        display: block;
+        font-size:1;
+        height: 1px;
+        width: 0px;
+        margin: 0 -1px -1px 0;
+        overflow: hidden;
+        line-height: 0;
+        text-align: center;
+        &:focus,
+        &:hover,
+        &:active {
+            width:auto; height:2.8rem; margin:0; padding:.8rem 0;  
+            background:$color-black; @include fontSize("base"); line-height:1.2rem; color:$color-white;
+            z-index:$zIndex-15; box-sizing:border-box;
+        }
+    }
+    
+}
+
+#pg{
+    &-wrap {
+        margin:0;
+    }
+    &-headerWrap {
+        @include bg-gradient(line, 180deg, #191B2A, #302CA4);
+        width:100%;
+        padding:2rem 1rem 0;
+        // @include pos(fixed);
+        // @include pos-offset-l(0,0);
+    }
+}
+
+// GNB
+.component-nav {
+    background:$color-white;
+    border-radius: .5rem .5rem 0 0;
+    .nav{
+        &-lst {
+            @include display(flex);
+            & > li > a {
+                @include display(block);
+                padding:1rem;
+                text-align:center;
+                @include transition(0.5s, color, ease);
+
+                @include el-content("after"){
+                    width:0;
+                }
+                &:hover {
+                    //.is-active
+                    
+                    @include line-effect($color-green, after, center) {
+                        @include transition(0.3s, all, ease);
+                        width:100%;
+                        bottom:0;
+                        height:.35rem;
+                        width:100%;
+                        background:$color-green2;
+                    };
+                }
+                &.is-active {
+                    //.is-active
+                    
+                    @include line-effect($color-violet, after, center) {
+                        @include transition(0.3s, all, ease);
+                        width:100%;
+                        bottom:0;
+                        height:.35rem;
+                        width:100%;
+                        background:$color-violet;
+                    };
+                }
+            }
+        }
+    }
+}
+
+// INDEX CONTENT
+.pg {
+    &-contentWrap {padding:2rem;}
+}
+.component {
+    &-lst {
+        @include display(flex);
+        @include flex;
+        flex-wrap:wrap;
+
+        & > li {margin-bottom:4rem;}
+    }
+
+    &-wrap {
+        min-width:375px;
+        & ~ & {margin-left:2rem;}
+        & > iframe {width:100%; height:64rem; border:.2rem $color-gray2 solid;}
+    }
+
+    &-item {
+        margin-bottom:2rem;
+        @include display(flex) {
+            flex-wrap: wrap;
+        };
+        & > * {padding:1.5rem 1rem; border-top:1px $color-gray1 solid; @include webfont("roboto", 400)}
+        & > dt {
+            @include flexbox(0, 0, 20%);
+            
+            &:first-child {
+                border:0;
+                & + dd {border:0;}
+            }
+        }
+        & > dd {
+            @include flexbox(0, 0, 80%);
+        }
+    }
+}
+
+.cp {
+    // title
+    &-tit {
+        &.dep01{@include fontSize("xxl");}
+        &.dep02{
+            @include fontSize("lg");
+            @include el-content(before){
+                // @include display(inline-block);
+                background:$color-green2;
+                width:1.5rem; height:.3rem;
+            }
+        }
+        &.dep03{
+            margin-bottom:1rem;
+            @include fontSize("md");
+            @include el-content(before){
+                color:$color-orange;
+                margin-right:1rem;
+                @include display(inline-block);
+                @include align(vertical, middle);
+                content:"\f02e";
+                @include webfont('iconFont', 900);
+            }
+        }
+
+        & + .btnWrap {margin-top:2rem;}
+    }
+
+
+}
+
+
+#cp {
+    &-wrap {
+        padding:2rem;
+
+        .cp {
+            &-content {
+                & ~ .cp-content {margin-top:3rem;}
+                .btnWrap > .btn {margin-bottom:1rem;}
+
+                & > .toolTip_wrap {margin:2rem 0;}
+                
+                .field + .field {margin:2rem 0;}
+                
+            }
+
+            &-tit {
+                &.dep01{@include fontSize("xxl");padding-bottom:.5rem; margin-bottom:1.5rem;}
+                &.dep02{
+                    @include fontSize("lg"); background:$color-tbl-thead; padding:.5rem 1rem;
+                    @include el-content(before){display:none;}
+                }
+                &.dep03{@include fontSize("md");}
+
+                & + .component {margin-top:.5rem;}
+                & + .field {margin-top:2rem;}
+            }
+        }
+    }
+}
+
+//table
+.tblWrap {
+    margin:1.5rem 0 .5rem;
+    #{$tbl} {
+        width:100%;
+        th, td {
+            padding:1rem;
+            border-top:1px $color-gray1 solid;
+        }
+
+        th {
+            background:$color-light-gray1;
+        }
+        td {
+            background:$color-light-gray2;
+        }
+        
+        tr {
+            &:first-child {
+                & > th, & > td {border-top:0;}
+            }
+        }
+    }
+}
+
+#{$hr} {
+    &.divice {@include display(block); visibility:visible; background:$color-gray5; border:none; height:1px;}
+}

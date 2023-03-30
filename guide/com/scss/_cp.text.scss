@@ -1,0 +1,24 @@
+#{$tit} { 
+    padding:.5rem 0;
+    &.dep01 {@include fontSize("xxl");}
+    &.dep02 {
+        @include fontSize("lg");
+        &.type2 {color:$color-blue2;}
+    }
+    &.dep03 {@include fontSize("md");}
+    &.dep04 {@include fontSize("s");}
+    &.dep05 {@include fontSize("xs");}
+
+    &.sub {padding:0; @include fontSize("s"); @include webfont('NotoSansKR', 400);}
+    & > .headcopy {margin-top:1.5rem; @include fontSize("base"); @include webfont('NotoSansKR', 400);}
+    
+}
+
+
+#{$txt}{
+    @include fontSize("base"); @include webfont('NotoSansKR', 400);
+    & ~ & {margin-top:1rem;}
+    &-elp1 {@include ellipsis(1, 2.1rem);}
+    &-elp2 {@include ellipsis(2, 4.2rem);}
+    &-elp3 {@include ellipsis(3, 6.3rem);}
+}

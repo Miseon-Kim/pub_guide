@@ -1,0 +1,112 @@
+//------ font
+$fontDefault: 'Malgun Gothic','Dotum', Arial, sans-serif;
+$fontNoto: 'NotoSansKR', $fontDefault; //default
+$fontRoboto: 'roboto','NotoSansKR', $fontDefault;
+
+
+//------ color system
+$color-default:#333;
+$color-white: #fff;
+$color-black: #000;
+$color-gray1: #222;
+$color-gray2: #333;
+$color-gray3: #666;
+$color-gray4: #999;
+$color-gray5: #aaa;
+$color-gray6: #ddd;
+$color-gray7: #eee;
+$color-gray8: #ccc;
+
+$color-light-gray1:#e6e6e6;
+$color-light-gray2:#f5f5f5;
+$color-light-gray3:#f7f7f7;
+
+$color-lighten6: #7c828c;
+
+$color-disabled: #efefef;
+
+$color-tbl-line1: #bbc0c7;
+$color-tbl-thead: #a9b5ca;
+$color-tbl-tbody: #f3f6fb;
+
+$color-yellow: #fcff23;
+$color-yellow2: #ffed23;
+$color-yellow3: #ffcc23;
+
+$color-blue: #2380ff;
+$color-blue2: #0048ff;
+$color-violet: #7c4bdf;
+$color-violet2: #5300a0;
+$color-orange: #ff633f;
+$color-green: #016823;
+$color-green2: #00c542;
+$color-valid: #0048ff;
+$color-invalid: #e93c79;
+
+
+/* flag */
+$flag-bl: $color-blue;
+$flag-gr: #4bdf7c;
+$flag-or: $color-orange;
+$flag-pk: #e93c79;
+$flag-vl: $color-violet;
+
+$default-color: $color-default;
+
+//------ name spaces
+$width-PC: 125rem;
+$width-M: 32rem;
+$header: '.header';
+$nav: '.nav';
+$container: '.container';
+$main: '.main';
+$cont: ".cont";
+$sub: ".sub";
+$depth1:'.depth1';
+$depth2:'.depth2';
+$depth3:'.depth3';
+$footer: '.footer';
+$tit:'.tit';
+$txt:'.txt';
+$btn: '.btn';
+$btns: '.btns';
+$txtbtn: '.txtbtn';
+$formLst: '.formLst';
+$field: '.field';
+$accordion: ".accordion";
+$formTbl: '.formTbl';
+$lst: '.lst';
+$chk: '.chk';
+$rdo: '.rdo';
+$slct: '.slct';
+$inputWrap: '.inputWrap';
+$dl: 'dl';
+$tbl: '.tbl';
+$ulTbl: '.ulTbl';
+$flag: '.flag';
+$layerpop: '.layerpop';
+$datepickerWrap : '.datepicker-wrap';
+$datepicker : '.datepicker';
+$datewrap : '.datewrap';
+$layerCalander: ".layerpop-cal";
+$hr:".hr";
+
+//-------slick slider
+$slick: '.slick';
+
+//-------z-index
+$zIndex-minus: -1;
+$zIndex-default : 1;
+$zIndex-10 : 10;
+$zIndex-15 : 15;
+$zIndex-20 : 20;
+
+:root {
+    --space-2xs: .4rem;
+    --space-xs: .8rem;
+    --space-sm: 1.6rem;
+    --space-md: 2.4rem;
+    --space-lg: 3.2rem;
+    --space-xl: 4.0rem;
+    --space-2xl: 4.8rem;
+}
