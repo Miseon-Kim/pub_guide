@@ -43,15 +43,13 @@
   line-height: 1.2rem;
   color: #fff;
   z-index: 15;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 #pg-wrap {
   margin: 0;
 }
 #pg-headerWrap {
-  background: -webkit-gradient(linear, left top, left bottom, from(#191B2A), to(#302CA4));
   background: linear-gradient(180deg, #191B2A, #302CA4);
   width: 100%;
   padding: 2rem 1rem 0;
@@ -62,15 +60,12 @@
   border-radius: 0.5rem 0.5rem 0 0;
 }
 .component-nav .nav-lst {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 .component-nav .nav-lst > li > a {
   display: block;
   padding: 1rem;
   text-align: center;
-  -webkit-transition: 0.5s color ease;
   transition: 0.5s color ease;
 }
 .component-nav .nav-lst > li > a::after {
@@ -90,9 +85,7 @@
           backface-visibility: hidden;
   position: absolute;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  -webkit-transition: 0.3s all ease;
+  transform: translateX(-50%);
   transition: 0.3s all ease;
   width: 100%;
   bottom: 0;
@@ -116,9 +109,7 @@
           backface-visibility: hidden;
   position: absolute;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  -webkit-transition: 0.3s all ease;
+  transform: translateX(-50%);
   transition: 0.3s all ease;
   width: 100%;
   bottom: 0;
@@ -136,23 +127,12 @@
 }
 
 .component-lst {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
 }
 .component-lst > li {
   margin-bottom: 4rem;
@@ -170,11 +150,8 @@
 }
 .component-item {
   margin-bottom: 2rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 .component-item > * {
   padding: 1.5rem 1rem;
@@ -183,9 +160,7 @@
   font-weight: 400;
 }
 .component-item > dt {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 20%;
-          flex: 0 0 20%;
+  flex: 0 0 20%;
 }
 .component-item > dt:first-child {
   border: 0;
@@ -194,9 +169,7 @@
   border: 0;
 }
 .component-item > dd {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 80%;
-          flex: 0 0 80%;
+  flex: 0 0 80%;
 }
 
 .cp-tit.dep01 {
