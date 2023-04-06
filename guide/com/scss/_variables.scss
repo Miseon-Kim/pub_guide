@@ -54,6 +54,8 @@ $flag-vl: $color-violet;
 $default-color: $color-default;
 
 //------ name spaces
+$darMode:'html[light-mode="dark"]';
+$htmlM: 'html.m';
 $width-PC: 125rem;
 $width-M: 32rem;
 $header: '.header';

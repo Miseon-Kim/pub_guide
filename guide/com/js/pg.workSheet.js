@@ -1,6 +1,6 @@
 /* GUIDE HEADER */
 var $headerHtml = ''
-$headerHtml += '<h1><span class="hide">KB기업뱅킹</span></h1>';
+$headerHtml += '<h1><span class="hide">PUBLISHING WorkSheet</span></h1>';
 $headerHtml += '<button type="button" class="btn_util"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="65px" height="50px" viewBox="0 0 65 65" xml:space="preserve"><path class="bar b1" d="M20,23.912h23.997c0,0,16.004-0.501,16.004,13.416 S46.75,47.912,41.834,42.995S22.668,23.412,22.668,23.412"/><path class="bar b2" d="M24.751,41.995H44c0,0,16.001,1.167,16.001-12.25 c0-13.417-9.508-15.157-18.004-6.745S22.001,42.995,22.001,42.995"/><line class="bar b3" x1="30.125" y1="32.999" x2="43.997" y2="32.999"/></svg><span class="hide">메뉴열기</span></span></button>';
 $headerHtml += '<div class="pg_util">';
 $headerHtml += '<div class="pg_search">';
@@ -15,24 +15,25 @@ $headerHtml += '  <li><a href="./index2.html" target="_blank">Component</a></li>
 $headerHtml += '  <li><a href="./document.html" target="_blank">Document</a></li>';
 $headerHtml += '</ul>';
 $headerHtml += '</div>';
-$headerHtml += '<div class="pg_project">';
+// $headerHtml += '<div class="pg_project">';
 // $headerHtml += '<button type="button" class="current" title="프로젝트 목록보기">선택</button>';
 // $headerHtml += '<ul class="pg_list">';
-// $headerHtml += '  <li><a href="#" target="_blank">App</a></li>';
-// $headerHtml += '  <li><a href="#" target="_blank">PC</a></li>';
-// $headerHtml += '  <li><a href="#" target="_blank">Admin</a></li>';
+// $headerHtml += '  <li><a href="./worksheet.html" target="_blank">Worksheet</a></li>';
+// $headerHtml += '  <li><a href="./index2.html" target="_blank">Component</a></li>';
+// $headerHtml += '  <li><a href="./document.html" target="_blank">Document</a></li>';
 // $headerHtml += '</ul>';
-$headerHtml += '</div>';
+// $headerHtml += '</div>';
 $headerHtml += '<button type="button" class="btn_responsive"><i><i><i class="hide">메뉴</i></i></i></button>';
 $headerHtml += '</div>';
 
 $(function () {
   if (localStorage.lightMode == "dark") $('html').attr("light-mode", "dark");
-  guide.header();
+  guide.header();  
   makeBoard();
+  
   $(window).resize();
 });
-var makeBoard = function () {
+var makeBoard = function () {  
   var $slide = $('.pg_board_tab .swiper-slide');
   var $lenth = $slide.length;
   var htmlBoard = function (boardid, data) {
@@ -106,6 +107,7 @@ var makeBoard = function () {
     html += '</div>';
     $('.pg_content').append(html);
   };
+  // console.log(htmlBoard);
   var htmlTbody = function (data) {
     var $data = data;
     var tbodyHtml = '';
@@ -173,7 +175,8 @@ var makeBoard = function () {
         } else {
           trHtml += '<td class="m_date"></td>';
         }
-        if (obj.complete && obj.state == undefined) {
+        // if (obj.complete && obj.state == undefined) {
+        if (obj.state == 'complete') {
           trHtml += '<td class="complete"><span class="done">' + obj.complete + '</span></td>';
         } else if (obj.state === 'del') {
           trHtml += '<td class="complete"><span class="del">삭제</span></td>';
@@ -429,7 +432,7 @@ var guide = {
       var _scrollChkHtml = '<div class="pg_board_scroll"><div></div></div>';
       if (!_this.next('.pg_board_scroll').length) _this.after(_scrollChkHtml);
       _this.on('mousedown', function (e) {
-        var _scrollWidth = _this.pget(0).scrollWidthl;
+        var _scrollWidth = _this.get(0).scrollWidthl;
         var _thisWidth = _this.width();
         if (_scrollWidth - _thisWidth > 0) {
           _isMouseDown = true;
@@ -456,7 +459,7 @@ var guide = {
       });
 
       var catchChk = function () {
-        var _sclWid = _this.pget(0).scrollWidth - _this.width();
+        var _sclWid = _this.get(0).scrollWidth - _this.width();
         var _thisLeft = _this.scrollLeft();
         if (_sclWid > 0) {
           _this.addClass('catch');
