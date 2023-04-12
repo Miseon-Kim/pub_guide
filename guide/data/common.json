@@ -30,6 +30,21 @@
         "etc": ["기획확인"]
     },
     {
+        "id": "PG_GUIDE0012",
+        "type": "레이어팝",
+        "depth1": "공통",
+        "depth2": "공통UI, 레이어팝",
+        "depth3": "",
+        "depth4": "",
+        "name": "PG_GUIDE0012",
+        "worker": "TBD2",
+        "workdate": "2023-04-01",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": ["접근성"]
+    },
+    {
         "id": "PG_GUIDE0003",
         "type": "레이어팝",
         "depth1": "공통",
@@ -57,7 +72,7 @@
         "change": "",
         "complete": "완료",
         "state": "del",
-        "etc": ["접근성 적용을 위한 작업확인중"]
+        "etc": ["접근성확인"]
     },
     {
         "id": "PG_GUIDE0006",

@@ -133,7 +133,7 @@ var makeBoard = function () {
         if (obj.type) {
           trHtml += '<td class="type"><span>' + obj.type + '</span></td>';
         } else {
-          trHtml += '<td class="type"><span>본창</span></td>';
+          trHtml += '<td class="type"><span>페이지</span></td>';
         }
         if (obj.depth1) {
           trHtml += '<td class="depth1">' + obj.depth1 + '</td>';
@@ -194,6 +194,8 @@ var makeBoard = function () {
               remark += '<li class="design">' + this + '</li>';
             } else if (this.indexOf('기획확인') != -1) {
               remark += '<li class="plan">' + this + '</li>';
+            } else if (this.indexOf('접근성') != -1) {
+              remark += '<li class="wa">' + this + '</li>';
             } else {
               remark += '<li>' + this + '</li>';
             }
@@ -698,13 +700,15 @@ var guide = {
     });
     $remark.on('click', function () {
       var $clone = $(this).clone(),
-        $remarkPop = '<div class="remark_pop"><h2>History</h2><div class="history"></div>',
+        $remarkPop = '<div class="remark_pop"><a href="#" class="btn_search_del" role="button"><span class="hide">창닫기</span></a><h2>History</h2><div class="history"></div>',
         $dimmed = '<div class="dimmed"></div>';
       $('body').append($remarkPop, $dimmed);
+      $('html, body').addClass('no_scroll');
       $('.remark_pop .history').append($clone);
     });
-    $(document).on('click', '.dimmed', function () {
+    $(document).on('click', '.dimmed, .btn_search_del', function () {
       $('.remark_pop, .dimmed').remove();
+      $('html, body').removeClass('no_scroll');
     });
   },
   slide: function () {
@@ -957,17 +961,24 @@ var guide = {
       var $this = $(this),
         $design = $this.find('.remark li.design'),
         $plan = $this.find('.remark li.plan');
+        $waCheck = $this.find('.remark li.wa');
       if ($design.length) {
         var num = $design.length,
           $btn = $this.find('.btn_design');
         $design.closest('tr').addClass('design');
-        if (!$btn.length) $this.find('.pg_alert_btn_set').append('<button type="button" class="btn_design">디자인파트에서 확인 필요한 항목이 <strong>' + num + '</strong>개 있습니다.</button>');
+        if (!$btn.length) $this.find('.pg_alert_btn_set').append('<button type="button" class="btn_design">디자인확인 필요 <strong>[' + num + ']</strong></button>');
       }
       if ($plan.length) {
         var num = $plan.length,
           $btn = $this.find('.btn_plan');
         $plan.closest('tr').addClass('plan');
-        if (!$btn.length) $this.find('.pg_alert_btn_set').append('<button type="button" class="btn_plan">기획파트에서 확인 필요한 항목이 <strong>' + num + '</strong>개 있습니다.</button>');
+        if (!$btn.length) $this.find('.pg_alert_btn_set').append('<button type="button" class="btn_plan">기획확인 필요 <strong>[' + num + ']</strong></button>');
+      }
+      if ($waCheck.length) {
+        var num = $waCheck.length,
+          $btn = $this.find('.btn_wa');
+        $waCheck.closest('tr').addClass('wa');
+        if (!$btn.length) $this.find('.pg_alert_btn_set').append('<button type="button" class="btn_wa">접근성확인 필요 <strong>[' + num + ']</strong></button>');
       }
     });
     $('.pg_alert_btn_set').find('button').on('click', function (e) {
@@ -991,6 +1002,16 @@ var guide = {
         } else {
           $this.removeClass('active');
           $tr.show().siblings('tr.plan').find('.remark>li').removeAttr('style');
+        }
+      }
+      if ($this.hasClass('btn_wa')) {
+        $this.siblings().removeClass('active');
+        if (!$this.hasClass('active')) {
+          $this.addClass('active');
+          $tr.hide().siblings('tr.wa').show().find('.remark>li').show();
+        } else {
+          $this.removeClass('active');
+          $tr.show().siblings('tr.wa').find('.remark>li').removeAttr('style');
         }
       }
     });

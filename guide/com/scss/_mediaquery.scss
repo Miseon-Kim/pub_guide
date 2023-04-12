@@ -1,0 +1,392 @@
+
+// tablet
+@media screen and (max-width: 768px) {
+
+    .btn_util{@include display(block);}
+    #{$pgHeader} {
+        h1 {height:5rem;}
+        .pg_util{
+            @include display(block);
+            @include pos(fixed) {top:0; left:0; right:0; bottom:0;}
+            padding:4rem 2rem 2rem; background-color:$color-white;
+            align-items:inherit; box-sizing:border-box;
+            transform:translateX(100%); @include transition(.3s, all, ease-in-out);
+            z-index:10;
+            
+            #{$pgSrch}, .switch, .pg_project .btn_responsive {@include width; margin:0;}
+            #{$pgSrch} {
+                @include width;
+                input[type=text]{
+                    @include height(5rem); padding-left:0;
+                    background-color:$color-white; border-bottom:.2rem solid $color-gray7; border-radius:0;
+                    color:$color-black;
+                    &:focus{border-color:$color-gray5;}
+                }
+                #btnPgSearch{@include height(5rem); background-image: svgIcon(btnPgSearch, 000);}
+                .btn_search_del{top:1rem;}
+            }
+        }
+    }
+
+    html.util_show #pgHeader .pg_util{transform:translateX(0);}
+    .pg_util #{$pgProject} {margin:0}
+
+    #{$pgProject} {
+        .current{@include display(none);}
+        .pg_list{
+            @include display(block!important);
+            border-width:.2rem 0 0;box-shadow:none;border-radius:0;
+            
+            %lstActive-aColor2 {background-color:$color-white; color:$color-gray3;}
+            li {
+                a {
+                    @include height(4rem) {line-height:4rem;}
+                    padding:0 1.5rem;
+                    &:hover {@extend %lstActive-aColor2;}
+                }
+                
+                &.active a {@extend %lstActive-aColor2;}
+            }
+        }
+    }
+
+    #{$pg} {
+        &_util {
+            .btn_nav{@include display(block);}
+            .btn_responsive{@include display(none);}
+            .open_no{top:.5rem; right:.5rem;}
+        }
+    }
+    
+    #pgHeader .switch{
+        @include el-size(100%, 4.4rem); margin-top:50px !important;
+        &::after{background:$color-gray4;border:0; border-radius:4.4rem;}
+
+        %switchBar {@include height(3.6rem); border-radius:3.6rem;}
+        & > .bar {top:.4rem;}
+        & > .bar, & > ul > li > a {@extend %switchBar;}
+        & > ul > li > a {color:$color-black; line-height:3.6rem;}
+    }
+
+    #{$darMode} {
+        #pgHeader .pg_util{background-color:$color-gray2;}
+        &.util_show .btn_util .bar{stroke:$color-white;}
+        .pg_util #{$pgSrch} input[type=text]{background-color:$color-gray2 !important}
+        #{$pgProject} {
+            %bgColorBlack {background-color:$color-black;}
+            .pg_list{
+                background-color:$color-gray2 !important;
+                li{
+                    border-color:$color-white; opacity:.9;
+                    a {
+                        color:$color-white;
+                        &:hover {@extend %bgColorBlack;}
+                    }
+                }
+                &.active a {@extend %bgColorBlack;}
+            }
+        }
+        .switch::after{border:none}
+    }
+
+    #{$pgNav} {
+        @include width(100%) {top:50px; background-color:$color-black; opacity:1;}
+        @include overflow(both, auto);
+        transform:translate3d(-100%,0,0); -webkit-transform:translate3d(-100%,0,0);
+        background-color:$color-white; @include transition(.3s, all, ease-in-out);
+
+        
+        & > ul {
+            & > li {
+                & > a {color:$color-black;}
+                &:hover {
+                    & > a {border-right:0 solid $color-green4;}
+                }
+
+                & > ul {
+                    @include pos(relative) {top:inherit; left:inherit; width:auto;}
+                    border-width:1px 0; border-style:solid; border-color:rgba(255,255,255,0.2);
+                    background-color:rgba(255,255,255,0.1);
+
+                    & > li > a {font-size:var(--space-ms); color:$color-gray3}
+                }
+                
+                &.active {
+                    & > a {color:$color-orange;}
+                    & > ul {
+                        @include display(block);
+                        & > li {
+                            & > a {padding:1rem 3rem; font-size:var(--space-md);text-align:right;}
+                        }
+                    }
+                }
+                &.ex_link > a{border-color:$color-blue5; background-color:$color-white;color:$color-gray2;}
+            }
+        }
+    }
+    .no_scroll {
+        #{$pgNav} {
+            transform:translate3d(0,0,0); -webkit-transform:translate3d(0,0,0);
+        }
+    }
+
+    #{$pgWrap} {
+        padding-top:2.5rem;
+        #{$pgTit} {
+            top:0; left:50%; margin-left:-30%; padding:1rem 1.5rem; z-index:101; @include el-size(68%, 5rem);
+            
+            h2{width:15rem; font-size:var(--space-md);}
+        }
+    }
+    #{$pgHeader} {height:5rem;}
+    
+    #{$pgContent} {
+        // padding-top:2rem;
+        & > h2 {font-size:var(--space-mx);}
+    }
+    #{$pgContainer} {
+        padding:5rem 1rem 1rem;
+        #{$pgBoard} {
+            &_tab {top:5rem;}
+        }
+    }
+    #{$htmlM} {
+        #{$pgContainer} {margin:0;}
+        #{$pgTit} {
+            #{$pgProject} {
+                &_status{padding-right:0;}
+            }
+        }
+    }
+
+    #{$pgNav} + #{$pgContainer} {margin-left:0;}
+    
+    #{$pgSection} {
+        margin-top:1.5rem;
+        h3 {padding:1.5rem 1rem; font-size:var(--space-ms);}
+
+        #{$pgGuide} {
+            &_info{
+                padding:1.5rem 1rem;
+                h4, .head {font-size:var(--space-ms);}
+
+                .pg_item {margin-top:1.5rem;}
+            }
+        }
+
+    }
+
+    #{$pg} {
+        &_item {
+            .list {
+                li {
+                    padding:.3rem .5rem .3rem .7rem;
+                    line-height:1.4rem; font-size:var(--space-sm);
+
+                    @include el-content(before) {
+                        @include pos-offset-l(.8rem, 0);
+                        @include el-size(.2rem, .2rem);
+                        background-color:$color-black;
+                    }
+                }
+            }
+
+            .browser {
+                li{
+                    @include height(3rem) {line-height:3rem;}
+                    margin:.5rem .5rem 0 0; padding:0 1rem 0 3.3rem;
+                    background-size:1.6rem 1.6rem; border-radius:30px;
+                    box-shadow:.1rem .1rem .1rem 0px rgba(0,0,0,0.3);
+                    font-size:var(--space-sm);
+                }
+            }
+
+            h4+.tag{padding-top:0}
+
+            &_color {
+                .color_box {
+                    margin-top:0;
+                    .color_item {
+                        @include el-size(100%, 7rem); margin:1rem 0 0 0;
+                        ul {
+                            @include clearfix;
+                        }
+                        li {float:left;width:50%;}
+                    }
+                }
+            }
+        }
+    }
+
+    .util_show {
+        #{$pgHeader} {z-index:110;}
+        #{$pgWrap} {
+            #{$pgTit} {z-index:100;}
+        }
+    }
+
+    #{$pgBoard} {
+        top:9.5rem; overflow:visible; border-top:0;
+        
+        ul {
+            li {
+                & + & {margin-left:.5rem;}
+                button {
+                    @include height(3rem){line-height:3rem;}
+                    padding:0 1rem; font-size:var(--space-ms);
+                }
+            }
+        }
+
+        table {
+            white-space:normal;table-layout:fixed;
+
+            thead {
+                th {
+                    &:nth-child(2), &:nth-child(8), &:nth-child(12), &:nth-child(13) {@include display(table-cell);}
+                    border-top:.2rem solid $color-gray3;
+                }
+            }
+            tbody {
+                td {
+                    padding:1rem;
+
+                    &.id, &.name, &.complete, &.etc {@include display(table-cell);}
+                    &:nth-child(2), &:nth-child(8) {max-width:40% !important; width:40% !important;}
+                }
+                .hr th{padding:1.5rem 0}
+                .hr th, tr.no_data td{display:table-cell; text-align:center;}
+                tr.no_data td {padding:5rem 0;}
+            }
+
+            colgroup, th, td {@include display(none);}
+        }
+
+        &_scroll {@include display(none); left:0; right:0;}
+
+        &_tab {
+            padding:.5rem 1rem;
+            box-shadow:0 0.3rem 0.5rem -0.1rem rgba(0, 0, 0, 0.3);
+        }
+    }
+
+    #{$pgSrch} {
+        input[type=text] {
+            @include el-size(100%, 4rem);
+            padding:0; border-width:0 0 1px 0; border-radius:0;
+        }
+        #btnPgSearch{top:1.5rem; right:1.5rem; width:4rem; height:4rem;}
+        .btn_search_del{top:2.5rem;}
+    }
+
+    #{$pgStatus} {
+        #{$pg} {
+            &_count{@include display(none);}
+            &_project_ing{
+                @include el-size(100%, 2.5rem);
+                .ing{top:.5rem; font-size:var(--space-sm);}
+            }
+        }
+    }
+    
+    #{$pgContent} {
+        &.searcher{padding-top:3rem;}
+    }
+    
+    #{$pgAlert} {
+        &_btn_set {
+            @include display(flex) {flex-wrap: nowrap; justify-content:flex-end;}
+            margin-right:-2rem;
+            
+            button {     
+                font-size:var(--space-ms);
+                vertical-align:middle; border-radius:0 0 .5rem .5rem;
+                
+                & + button {margin-left:.5rem;}
+                &.active {
+                    @include el-content(after) {
+                        @include display(inline-block);
+                        @include el-size(1.4rem, 1.4rem); background-size:1.4rem 1.4rem
+                    }
+                }
+                strong {font-size:var(--space-md);}
+            }
+        }
+    }
+    
+    .panel_head{@include display(none);}
+
+    #{$srch} {
+        &_title {
+            @include height(3rem) {line-height:3rem;}
+            top:0; margin-top:-3.5rem;
+            font-size:var(--space-ms);
+            
+            .btn_search_cancel {
+                @include height(3rem) {line-height:3rem;}
+                font-size:var(--space-sm);
+                padding:0 3.4rem 0 1.5rem;
+
+                @include el-content(after) {top:.2rem; right:1rem;}
+            }
+        }
+    }
+
+    #{$pgLayout} {
+        padding:1rem;
+        div {
+            margin-top:3rem; padding:3rem 1rem 1rem;
+            @include el-content(before) {
+                @include pos-offset-l(-2.1rem, -.2rem);
+                @include el-size(100%, 2rem) {line-height:2rem;}
+                font-size:var(--space-sm);
+            }
+        }
+
+        #{$pgLayout} {
+            &_content > div {padding:4rem 0; font-size:var(--space-ms);}
+        }
+    }
+
+    #{$pgDivice} {@include display(none);}
+}
+
+// mobile
+@media screen and (max-width: 414px) {
+    ::-webkit-scrollbar{@include display(none);}
+    body{-ms-overflow-style:none;}
+    
+    #{$pgWrap} {
+        #{$pgTit} {width:85%; margin-left:0; left:0;}        
+    }
+
+    #{$pgAlert} {
+        &_btn_set {
+            button {                
+                font-size:var(--space-xs); padding:0 .8rem;
+                strong {font-size:var(--space-2xs);}
+            }
+        }
+    }
+
+    #{$pgBoard} {
+        table {
+            thead {
+                th {
+                    &:nth-child(3), &:nth-child(8) {@include display(none);}
+                }
+            }
+            tbody {
+                td {
+                    &.name {@include display(none);}
+                    &.id {
+                        max-width: 60% !important;
+                        width: 50% !important;
+                    }
+                    &.etc {width:10rem;}
+                }
+            }
+        }
+    }
+    .search_title {margin-top: -5.9rem;}
+}

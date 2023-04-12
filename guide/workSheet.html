@@ -19,25 +19,27 @@
     <header id="pgHeader"></header>
     <!-- [E] HEADER -->
 
-    <!-- [S] CONTENTS -->
-    <div id="pgContainer">
-        <div class="pg_titles">
-			<h2>Worksheet</h2>
-			<div class="pg_project_status">
-				<div class="pg_count total">
-					<span class="lb">총본수</span><strong class="num">000</strong>
-				</div>
-				<div class="pg_count working">
-					<span class="lb">총진행본수</span><strong class="num">000</strong>
-				</div>
-				<div class="pg_count cp_num">
-					<span class="lb">총완료본수</span><strong class="num">000</strong>
-				</div>
-				<div class="pg_project_ing">
-					<span class="ing">진행률 : <strong class="num">90</strong>%</span> <span class="pgraph"><span class="bar" style="width: 90%;"></span></span>
-				</div>
+	<div class="pg_titles">
+		<h2>Worksheet</h2>
+		<div class="pg_project_status">
+			<div class="pg_count total">
+				<span class="lb">총본수</span><strong class="num">000</strong>
+			</div>
+			<div class="pg_count working">
+				<span class="lb">총진행본수</span><strong class="num">000</strong>
+			</div>
+			<div class="pg_count cp_num">
+				<span class="lb">총완료본수</span><strong class="num">000</strong>
+			</div>
+			<div class="pg_project_ing">
+				<span class="ing">진행률 : <strong class="num">90</strong>%</span> <span class="pgraph"><span class="bar" style="width: 90%;"></span></span>
 			</div>
 		</div>
+	</div>
+
+    <!-- [S] CONTENTS -->
+    <div id="pgContainer">
+        
 
         <div class="pg_content">
 
@@ -50,132 +52,6 @@
                 <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
                 <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
             </div>
-
-            <!-- <div id="panel0" class="pg_board_panel active">
-                <div class="panel_head" style="right: 0px;">
-                    <div class="pg_target swiper-initialized swiper-horizontal swiper-pointer-events swiper-free-mode">
-                        <ul class="swiper-wrapper" aria-live="polite">
-                            <li class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 21"><a href="./worksheet.html#target1" class="go">공통태그</a></li>
-                            <li class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 21"><a href="./worksheet.html#target25" class="go">팝업</a></li>
-                            <li class="swiper-slide"><a href="#target1" class="go">공통태그</a></li>
-                            <li class="swiper-slide"><a href="#target25" class="go">팝업</a></li>
-                            <li class="swiper-slide"><a href="#target102" class="go">공통화면</a></li>
-                        </ul>
-                        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
-                        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
-                    </div>
-
-                    <span class="pg_status">
-                        <span class="num total">본수 : <strong class="num">110</strong></span>
-                        <span class="num working">진행본수 : <strong class="num">94</strong></span>
-                        <span class="num cp_num">완료본수 : <strong class="num">94</strong></span>
-                        <span class="pg_status_box">
-                            <span class="bar" style="width: 85%;"></span>
-                            <span class="ing">진행률 : <strong class="num">85</strong>%</span>
-                        </span>
-                    </span>
-                </div>
-                <div class="pg_alert_btn_set">
-                </div>
-                <div class="pg_board">
-                    <table>
-                    <caption>메뉴별 작업리스트</caption><colgroup>
-                        <col style="width:50px"><col style="width:150px"><col style="width:90px"><col class="d1" style="width:auto"><col class="d2" style="width:auto"><col class="d3" style="width:auto"><col class="d4" style="width:auto"><col style="width:300px"><col style="width:90px"><col style="width:100px"><col style="width:100px"><col style="width:80px"><col style="width:100px">
-                    </colgroup>
-                    <thead>
-                    <tr>
-                        <th scope="col">
-                            No
-                        </th>
-                        <th scope="col" class="id">
-                            화면id
-                        </th>
-                        <th scope="col" class="type">
-                            화면타입
-                        </th>
-                        <th scope="col" class="deps d1">
-                            1Depth<button type="button" rel="d1"><span class="hide">숨기기</span></button>
-                        </th>
-                        <th scope="col" class="deps d2">
-                            2Depth<button type="button" rel="d2"><span class="hide">숨기기</span></button>
-                        </th>
-                        <th scope="col" class="deps d3">
-                            3Depth<button type="button" rel="d3"><span class="hide">숨기기</span></button>
-                        </th>
-                        <th scope="col" class="deps d4">
-                            4Depth<button type="button" rel="d4"><span class="hide">숨기기</span></button>
-                        </th>
-                        <th scope="col" class="name">
-                            화면명
-                        </th>
-                        <th scope="col" class="worker">
-                            <select>
-                                <option value="">작업자</option>
-                            </select>
-                        </th>
-                        <th scope="col" class="c_date">
-                            <select>
-                                <option value="">작업일</option>
-                            </select>
-                        </th>
-                        <th scope="col" class="m_date">
-                            <select>
-                                <option value="">수정일</option>
-                            </select>
-                        </th>
-                        <th scope="col" class="complete">
-                            상태
-                        </th>
-                        <th scope="col" class="etc">
-                            비고
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr class="del working">
-                        <td class="no">
-                            1
-                        </td>
-                        <td class="id">
-                            <a href="#" target="_blank">Menupages000</a>
-                        </td>
-                        <td class="type">
-                            <span>풀</span>
-                        </td>
-                        <td class="depth1">
-                            공통
-                        </td>
-                        <td class="depth2">
-                            공통태그
-                        </td>
-                        <td class="depth3">
-                        </td>
-                        <td class="depth4">
-                        </td>
-                        <td class="name">
-                            [팝업]
-                        </td>
-                        <td class="worker">
-                        </td>
-                        <td class="c_date">
-                        </td>
-                        <td class="m_date">
-                        </td>
-                        <td class="complete">
-                            <span class="del">삭제</span>
-                        </td>
-                        <td class="etc">
-                            <a href="#" class="btn_hover" target="_blank">Menupages000</a>
-                        </td>
-                    </tr>
-                    </tbody>
-                    </table>
-                </div>
-                <div class="pg_board_scroll">
-                    <div>
-                    </div>
-                </div>
-            </div> -->
             <!-- [E] WORK LIST -->
         </div>
     </div>

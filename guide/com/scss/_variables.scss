@@ -19,6 +19,11 @@ $color-gray8: #ccc;
 $color-light-gray1:#e6e6e6;
 $color-light-gray2:#f5f5f5;
 $color-light-gray3:#f7f7f7;
+$color-light-gray4:#f1f1f1;
+$color-light-blue1:#eceef0;
+$color-light-blue2:#d9e4fa;
+$color-light-brown1: #cac4b7;
+$color-light-yellow1:#f3f1ea;
 
 $color-lighten6: #7c828c;
 
@@ -31,17 +36,29 @@ $color-tbl-tbody: #f3f6fb;
 $color-yellow: #fcff23;
 $color-yellow2: #ffed23;
 $color-yellow3: #ffcc23;
-
 $color-blue: #2380ff;
 $color-blue2: #0048ff;
-$color-blue3:#0D47A1;
+$color-blue3:#043b72;
+$color-blue4:#82B4D2;
+$color-blue5:#008fba;
 $color-violet: #7c4bdf;
 $color-violet2: #5300a0;
 $color-orange: #ff633f;
 $color-green: #016823;
 $color-green2: #00c542;
+$color-green3: #82D22D;
+$color-green4: #1e9a8f;
+$color-brown: #8C5032;
+$color-brown2:#4d4d4d;
+$color-brown3:#7e756b;
+$color-brown3:#64584a;
+
 $color-valid: #0048ff;
 $color-invalid: #e93c79;
+$color-darkMode: #101010;
+$color-darkMode2: #292929;
+$color-darkMode3: #323232;
+$color-darkMode4:#444;
 
 
 /* flag */
@@ -81,6 +98,7 @@ $lst: '.lst';
 $chk: '.chk';
 $rdo: '.rdo';
 $slct: '.slct';
+$srch:'.search';
 $inputWrap: '.inputWrap';
 $dl: 'dl';
 $tbl: '.tbl';
@@ -104,8 +122,10 @@ $zIndex-15 : 15;
 $zIndex-20 : 20;
 
 :root {
-    --space-2xs: .4rem;
-    --space-xs: .8rem;
+    --space-4xs: .4rem;
+    --space-3xs: .8rem;
+    --space-2xs: 1rem;
+    --space-xs: 1.1rem;
     --space-sm: 1.2rem;
     --space-ms: 1.4rem;
     --space-md: 1.6rem; // default

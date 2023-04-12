@@ -10,8 +10,10 @@
 /****************************************/
 /* flag */
 :root {
-  --space-2xs: .4rem;
-  --space-xs: .8rem;
+  --space-4xs: .4rem;
+  --space-3xs: .8rem;
+  --space-2xs: 1rem;
+  --space-xs: 1.1rem;
   --space-sm: 1.2rem;
   --space-ms: 1.4rem;
   --space-md: 1.6rem;
@@ -109,8 +111,10 @@
 /****************************************/
 /* flag */
 :root {
-  --space-2xs: .4rem;
-  --space-xs: .8rem;
+  --space-4xs: .4rem;
+  --space-3xs: .8rem;
+  --space-2xs: 1rem;
+  --space-xs: 1.1rem;
   --space-sm: 1.2rem;
   --space-ms: 1.4rem;
   --space-md: 1.6rem;
@@ -184,15 +188,13 @@
   width: 0;
 }
 .component-nav .nav-lst > li > a:hover {
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   position: relative;
   text-decoration: none;
   color: #016823;
 }
 .component-nav .nav-lst > li > a:hover::after {
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -208,15 +210,13 @@
   display: block;
 }
 .component-nav .nav-lst > li > a.is-active {
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   position: relative;
   text-decoration: none;
   color: #7c4bdf;
 }
 .component-nav .nav-lst > li > a.is-active::after {
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -424,26 +424,38 @@
   margin-top: 1rem;
 }
 .txt-elp1 {
-  overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
   height: 2.1rem;
 }
-.txt-elp2 {
-  display: -webkit-box;
+.txt-elp1 .txt-elp3, .txt-elp1 .txt-elp2, .txt-elp1 .txt-elp1 {
   overflow: hidden;
   text-overflow: ellipsis;
-  height: 4.2rem;
+  -o-text-overflow: ellipsis;
+  -moz-binding: url(ellipsis.xml#ellipsis);
+}
+.txt-elp2 {
+  display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+  height: 4.2rem;
+}
+.txt-elp2 .txt-elp3, .txt-elp2 .txt-elp2, .txt-elp2 .txt-elp1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  -moz-binding: url(ellipsis.xml#ellipsis);
 }
 .txt-elp3 {
   display: -webkit-box;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  height: 6.3rem;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+  height: 6.3rem;
+}
+.txt-elp3 .txt-elp3, .txt-elp3 .txt-elp1, .txt-elp3 .txt-elp2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  -moz-binding: url(ellipsis.xml#ellipsis);
 }
 
 .btnWrap.split.col2 {
@@ -741,15 +753,13 @@
   width: 0;
 }
 .btn.txt:hover {
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   position: relative;
   text-decoration: none;
   color: #016823;
 }
 .btn.txt:hover::after {
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -787,15 +797,13 @@
   transition: 0.5s all ease;
 }
 .btn.txt.uline:hover, .btn.txt.uline:focus {
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   position: relative;
   text-decoration: none;
   color: #222;
 }
 .btn.txt.uline:hover::before, .btn.txt.uline:focus::before {
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -814,15 +822,13 @@
   height: 0.2rem;
 }
 .btn.txt.uline:hover, .btn.txt.uline:focus {
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   position: relative;
   text-decoration: none;
   color: #222;
 }
 .btn.txt.uline:hover::after, .btn.txt.uline:focus::after {
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -871,15 +877,13 @@
   transition: 0.5s all ease;
 }
 .btn.ico:hover, .btn.ico:focus {
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   position: relative;
   text-decoration: none;
   color: #222;
 }
 .btn.ico:hover::after, .btn.ico:focus::after {
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);

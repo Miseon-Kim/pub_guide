@@ -3,8 +3,10 @@
 /****************************************/
 /* flag */
 :root {
-  --space-2xs: .4rem;
-  --space-xs: .8rem;
+  --space-4xs: .4rem;
+  --space-3xs: .8rem;
+  --space-2xs: 1rem;
+  --space-xs: 1.1rem;
   --space-sm: 1.2rem;
   --space-ms: 1.4rem;
   --space-md: 1.6rem;
@@ -78,15 +80,13 @@
   width: 0;
 }
 .component-nav .nav-lst > li > a:hover {
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   position: relative;
   text-decoration: none;
   color: #016823;
 }
 .component-nav .nav-lst > li > a:hover::after {
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -102,15 +102,13 @@
   display: block;
 }
 .component-nav .nav-lst > li > a.is-active {
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   position: relative;
   text-decoration: none;
   color: #7c4bdf;
 }
 .component-nav .nav-lst > li > a.is-active::after {
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
