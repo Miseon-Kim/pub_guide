@@ -2670,10 +2670,6 @@ html.util_show .btn_util .bar.b3 {
   margin-right: 0;
 }
 
-html.m #pgContainer {
-  margin-right: 37rem;
-}
-
 .pg_titles {
   display: flex;
   position: fixed;
@@ -2682,6 +2678,7 @@ html.m #pgContainer {
   right: 0;
   padding: 0.8rem 2rem;
   background-color: #333;
+  min-height: 4.6rem;
   transition-duration: 0.8s;
   z-index: 10;
 }
@@ -3077,10 +3074,10 @@ html.m .pg_content {
   box-flex: 1;
   -webkit-box-flex: 1;
 }
-.pg_board_tab ul li + .pg_board_tab ul li {
+.pg_board_tab ul li + li {
   margin-left: 1rem;
 }
-.pg_board_tab ul li > button {
+.pg_board_tab ul li > button, .pg_board_tab ul li > a {
   height: 4rem;
   line-height: 3.6rem;
   padding: 0 2rem;
@@ -3094,10 +3091,10 @@ html.m .pg_content {
   --animation-tick: 0;
   --ripple-color: rgba(255, 255, 255, 0.4);
 }
-.pg_board_tab ul li > button.animating {
+.pg_board_tab ul li > button.animating, .pg_board_tab ul li > a.animating {
   background-image: paint(ripple);
 }
-.pg_board_tab ul li.active > button {
+.pg_board_tab ul li.active > button, .pg_board_tab ul li.active > a {
   background-color: #000;
   font-weight: 700;
   color: #fff;
@@ -3565,24 +3562,6 @@ html.m .panel_head {
   font-weight: 500;
   color: #000;
   text-decoration: underline;
-}
-.pg_board table tbody td a.btn_hover {
-  display: none;
-  position: absolute;
-  top: 0;
-  right: -5.5rem;
-  width: 50%;
-  height: 100%;
-  font-size: 0;
-  color: transparent;
-  background-color: #ddd;
-  margin: 0;
-  padding: 0;
-  border-radius: 0 1rem 1rem 0;
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50' enable-background='new 0 0 50 50'%3E%3Cpath d='M 12 6 C 10.3 6 9 7.3 9 9 L 9 39 L 11 37 L 11 9 C 11 8.4 11.4 8 12 8 L 38 8 C 38.6 8 39 8.4 39 9 L 39 41 C 39 41.6 38.6 42 38 42 L 16 42 L 14 44 L 38 44 C 39.7 44 41 42.7 41 41 L 41 9 C 41 7.3 39.7 6 38 6 L 12 6 z M 16 25 L 16 27 L 24.59375 27 L 9.09375 42.5 L 10.5 43.90625 L 26 28.40625 L 26 37 L 28 37 L 28 26 L 28 25 L 27 25 L 16 25 z' fill='%23333' /%3E%3C/svg%3E%0A");
-  background-position: 50% 50%;
-  background-size: 3rem 3rem;
-  background-repeat: no-repeat;
 }
 .pg_board table tbody tr.no_data td {
   padding: 10rem 0;
@@ -4127,6 +4106,158 @@ html.m .frame_device {
 }
 
 /*****************************************************************
+  Component
+*****************************************************************/
+.pg-contentWrap {
+  padding: 2rem;
+}
+
+.component-lst {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.component-lst > li {
+  margin-bottom: 4rem;
+}
+.component-wrap {
+  min-width: 375px;
+}
+.component-wrap ~ .component-wrap {
+  margin-left: 2rem;
+}
+.component-wrap > iframe {
+  width: 100%;
+  height: 64rem;
+  border: 0.2rem #333 solid;
+}
+.component-item {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+.component-item > * {
+  padding: 1.5rem 1rem;
+  border-top: 1px #222 solid;
+  font-family: "roboto";
+  font-weight: 400;
+}
+.component-item > dt {
+  flex: 0 0 20%;
+}
+.component-item > dt:first-child {
+  border: 0;
+}
+.component-item > dt:first-child + dd {
+  border: 0;
+}
+.component-item > dd {
+  flex: 0 0 80%;
+}
+
+.cp-tit.dep01 {
+  font-size: 2.2rem;
+}
+.cp-tit.dep02 {
+  font-size: 1.8rem;
+}
+.cp-tit.dep02::before {
+  content: "";
+  display: block;
+  background: #00c542;
+  width: 1.5rem;
+  height: 0.3rem;
+}
+.cp-tit.dep03 {
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+}
+.cp-tit.dep03::before {
+  content: "";
+  display: block;
+  color: #ff633f;
+  margin-right: 1rem;
+  display: inline-block;
+  content: "\f02e";
+  font-family: "iconFont";
+  font-weight: 900;
+}
+.cp-tit + .btnWrap {
+  margin-top: 2rem;
+}
+
+#cp-wrap {
+  padding: 2rem;
+}
+#cp-wrap .cp-content ~ .cp-content {
+  margin-top: 3rem;
+}
+#cp-wrap .cp-content .btnWrap > .btn {
+  margin-bottom: 1rem;
+}
+#cp-wrap .cp-content > .toolTip_wrap {
+  margin: 2rem 0;
+}
+#cp-wrap .cp-content .field + .field {
+  margin: 2rem 0;
+}
+#cp-wrap .cp-tit.dep01 {
+  font-size: 2.2rem;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+#cp-wrap .cp-tit.dep02 {
+  font-size: 1.8rem;
+  background: #a9b5ca;
+  padding: 0.5rem 1rem;
+}
+#cp-wrap .cp-tit.dep02::before {
+  content: "";
+  display: block;
+  display: none;
+}
+#cp-wrap .cp-tit.dep03 {
+  font-size: 1.6rem;
+}
+#cp-wrap .cp-tit + .component {
+  margin-top: 0.5rem;
+}
+#cp-wrap .cp-tit + .field {
+  margin-top: 2rem;
+}
+
+.tblWrap {
+  margin: 1.5rem 0 0.5rem;
+}
+.tblWrap .tbl {
+  width: 100%;
+}
+.tblWrap .tbl th, .tblWrap .tbl td {
+  padding: 1rem;
+  border-top: 1px #222 solid;
+}
+.tblWrap .tbl th {
+  background: #e6e6e6;
+}
+.tblWrap .tbl td {
+  background: #f5f5f5;
+}
+.tblWrap .tbl tr:first-child > th, .tblWrap .tbl tr:first-child > td {
+  border-top: 0;
+}
+
+.hr.divice {
+  display: block;
+  visibility: visible;
+  background: #aaa;
+  border: none;
+  height: 1px;
+}
+
+/*****************************************************************
   Dark Mode
 *****************************************************************/
 html[light-mode=dark] {
@@ -4175,11 +4306,11 @@ html[light-mode=dark] .pg_board_tab {
 html[light-mode=dark] .pg_board_tab ul li {
   border-color: #101010;
 }
-html[light-mode=dark] .pg_board_tab ul li > button {
+html[light-mode=dark] .pg_board_tab ul li > button, html[light-mode=dark] .pg_board_tab ul li > a {
   background-color: #101010;
   color: #fff;
 }
-html[light-mode=dark] .pg_board_tab ul li.active > button {
+html[light-mode=dark] .pg_board_tab ul li.active > button, html[light-mode=dark] .pg_board_tab ul li.active > a {
   background-color: #444;
 }
 html[light-mode=dark] #pgHeader, html[light-mode=dark] .pg_titles {

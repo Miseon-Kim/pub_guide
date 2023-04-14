@@ -1,187 +1,50 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui, viewport-fit=cover, user-scalable=no">
-    <title>Guide</title>
-    
-    <!-- [S] PUBLISH COMMON STYLE -->
-    <link rel="stylesheet" href="com/css/cm.common.css">
-    <!-- [E] PUBLISH COMMON STYLE -->
+<html lang="ko" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <!-- [S] PAGES - STYLE -->
-    <link rel="stylesheet" href="">
-    <!-- [E] PAGES - STYLE -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="format-detection" content="telephone=no">
 
-    <!-- [S] LIBRARY - SCRIPT -->
-    <script src="com/js/lib/lib.jquery-3.6.3.min.js"></script>
-    <script src="com/js/lib/lib.jquery-ui-1.13.2.js"></script>
-    <script src="com/js/lib/lib.ua-parser.min.js"></script>
-    <script src="com/js/lib/lib.cleave.min.js"></script>
-    <script src="../com/js/lib/lib.moment.js"></script>
-    <!-- [E] LIBRARY - SCRIPT -->
+<link rel="stylesheet" type="text/css" href="./com/css/pg.workSheet.css">
+<script src="./com/js/lib/lib.jquery-3.6.3.min.js"></script>
+<script src="./com/js/lib/lib.swiper.9.1.1.min.js"></script>
+<script src="./com/js/pg.guideCommon.js"></script>
 
-<script>
-$(function() {
-    // href 정보확인
-    // const _url = $("a[data-view]")
-    //     , _newPage = $("a[data-url]")
-    //     , _path = $("a[data-path]")
-    //     , _thisUrl = _url.attr("src");
-
-    // _path.text(_thisUrl);
-    // _newPage.on("click", function(){
-    //     const _this = $(this)
-    //         , _isUrl = _this.parent().parent().siblings("iframe").attr("src");
-    //     _this.attr("href", _isUrl.attr("target", "_blank"));
-    //     // _this.parent().parent().siblings("iframe").addClass(":test");
-    // })
-    /*
-    const _url = $("a[data-url]")
-        , _code = $("a[data-source]")
-        , _baseUrl = "127.0.0.1:5500/";
-    _code.on("click", function(){
-        const _this = $(this)
-            , _thisUrl = _this.siblings(_url).attr("href");
-        _this.attr("href", "http://view-source:" + _baseUrl + _thisUrl).attr("target", "_blank");
-    })
-    */
-});
-</script>
+<title>Worksheet | Publishing Guide</title>
 </head>
-<body>
-    <div title="스킵메뉴" class="skipNav">
-        <a href="#skipContent">본문 내용 바로가기</a>
-    </div>
-    <hr class="hr" aria-hidden="true">
-    <div id="pg-wrap">
-        <header id="pg-headerWrap">
-            <nav class="component-nav">
-                <ul class="nav-lst">
-                    <li><a href="#text" class="is-active">타이틀/텍스트</a></li>
-                    <li><a href="#button">버튼</a></li>
-                    <li><a href="#popup">팝업/알럿</a></li>
-                    <li><a href="#form">폼요소</a></li>
-                </ul>
-            </nav>
-        </header>
-        <div id="pg-container" class="pg-contentWrap">
-            <ul class="component-lst">
-                <!-- 1set -->
-                <li id="text" class="component-wrap">
-                    <div class="split col2">
-                        <h2 class="cp-tit dep02">타이틀/텍스트</h2>
-                        <div class="value r btnWrap">
-                            <a href="component/text.html" class="btn btn-line  ico-gopage" target="_blank">
-                                새창열기
-                            </a>
-                        </div>
-                    </div>
-                    <div class="tblWrap">
-                        <table class="tbl">
-                            <caption>component info</caption>
-                            <colgroup>
-                                <col style="width:30%">
-                                <col style="width:*">
-                            </colgroup>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">PATH</th>
-                                    <td>component/text.html</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <iframe src="component/text.html" frameborder="0" scrolling=""></iframe>
-                </li>
-                <!--// 1set  -->
-                <li id="button" class="component-wrap">
-                    <div class="split col2">
-                        <h2 class="cp-tit dep02">버튼</h2>
-                        <div class="value r btnWrap">
-                            <a href="component/button.html" class="btn btn-line  ico-gopage" target="_blank">
-                                새창열기
-                            </a>
-                        </div>
-                    </div>
-                    <div class="tblWrap">
-                        <table class="tbl">
-                            <caption>component info</caption>
-                            <colgroup>
-                                <col style="width:30%">
-                                <col style="width:*">
-                            </colgroup>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">PATH</th>
-                                    <td>component/button.html</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <iframe src="component/button.html" frameborder="0" scrolling=""></iframe>
-                </li>
+<body data-project="app" data-util="component" data-json="./data/componentTile.json">
 
-                <li id="popup" class="component-wrap">
-                    <div class="split col2">
-                        <h2 class="cp-tit dep02">팝업</h2>
-                        <div class="value r btnWrap">
-                            <a href="component/popup.html" class="btn btn-line  ico-gopage" target="_blank">
-                                새창열기
-                            </a>
-                        </div>
-                    </div>
-                    <div class="tblWrap">
-                        <table class="tbl">
-                            <caption>component info</caption>
-                            <colgroup>
-                                <col style="width:30%">
-                                <col style="width:*">
-                            </colgroup>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">PATH</th>
-                                    <td>component/popup.html</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <iframe src="component/popup.html" frameborder="0" scrolling=""></iframe>
-                </li>
+<div id="pgWrap" data-category="component">
+    <!-- [S] HEADER -->
+    <header id="pgHeader"></header>
+    <!-- [E] HEADER -->
 
-                <li id="form" class="component-wrap">
-                    <div class="split col2">
-                        <h2 class="cp-tit dep02">폼</h2>
-                        <div class="value r btnWrap">
-                            <a href="component/form.html" class="btn btn-line  ico-gopage" target="_blank">
-                                새창열기
-                            </a>
-                        </div>
-                    </div>
-                    <div class="tblWrap">
-                        <table class="tbl">
-                            <caption>component info</caption>
-                            <colgroup>
-                                <col style="width:30%">
-                                <col style="width:*">
-                            </colgroup>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">PATH</th>
-                                    <td>component/form.html</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <iframe src="component/form.html" frameborder="0" scrolling=""></iframe>
-                </li>
-                
-            </ul>
-            <section class="pg-content"></section>
+	<div class="pg_titles">
+		<h2>Worksheet</h2>
+	</div>
+
+    <!-- [S] CONTENTS -->
+    <div id="pgContainer">
+        
+
+        <div class="pg_content">
+
+            <!-- [S] WORK LIST -->
+            <div class="pg_board_tab swiper-initialized swiper-horizontal swiper-pointer-events swiper-free-mode">
+				<ul class="swiper-wrapper" aria-live="polite">
+					<li class="swiper-slide active" role="group"><a href="#button" role="button">버튼</a></li>
+                    <li class="swiper-slide" role="group"><a href="#text" role="button">타이틀/텍스트</a></li>
+                    <li class="swiper-slide" role="group"><a href="#form" role="button">폼요소</a></li>
+                    <li class="swiper-slide" role="group"><a href="#popup" role="button">팝업/알럿</a></li>
+				</ul>
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+            </div>
+            <!-- [E] WORK LIST -->
         </div>
-        <footer id="pg-footer"></footer>
     </div>
+    <!-- [E] CONTENTS -->
+</div>
+
 </body>
 </html>

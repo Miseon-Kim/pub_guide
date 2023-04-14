@@ -1,0 +1,21 @@
+[
+    {
+        "directory": "./component2"
+    },
+    {   
+        "id": "button",
+        "name": "버튼"
+    },
+    {   
+        "id": "text",
+        "name": "타이틀/텍스트"
+    },
+    {   
+        "id": "form",
+        "name": "폼요소"
+    },
+    {   
+        "id": "popup",
+        "name": "팝업/알럿"
+    }
+]

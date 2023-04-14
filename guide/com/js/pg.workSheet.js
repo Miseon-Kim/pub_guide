@@ -23,7 +23,7 @@ $headerHtml += '</div>';
 // $headerHtml += '  <li><a href="./document.html" target="_blank">Document</a></li>';
 // $headerHtml += '</ul>';
 // $headerHtml += '</div>';
-$headerHtml += '<button type="button" class="btn_responsive"><i><i><i class="hide">메뉴</i></i></i></button>';
+$headerHtml += '<button type="button" class="btn_responsive"><i><i><i class="hide">모바일 미리보기</i></i></i></button>';
 $headerHtml += '</div>';
 
 $(function () {
@@ -34,7 +34,7 @@ $(function () {
   $(window).resize();
 });
 var makeBoard = function () {  
-  var $slide = $('.pg_board_tab .swiper-slide');
+  var $slide = $('.pg_board_tab .swiper-slide')
   var $lenth = $slide.length;
   var htmlBoard = function (boardid, data) {
     var html = '<div id="' + boardid + '" class="pg_board_panel">';
