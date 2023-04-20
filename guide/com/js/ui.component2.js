@@ -78,84 +78,86 @@ var COMPONENT_UI = (function (cp, $) {
         // 비밀번호 특수문자 모양
         secureTxt: function() {
             $('._secureTxt').each(function() {
-                const length = parseInt($(this).attr('data-length')),
-                    secureLine = parseInt($(this).attr('data-secureLine')),
-                    secureField = $(this),
-                    iTag = '';
+                function handleInputFocus(event) {
+                    var secureField = $(event.target).closest("._secureTxt");
+                    var inputField = secureField.find("input");
+                    secureField.find("i._line").css({ opacity: ".5" }).removeClass("_is-active");
+                    var value = inputField.val();
+                    var activeLines = secureField
+                                    .find("i._line")
+                                    .removeClass("_is-active")
+                                    .css({ opacity: ".5" });
 
+                    for (var i = 0; i < value.length && i < secureLine; i++) {
+                        activeLines.eq(i).addClass("_is-active").css({ opacity: "" });
+                    }
+                }
+
+                function handleInputChange(event) {
+                    var secureField = $(event.target).closest("._secureTxt");
+                    var inputField = secureField.find("input");
+                    var value = inputField.val();
+                    var activeLines = secureField.find("i._line").removeClass("_is-active").css({ opacity: ".5" });
+
+                    for (var i = 0; i < value.length && i < secureLine; i++) {
+                        activeLines.eq(i).addClass("_is-active").css({ opacity: "" });
+                    }
+                
+                    if (secureField.hasClass("_num")) {
+                        secureField.find("i._is-active, i._line")[value ? "hide" : "show"]();
+                    }
+                }
+                
+                function handleInputKeyUp(event) {
+                    if (event.keyCode === 8) {
+                        var secureField = $(event.target).closest("._secureTxt");
+                        secureField.find("i._line").eq(event.target.value.length).removeClass("_is-active");
+                    }
+                }
+                
+                var secureLine = parseInt($(this).attr("data-secureLine"));
+                var length = parseInt($(this).attr("data-length"));
+                var secureField = $(this);
+                var iTag = "";
+                
                 for (var i = 0; i < length; i++) {
                     iTag += '<i aria-hidden="true"></i>';
                 }
                 secureField.append(iTag);
-
-                const left = 0, space = 13,
-                    inputField = secureField.find('input');
-
-                secureField.find('i').each(function(index) {
-                    const $this = $(this);
-                    $this.width($this.height());
-                    $this.css('left', left + 'px');
-
-                    if (index < secureLine) {
-                        $this.addClass('_line');
-                    }
-
-                    left += space; space = 16;
+                
+                var left = 0;
+                var space = 13;
+                var inputField = secureField.find("input");
+                
+                secureField.find("i").each(function (index) {
+                var $this = $(this);
+                $this.width($this.height());
+                $this.css("left", left + "px");
+                
+                if (index < secureLine) {
+                    $this.addClass("_line");
+                }
+                
+                left += space;
+                space = 16;
                 });
-
-                inputField
-                .on('focus', function() {
-                    if (secureField.hasClass('_exp')) {
-                        inputField.attr('type', 'tel').focus();
-                    }
-                    secureField.find('i._line').css({ opacity: ".5" }).removeClass('_is-active');
-                    const value = inputField.val(),
-                        activeLines = secureField.find('i._line').removeClass('_is-active').css({ opacity: ".5" });
-
-                    for (var i = 0; i < value.length && i < secureLine; i++) {
-                    activeLines.eq(i).addClass('_is-active').css({ opacity: "" });
-                    }
-                })
-                .on('input', function() {
-                    var value = inputField.val();
-                    var activeLines = secureField.find('i._line').removeClass('_is-active').css({ opacity: ".5" });
-
-                    for (var i = 0; i < value.length && i < secureLine; i++) {
-                    activeLines.eq(i).addClass('_is-active').css({ opacity: "" });
-                    }
-
-                    if (secureField.hasClass('_exp')) {
-                    inputField.attr('type', value ? 'tel' : 'password');
-                    secureField.find('i._is-active')[value ? 'hide' : 'show']();
-                    }
-                })
-                .on('keyup', function(event) {
-                    if (event.keyCode === 8) {
-                        secureField.find('i._line').eq(inputField.val().length).removeClass('_is-active');
-                    }
-                })
-                .on('blur', function() {
-                    if (secureField.hasClass('_exp')) {                      
-                        if (!inputField.val()) { 
-                            inputField.attr('type', 'password');
-                            secureField.find('i._line').show();
-                        } else {
-                            inputField.attr('type', 'tel');
-                            secureField.find('i._is-active').hide();
-                        }
-                    }
-                    
+                
+                if (secureField.hasClass("_num")) {
+                    inputField.attr("type", "tel");
+                }
+                
+                inputField.on("focus", handleInputFocus)
+                    .on("input", handleInputChange)
+                    .on("keyup", handleInputKeyUp)
+                    .on("blur", function () {
                     if (!inputField.val()) {
-                        secureField.find('i._line').css({ opacity: "" }).removeClass('_is-active');
-                        }
-                    })
-                    
-                .trigger('focus');
+                            secureField.find("i._line").css({ opacity: "" }).removeClass("_is-active");
+                    }
+                });
             });
-        }
+        },
         
-        
-    };
+    }
 
     cp.modalPop = {
         constEl: {
