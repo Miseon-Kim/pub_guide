@@ -987,6 +987,122 @@
   font-weight: 900;
 }
 
+.frame_device, .pg_layout .pg_layout_content > div, .pg_layout div::before, .pg_layout div, .pg_board_scroll > div, .pg_status_box .bar, .pg_alert_btn_set button, .panel_head, .search_title, .pg_project_status .pg_project_ing .ing, .pg_project_status .pg_project_ing, .pg_project_status pgCount > strong, .pg_project_status pgCount > span, .pg_board_tab, .btn_light_mode > i::after, .btn_light_mode > i::before, .btn_light_mode::after, .btn_light_mode::before, .btn_guide_top, .btm_btn_set, .btm_guide_top, .pg_titles h2, .pg_titles .pg_project_status, .pg_titles, #pgWrap, .pg_nav > ul > li > a, .pg_project .current::after, #pgHeader .switch > ul > li > a, #pgHeader .pg_util .btn_responsive > i > i, #pgHeader .pg_util .btn_responsive > i::after, #pgHeader .pg_util .btn_responsive > i::before, #pgHeader .pg_util .btn_responsive > i, #pgHeader .pg_util .btn_responsive::after, #pgHeader .pg_util .btn_responsive::before, #pgHeader .pg_util .btn_responsive, #pgHeader .pg_util .btn_nav span::after, #pgHeader .pg_util .btn_nav span::before, #pgHeader .pg_util .btn_nav span, #pgHeader .pg_util .pg_search #btnPgSearch, .modalPop._bottom > .modalWrap, .modalPop._left > .modalWrap, .modalPop._top > .modalWrap {
+  transition: 0.3s all ease-in-out;
+}
+
+.modalPop {
+  display: none;
+  position: fixed;
+  left: 0;
+  z-index: 9995;
+  width: 100%;
+  height: 100%;
+}
+.modalPop._top {
+  position: fixed;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  margin: auto;
+}
+.modalPop._left {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 80%;
+  height: 100%;
+  margin: auto;
+}
+.modalPop._center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+}
+.modalPop._center.scroll .modal-container {
+  overflow-y: auto;
+  max-height: 80%;
+}
+.modalPop._center > .modalWrap {
+  min-height: 30%;
+}
+.modalPop._bottom {
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  margin: auto;
+}
+.modalPop._bottom.scroll .modal-container {
+  overflow-y: auto;
+  max-height: 80%;
+}
+.modalPop .modalWrap {
+  background-color: #fff;
+  border: 0.1rem solid #666;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+.modalPop .modal-title {
+  font-size: var(--space-xl);
+  font-width: bold;
+  margin-bottom: 1rem;
+}
+.modalPop .modal-container {
+  font-size: var(--space-md);
+  line-height: 1.5;
+  margin-bottom: 2rem;
+}
+.modalPop .modal-footer {
+  text-align: right;
+}
+.modalPop .modal-footer button {
+  font-size: var(--space-ms);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  background-color: #666;
+  cursor: pointer;
+  border: none;
+}
+.modalPop .modal-footer button:hover {
+  background-color: #999;
+}
+.modalPop.is-active {
+  display: block;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.dimmed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9990;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.btnWrap {
+  margin: 1rem;
+}
+.btn-modal {
+  background: #333;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  border-radius: 0.3rem;
+}
+.btn-modal ~ .btn-modal {
+  margin-left: 0.5rem;
+}
+.btn-modal:hover {
+  background: #0048ff;
+}
+
 .modal {
   position: absolute;
   top: 0;
@@ -1415,35 +1531,34 @@
   /* FIELD - DISABLED */
   /* FIELD - READONLY */
 }
-.field [type=password] {
+.field input[type=password] {
   font-family: "pass", "Roboto", Helvetica, Arial, sans-serif;
-  font-size: 1.8rem;
 }
-.field [type=password]::-moz-placeholder {
-  font-family: "pass", "Roboto", Helvetica, Arial, sans-serif;
-  -webkit-text-security: none;
-  font-size: 1.8rem;
-}
-.field [type=password]::placeholder {
+.field input[type=password]::-moz-placeholder {
   font-family: "pass", "Roboto", Helvetica, Arial, sans-serif;
   -webkit-text-security: none;
-  font-size: 1.8rem;
+  font-size: 2rem;
 }
-.field [type=password]:-moz-read-only {
+.field input[type=password]::placeholder {
+  font-family: "pass", "Roboto", Helvetica, Arial, sans-serif;
+  -webkit-text-security: none;
+  font-size: 2rem;
+}
+.field input[type=password]:-moz-read-only {
   color: #999;
 }
-.field [type=password]:read-only {
+.field input[type=password]:read-only {
   color: #999;
 }
-.field [type=password]::-webkit-input-placeholder {
+.field input[type=password]::-webkit-input-placeholder {
   transform: scale(0.77);
   transform-origin: 0 50%;
 }
-.field [type=password]::-moz-placeholder {
+.field input[type=password]::-moz-placeholder {
   font-size: 14px;
   opacity: 1;
 }
-.field [type=password]:-ms-input-placeholder {
+.field input[type=password]:-ms-input-placeholder {
   font-size: 14px;
   font-family: "Roboto", Helvetica, Arial, sans-serif;
 }
@@ -1624,15 +1739,76 @@
 }
 
 /* FIELD - INPUT SCRIPT */
+._input._clear {
+  width: calc(100% - 2.2rem);
+}
 ._input-clear {
   visibility: hidden;
   pointer-events: none;
   opacity: 0;
 }
-._input-clear.\:active {
+._input-clear::before {
+  content: "";
+  display: block;
+  display: inline-block;
+  content: "\f057";
+  font-family: "iconFont";
+  font-weight: 900;
+}
+._input-clear._active {
+  display: inline-flex;
+  width: 2rem;
+  height: 100%;
   visibility: visible;
   pointer-events: all;
   opacity: 1;
+  touch-action: none;
+}
+._input input._password::-moz-placeholder {
+  font-weight: 700;
+}
+._input input._password::placeholder {
+  font-weight: 700;
+}
+._input ._secureTxt {
+  position: relative;
+  display: block;
+  height: 4rem;
+}
+._input ._secureTxt > input[type=password] {
+  position: relative;
+  z-index: 2;
+  color: transparent;
+}
+._input ._secureTxt > input[type=password]::-moz-placeholder {
+  color: transparent;
+}
+._input ._secureTxt > input[type=password]::placeholder {
+  color: transparent;
+}
+._input ._secureTxt > i {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+  z-index: 1;
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  background: #333;
+  border: 0.1rem solid #333;
+  border-radius: 100%;
+}
+._input ._secureTxt > i + i {
+  margin-left: 0.3rem;
+}
+._input ._secureTxt > i._line {
+  background: #fff;
+  border-color: #666;
+}
+._input ._secureTxt > i._line._is-active {
+  background: #ffcc23;
+  border-color: #ffcc23;
 }
 
 /****************************************/
@@ -2060,7 +2236,7 @@ s .fn {
 /****************************************/
 /*	PART: work sheet PAGE STYLE
 /****************************************/
-.frame_device, .pg_layout .pg_layout_content > div, .pg_layout div::before, .pg_layout div, .pg_board_scroll > div, .pg_status_box .bar, .pg_alert_btn_set button, .panel_head, .search_title, .pg_project_status .pg_project_ing .ing, .pg_project_status .pg_project_ing, .pg_project_status pgCount > strong, .pg_project_status pgCount > span, .pg_board_tab, .btn_light_mode > i::after, .btn_light_mode > i::before, .btn_light_mode::after, .btn_light_mode::before, .btn_guide_top, .btm_btn_set, .btm_guide_top, .pg_titles h2, .pg_titles .pg_project_status, .pg_titles, #pgWrap, .pg_nav > ul > li > a, .pg_project .current::after, #pgHeader .switch > ul > li > a, #pgHeader .pg_util .btn_responsive > i > i, #pgHeader .pg_util .btn_responsive > i::after, #pgHeader .pg_util .btn_responsive > i::before, #pgHeader .pg_util .btn_responsive > i, #pgHeader .pg_util .btn_responsive::after, #pgHeader .pg_util .btn_responsive::before, #pgHeader .pg_util .btn_responsive, #pgHeader .pg_util .btn_nav span::after, #pgHeader .pg_util .btn_nav span::before, #pgHeader .pg_util .btn_nav span, #pgHeader .pg_util .pg_search #btnPgSearch {
+.frame_device, .pg_layout .pg_layout_content > div, .pg_layout div::before, .pg_layout div, .pg_board_scroll > div, .pg_status_box .bar, .pg_alert_btn_set button, .panel_head, .search_title, .pg_project_status .pg_project_ing .ing, .pg_project_status .pg_project_ing, .pg_project_status pgCount > strong, .pg_project_status pgCount > span, .pg_board_tab, .btn_light_mode > i::after, .btn_light_mode > i::before, .btn_light_mode::after, .btn_light_mode::before, .btn_guide_top, .btm_btn_set, .btm_guide_top, .pg_titles h2, .pg_titles .pg_project_status, .pg_titles, #pgWrap, .pg_nav > ul > li > a, .pg_project .current::after, #pgHeader .switch > ul > li > a, #pgHeader .pg_util .btn_responsive > i > i, #pgHeader .pg_util .btn_responsive > i::after, #pgHeader .pg_util .btn_responsive > i::before, #pgHeader .pg_util .btn_responsive > i, #pgHeader .pg_util .btn_responsive::after, #pgHeader .pg_util .btn_responsive::before, #pgHeader .pg_util .btn_responsive, #pgHeader .pg_util .btn_nav span::after, #pgHeader .pg_util .btn_nav span::before, #pgHeader .pg_util .btn_nav span, #pgHeader .pg_util .pg_search #btnPgSearch, .modalPop._top > .modalWrap, .modalPop._left > .modalWrap, .modalPop._bottom > .modalWrap {
   transition: 0.3s all ease-in-out;
 }
 

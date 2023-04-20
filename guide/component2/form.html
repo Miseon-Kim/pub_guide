@@ -18,9 +18,6 @@
     <!-- [S] LIBRARY - SCRIPT -->
     <script src="../com/js/lib/lib.jquery-3.6.3.min.js"></script>
     <script src="../com/js/lib/lib.jquery-ui-1.13.2.js"></script>
-    <script src="../com/js/lib/lib.ua-parser.min.js"></script>
-    <script src="../com/js/lib/lib.cleave.min.js"></script>
-    <script src="../com/js/lib/lib.moment.min.js" type="script/text"></script>
     <!-- [E] LIBRARY - SCRIPT -->
 </head>
 <body>
@@ -36,25 +33,25 @@
                       <div class="field-input grow _input">
                         <input type="text" placeholder="placeholder">
                       </div>
-                      <button type="button" class="field-btn _input-clear  ico ico-clear">
+                      <!-- <button type="button" class="field-btn _input-clear  ico ico-clear">
                         <span class="hide">입력값삭제</span>
-                      </button>
+                      </button> -->
                     </div>
                     <div class="field-outline readonly">
                       <div class="field-input grow _input">
                         <input type="text" value="readonly" readonly="readonly">
                       </div>
-                      <button type="button" class="field-btn _input-clear  ico ico-clear">
+                      <!-- <button type="button" class="field-btn _input-clear  ico ico-clear">
                         <span class="hide">입력값삭제</span>
-                      </button>
+                      </button> -->
                     </div>
                     <div class="field-outline disabled">
                       <div class="field-input grow _input">
                         <input type="text" placeholder="disabled" disabled="disabled">
                       </div>
-                      <button type="button" class="field-btn _input-clear  ico ico-clear">
+                      <!-- <button type="button" class="field-btn _input-clear  ico ico-clear">
                         <span class="hide">입력값삭제</span>
-                      </button>
+                      </button> -->
                     </div>
                     <p class="field-msg">
                       <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
@@ -70,9 +67,9 @@
                       <div class="field-input grow _input">
                         <input type="text" placeholder="placeholder">
                       </div>
-                      <button type="button" class="field-btn _input-clear  ico ico-clear">
+                      <!-- <button type="button" class="field-btn _input-clear  ico ico-clear">
                         <span class="hide">입력값삭제</span>
-                      </button>
+                      </button> -->
                     </div>
                     <p class="field-msg">
                       <span class="ico ico-error txt-r">입력값의 유효성이 정상입니다.</span>
@@ -88,9 +85,9 @@
                       <div class="field-input grow _input">
                         <input type="text" placeholder="placeholder">
                       </div>
-                      <button type="button" class="field-btn _input-clear  ico ico-clear">
+                      <!-- <button type="button" class="field-btn _input-clear  ico ico-clear">
                         <span class="hide">입력값삭제</span>
-                      </button>
+                      </button> -->
                     </div>
                     <p class="field-msg">
                       <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
@@ -106,9 +103,9 @@
                       <div class="field-input grow _input">
                         <input type="tel" class="_format _number" placeholder="0">
                       </div>
-                      <button type="button" class="field-btn _input-clear  ico ico-clear">
+                      <!-- <button type="button" class="field-btn _input-clear  ico ico-clear">
                         <span class="hide">입력값삭제</span>
-                      </button>
+                      </button> -->
                     </div>
                     <p class="field-msg">
                       <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
@@ -122,11 +119,11 @@
                     <label class="field-label">price</label>
                     <div class="field-outline">
                       <div class="field-input grow _input">
-                        <input type="tel" class="_format _price" placeholder="₩0">
+                        <input type="tel" class="_format _price alR" placeholder="₩0">
                       </div>
-                      <button type="button" class="field-btn _input-clear  ico ico-clear">
+                      <!-- <button type="button" class="field-btn _input-clear  ico ico-clear">
                         <span class="hide">입력값삭제</span>
-                      </button>
+                      </button> -->
                     </div>
                     <p class="field-msg">
                       <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
@@ -153,12 +150,11 @@
 
                   <div class="field">
                     <label class="field-label">password 부분입력</label>
-                    <div class="field-outline pw-group type2">
+                    <div class="field-outline pw-group">
                       <div class="field-input grow _input">
-                        <input type="password" class="_format _password" placeholder="○○" maxlength="2">
-                      </div>
-                      <div class="field-input grow _input">
-                        <input type="password" class="_format _password" value="●●" maxlength="2" readonly="readonly">
+                        <label class="_secureTxt" data-length="4" data-secureLine="2">
+                          <input type="password" class="_format _password" placeholder="" maxlength="2">
+                        </label>
                       </div>
                     </div>
                     <p class="field-msg">
@@ -180,11 +176,10 @@
                     <input type="text" class="_format _number" placeholder="생년월일 6자리" maxlength="6">
                   </div>
                   <span class="field-txt">-</span>
-                  <div class="field-input grow _input mid_num gender">
-                    <input type="tel" class="_format _security" title="성별" placeholder="○">
-                  </div>
                   <div class="field-input grow _input">
-                    <input type="password" class="_format _password" value="●●●●●●" readonly="readonly">
+                    <label class="_secureTxt _exp" data-length="7" data-secureLine="1">
+                      <input type="password" class="_format _password" placeholder="" maxlength="1">
+                    </label>
                   </div>
                 </div>
                 <p class="field-msg">
@@ -202,7 +197,7 @@
     </div>
 
 <!-- [S] PAGES - SCRIPT -->
-<script src="../com/js/ui.component.js"></script>
+<script src="./../com/js/ui.component2.js"></script>
 <!-- [E] PAGES - SCRIPT -->
 </body>
 </html>

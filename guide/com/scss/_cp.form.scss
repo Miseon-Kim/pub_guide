@@ -1,11 +1,12 @@
 #{$field} {
-    [type=password] {
+    
+    input[type=password] {
         font-family: 'pass', 'Roboto', Helvetica, Arial, sans-serif;
-        @include fontSize("lg");
+        // @include fontSize("lg");
         &::placeholder {
             font-family: 'pass', 'Roboto', Helvetica, Arial, sans-serif;
             -webkit-text-security:none;
-            @include fontSize("lg");
+            @include fontSize("xl");
         }
 
         &:read-only {color:$color-gray4;}
@@ -78,7 +79,7 @@
         
         &.column {
             flex-direction: column;
-            & > * {padding:1rem;}
+            & > * {padding:1rem;} 
             & > * + * {padding-top:0;}
             .right {place-self: flex-end;}
         }
@@ -153,8 +154,40 @@
 
 /* FIELD - INPUT SCRIPT */
 ._input {
+    &._clear {width:calc(100% - 2.2rem);}
     &-clear {
         visibility: hidden; pointer-events: none; opacity: 0;
-        &.\:active {visibility: visible; pointer-events: all; opacity: 1;}
+        @include fontICO ("before", "\f057");
+        // &.\:active {visibility: visible; pointer-events: all; opacity: 1;}
+        &._active {
+            @include display(inline-flex); width:2rem; height:100%;
+            visibility: visible; pointer-events: all; opacity: 1; touch-action: none;
+        }
+    }
+    input {
+        &._password {
+            &::placeholder {font-weight:700;}
+            // &:read-only, &:disabled { padding-top:1.3rem;}
+        }
+    }
+
+    ._secureTxt {
+        @include pos(relative); @include display(block); height:4rem;
+        & > input[type="password"] {
+            @include pos(relative) {z-index:2;} color:transparent;
+            &::placeholder {color:transparent;}
+        }
+
+        & > i {
+            @include pos-offset-l(50%, 0) {transform: translate(0, -50%); z-index:1;}
+            @include display(block); @include el-size(1rem, 1rem);
+            background:$color-gray2;  border:.1rem solid $color-gray2; border-radius:100%;
+
+            & + i {margin-left:.3rem;}
+            &._line {
+                background:$color-white; border-color:$color-gray3;
+                &._is-active {background:$color-yellow3; border-color:$color-yellow3;}
+            }
+        }
     }
 }
