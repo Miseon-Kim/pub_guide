@@ -16,9 +16,13 @@
 @import 'cm.guide';
 @import 'cp.text';
 @import 'cp.button';
+@import 'cp.ico';
+@import 'cp.input';
+@import 'cp.select';
+@import 'cp.rdochk';
 @import 'cp.popup';
-@import 'cp.popup2';
-@import 'cp.form';
+// @import 'cp.popup2';
+// @import 'cp.form';
 @import 'cp.list';
 /****************************************/
 /*	PART: RESET CSS
@@ -187,6 +191,11 @@ legend, caption{@include ir("hide");}
         margin-top:-1rem;
         // border-bottom:1px $color-gray1 solid;
     }
+}
+
+#{$darMode} {
+    background-color:$color-darkMode3; color:$color-white;
+    body {background-color:$color-darkMode3; color:$color-white;}
 }
 
 // *********************

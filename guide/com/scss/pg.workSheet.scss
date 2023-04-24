@@ -1555,7 +1555,8 @@ html.util_show {
   Dark Mode
 *****************************************************************/
 #{$darMode} {
-    background-color:$color-darkMode; color:$color-white;
+    background-color:$color-darkMode3; color:$color-white;
+    body {background-color:$color-darkMode3; color:$color-white;}
 
     #{$pgBoard} {
         border:none;

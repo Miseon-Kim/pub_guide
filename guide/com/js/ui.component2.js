@@ -1,7 +1,7 @@
 var COMPONENT_UI = (function (cp, $) {
 
     /* COMMON UI */
-    cp.frontUI = {
+    cp.form = {
         constEl: {
             inputDiv: $("._input"),
             inputSelector: "._input > input:not([type='radio']):not([type='checkbox']):not(.exp input)",
@@ -12,7 +12,6 @@ var COMPONENT_UI = (function (cp, $) {
         init: function() {
             this.input();
             this.inpClearBtn();
-            // this.inputType();
             this.secureTxt();
         },
 
@@ -157,73 +156,195 @@ var COMPONENT_UI = (function (cp, $) {
             });
         },
         
-    }
+    },
+
+    cp.selectPop = {
+        constEl: {
+            btnSelect: "._selectBtn",
+            dimmedEl: $('<div class="dimmed" aria-hidden="true"></div>')
+        },
+        init: function() {       
+            this.openSelect();
+            this.optSelect();
+        },
+    
+        openSelect: function () {
+            const self = this,
+                btnSelect = this.constEl.btnSelect;                
+            $(document).on('click', btnSelect, function() {
+                const $btn = $(this);
+                const target = $btn.attr('data-select');
+                const $select = $('.modalPop[select-target="' + target + '"]');
+                const $selectWrap = $select.find("> .modalWrap");
+                
+                const $activeOption = $select.find('.select-lst > li._is-active');
+                if ($activeOption.length === 0) {
+                    const btnText = $btn.text();
+                    $select.find('.select-lst > li:eq(0)').before('<li class="_is-active"><a href="javascript:;" class="sel-opt _defaultTxt">' + btnText + '</a></li>');
+                } else {
+                    const btnText = $btn.text();
+                    if ($activeOption.find('a').text() !== btnText) {
+                        $activeOption.removeClass('_is-active');
+                        const $newActiveOption = $select.find('.select-lst > li > a').filter(function() {
+                            return $(this).text() === btnText;
+                        }).parent();
+                        $newActiveOption.addClass('_is-active');
+                    } else {
+                        $activeOption.addClass('_is-active');
+                    }
+                }
+                
+                self.showSelect($(this));
+                $btn.addClass('_selectTxt');
+            });
+        },
+        
+    
+        showSelect: function ($btn) {
+            const self = this,
+                dimmedEl = this.constEl.dimmedEl;
+            var target = $btn.attr('data-select');
+            var $select = $('.modalPop[select-target="' + target + '"]');
+            var $selectWrap = $select.find("> .modalWrap");
+            var selectWidth = '';
+            var selectHeight = '';
+    
+            $select.addClass('_is-active').show();
+    
+            selectWidth = $select.outerWidth();
+            selectHeight = $selectWrap.outerHeight();                
+            winHeight = $(window).height();
+    
+            selectTitHeight = $selectWrap.find(" > .modal-header").outerHeight();
+            selectConHeight = $selectWrap.find(" > .modal-container").outerHeight();
+            selectBtnHeight = $selectWrap.find(" > .modal-footer").outerHeight();
+
+            if (selectHeight > winHeight) {
+                $select
+                .addClass('_scroll').css({
+                    'max-height':winHeight - 100 + 'px',
+                    'height':''
+                })
+                .animate({bottom: '0'}, 300).show();
+                $selectWrap
+                .css({'max-height':winHeight - 100 + 'px'})
+                .find(" > .modal-container").css({'max-height':winHeight - (selectTitHeight + selectBtnHeight) - 160 + 'px'});
+            } else {
+                $select
+                .css({'height': selectHeight + 'px'})
+                .animate({bottom: '0'}, 300).show();
+            }
+
+            dimmedEl.remove(); 
+            $('body').addClass('no-scroll').append(dimmedEl);
+
+            $btn.addClass('_selectTxt');
+        },
+    
+        optSelect: function () {
+            const self = this;
+            $(document).on('click', '.select-lst > li > a.sel-opt', function () {
+                $(this).parent('li').addClass('_is-active').siblings().removeClass('_is-active');
+            });
+            
+            $(document).on('click', '.btn-selChoice', function () {
+                $('.modalPop .btn-close-pop').trigger('click');
+                const selectedOption = $('.select-lst > li._is-active > a.sel-opt');
+                const selectedText = selectedOption.text();
+                const selectTxtElement = $('._selectTxt');
+                selectTxtElement.text(selectedText).removeClass('_selectTxt');
+                selectedOption.addClass('sel-opt');
+            });
+        }
+    },
 
     cp.modalPop = {
         constEl: {
-            btnModal: "._modalBtn"
+            btnModal: "._modalBtn",
+            dimmedEl: $('<div class="dimmed" aria-hidden="true"></div>')
         },
         init: function() {       
 
             this.openPop();
             this.closePop();
+            this.toastPop();
         },
         
         openPop: function () {
             const self = this,
                 btnModal = this.constEl.btnModal;
             $(document).on('click', btnModal, function() {
+                $(this).addClass('_rtFocus');
                 self.showModal($(this));
+                self.layerFocusControl($(this));
             });
         },
         
         showModal: function ($btn) {
-            var target = $btn.attr('data-modal');
-            var $modal = $('.modalPop[modal-target="' + target + '"]');
+            const self = this,
+                dimmedEl = this.constEl.dimmedEl;
+            const target = $btn.attr('data-modal');
+            const $modal = $('.modalPop[modal-target="' + target + '"]');
             var $modalWrap = $modal.find("> .modalWrap");
             var modalWrapClass = $modal.attr('class');
             var modalWidth = '';
             var modalHeight = '';
+
+            modalWidth = $modal.outerWidth();              
+            winHeight = $(window).height();
         
             if (modalWrapClass.indexOf('_top') !== -1) {
 
-                $modal.addClass('is-active');
+                $modal.addClass('_is-active');
                 modalHeight = $modalWrap.outerHeight();
 
                 $modalWrap.css({
                     'height': modalHeight + 'px',
-                    'transition': 'all 0.3s ease-out'
+                    'transition': 'opacity 250ms cubic-bezier(.86, 0, .07, 1)'
                 });
                 $modal.animate({
                     top: '0'
                 }, 300).show();
             } else if (modalWrapClass.indexOf('_left') !== -1) {
+                $modal.addClass('_is-active');
 
-                $modal.addClass('is-active');
-                modalHeight = $modalWrap.outerHeight();
-
-                $modalWrap.css({
-                    'height': 100 + '%',
-                    'transition': 'all 0.3s ease-out'
-                });
-                $modal.animate({
-                    left: '0'
-                }, 300).show();
-            } else if (modalWrapClass.indexOf('_center') !== -1) {
-                $modal.addClass('is-active').show();
-
-                modalWidth = $modal.outerWidth();
-                modalHeight = $modalWrap.outerHeight();                
-                winHeight = $(window).height();
-
-                modalTitHeight = $modalWrap.find(" > .modal-title").outerHeight();
+                modalTitHeight = $modalWrap.find(" > .modal-header").outerHeight();
                 modalConHeight = $modalWrap.find(" > .modal-container").outerHeight();
                 modalBtnHeight = $modalWrap.find(" > .modal-footer").outerHeight();
 
-                console.log(modalTitHeight, modalConHeight, modalBtnHeight);
+                modalConMaxHeight = winHeight - modalTitHeight - modalBtnHeight - 40                
+
+                if (modalConHeight > winHeight) {
+                    $modalWrap.css({
+                        'height': 100 + 'vh',
+                        'transition': 'opacity 250ms cubic-bezier(.86, 0, .07, 1)'
+                    }).find('> .modal-container').css({
+                        'height': modalConMaxHeight + 'px',
+                    }).attr("tabindex","0");
+                    $modal.addClass("_scroll").animate({
+                        left: '0',
+                    }, 300).show();
+                } else {
+                    // $modalWrap.css({'height': 100 + '%'});
+                    $modal.animate({
+                        left: '0',
+                        height:'100%',
+                    }, 300).show();
+                }
+
+                
+            } else if (modalWrapClass.indexOf('_center') !== -1) {
+                $modal.addClass('_is-active');
+
+                modalHeight = $modalWrap.outerHeight();
+
+                modalTitHeight = $modalWrap.find(" > .modal-header").outerHeight();
+                modalConHeight = $modalWrap.find(" > .modal-container").outerHeight();
+                modalBtnHeight = $modalWrap.find(" > .modal-footer").outerHeight();
+                
                 // 팝업 요소의 위치를 조정한다.
                 if (modalHeight > winHeight) {
-                    $modal.addClass('scroll').css({
+                    $modal.addClass('_scroll').css({
                         'margin-left': -modalWidth/2 + 'px',
                         'margin-top': -(winHeight - 100)/2 + 'px',
                         'max-height':winHeight - 100 + 'px',
@@ -235,7 +356,7 @@ var COMPONENT_UI = (function (cp, $) {
                     })
                     .find(" > .modal-container").css({
                         'max-height':winHeight - (modalTitHeight + modalBtnHeight) - 160 + 'px'
-                    });
+                    }).attr("tabindex","0");
                 } else {
                     $modal.css({
                         'margin-left': -modalWidth/2 + 'px',
@@ -245,26 +366,23 @@ var COMPONENT_UI = (function (cp, $) {
                 }
                 
             } else if (modalWrapClass.indexOf('_bottom') !== -1) {
+                $modal.addClass('_is-active');
+                modalHeight = $modalWrap.outerHeight();
 
-                $modal.addClass('is-active').show();
-
-                modalWidth = $modal.outerWidth();
-                modalHeight = $modalWrap.outerHeight();                
-                winHeight = $(window).height();
-
-                modalTitHeight = $modalWrap.find(" > .modal-title").outerHeight();
+                modalTitHeight = $modalWrap.find(" > .modal-header").outerHeight();
                 modalConHeight = $modalWrap.find(" > .modal-container").outerHeight();
                 modalBtnHeight = $modalWrap.find(" > .modal-footer").outerHeight();
 
                 console.log(modalTitHeight, modalConHeight, modalBtnHeight);
                 // 팝업 요소의 위치를 조정한다.
                 if (modalHeight > winHeight) {
-                    $modal.addClass('scroll').css({
+                    $modal.addClass('_scroll').css({
                         'max-height':winHeight - 100 + 'px',
                         'height':''
                     })
                     .animate({
-                        bottom: '0'
+                        'bottom': '0',
+                        'transition': 'opacity 250ms cubic-bezier(.86, 0, .07, 1)'
                     }, 300).show();
                     $modalWrap
                     .css({
@@ -272,26 +390,59 @@ var COMPONENT_UI = (function (cp, $) {
                     })
                     .find(" > .modal-container").css({
                         'max-height':winHeight - (modalTitHeight + modalBtnHeight) - 160 + 'px'
-                    });
+                    }).attr("tabindex","0");;
                 } else {
                     $modal.css({
                         'height': modalHeight + 'px',
                     })
                     .animate({
-                        bottom: '0'
+                        'bottom': '0',
+                        'transition': 'opacity 250ms cubic-bezier(.86, 0, .07, 1)'
                     }, 300).show();
                 }
 
             } 
-        
+
+            $modal.attr({'aria-hidden': 'false', 'tabindex':'0'}).focus();
+            $modalWrap.attr({'role': 'dialog', 'aria-modal': 'true'})
+                    .find('h1, h2, h3, h4, h5, h6').first().attr('tabindex', '0');
             // 생성된 $dimmed 제거 후 다시 추가
-            $('.dimmed').remove(); 
-            $('body').addClass('no-scroll').append('<div class="dimmed"></div>');
+            dimmedEl.remove(); 
+            $('body').addClass('no-scroll').append(dimmedEl);
+
+            
         },
+
+        // 탭으로 포커스 이동 시 팝업이 열린상태에서 팝업 내부해서만 돌도록 제어하는 함수
+        layerFocusControl: function ($btn) {
+            var target = $btn.attr('data-modal');
+            var $modal = $('.modalPop[modal-target="' + target + '"]');
+            var $modalWrap = $modal.find("> .modalWrap");
+            
+            var $firstEl = $modalWrap.find('a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])').first();
+            var $lastEl = $modalWrap.find('a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])').last();
+            
+            $modalWrap.on("keydown", function (e) {
+                if (e.keyCode == 9) {
+                if (e.shiftKey) { // shift + tab
+                    if ($(e.target).is($firstEl)) {
+                        $lastEl.focus();
+                        e.preventDefault();
+                        }
+                    } else { // tab
+                        if ($(e.target).is($lastEl)) {
+                        $firstEl.focus();
+                        e.preventDefault();
+                        }
+                    }
+                }
+            });
+        },
+
         
         closePop: function() {
-            var self = this;
-            $(document).on('click', '.btn.btn-close-pop', function() {
+            const self = this;
+            $(document).on('click', '.modalPop .btn-close-pop', function() {
                 var $modal = $(this).closest('.modalPop');
                 var $modalWrap = $modal.find("> .modalWrap");
                 var modalWrapClass = $modal.attr('class');
@@ -299,14 +450,21 @@ var COMPONENT_UI = (function (cp, $) {
                     $modal.animate({
                         top: '-100%'
                     }, 300, function() {
-                        $modal.removeClass('is-active').hide();
+                        $modal.removeClass('_is-active').hide();
                     });
                 } else if (modalWrapClass.indexOf('_left') !== -1) {
                     $modal.animate({
                         left: '-100%'
                     }, 300, function() {
-                        $modal.removeClass('is-active').hide();
+                        $modal.removeClass('_is-active').hide();
                     });
+                    $modalWrap
+                    .css({
+                        'max-height':'','height':'','transition':''
+                    })
+                    .find(" > .modal-container").css({
+                        'height':''
+                    }).removeAttr("tabindex");
                 } else if (modalWrapClass.indexOf('_center') !== -1) {
                     $modal
                     .removeClass('is-active')
@@ -321,13 +479,13 @@ var COMPONENT_UI = (function (cp, $) {
                     })
                     .find(" > .modal-container").css({
                         'max-height':''
-                    });
+                    }).removeAttr("tabindex");
                 } else if (modalWrapClass.indexOf('_bottom') !== -1) {
                     $modal.animate({
                         bottom: '-100%'
                     }, 300, function() {
                         $modal
-                        .removeClass('is-active')
+                        .removeClass('_is-active')
                         .css({
                             'height':'',
                             'max-height':''
@@ -339,19 +497,101 @@ var COMPONENT_UI = (function (cp, $) {
                         })
                         .find(" > .modal-container").css({
                             'max-height':''
-                        });
+                        }).removeAttr("tabindex");
                     });
                 }
                 
+                self.rtFocus($(this));
+
+                $modal.attr({'aria-hidden': 'true'}).removeAttr('tabindex').focus();
+                $modalWrap.attr({'aria-modal': 'false'})
+                    .find('h1, h2, h3, h4, h5, h6').first().removeAttr('tabindex');
+
                 $('body').removeClass('no-scroll');
                 $(this).closest('.modalPop').prev().focus();
                 $('.dimmed').remove();
+            });
+        },
+
+        rtFocus: function(){
+            $('._rtFocus').focus();
+            setTimeout(function() {
+                $('._rtFocus').removeClass('_rtFocus');
+            }, 1000);
+        },
+
+        toastPop: function() {
+            const self = this;
+            const toastWrapTemplate = '<div class="toastWrap" role="alert" aria-live="assertive" tabindex="0"><a href="#" class="btn ico-close" aria-label="Close"><span class="">토스트팝업닫기</span></a><div class="toast-msg"></div></div>';
+        
+            $('._toastBtn').on('click', function() {
+                // Remove existing _rtFocus class from all toast buttons
+                $('._toastBtn._rtFocus').removeClass('_rtFocus');
+        
+                // Add _rtFocus class to the clicked toast button
+                $(this).addClass('_rtFocus');
+        
+                var toastMsg = $(this).attr('data-toast');
+                var toast = $(toastWrapTemplate);
+                toast.find('.toast-msg').html(toastMsg);
+        
+                // Get the number of existing toasts and set a unique ID for the new toast
+                var toastCount = $('.toastWrap').length;
+                var toastId = 'toast' + (toastCount + 1);
+                toast.attr('toast-target', toastId);
+                toast.attr('id', toastId);
+        
+                $('body').append(toast);
+        
+                // Show the toast for a few seconds and then hide it
+                var timer = setTimeout(function() {
+                    $('#' + toastId).fadeOut(function() {
+                        $(this).remove();
+                        // Remove _rtFocus class from the toast button
+                        $('._toastBtn._rtFocus').removeClass('_rtFocus');
+                    });
+                }, 3000);
+        
+                // If the toast receives focus, stop the timer
+                toast.on('focusin', function() {
+                    clearTimeout(timer);
+                });
+        
+                // If the close button is clicked, remove the toast
+                toast.find('.ico-close').on('click', function() {
+                    $('#' + toastId).remove();
+                    // Remove _rtFocus class from the toast button
+                    self.rtFocus($(this));
+                });
+        
+                // If the user presses the Escape key or Tab key
+                toast.on('keydown', function(event) {
+                    if (event.key === 'Escape') {
+                        toast.find('.ico-close').click();
+                    } else if (event.key === 'Tab') {
+                        event.preventDefault();
+                        var focusableElements = toast.find('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+                        if (event.shiftKey) {
+                            // If shift+tab is pressed, move focus to the last focusable element
+                            focusableElements.last().focus();
+                        } else {
+                            // If tab is pressed, move focus to the first focusable element
+                            focusableElements.first().focus();
+                        }
+                    }
+                });
+        
+                // Set focus to the first focusable element in the toast
+                var focusableElements = toast.find('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+                focusableElements.first().focus();
             });
         }
     };
 
     cp.init = function () {
-        cp.frontUI.init();
+        // cp.frontUI.init();
+        cp.form.init();
+        cp.selectPop.init(); // 바텀시트 select
         cp.modalPop.init();
     };
 

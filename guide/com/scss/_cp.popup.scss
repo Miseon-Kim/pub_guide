@@ -1,4 +1,5 @@
 %transition3s {@include transition(.3s, all, ease-in-out);}
+.no-scroll {@include overflow(both, hidden);}
 
 .modalPop {
     @include display(none);
@@ -20,7 +21,18 @@
         margin:auto;
 
         & > .modalWrap {
-        @extend %transition3s;
+            @include display(flex) {flex-direction:column;}
+            height:100%;
+            @extend %transition3s;
+
+            .modal {
+                &-header, &-footer {flex-shrink:0;}
+                &-container {flex:1; flex-shrink: 0; flex-basis: 0;}
+            }
+        }
+
+        &._scroll {
+            .modal-container {@include overflow(y, auto);}
         }
     }
 
@@ -29,7 +41,7 @@
         // transform: translate(-50%, -50%);
         width:80%;
 
-        &.scroll {
+        &._scroll {
             .modal-container {@include overflow(y, auto); max-height:80%;}
         }
 
@@ -41,59 +53,55 @@
         // transform:translateY(0);
         width:100%; margin:auto;
 
-        &.scroll {
+        &._scroll {
             .modal-container {@include overflow(y, auto); max-height:80%;}
         }
 
         & > .modalWrap {@extend %transition3s;}
     }
 
-    .modalWrap {
-        background-color: $color-white;
-        border: .1rem solid $color-gray3;
-        padding: 2rem;
-        box-sizing: border-box;
-    }
-
-    .modal-title {
-        font : {
-            size:var(--space-xl);
-            width:bold;
+    .modal {
+        &Wrap {
+            background-color: $color-white;
+            border: .1rem solid $color-gray3;
+            padding: 2rem;
+            box-sizing: border-box;
         }
-        margin-bottom: 1rem;
-    }
+        &-header {
+            @include display(flex) {flex-shrink:1; align-items: center;}
+            margin-bottom: 1rem;
 
-    .modal-container {
-        font-size:var(--space-md);
-        line-height: 1.5;
-        margin-bottom: 2rem;
-    }
-
-    .modal-footer {
-        text-align: right;
-
-        button {
-            font-size: var(--space-ms); color: $color-white;
-            padding: .5rem 1rem;
-            background-color: $color-gray3;
-            cursor: pointer;
-            border: none;
-
-            &:hover {
-                background-color: $color-gray4;
+            .mp {
+                &-title {
+                    flex:1; text-align:center;
+                    &.dep01 {
+                        font : {
+                            size:var(--space-mx);
+                            weight:bold;
+                        }
+                    }
+                }
             }
         }
+        &-container {
+            font-size:var(--space-md);
+            line-height: 1.5;
+            margin-bottom: 2rem;
+        }
+        &-footer {
+            text-align: right;
+            .btnWrap {margin:0;}
+        }
     }
 
-    &.is-active {@include display(block);}
+    &._is-active {@include display(block);}
 }
-
-.no-scroll {@include overflow(both, hidden);}
 
 .dimmed {
     @include pos-offset-l(0, 0, fixed){z-index: 9990;}
     @include el-size(100%, 100%); @include overflow(both, hidden);
     background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(.5rem); -webkit-backdrop-filter: blur(.5rem);
 }
 
 .btn {

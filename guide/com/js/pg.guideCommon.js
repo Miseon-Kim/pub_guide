@@ -218,9 +218,11 @@ var guide = {
     if (localStorage.lightMode == "dark") {
       localStorage.lightMode = "light";
       app.attr("light-mode", "light");
+      $(".component-wrap > iframe").contents().find("html").attr("light-mode", "light");
     } else {
       localStorage.lightMode = "dark";
       app.attr("light-mode", "dark");
+      $(".component-wrap > iframe").contents().find("html").attr("light-mode", "dark");
     }
   },
   init: function () {

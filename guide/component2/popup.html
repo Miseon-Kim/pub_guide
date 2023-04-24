@@ -26,46 +26,71 @@
             <h1 class="cp-tit dep01">팝업/알럿/토스트</h1>
 
             <section class="cp-content">
-              <h2 class="cp-tit dep02">POPUP</h2>
+                <h2 class="cp-tit dep02">POPUP</h2>
 
-              <div class="btnWrap">
-                <button class="btn btn-size md bg _modalBtn" data-modal="modal1">Top Modal</button>
-                <button class="btn btn-size md bg _modalBtn" data-modal="modal2">Center Modal</button>
-                <button class="btn btn-size md bg _modalBtn" data-modal="modal3">Left Modal</button>
-                <button class="btn btn-size md bg _modalBtn" data-modal="modal4">Bottom Modal</button>
-              </div>
-          
-              <div class="modalPop _top" modal-target="modal1">
-                  <div class="modalWrap">
-                      <div class="modal-title">Top Modal</div>
-                      <div class="modal-container"><p>Top Modal Content</p></div>
-                      <div class="modal-footer"><button class="btn btn-close-pop">Close</button></div>
-                  </div>
-              </div>
-          
-              <div class="modalPop _center" modal-target="modal2">
-                  <div class="modalWrap">
-                      <div class="modal-title">Center Modal </div>
-                      <div class="modal-container"><p>Center Modal Content</p></div>
-                      <div class="modal-footer"><button class="btn btn-close-pop">Close</button></div>
-                  </div>
-              </div>
-          
-              <div class="modalPop _left" modal-target="modal3">
-                  <div class="modalWrap">
-                      <div class="modal-title">Left Modal</div>
-                      <div class="modal-container"><p>Left Modal Content</p></div>
-                      <div class="modal-footer"><button class="btn btn-close-pop">Close</button></div>
-                  </div>
-              </div>
-          
-              <div class="modalPop _bottom" modal-target="modal4">
-                  <div class="modalWrap">
-                      <div class="modal-title">Bottom Modal</div>
-                      <div class="modal-container"><p  style="height:1000px; background:yellow">Bottom Modal Content</p></div>
-                      <div class="modal-footer"><button class="btn btn-close-pop">Close</button></div>
-                  </div>
-              </div>
+                <div class="btnWrap">
+                    <button class="btn btn-size md bg _modalBtn" data-modal="modal1">Top Modal</button>
+                    <button class="btn btn-size md bg _modalBtn" data-modal="modal2">Center Modal</button>
+                    <button class="btn btn-size md bg _modalBtn" data-modal="modal3">Left Modal</button>
+                    <button class="btn btn-size md bg _modalBtn" data-modal="modal4">Bottom Modal</button>
+                    <button class="btn btn-size md bg _toastBtn" data-toast="토스트 팝업메세지를 출력" >토스트팝업</button>
+                </div>
+
+                <div class="modalPop _top" modal-target="modal1">
+                    <div class="modalWrap">
+                        <div class="modal-header">
+                            <a href="#" class="ico ico-his-prev" role="button"><span class="hide">이전페이지</span></a>
+                            <h1 class="mp-title dep01">Top Modal</h1>
+                            <a href="#" class="btn-close-pop ico ico-pop-close" role="button"><span class="hide">창닫기</span></a>
+                        </div>
+                        <div class="modal-container"><p>Top Modal Content</p></div>
+                        <div class="modal-footer">
+                            <div class="btnWrap grow">
+                                <button class="btn btn-size md type2 bg">확인</button>
+                                <button class="btn btn-size md bg btn-close-pop">취소</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="modalPop _center" modal-target="modal2">
+                    <div class="modalWrap">
+                        <div class="modal-header">
+                            <!-- <a href="#" class="ico ico-his-prev" role="button"><span class="hide">이전페이지</span></a> -->
+                            <h1 class="mp-title dep01">Center Modal</h1>
+                            <a href="#" class="btn-close-pop ico ico-pop-close" role="button"><span class="hide">창닫기</span></a>
+                        </div>
+                        <div class="modal-container"><p>Center Modal Content</p></div>
+                        <div class="btnWrap grow">
+                            <button class="btn btn-size md type2 bg btn-close-pop">확인</button>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="modalPop _left" modal-target="modal3">
+                    <div class="modalWrap">
+                        <div class="modal-header">
+                            <a href="#" class="ico ico-his-prev" role="button"><span class="hide">이전페이지</span></a>
+                            <h1 class="mp-title dep01">Left Modal</h1>
+                            <a href="#" class="btn-close-pop ico ico-pop-close" role="button"><span class="hide">창닫기</span></a>
+                        </div>
+                        <div class="modal-container"><p style="height:1000px; background:yellow">Left Modal Content</p></div>
+                        <div class="modal-footer">
+                            <div class="btnWrap grow">
+                                <button class="btn btn-size md type2 bg">확인</button>
+                                <button class="btn btn-size md bg btn-close-pop">취소</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="modalPop _bottom" modal-target="modal4">
+                    <div class="modalWrap">
+                        <div class="modal-header">Bottom Modal</div>
+                        <div class="modal-container"><p style="height:1000px; background:yellow">Bottom Modal Content</p></div>
+                        <div class="modal-footer"><button class="btn btn-close-pop">Close</button></div>
+                    </div>
+                </div>
 
             </section>
 

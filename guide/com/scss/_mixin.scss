@@ -163,8 +163,8 @@
 
 @mixin pos($type) {position:$type; @content;}
 @mixin pos-offset-l($top, $left, $pos:absolute) {position:$pos; top:$top; left:$left; @content;}
-@mixin pos-offset-r($top, $right, $pos:absolute) {position:absolute; top:$top; right:$right; @content;}
-@mixin pos-offset-b($bottom, $left, $pos:absolute) {position:absolute; bottom:$bottom; left:$left; @content;}
+@mixin pos-offset-r($top, $right, $pos:absolute) {position:$pos; top:$top; right:$right; @content;}
+@mixin pos-offset-b($bottom, $left, $pos:absolute) {position:$pos; bottom:$bottom; left:$left; @content;}
 @mixin float($type) {float:$type;}
 @mixin flex($direction:row, $wrap:nowrap, $j-content:flex-start, $al-items:center) {
     flex-direction:$direction; // row, row-reverse, column, column-reverse
@@ -393,20 +393,20 @@
 
 //text ellipsis
 @mixin ellipsis($line: 1, $height) {
-    %txtOverflow {
+
+    @if ($line == 1) {
         overflow: hidden;
         text-overflow: ellipsis;
         -o-text-overflow:ellipsis;-moz-binding:url(ellipsis.xml#ellipsis);
-    }
-
-    @if ($line == 1) {
-        @extend %txtOverflow; white-space: nowrap;
+        white-space: nowrap;
         height:$height;
     } @else {
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: $line;
-        @extend %txtOverflow;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -o-text-overflow:ellipsis;-moz-binding:url(ellipsis.xml#ellipsis);
         height:$height;
     }
 }
@@ -419,38 +419,6 @@
 //font size 2배수
 @function size($size) {
     @return $size / 2 / $font-size#{rem};
-}
-
-// SVG ICON
-@function svgIcon($iconName, $color:fff) {
-    $iconList: (
-    // Guide Search BTN
-    btnPgSearch: "%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 513.749 513.749'%3E%3Cpath fill='%23#{$color}' d='M504.352,459.061l-99.435-99.477c74.402-99.427,54.115-240.344-45.312-314.746S119.261-9.277,44.859,90.15 S-9.256,330.494,90.171,404.896c79.868,59.766,189.565,59.766,269.434,0l99.477,99.477c12.501,12.501,32.769,12.501,45.269,0 c12.501-12.501,12.501-32.769,0-45.269L504.352,459.061z M225.717,385.696c-88.366,0-160-71.634-160-160s71.634-160,160-160 s160,71.634,160,160C385.623,314.022,314.044,385.602,225.717,385.696z'/%3E%3C/svg%3E",
-
-    btnPgSearchDark:"%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' id='Capa_1' x='0px' y='0px' viewBox='0 0 513.749 513.749' style='enable-background:new 0 0 513.749 513.749;' xml:space='preserve' width='512' height='512'%3E%3Cpath fill='%23#{$color}' d='M504.352,459.061l-99.435-99.477c74.402-99.427,54.115-240.344-45.312-314.746S119.261-9.277,44.859,90.15 S-9.256,330.494,90.171,404.896c79.868,59.766,189.565,59.766,269.434,0l99.477,99.477c12.501,12.501,32.769,12.501,45.269,0 c12.501-12.501,12.501-32.769,0-45.269L504.352,459.061z M225.717,385.696c-88.366,0-160-71.634-160-160s71.634-160,160-160 s160,71.634,160,160C385.623,314.022,314.044,385.602,225.717,385.696z'/%3E%3C/svg%3E",
-
-    currentAfter: "%3Csvg xmlns='http://www.w3.org/2000/svg' id='Outline' viewBox='0 0 24 24'%3E%3Cpath fill='%23#{$color}' d='M6.41,16H17.59a1,1,0,0,0,.7-1.71L12.71,8.71a1,1,0,0,0-1.42,0L5.71,14.29A1,1,0,0,0,6.41,16Z'/%3E%3C/svg%3E",
-
-    btn_guide_top: "%3Csvg xmlns='http://www.w3.org/2000/svg' id='Outline' viewBox='0 0 24 24'%3E%3Cpath fill='%23#{$color}' d='M6.41,16H17.59a1,1,0,0,0,.7-1.71L12.71,8.71a1,1,0,0,0-1.42,0L5.71,14.29A1,1,0,0,0,6.41,16Z'/%3E%3C/svg%3E",
-
-    btn_search_cancel:"%3Csvg xmlns='http://www.w3.org/2000/svg' id='Outline' viewBox='0 0 24 24' width='512' height='512'%3E%3Cpath fill='%23#{$color}' d='M16,8a1,1,0,0,0-1.414,0L12,10.586,9.414,8A1,1,0,0,0,8,9.414L10.586,12,8,14.586A1,1,0,0,0,9.414,16L12,13.414,14.586,16A1,1,0,0,0,16,14.586L13.414,12,16,9.414A1,1,0,0,0,16,8Z'/%3E%3Cpath fill='%23#{$color}' d='M12,0A12,12,0,1,0,24,12,12.013,12.013,0,0,0,12,0Zm0,22A10,10,0,1,1,22,12,10.011,10.011,0,0,1,12,22Z'/%3E%3C/svg%3E%0A",
-
-    pgAlert_btnActive:"%3Csvg xmlns='http://www.w3.org/2000/svg' id='Outline' viewBox='0 0 24 24' width='512' height='512'%3E%3Cpath fill='%23#{$color}' d='M16,8a1,1,0,0,0-1.414,0L12,10.586,9.414,8A1,1,0,0,0,8,9.414L10.586,12,8,14.586A1,1,0,0,0,9.414,16L12,13.414,14.586,16A1,1,0,0,0,16,14.586L13.414,12,16,9.414A1,1,0,0,0,16,8Z'/%3E%3Cpath fill='%23#{$color}' d='M12,0A12,12,0,1,0,24,12,12.013,12.013,0,0,0,12,0Zm0,22A10,10,0,1,1,22,12,10.011,10.011,0,0,1,12,22Z'/%3E%3C/svg%3E%0A",
-
-    btn_hover:"%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50' enable-background='new 0 0 50 50'%3E%3Cpath d='M 12 6 C 10.3 6 9 7.3 9 9 L 9 39 L 11 37 L 11 9 C 11 8.4 11.4 8 12 8 L 38 8 C 38.6 8 39 8.4 39 9 L 39 41 C 39 41.6 38.6 42 38 42 L 16 42 L 14 44 L 38 44 C 39.7 44 41 42.7 41 41 L 41 9 C 41 7.3 39.7 6 38 6 L 12 6 z M 16 25 L 16 27 L 24.59375 27 L 9.09375 42.5 L 10.5 43.90625 L 26 28.40625 L 26 37 L 28 37 L 28 26 L 28 25 L 27 25 L 16 25 z' fill='%23#{$color}' /%3E%3C/svg%3E%0A",
-
-    fd_newWindow:"%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50' enable-background='new 0 0 50 50'%3E%3Cpath fill='%23#{$color}' d='M 7 7 C 5.3 7 4 8.3 4 10 L 4 38 L 6 36 L 6 15 L 44 15 L 44 40 C 44 40.6 43.6 41 43 41 L 11 41 L 9 43 L 43 43 C 44.7 43 46 41.7 46 40 L 46 10 C 46 8.3 44.7 7 43 7 L 7 7 z M 7 9 L 43 9 C 43.6 9 44 9.4 44 10 L 44 13 L 6 13 L 6 10 C 6 9.4 6.4 9 7 9 z M 8 10 C 7.4477153 10 7 10.447715 7 11 C 7 11.552285 7.4477153 12 8 12 C 8.5522847 12 9 11.552285 9 11 C 9 10.447715 8.5522847 10 8 10 z M 11 10 C 10.447715 10 10 10.447715 10 11 C 10 11.552285 10.447715 12 11 12 C 11.552285 12 12 11.552285 12 11 C 12 10.447715 11.552285 10 11 10 z M 14 10 C 13.447715 10 13 10.447715 13 11 C 13 11.552285 13.447715 12 14 12 C 14.552285 12 15 11.552285 15 11 C 15 10.447715 14.552285 10 14 10 z M 11 24 L 11 26 L 19.59375 26 L 4.09375 41.5 L 5.5 42.90625 L 21 27.40625 L 21 36 L 23 36 L 23 25 L 23 24 L 22 24 L 11 24 z' /%3E%3C/svg%3E%0A",
-
-    fd_disconnect:"%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50' enable-background='new 0 0 50 50'%3E%3Cpath d='M 12 6 C 10.3 6 9 7.3 9 9 L 9 39 L 11 37 L 11 9 C 11 8.4 11.4 8 12 8 L 38 8 C 38.6 8 39 8.4 39 9 L 39 41 C 39 41.6 38.6 42 38 42 L 16 42 L 14 44 L 38 44 C 39.7 44 41 42.7 41 41 L 41 9 C 41 7.3 39.7 6 38 6 L 12 6 z M 16 25 L 16 27 L 24.59375 27 L 9.09375 42.5 L 10.5 43.90625 L 26 28.40625 L 26 37 L 28 37 L 28 26 L 28 25 L 27 25 L 16 25 z' fill='%23#{$color}' /%3E%3C/svg%3E%0A",
-    
-    pw_circle_line:"%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z' fill='%23#{$color}' /%3E%3C/svg%3E",
-
-    pw_circle_full:"%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z' fill='%23666' /%3E%3C/svg%3E"
-
-    );
-    $svgIcon: map-get($iconList, $iconName);
-    @return url("data:image/svg+xml;charset=utf8,#{$svgIcon}");
-    //background-image: svgIcon(btnPgSearch);
 }
 
 // px to rem

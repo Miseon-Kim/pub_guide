@@ -1,0 +1,20 @@
+#{$field} {
+    .select {
+        // default system select
+        &-sys {
+            @include el-size(100%, 100%);
+            padding-right: 3rem;
+            background-color: transparent;
+            background-image: svgIcon(ico_selArrow);
+            background-repeat: no-repeat;
+            background-position: calc(100% - 1rem) 50%; background-size: 1.6rem 1.6rem;
+            color: inherit; white-space: nowrap; text-overflow: ellipsis;
+            border:none;
+        }
+        &-lst {
+            & > li {
+                &._is-active > a {color:red;}
+            }
+        }
+    }
+}

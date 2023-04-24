@@ -11,8 +11,16 @@
         "name": "타이틀/텍스트"
     },
     {   
-        "id": "form",
-        "name": "폼요소"
+        "id": "input",
+        "name": "INPUT"
+    },
+    {   
+        "id": "rdochk",
+        "name": "라디오/체크박스"
+    },
+    {   
+        "id": "select",
+        "name": "SELECT"
     },
     {   
         "id": "popup",
