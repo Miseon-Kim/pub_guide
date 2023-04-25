@@ -24,11 +24,13 @@
 
     ico_infoMsg:"",
 
-    ico_errorMsg:"",
+    ico_errorMsg:"%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23#{$color}' viewBox='0 0 16 16'%3E%3Cpath d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/%3E%3Cpath d='M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z'/%3E%3C/svg%3E",
 
     ico_check:"",
 
     ico_close:"%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23#{$color}' d='M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z' /%3E%3C/svg%3E",
+
+    ico_asterisk:"%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23#{$color}' viewBox='0 0 16 16'%3E%3Cpath d='M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z'/%3E%3C/svg%3E",
     
     his_prev:"%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23#{$color}' d='M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z' /%3E%3C/svg%3E",
 
@@ -40,7 +42,7 @@
     );
     $svgIcon: map-get($iconList, $iconName);
     @return url("data:image/svg+xml;charset=utf8,#{$svgIcon}");
-    //background-image: svgIcon(btnPgSearch);
+    //background-image: svgIcon(ico_asterisk);
 }
 
 .ico {
@@ -81,16 +83,58 @@
     //     @include fontICO ("before", "\f057");
     // }
     
-    // &-info {
-    //     @include fontICO ("before", "\2a") {font-size:.7rem; vertical-align:.2rem};
+    &-info {
+        // @include fontICO ("before", "\2a") {font-size:.7rem; vertical-align:.2rem};
+        @include pos(relative); padding-left:1.6rem;
+        word-break:keep-all;
+        @include el-content(before) {
+            @include pos-offset-l(0, 0);
+            @include el-size(1rem, 2rem);
+            background:0 50% no-repeat; background-image: svgIcon(ico_asterisk, 666);
+            vertical-align:middle;
+        }
+        
+    }
+
+    // &-star {
+    //     @include el-size(1.6rem, 1.6rem);
+    //     background:0 50% no-repeat; background-image: svgIcon(ico_asterisk, 666);
     // }
     
-    // &-error {
-    //     @include fontICO ("before", "\f06a");
-    // }
+    &-error {
+        @include pos(relative); padding-left:2.5rem;
+        word-break:keep-all;
+        @include el-content(before) {
+            @include pos-offset-l(0, 0);
+            @include el-size(1.8rem, 2.2rem); max-width:1.8rem;
+            background:0 50% no-repeat;
+            background-image: svgIcon(ico_errorMsg, 666);
+            vertical-align:middle;
+        }
+    }
     
     // &-check {
     //     @include fontICO ("before", "\f00c");
     // }
     
+}
+
+.invalid {
+    .ico {
+        &-error {
+            @include el-content(before) {
+                background-image: svgIcon(ico_errorMsg, e93c79);
+            }
+        }
+    }
+}
+
+.valid {
+    .ico {
+        &-error {
+            @include el-content(before) {
+                background-image: svgIcon(ico_errorMsg, 0048ff);
+            }
+        }
+    }
 }
