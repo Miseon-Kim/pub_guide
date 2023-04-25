@@ -11,7 +11,8 @@
         width:100%; margin:auto;
 
         & > .modalWrap {
-        @extend %transition3s;
+            @extend %transition3s;
+            border-radius:0 0 1rem 1rem;
         }
     }
 
@@ -24,6 +25,7 @@
             @include display(flex) {flex-direction:column;}
             height:100%;
             @extend %transition3s;
+            // border-radius:0 1rem 1rem 0;
 
             .modal {
                 &-header, &-footer {flex-shrink:0;}
@@ -45,7 +47,7 @@
             .modal-container {@include overflow(y, auto); max-height:80%;}
         }
 
-        & > .modalWrap {min-height:30%;}
+        & > .modalWrap {min-height:30%; border-radius:1rem;}
     }
 
     &._bottom {
@@ -57,7 +59,7 @@
             .modal-container {@include overflow(y, auto); max-height:80%;}
         }
 
-        & > .modalWrap {@extend %transition3s;}
+        & > .modalWrap {@extend %transition3s; border-radius:1rem 1rem 0 0;}
     }
 
     .modal {
@@ -102,6 +104,34 @@
     @include el-size(100%, 100%); @include overflow(both, hidden);
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(.5rem); -webkit-backdrop-filter: blur(.5rem);
+}
+
+// <div class="toastWrap" role="alert" aria-live="assertive" tabindex="0"><a href="#" class="btn ico-close" aria-label="Close"><span class="hide">토스트팝업닫기</span></a><div class="toast-msg"></div></div>
+.toast {
+    &Wrap {
+        @include display(flex) {justify-content: space-between; align-items:center;}
+        @include pos-offset-b(0,0, fixed); margin:1rem; width:calc(100% - 2rem);
+        background-color: rgba(0, 0, 0, 0.5); border-radius:1rem;
+        
+        & > a {
+            @include display(inline-block); flex-shrink:0; opacity:0;
+            @include el-content(before) {
+                @include el-size(.1rem, 2.4rem);
+                background-image: svgIcon(ico_close, fff);
+            }
+            &._is-active {
+                opacity:1;
+                @include el-content(before) {
+                    width:2.4rem;
+                }
+            }
+        }
+    }
+
+    &-msg {
+        flex:1;
+        padding:1rem 5rem 1rem 5rem; color:$color-white; text-align:center;
+    }
 }
 
 .btn {

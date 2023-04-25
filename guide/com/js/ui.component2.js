@@ -520,72 +520,84 @@ var COMPONENT_UI = (function (cp, $) {
             }, 1000);
         },
 
+        // toast pop
         toastPop: function() {
             const self = this;
-            const toastWrapTemplate = '<div class="toastWrap" role="alert" aria-live="assertive" tabindex="0"><a href="#" class="btn ico-close" aria-label="Close"><span class="">토스트팝업닫기</span></a><div class="toast-msg"></div></div>';
-        
-            $('._toastBtn').on('click', function() {
-                // Remove existing _rtFocus class from all toast buttons
-                $('._toastBtn._rtFocus').removeClass('_rtFocus');
-        
-                // Add _rtFocus class to the clicked toast button
-                $(this).addClass('_rtFocus');
-        
-                var toastMsg = $(this).attr('data-toast');
-                var toast = $(toastWrapTemplate);
-                toast.find('.toast-msg').html(toastMsg);
-        
-                // Get the number of existing toasts and set a unique ID for the new toast
-                var toastCount = $('.toastWrap').length;
-                var toastId = 'toast' + (toastCount + 1);
-                toast.attr('toast-target', toastId);
-                toast.attr('id', toastId);
-        
-                $('body').append(toast);
-        
-                // Show the toast for a few seconds and then hide it
-                var timer = setTimeout(function() {
-                    $('#' + toastId).fadeOut(function() {
-                        $(this).remove();
-                        // Remove _rtFocus class from the toast button
-                        $('._toastBtn._rtFocus').removeClass('_rtFocus');
-                    });
-                }, 3000);
-        
-                // If the toast receives focus, stop the timer
-                toast.on('focusin', function() {
-                    clearTimeout(timer);
-                });
-        
-                // If the close button is clicked, remove the toast
-                toast.find('.ico-close').on('click', function() {
-                    $('#' + toastId).remove();
-                    // Remove _rtFocus class from the toast button
-                    self.rtFocus($(this));
-                });
-        
-                // If the user presses the Escape key or Tab key
+            
+            // 토스트 팝업 생성 함수
+            function createToast(toastMsg) {
+                const toastWrapTemplate = $('<div>', {
+                'class': 'toastWrap',
+                'role': 'alert',
+                'aria-live': 'assertive',
+                'tabindex': '0'
+                }).append(
+                    $('<div>', {'class': 'toast-msg'}).html(toastMsg),
+                    $('<a>', {
+                        'class': 'btn ico-close',
+                        'href': '#',
+                        'aria-label': 'Close'
+                    }).attr("tabindex", "-1").append(
+                        $('<span>', {'class': 'hide'}).text('토스트팝업닫기')
+                    )
+                );
+            
+                $('body').append(toastWrapTemplate);
+            
+                const toast = $('.toastWrap');
+                const $icoClose = $('.ico-close');
+                
                 toast.on('keydown', function(event) {
+                    toast.addClass('_is-keyEvent');                
+                    $icoClose.addClass('_is-active').attr("tabindex", "0");
                     if (event.key === 'Escape') {
-                        toast.find('.ico-close').click();
+                        $icoClose.click();
                     } else if (event.key === 'Tab') {
                         event.preventDefault();
-                        var focusableElements = toast.find('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+                        const focusableElements = toast.find('.ico-close._is-active, [tabindex]');
+                        const $firstElement = focusableElements.first();
+                        const $lastElement = focusableElements.last();
                         if (event.shiftKey) {
-                            // If shift+tab is pressed, move focus to the last focusable element
-                            focusableElements.last().focus();
+                            $lastElement.focus();
                         } else {
-                            // If tab is pressed, move focus to the first focusable element
-                            focusableElements.first().focus();
+                            $firstElement.focus();
                         }
                     }
                 });
-        
-                // Set focus to the first focusable element in the toast
-                var focusableElements = toast.find('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+                
+                const closeClickHandler = function() {
+                    toast.removeClass('_is-keyEvent');
+                    
+                    toast.fadeOut(function() {
+                    if (toast.hasClass('toastWrap')) {
+                        toast.remove();
+                    }
+                    $('._toastBtn._rtFocus').focus().removeClass('_rtFocus');
+                    });
+                };
+                
+                $icoClose.on('click', closeClickHandler);
+                
+                const focusableElements = toast.find('.ico-close._is-active, [tabindex]');
                 focusableElements.first().focus();
+                
+                const timer = setTimeout(function() {
+                    if (toast.hasClass('_is-keyEvent')) {
+                        return;
+                    }
+                    closeClickHandler();
+                }, 3000);
+            }
+            
+            $('._toastBtn').on('click', function() {
+                $('._toastBtn._rtFocus').removeClass('_rtFocus');
+                $(this).addClass('_rtFocus');
+            
+                const toastMsg = $(this).attr('data-toast');
+                createToast(toastMsg);
             });
         }
+        
     };
 
     cp.init = function () {
