@@ -28,11 +28,15 @@
         @include pos-offset-l(0,0); @include el-size(0,0);
         visibility: hidden;
         background-color:transparent; opacity:0; border:0;
-        &:checked ~ .field-icon {
-            background-image: svgIconForm(chk-circle-fill, 0048ff);
+        &:checked {
+            & ~ .field-icon {
+                background-image: svgIconForm(chk-circle-fill, 0048ff);
+            }
+            &[readonly] ~ .field-icon, .readonly ~ .field-icon,
+            &[disabled] ~ .field-icon, .disabled ~ .field-icon {background-image: svgIconForm(chk-circle-fill, aaa);}
         }
         &[readonly] ~ .field-icon, .readonly ~ .field-icon,
-        &[disabled] ~ .field-icon, .disabled ~ .field-icon {background-image: svgIconForm(chk-circle-fill, 999);}
+        &[disabled] ~ .field-icon, .disabled ~ .field-icon {background-image: svgIconForm(chk-circle, aaa);}
         &[disabled] ~ .field-label,
         &[disabled] ~ .field-icon, .disabled ~ .field-icon {opacity:.5;}
     }
@@ -52,11 +56,15 @@
 
     &.line, .line {
         input[type=checkbox] {
-            &:checked ~ .field-icon {
-                background-image: svgIconForm(chk-line-circle, 0048ff);
+            &:checked {
+                & ~ .field-icon {
+                    background-image: svgIconForm(chk-line-circle, 0048ff);
+                }
+                &[readonly] ~ .field-icon, .readonly ~ .field-icon,
+                &[disabled] ~ .field-icon, .disabled ~ .field-icon {background-image: svgIconForm(chk-line-circle, aaa);}
             }
             &[readonly] ~ .field-icon, .readonly ~ .field-icon,
-            &[disabled] ~ .field-icon, .disabled ~ .field-icon {background-image: svgIconForm(chk-line-circle, 999);}
+            &[disabled] ~ .field-icon, .disabled ~ .field-icon {background-image: svgIconForm(chk-line, aaa);}
         }
         #{$field} {
             &-checkbox {
@@ -85,11 +93,15 @@
 
     &.c-line, .c-line {
         input[type=checkbox] {
-            &:checked ~ .field-icon {
-                background-image: svgIconForm(chk-line-circle, 0048ff);
+            &:checked {
+                & ~ .field-icon {
+                    background-image: svgIconForm(chk-line-circle, 0048ff);
+                }
+                &[readonly] ~ .field-icon, .readonly ~ .field-icon,
+                &[disabled] ~ .field-icon, .disabled ~ .field-icon {background-image: svgIconForm(chk-line-circle, aaa);}
             }
             &[readonly] ~ .field-icon, .readonly ~ .field-icon,
-            &[disabled] ~ .field-icon, .disabled ~ .field-icon {background-image: svgIconForm(chk-line-circle, 999);}
+            &[disabled] ~ .field-icon, .disabled ~ .field-icon {background-image: svgIconForm(chk-line, aaa);}
         }
         #{$field} {
             &-checkbox {
@@ -118,11 +130,15 @@
 
     &.square, .square {
         input[type=checkbox] {
-            &:checked ~ .field-icon {
-                background-image: svgIconForm(chk-square-fill, 0048ff);
+            &:checked {
+                & ~ .field-icon {
+                    background-image: svgIconForm(chk-square-fill, 0048ff);
+                }
+                &[readonly] ~ .field-icon, .readonly ~ .field-icon,
+                &[disabled] ~ .field-icon, .disabled ~ .field-icon {background-image: svgIconForm(chk-square-fill, aaa);}
             }
             &[readonly] ~ .field-icon, .readonly ~ .field-icon,
-            &[disabled] ~ .field-icon, .disabled ~ .field-icon {background-image: svgIconForm(chk-square-fill, 999);}
+            &[disabled] ~ .field-icon, .disabled ~ .field-icon {background-image: svgIconForm(chk-square, aaa);}
         }
         #{$field} {
             &-checkbox {
@@ -151,11 +167,15 @@
 
     &.s-line, .s-line {
         input[type=checkbox] {
-            &:checked ~ .field-icon {
-                background-image: svgIconForm(chk-line-square, 0048ff);
+            &:checked {
+                & ~ .field-icon {
+                    background-image: svgIconForm(chk-line-square, 0048ff);
+                }
+                &[readonly] ~ .field-icon, .readonly ~ .field-icon,
+                &[disabled] ~ .field-icon, .disabled ~ .field-icon {background-image: svgIconForm(chk-line-square, aaa);}
             }
             &[readonly] ~ .field-icon, .readonly ~ .field-icon,
-            &[disabled] ~ .field-icon, .disabled ~ .field-icon {background-image: svgIconForm(chk-line-square, 999);}
+            &[disabled] ~ .field-icon, .disabled ~ .field-icon {background-image: svgIconForm(chk-line-lg, aaa);}
         }
         #{$field} {
             &-checkbox {
@@ -181,5 +201,45 @@
             }
         }
     }
+
+    input[type=radio] {
+        @include pos-offset-l(0,0); @include el-size(0,0);
+        visibility: hidden;
+        background-color:transparent; opacity:0; border:0;
+        &:checked ~ .field-icon {
+            // background-image: svgIconForm(chk-circle-fill, 0048ff);
+            @include pos(relative);
+            border:.3rem solid $color-blue;
+            @include el-content(before){
+                @include pos-offset-l(50%, 50%); transform: translate(-50%, -50%);
+                @include el-size(1rem, 1rem);
+                background:$color-blue; border-radius:100%;
+            }
+        }
+        &[readonly] ~ .field-icon, .readonly ~ .field-icon,
+        &[disabled] ~ .field-icon, .disabled ~ .field-icon {
+            // background-image: svgIconForm(chk-circle-fill, 999);
+            background:transparent;
+            border:.3rem solid $color-gray5;
+            @include el-content(before) {background:$color-gray5;}
+        }
+        &[disabled] ~ .field-label,
+        &[disabled] ~ .field-icon, .disabled ~ .field-icon {opacity:.5;}
+    }
+    &-radio {
+        @include display(flex);
+        #{$field} {
+            &-label {@include display(inline-block); margin-bottom:0; vertical-align:middle;}
+            &-icon {
+                @include display(inline-block);
+                @include el-size(2rem, 2rem); min-width:2rem;
+                border:.3rem solid $color-gray3; border-radius:100%;
+                // background-image: svgIconForm(chk-circle);
+                vertical-align:middle; margin-right:.5rem;
+            }
+        }
+        & ~ .field-radio {margin-left:2rem;}
+    }
+
 
 }
