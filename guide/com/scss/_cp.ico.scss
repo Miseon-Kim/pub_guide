@@ -30,6 +30,10 @@
 
     ico_close:"%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23#{$color}' d='M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z' /%3E%3C/svg%3E",
 
+    ico_infoCircle:"%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23#{$color}' viewBox='0 0 16 16'%3E%3Cpath d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/%3E%3Cpath d='m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z'/%3E%3C/svg%3E",
+
+    ico_infoCircle_fill:"%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23#{$color}' viewBox='0 0 16 16'%3E%3Cpath d='M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z'/%3E%3C/svg%3E",
+
     ico_asterisk:"%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23#{$color}' viewBox='0 0 16 16'%3E%3Cpath d='M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z'/%3E%3C/svg%3E",
     
     his_prev:"%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23#{$color}' d='M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z' /%3E%3C/svg%3E",
@@ -47,6 +51,7 @@
 
 .ico {
     @include display(inline-block);
+    word-break:keep-all;
     & + .ico {margin-left:1rem;}
     &.txt {
         
@@ -82,48 +87,47 @@
     // &-clear {
     //     @include fontICO ("before", "\f057");
     // }
-    
-    &-info {
-        // @include fontICO ("before", "\2a") {font-size:.7rem; vertical-align:.2rem};
+
+    &-star {
         @include pos(relative); padding-left:1.6rem;
-        word-break:keep-all;
         @include el-content(before) {
             @include pos-offset-l(0, 0);
             @include el-size(1rem, 2rem);
             background:0 50% no-repeat; background-image: svgIcon(ico_asterisk, 666);
             vertical-align:middle;
         }
-        
     }
-
-    // &-star {
-    //     @include el-size(1.6rem, 1.6rem);
-    //     background:0 50% no-repeat; background-image: svgIcon(ico_asterisk, 666);
-    // }
     
     &-error {
+        @include display(none);
         @include pos(relative); padding-left:2.5rem;
-        word-break:keep-all;
         @include el-content(before) {
             @include pos-offset-l(0, 0);
-            @include el-size(1.8rem, 2.2rem); max-width:1.8rem;
+            @include el-size(1.8rem, 2rem); max-width:1.8rem;
             background:0 50% no-repeat;
-            background-image: svgIcon(ico_errorMsg, 666);
+            background-image: svgIcon(ico_infoCircle_fill, 666);
             vertical-align:middle;
         }
     }
-    
-    // &-check {
-    //     @include fontICO ("before", "\f00c");
-    // }
+    &-info {
+        @include pos(relative);  padding-left:2.5rem;
+        @include el-content(before) {
+            @include pos-offset-l(0, 0);
+            @include el-size(1.8rem, 2rem);
+            background:0 50% no-repeat; background-image: svgIcon(ico_infoCircle, 666);
+            vertical-align:middle;
+        }
+        
+    }
     
 }
 
 .invalid {
     .ico {
         &-error {
+            @include display(inline-block);
             @include el-content(before) {
-                background-image: svgIcon(ico_errorMsg, e93c79);
+                background-image: svgIcon(ico_infoCircle_fill, e93c79);
             }
         }
     }
@@ -132,8 +136,9 @@
 .valid {
     .ico {
         &-error {
+            @include display(inline-block);
             @include el-content(before) {
-                background-image: svgIcon(ico_errorMsg, 0048ff);
+                background-image: svgIcon(ico_infoCircle_fill, 0048ff);
             }
         }
     }

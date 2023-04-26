@@ -900,6 +900,7 @@
 
 .ico {
   display: inline-block;
+  word-break: keep-all;
 }
 .ico + .ico {
   margin-left: 1rem;
@@ -945,12 +946,11 @@
   font-weight: 900;
   margin-left: 0.5rem;
 }
-.ico-info {
+.ico-star {
   position: relative;
   padding-left: 1.6rem;
-  word-break: keep-all;
 }
-.ico-info::before {
+.ico-star::before {
   content: "";
   display: block;
   position: absolute;
@@ -963,9 +963,9 @@
   vertical-align: middle;
 }
 .ico-error {
+  display: none;
   position: relative;
   padding-left: 2.5rem;
-  word-break: keep-all;
 }
 .ico-error::before {
   content: "";
@@ -974,23 +974,45 @@
   top: 0;
   left: 0;
   width: 1.8rem;
-  height: 2.2rem;
+  height: 2rem;
   max-width: 1.8rem;
   background: 0 50% no-repeat;
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/%3E%3Cpath d='M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z'/%3E%3C/svg%3E");
+  vertical-align: middle;
+}
+.ico-info {
+  position: relative;
+  padding-left: 2.5rem;
+}
+.ico-info::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1.8rem;
+  height: 2rem;
+  background: 0 50% no-repeat;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/%3E%3Cpath d='m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z'/%3E%3C/svg%3E");
   vertical-align: middle;
 }
 
+.invalid .ico-error {
+  display: inline-block;
+}
 .invalid .ico-error::before {
   content: "";
   display: block;
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23e93c79' viewBox='0 0 16 16'%3E%3Cpath d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/%3E%3Cpath d='M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23e93c79' viewBox='0 0 16 16'%3E%3Cpath d='M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z'/%3E%3C/svg%3E");
 }
 
+.valid .ico-error {
+  display: inline-block;
+}
 .valid .ico-error::before {
   content: "";
   display: block;
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2348ff' viewBox='0 0 16 16'%3E%3Cpath d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/%3E%3Cpath d='M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2348ff' viewBox='0 0 16 16'%3E%3Cpath d='M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z'/%3E%3C/svg%3E");
 }
 
 .field {
@@ -1300,293 +1322,141 @@
   color: red;
 }
 
-.field {
-  /* FIELD - INPUT */
-  /* FIELD - OUTLINE */
-  /* FIELD - GROUP */
-  /* FIELD - VALID */
-  /* FIELD - CURSOR */
-  /* FIELD - DISABLED */
-  /* FIELD - READONLY */
-}
-.field input[type=password] {
-  font-family: "pass", "Roboto", Helvetica, Arial, sans-serif;
-}
-.field input[type=password]::-moz-placeholder {
-  font-family: "pass", "Roboto", Helvetica, Arial, sans-serif;
-  -webkit-text-security: none;
-  font-size: 2rem;
-}
-.field input[type=password]::placeholder {
-  font-family: "pass", "Roboto", Helvetica, Arial, sans-serif;
-  -webkit-text-security: none;
-  font-size: 2rem;
-}
-.field input[type=password]:-moz-read-only {
-  color: #999;
-}
-.field input[type=password]:read-only {
-  color: #999;
-}
-.field input[type=password]::-webkit-input-placeholder {
-  transform: scale(0.77);
-  transform-origin: 0 50%;
-}
-.field input[type=password]::-moz-placeholder {
-  font-size: 14px;
-  opacity: 1;
-}
-.field input[type=password]:-ms-input-placeholder {
-  font-size: 14px;
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
-}
-.field.grow, .field .grow {
-  flex-grow: 1;
-  flex-shrink: 0;
-  flex-basis: 0;
-}
-.field-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
-}
-.field-label {
-  display: block;
-  margin-bottom: 1rem;
-}
-.field-txt {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-.field-msg {
-  margin-top: 0.5rem;
-}
-.field-info {
-  margin-top: 0.5rem;
-  color: #666;
-}
-.field-input {
-  height: 4rem;
-}
-.field-input input:not([type=checkbox]):not([type=radio]) {
-  padding: 1rem 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  background-color: transparent;
-}
-.field-input input:not([type=checkbox]):not([type=radio]):focus {
-  outline: none;
-}
-.field-input input:not([type=checkbox]):not([type=radio])::-moz-placeholder {
-  color: #ccc;
-}
-.field-input input:not([type=checkbox]):not([type=radio])::placeholder {
-  color: #ccc;
-}
-.field-input.right input {
-  text-align: right;
-}
-.field-input.center input {
-  text-align: center;
-}
-.field-input.mid_num {
-  position: relative;
-  max-width: 1.1rem;
-  padding-right: 0;
-}
-.field-input.mid_num input::-moz-placeholder {
-  font-family: "pass";
-  font-size: 0.4rem;
-}
-.field-input.mid_num input::placeholder {
-  font-family: "pass";
-  font-size: 0.4rem;
-}
-.field-outline {
-  display: flex;
-  align-items: stretch;
-  min-height: 4rem;
-  border-radius: 0.5rem;
-  box-shadow: inset 0 0 0 0.1rem #ccc;
-  background: #fff;
-  transition: box-shadow 250ms cubic-bezier(0.65, 0.05, 0.36, 1);
-}
-.field-outline:focus-within {
-  box-shadow: inset 0 0 0 0.2rem #ccc;
-}
-.field-outline.pw-group.type2 > ._input {
-  max-width: 3rem;
-}
-.field-outline.pw-group.type2 > ._input:first-child {
-  padding-right: 0;
-}
-.field-outline.grow {
-  flex-grow: 1;
-  flex-shrink: 0;
-  flex-basis: 0;
-}
-.field-outline > * {
-  padding: 0 1rem;
-}
-.field-outline > * + * {
-  padding-left: 0;
-}
-.field-outline.column {
-  flex-direction: column;
-}
-.field-outline.column > * {
-  padding: 1rem;
-}
-.field-outline.column > * + * {
-  padding-top: 0;
-}
-.field-outline.column .right {
-  place-self: flex-end;
-}
-.field-outline.readonly {
-  color: #333;
-  cursor: default;
-  pointer-events: none;
-}
-.field-outline.disabled {
-  opacity: 0.8;
-  cursor: default;
-  pointer-events: none;
-  background: #eee;
-}
-.field-outline .center {
-  place-self: center;
-}
-.field-outline .bottom {
-  place-self: flex-end;
-}
-.field-group {
-  display: flex;
-}
-.field-group + .field-group {
-  margin-top: 1rem;
-}
-.field-group + .field {
-  margin-top: 1rem;
-}
-.field-group .field + .field-group .field {
-  margin-top: 0;
-  margin-left: 1rem;
-}
-.field + .field-group {
-  margin-top: 1rem;
-}
-.field.valid .field-outline {
-  box-shadow: inset 0 0 0 0.1rem #0048ff;
-}
-.field.valid .field-outline:focus-within {
-  box-shadow: inset 0 0 0 0.2rem #0048ff;
-}
-.field.valid .field-msg {
-  color: #0048ff;
-}
-.field.invalid .field-outline {
-  box-shadow: inset 0 0 0 0.1rem #e93c79;
-}
-.field.invalid .field-outline:focus-within {
-  box-shadow: inset 0 0 0 0.2rem #e93c79;
-}
-.field.invalid .field-msg {
-  color: #e93c79;
-}
-.field-label, .field-checkbox, .field-radio, .field-select select {
-  cursor: pointer;
-}
-.field.disabled .field-outline, .field.disabled .field-checkbox, .field.disabled .field-radio, .field .field-checkbox.disabled, .field .field-radio.disabled {
-  opacity: 0.35;
-  cursor: default;
-  pointer-events: none;
-}
-.field.disabled .field-outline {
-  background-color: #ddd;
-}
-.field.readonly .field-outline, .field.readonly .field-checkbox, .field.readonly .field-radio, .field .field-checkbox.readonly, .field .field-radio.readonly {
-  cursor: default;
-  pointer-events: none;
-}
-.field.readonly input, .field.readonly textarea, .field.readonly .field-checkbox .field-label, .field.readonly .field-radio .field-label, .field .field-checkbox.readonly .field-label, .field .field-radio.readonly .field-label {
-  color: #333;
-}
-
-/* FIELD - INPUT SCRIPT */
-._input._clear {
-  width: calc(100% - 2.2rem);
-}
-._input-clear {
-  visibility: hidden;
-  pointer-events: none;
-  opacity: 0;
-}
-._input-clear::before {
-  content: "";
-  display: block;
-  display: inline-block;
-  content: "\f057";
-  font-family: "iconFont";
-  font-weight: 900;
-}
-._input-clear._active {
-  display: inline-flex;
-  width: 2rem;
-  height: 100%;
-  visibility: visible;
-  pointer-events: all;
-  opacity: 1;
-  touch-action: none;
-}
-._input input._password::-moz-placeholder {
-  font-weight: 700;
-}
-._input input._password::placeholder {
-  font-weight: 700;
-}
-._input ._secureTxt {
-  position: relative;
-  display: block;
-  height: 4rem;
-}
-._input ._secureTxt > input[type=password] {
-  position: relative;
-  z-index: 2;
-  color: transparent;
-}
-._input ._secureTxt > input[type=password]::-moz-placeholder {
-  color: transparent;
-}
-._input ._secureTxt > input[type=password]::placeholder {
-  color: transparent;
-}
-._input ._secureTxt > i {
+.field input[type=checkbox] {
   position: absolute;
-  top: 50%;
+  top: 0;
   left: 0;
-  transform: translate(0, -50%);
-  z-index: 1;
-  display: block;
-  width: 1rem;
-  height: 1rem;
-  background: #333;
-  border: 0.1rem solid #333;
-  border-radius: 100%;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+  background-color: transparent;
+  opacity: 0;
+  border: 0;
 }
-._input ._secureTxt > i + i {
-  margin-left: 0.3rem;
+.field input[type=checkbox]:checked ~ .field-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2348ff' viewBox='0 0 16 16'%3E%3Cpath d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z'/%3E%3C/svg%3E");
 }
-._input ._secureTxt > i._line {
-  background: #fff;
-  border-color: #666;
+.field input[type=checkbox][readonly] ~ .field-icon, .field input[type=checkbox] .readonly ~ .field-icon, .field input[type=checkbox][disabled] ~ .field-icon, .field input[type=checkbox] .disabled ~ .field-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23999' viewBox='0 0 16 16'%3E%3Cpath d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z'/%3E%3C/svg%3E");
 }
-._input ._secureTxt > i._line._is-active {
-  background: #ffcc23;
-  border-color: #ffcc23;
+.field input[type=checkbox][disabled] ~ .field-label, .field input[type=checkbox][disabled] ~ .field-icon, .field input[type=checkbox] .disabled ~ .field-icon {
+  opacity: 0.5;
+}
+.field-checkbox {
+  display: flex;
+}
+.field-checkbox .field-label {
+  display: inline-block;
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+.field-checkbox .field-icon {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  min-width: 2rem;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/%3E%3Cpath d='M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z'/%3E%3C/svg%3E");
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+.field-checkbox ~ .field-checkbox {
+  margin-left: 2rem;
+}
+.field.line input[type=checkbox]:checked ~ .field-icon, .field .line input[type=checkbox]:checked ~ .field-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2348ff' viewBox='0 0 16 16'%3E%3Cpath d='M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z'/%3E%3Cpath d='M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z'/%3E%3C/svg%3E");
+}
+.field.line input[type=checkbox][readonly] ~ .field-icon, .field.line input[type=checkbox] .readonly ~ .field-icon, .field.line input[type=checkbox][disabled] ~ .field-icon, .field.line input[type=checkbox] .disabled ~ .field-icon, .field .line input[type=checkbox][readonly] ~ .field-icon, .field .line input[type=checkbox] .readonly ~ .field-icon, .field .line input[type=checkbox][disabled] ~ .field-icon, .field .line input[type=checkbox] .disabled ~ .field-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23999' viewBox='0 0 16 16'%3E%3Cpath d='M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z'/%3E%3Cpath d='M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z'/%3E%3C/svg%3E");
+}
+.field.line .field-checkbox .field-icon, .field .line .field-checkbox .field-icon {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  min-width: 2rem;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z'/%3E%3C/svg%3E");
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+.field.line .field-checkbox.line-lg .field-icon, .field .line .field-checkbox.line-lg .field-icon {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  min-width: 2rem;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z'/%3E%3C/svg%3E");
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+.field.c-line input[type=checkbox]:checked ~ .field-icon, .field .c-line input[type=checkbox]:checked ~ .field-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2348ff' viewBox='0 0 16 16'%3E%3Cpath d='M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z'/%3E%3Cpath d='M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z'/%3E%3C/svg%3E");
+}
+.field.c-line input[type=checkbox][readonly] ~ .field-icon, .field.c-line input[type=checkbox] .readonly ~ .field-icon, .field.c-line input[type=checkbox][disabled] ~ .field-icon, .field.c-line input[type=checkbox] .disabled ~ .field-icon, .field .c-line input[type=checkbox][readonly] ~ .field-icon, .field .c-line input[type=checkbox] .readonly ~ .field-icon, .field .c-line input[type=checkbox][disabled] ~ .field-icon, .field .c-line input[type=checkbox] .disabled ~ .field-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23999' viewBox='0 0 16 16'%3E%3Cpath d='M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z'/%3E%3Cpath d='M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z'/%3E%3C/svg%3E");
+}
+.field.c-line .field-checkbox .field-icon, .field .c-line .field-checkbox .field-icon {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  min-width: 2rem;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z'/%3E%3C/svg%3E");
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+.field.c-line .field-checkbox.c-line-lg .field-icon, .field .c-line .field-checkbox.c-line-lg .field-icon {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  min-width: 2rem;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z'/%3E%3C/svg%3E");
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+.field.square input[type=checkbox]:checked ~ .field-icon, .field .square input[type=checkbox]:checked ~ .field-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2348ff' viewBox='0 0 16 16'%3E%3Cpath d='M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm10.03 4.97a.75.75 0 0 1 .011 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.75.75 0 0 1 1.08-.022z'/%3E%3C/svg%3E");
+}
+.field.square input[type=checkbox][readonly] ~ .field-icon, .field.square input[type=checkbox] .readonly ~ .field-icon, .field.square input[type=checkbox][disabled] ~ .field-icon, .field.square input[type=checkbox] .disabled ~ .field-icon, .field .square input[type=checkbox][readonly] ~ .field-icon, .field .square input[type=checkbox] .readonly ~ .field-icon, .field .square input[type=checkbox][disabled] ~ .field-icon, .field .square input[type=checkbox] .disabled ~ .field-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23999' viewBox='0 0 16 16'%3E%3Cpath d='M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm10.03 4.97a.75.75 0 0 1 .011 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.75.75 0 0 1 1.08-.022z'/%3E%3C/svg%3E");
+}
+.field.square .field-checkbox .field-icon, .field .square .field-checkbox .field-icon {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  min-width: 2rem;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/%3E%3Cpath d='M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.235.235 0 0 1 .02-.022z'/%3E%3C/svg%3E");
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+.field.square .field-checkbox.c-line-lg .field-icon, .field .square .field-checkbox.c-line-lg .field-icon {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  min-width: 2rem;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z'/%3E%3C/svg%3E");
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+.field.s-line input[type=checkbox]:checked ~ .field-icon, .field .s-line input[type=checkbox]:checked ~ .field-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2348ff' viewBox='0 0 16 16'%3E%3Cpath d='M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z'/%3E%3Cpath d='m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z'/%3E%3C/svg%3E");
+}
+.field.s-line input[type=checkbox][readonly] ~ .field-icon, .field.s-line input[type=checkbox] .readonly ~ .field-icon, .field.s-line input[type=checkbox][disabled] ~ .field-icon, .field.s-line input[type=checkbox] .disabled ~ .field-icon, .field .s-line input[type=checkbox][readonly] ~ .field-icon, .field .s-line input[type=checkbox] .readonly ~ .field-icon, .field .s-line input[type=checkbox][disabled] ~ .field-icon, .field .s-line input[type=checkbox] .disabled ~ .field-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23999' viewBox='0 0 16 16'%3E%3Cpath d='M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z'/%3E%3Cpath d='m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z'/%3E%3C/svg%3E");
+}
+.field.s-line .field-checkbox .field-icon, .field .s-line .field-checkbox .field-icon {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  min-width: 2rem;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z'/%3E%3C/svg%3E");
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+.field.s-line .field-checkbox.s-line-lg .field-icon, .field .s-line .field-checkbox.s-line-lg .field-icon {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  min-width: 2rem;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z'/%3E%3C/svg%3E");
+  vertical-align: middle;
+  margin-right: 0.5rem;
 }
 
 .modalPop._bottom > .modalWrap, .modalPop._left > .modalWrap, .modalPop._top > .modalWrap {

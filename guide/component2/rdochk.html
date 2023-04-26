@@ -26,171 +26,123 @@
             <h1 class="cp-tit dep01">라디오/체크박스</h1>
 
             <section class="cp-content">
-                <h2 class="cp-tit dep02">Radio</h2>
-                <div class="field">
-                    <label class="field-label">text : default</label>
-                    <div class="field-outline">
-                      <div class="field-input grow _input">
-                        <input type="text" placeholder="기본동작 INPUT" title="">
-                      </div>
-                    </div>
-                    <div class="field-outline">
-                      <div class="field-input grow _input exp"><!-- .exp 클래스 추가시 input clear btn 생성되지 않음 -->
-                        <input type="text" placeholder="예외 : clear btn 없음" title="">
-                      </div>
-                    </div>
-                    <div class="field-outline readonly">
-                      <div class="field-input grow _input">
-                        <input type="text" value="readonly" readonly="readonly">
-                      </div>
-                    </div>
-                    <div class="field-outline disabled">
-                      <div class="field-input grow _input">
-                        <input type="text" placeholder="disabled" disabled="disabled">
-                      </div>
-                      <!-- <button type="button" class="field-btn _input-clear  ico ico-clear">
-                        <span class="hide">입력값삭제</span>
-                      </button> -->
-                    </div>
-                    <p class="field-msg">
-                      <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
-                    </p>
-                    <p class="field-info">
-                      <span class="ico ico-info txt-r">안내성 메세지</span>
-                    </p>
-                  </div>
-
-                  <div class="field valid">
-                    <label class="field-label">text : valid</label>
-                    <div class="field-outline">
-                      <div class="field-input grow _input">
-                        <input type="text" placeholder="placeholder">
-                      </div>
-                      <!-- <button type="button" class="field-btn _input-clear  ico ico-clear">
-                        <span class="hide">입력값삭제</span>
-                      </button> -->
-                    </div>
-                    <p class="field-msg">
-                      <span class="ico ico-error txt-r">입력값의 유효성이 정상입니다.</span>
-                    </p>
-                    <p class="field-info">
-                      <span class="ico ico-info txt-r">안내성 메세지</span>
-                    </p>
-                  </div>
-
-                  <div class="field invalid">
-                    <label class="field-label">text : invalid</label>
-                    <div class="field-outline">
-                      <div class="field-input grow _input">
-                        <input type="text" placeholder="placeholder">
-                      </div>
-                      <!-- <button type="button" class="field-btn _input-clear  ico ico-clear">
-                        <span class="hide">입력값삭제</span>
-                      </button> -->
-                    </div>
-                    <p class="field-msg">
-                      <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
-                    </p>
-                    <p class="field-info">
-                      <span class="ico ico-info txt-r">안내성 메세지</span>
-                    </p>
-                  </div>
-
-                  <div class="field">
-                    <label  class="field-label">number</label>
-                    <div class="field-outline">
-                      <div class="field-input grow _input">
-                        <input type="tel" class="_format _number" placeholder="0">
-                      </div>
-                      <!-- <button type="button" class="field-btn _input-clear  ico ico-clear">
-                        <span class="hide">입력값삭제</span>
-                      </button> -->
-                    </div>
-                    <p class="field-msg">
-                      <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
-                    </p>
-                    <p class="field-info">
-                      <span class="ico ico-info txt-r">안내성 메세지</span>
-                    </p>
-                  </div>
-
-                  <div class="field">
-                    <label class="field-label">price</label>
-                    <div class="field-outline">
-                      <div class="field-input grow _input">
-                        <input type="tel" class="_format _price alR" placeholder="₩0">
-                      </div>
-                      <!-- <button type="button" class="field-btn _input-clear  ico ico-clear">
-                        <span class="hide">입력값삭제</span>
-                      </button> -->
-                    </div>
-                    <p class="field-msg">
-                      <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
-                    </p>
-                    <p class="field-info">
-                      <span class="ico ico-info txt-r">안내성 메세지</span>
-                    </p>
-                  </div>
-
-                  <div class="field">
-                    <label class="field-label">기본형 : password</label>
-                    <div class="field-outline">
-                      <div class="field-input grow _input">
-                        <input type="password" class="_format _password" placeholder="●●●●" maxlength="4">
-                      </div>
-                    </div>
-                    <p class="field-msg">
-                      <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
-                    </p>
-                    <p class="field-info">
-                      <span class="ico ico-info txt-r">안내성 메세지</span>
-                    </p>
-                  </div>
-
-                  <div class="field">
-                    <label class="field-label">특문 커스텀 : password 부분입력</label>
-                    <div class="field-outline pw-group">
-                      <div class="field-input grow _input">
-                        <label class="_secureTxt" data-length="4" data-secureLine="2">
-                          <input type="password" class="_format _password" placeholder="" maxlength="2">
-                        </label>
-                      </div>
-                    </div>
-                    <p class="field-msg">
-                      <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
-                    </p>
-                    <p class="field-info">
-                      <span class="ico ico-info txt-r">안내성 메세지</span>
-                    </p>
-                  </div>
-
-            </section>
-
-            <section class="cp-content">
-              <h2 class="cp-tit dep02">INPUT MIX</h2>
+              <h2 class="cp-tit dep02">Checkbox</h2>
               <div class="field">
-                <label class="field-label">주민등록번호</label>
-                <div class="field-outline">
-                  <div class="field-input grow _input">
-                    <input type="text" class="_format _number" placeholder="생년월일 6자리" maxlength="6">
-                  </div>
-                  <span class="field-txt">-</span>
-                  <div class="field-input grow _input">
-                    <label class="_secureTxt _num" data-length="7" data-secureLine="1">
-                      <input type="password" class="_format _password" placeholder="" maxlength="1">
+                  <h3 class="field-label">Circle</h3>
+                  <div class="field-group">
+                    <label class="field-checkbox">
+                      <input type="checkbox">
+                      <i class="field-icon"></i>
+                      <span class="field-label">미체크</span>
+                    </label>
+                    <label class="field-checkbox">
+                      <input type="checkbox" checked="checked">
+                      <i class="field-icon"></i>
+                      <span class="field-label">체크</span>
+                    </label>
+                    <label class="field-checkbox">
+                      <input type="checkbox" readonly="readonly">
+                      <i class="field-icon"></i>
+                      <span class="field-label">readonly</span>
+                    </label>
+                    <label class="field-checkbox">
+                      <input type="checkbox" disabled="disabled">
+                      <i class="field-icon"></i>
+                      <span class="field-label">disabled</span>
                     </label>
                   </div>
                 </div>
-                <p class="field-msg">
-                  <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
-                </p>
-                <p class="field-info">
-                  <span class="ico ico-info txt-r">안내성 메세지</span>
-                </p>
-              </div>
+
+                <div class="field c-line">
+                  <h3 class="field-label">Circle line</h3>
+                  <div class="field-group">
+                    <label class="field-checkbox c-line">
+                      <input type="checkbox">
+                      <i class="field-icon"></i>
+                      <span class="field-label">미체크</span>
+                    </label>
+                    <label class="field-checkbox c-line-lg">
+                      <input type="checkbox">
+                      <i class="field-icon"></i>
+                      <span class="field-label">미체크</span>
+                    </label>
+                    <label class="field-checkbox c-line">
+                      <input type="checkbox" checked="checked">
+                      <i class="field-icon"></i>
+                      <span class="field-label">체크</span>
+                    </label>
+                    <label class="field-checkbox c-line">
+                      <input type="checkbox" readonly="readonly">
+                      <i class="field-icon"></i>
+                      <span class="field-label">readonly</span>
+                    </label>
+                    <label class="field-checkbox c-line">
+                      <input type="checkbox" disabled="disabled">
+                      <i class="field-icon"></i>
+                      <span class="field-label">disabled</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="field square">
+                  <h3 class="field-label">Square</h3>
+                  <div class="field-group">
+                    <label class="field-checkbox square">
+                      <input type="checkbox">
+                      <i class="field-icon"></i>
+                      <span class="field-label">미체크</span>
+                    </label>
+                    <label class="field-checkbox square">
+                      <input type="checkbox" checked="checked">
+                      <i class="field-icon"></i>
+                      <span class="field-label">체크</span>
+                    </label>
+                    <label class="field-checkbox square">
+                      <input type="checkbox" readonly="readonly">
+                      <i class="field-icon"></i>
+                      <span class="field-label">readonly</span>
+                    </label>
+                    <label class="field-checkbox square">
+                      <input type="checkbox" disabled="disabled">
+                      <i class="field-icon"></i>
+                      <span class="field-label">disabled</span>
+                    </label>
+                  </div>
+                </div>
+
+                
+
+                <div class="field s-line">
+                  <h3 class="field-label">Square line</h3>
+                  <div class="field-group">
+                    <label class="field-checkbox s-line">
+                      <input type="checkbox">
+                      <i class="field-icon"></i>
+                      <span class="field-label">미체크</span>
+                    </label>
+                    <label class="field-checkbox s-line-lg">
+                      <input type="checkbox">
+                      <i class="field-icon"></i>
+                      <span class="field-label">미체크</span>
+                    </label>
+                    <label class="field-checkbox s-line">
+                      <input type="checkbox" checked="checked">
+                      <i class="field-icon"></i>
+                      <span class="field-label">체크</span>
+                    </label>
+                    <label class="field-checkbox s-line">
+                      <input type="checkbox" readonly="readonly">
+                      <i class="field-icon"></i>
+                      <span class="field-label">readonly</span>
+                    </label>
+                    <label class="field-checkbox s-line">
+                      <input type="checkbox" disabled="disabled">
+                      <i class="field-icon"></i>
+                      <span class="field-label">disabled</span>
+                    </label>
+                  </div>
+                </div>
             </section>
-
-
 
         </div>
     </div>
