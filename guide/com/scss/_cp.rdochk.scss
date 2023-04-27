@@ -38,7 +38,7 @@
         &[readonly] ~ .field-icon, .readonly ~ .field-icon,
         &[disabled] ~ .field-icon, .disabled ~ .field-icon {background-image: svgIconForm(chk-circle, aaa);}
         &[disabled] ~ .field-label,
-        &[disabled] ~ .field-icon, .disabled ~ .field-icon {opacity:.5;}
+        &[disabled] ~ .field-icon, .disabled ~ .field-icon {opacity:.35;}
     }
     &-checkbox {
         @include display(flex);
@@ -239,6 +239,91 @@
             }
         }
         & ~ .field-radio {margin-left:2rem;}
+    }
+
+    &-switch {
+        & ~ .field-switch {margin-left:1rem;}
+        @include pos(relative); @include display(inline-block);
+        @include el-size(5rem, 2.4rem);
+
+        #{$field} {
+            &-icon {
+                @include pos-offset-l(0, 0) {right:0; bottom:0;}
+                @include el-size(5rem, 2.4rem);
+                cursor: pointer;
+                @include display(inline-block);                
+                background-color:$color-gray4; border-radius: 2.4rem;
+                
+                transition: .4s; -webkit-transition: .4s;
+                @include el-content(before) {
+                    
+                    @include pos-offset-l(50%, .4rem); transform: translate(0, -50%);
+                    @include el-size(1rem, 1rem);
+                    background-color:$color-white; border-radius: 50%;
+                    transition: .4s; -webkit-transition: .4s;
+                }
+                @include el-content(after) {
+                    @include pos-offset-r(50%, .6rem); transform: translate(0, -50%);
+                    transition: 1s; -webkit-transition: 1s;
+                }
+            }
+        }
+
+        input {
+            &:checked {
+                & ~ .field-icon {
+                    background-color:$color-blue; background-image:none !important;
+                    @include el-content(before) {
+                        background-color:$color-white; 
+                        @include pos-offset-l(50%, calc(100% - 1.4rem)); transform: translate(0, -50%);
+                    }
+                    @include el-content(after) {
+                        @include pos-offset-l(50%, .6rem); transform: translate(0, -50%);
+                    }
+                }
+                &[readonly] ~ .field-icon, .readonly ~ .field-icon,
+                &[disabled] ~ .field-icon, .disabled ~ .field-icon {background-image:none !important;}
+                &[readonly] ~ .field-icon, .readonly ~ .field-icon {opacity:.8;}
+            }
+            &[readonly] ~ .field-icon, .readonly ~ .field-icon,
+            &[disabled] ~ .field-icon, .disabled ~ .field-icon {background-image:none !important}
+            &[readonly] ~ .field-icon, .readonly ~ .field-icon {opacity:.8;}
+        }
+
+        &.txt {
+            #{$field} {
+                &-icon {
+                    @include el-content(after) {
+                        content:'OFF'; color:$color-white;
+                    }
+                }
+            }
+
+            input:checked ~ .field-icon {
+                @include el-content(after) {
+                    content:'ON'; color:$color-white;
+                }
+            }
+        }
+
+        &.lg {
+            @include el-size(6rem, 3.4rem);
+            #{$field} {
+                &-icon {
+                    @include pos-offset-l(0, 0) {right:0; bottom:0;}
+                    @include el-size(6rem, 3.4rem); border-radius:3.4rem;
+
+                    @include el-content(before) {
+                        @include el-size(2.4rem, 2.4rem);
+                    }
+                }
+            }
+            input:checked ~ .field-icon {
+                @include el-content(before) {
+                    @include pos-offset-l(50%, calc(100% - 2.8rem)); transform: translate(0, -50%);
+                }
+            }
+        }
     }
 
 

@@ -13,6 +13,7 @@ var COMPONENT_UI = (function (cp, $) {
             this.input();
             this.inpClearBtn();
             this.secureTxt();
+            this.inpReadonly();
         },
 
         // input Btn Clear
@@ -156,6 +157,27 @@ var COMPONENT_UI = (function (cp, $) {
             });
         },
         
+        // input:radio, input:checkbox readonly
+        inpReadonly:function() {
+            // radio, checkbox input 요소에 대한 이벤트 리스너를 등록합니다.
+            $('input[type=radio], input[type=checkbox]').each(function() {
+                // input 요소가 readonly 상태인지 확인합니다.
+                if ($(this).prop('readonly')) {
+                // input 요소의 기존 checked 상태를 저장합니다.
+                var checked = $(this).prop('checked');
+            
+                // input 요소에 대한 click 이벤트를 등록합니다.
+                $(this).on('click', function(event) {
+                    // input 요소가 readonly 상태이면, 이벤트를 취소하고 기존 checked 상태를 유지합니다.
+                    if ($(this).prop('readonly')) {
+                    event.preventDefault();
+                    $(this).prop('checked', checked);
+                    }
+                });
+                }
+            });
+  
+        }
     },
 
     cp.selectPop = {
@@ -438,7 +460,6 @@ var COMPONENT_UI = (function (cp, $) {
                 }
             });
         },
-
         
         closePop: function() {
             const self = this;

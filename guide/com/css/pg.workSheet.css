@@ -1346,7 +1346,7 @@
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23aaa' viewBox='0 0 16 16'%3E%3Cpath d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/%3E%3Cpath d='M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z'/%3E%3C/svg%3E");
 }
 .field input[type=checkbox][disabled] ~ .field-label, .field input[type=checkbox][disabled] ~ .field-icon, .field input[type=checkbox] .disabled ~ .field-icon {
-  opacity: 0.5;
+  opacity: 0.35;
 }
 .field-checkbox {
   display: flex;
@@ -1535,6 +1535,127 @@
 }
 .field-radio ~ .field-radio {
   margin-left: 2rem;
+}
+.field-switch {
+  position: relative;
+  display: inline-block;
+  width: 5rem;
+  height: 2.4rem;
+}
+.field-switch ~ .field-switch {
+  margin-left: 1rem;
+}
+.field-switch .field-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 5rem;
+  height: 2.4rem;
+  cursor: pointer;
+  display: inline-block;
+  background-color: #999;
+  border-radius: 2.4rem;
+  transition: 0.4s;
+  -webkit-transition: 0.4s;
+}
+.field-switch .field-icon::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 0.4rem;
+  transform: translate(0, -50%);
+  width: 1rem;
+  height: 1rem;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: 0.4s;
+  -webkit-transition: 0.4s;
+}
+.field-switch .field-icon::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 0.6rem;
+  transform: translate(0, -50%);
+  transition: 1s;
+  -webkit-transition: 1s;
+}
+.field-switch input:checked ~ .field-icon {
+  background-color: #2380ff;
+  background-image: none !important;
+}
+.field-switch input:checked ~ .field-icon::before {
+  content: "";
+  display: block;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: calc(100% - 1.4rem);
+  transform: translate(0, -50%);
+}
+.field-switch input:checked ~ .field-icon::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 0.6rem;
+  transform: translate(0, -50%);
+}
+.field-switch input:checked[readonly] ~ .field-icon, .field-switch input:checked .readonly ~ .field-icon, .field-switch input:checked[disabled] ~ .field-icon, .field-switch input:checked .disabled ~ .field-icon {
+  background-image: none !important;
+}
+.field-switch input:checked[readonly] ~ .field-icon, .field-switch input:checked .readonly ~ .field-icon {
+  opacity: 0.8;
+}
+.field-switch input[readonly] ~ .field-icon, .field-switch input .readonly ~ .field-icon, .field-switch input[disabled] ~ .field-icon, .field-switch input .disabled ~ .field-icon {
+  background-image: none !important;
+}
+.field-switch input[readonly] ~ .field-icon, .field-switch input .readonly ~ .field-icon {
+  opacity: 0.8;
+}
+.field-switch.txt .field-icon::after {
+  content: "";
+  display: block;
+  content: "OFF";
+  color: #fff;
+}
+.field-switch.txt input:checked ~ .field-icon::after {
+  content: "";
+  display: block;
+  content: "ON";
+  color: #fff;
+}
+.field-switch.lg {
+  width: 6rem;
+  height: 3.4rem;
+}
+.field-switch.lg .field-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 6rem;
+  height: 3.4rem;
+  border-radius: 3.4rem;
+}
+.field-switch.lg .field-icon::before {
+  content: "";
+  display: block;
+  width: 2.4rem;
+  height: 2.4rem;
+}
+.field-switch.lg input:checked ~ .field-icon::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: calc(100% - 2.8rem);
+  transform: translate(0, -50%);
 }
 
 .frame_device, .pg_layout .pg_layout_content > div, .pg_layout div::before, .pg_layout div, .pg_board_scroll > div, .pg_status_box .bar, .pg_alert_btn_set button, .panel_head, .search_title, .pg_project_status .pg_project_ing .ing, .pg_project_status .pg_project_ing, .pg_project_status pgCount > strong, .pg_project_status pgCount > span, .pg_board_tab, .btn_light_mode > i::after, .btn_light_mode > i::before, .btn_light_mode::after, .btn_light_mode::before, .btn_guide_top, .btm_btn_set, .btm_guide_top, .pg_titles h2, .pg_titles .pg_project_status, .pg_titles, #pgWrap, .pg_nav > ul > li > a, .pg_project .current::after, #pgHeader .switch > ul > li > a, #pgHeader .pg_util .btn_responsive > i > i, #pgHeader .pg_util .btn_responsive > i::after, #pgHeader .pg_util .btn_responsive > i::before, #pgHeader .pg_util .btn_responsive > i, #pgHeader .pg_util .btn_responsive::after, #pgHeader .pg_util .btn_responsive::before, #pgHeader .pg_util .btn_responsive, #pgHeader .pg_util .btn_nav span::after, #pgHeader .pg_util .btn_nav span::before, #pgHeader .pg_util .btn_nav span, #pgHeader .pg_util .pg_search #btnPgSearch, .modalPop._bottom > .modalWrap, .modalPop._left > .modalWrap, .modalPop._top > .modalWrap {
