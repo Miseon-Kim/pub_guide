@@ -1473,66 +1473,6 @@
   vertical-align: middle;
   margin-right: 0.5rem;
 }
-.field input[type=radio] {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 0;
-  visibility: hidden;
-  background-color: transparent;
-  opacity: 0;
-  border: 0;
-}
-.field input[type=radio]:checked ~ .field-icon {
-  position: relative;
-  border: 0.3rem solid #2380ff;
-}
-.field input[type=radio]:checked ~ .field-icon::before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 1rem;
-  height: 1rem;
-  background: #2380ff;
-  border-radius: 100%;
-}
-.field input[type=radio][readonly] ~ .field-icon, .field input[type=radio] .readonly ~ .field-icon, .field input[type=radio][disabled] ~ .field-icon, .field input[type=radio] .disabled ~ .field-icon {
-  background: transparent;
-  border: 0.3rem solid #aaa;
-}
-.field input[type=radio][readonly] ~ .field-icon::before, .field input[type=radio] .readonly ~ .field-icon::before, .field input[type=radio][disabled] ~ .field-icon::before, .field input[type=radio] .disabled ~ .field-icon::before {
-  content: "";
-  display: block;
-  background: #aaa;
-}
-.field input[type=radio][disabled] ~ .field-label, .field input[type=radio][disabled] ~ .field-icon, .field input[type=radio] .disabled ~ .field-icon {
-  opacity: 0.5;
-}
-.field-radio {
-  display: flex;
-}
-.field-radio .field-label {
-  display: inline-block;
-  margin-bottom: 0;
-  vertical-align: middle;
-}
-.field-radio .field-icon {
-  display: inline-block;
-  width: 2rem;
-  height: 2rem;
-  min-width: 2rem;
-  border: 0.3rem solid #666;
-  border-radius: 100%;
-  vertical-align: middle;
-  margin-right: 0.5rem;
-}
-.field-radio ~ .field-radio {
-  margin-left: 2rem;
-}
 .field-switch {
   position: relative;
   display: inline-block;
@@ -1653,6 +1593,148 @@
   top: 50%;
   left: calc(100% - 2.8rem);
   transform: translate(0, -50%);
+}
+.field input[type=radio] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+  background-color: transparent;
+  opacity: 0;
+  border: 0;
+}
+.field input[type=radio]:checked ~ .field-icon {
+  position: relative;
+  border: 0.3rem solid #2380ff;
+}
+.field input[type=radio]:checked ~ .field-icon::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1rem;
+  height: 1rem;
+  background: #2380ff;
+  border-radius: 100%;
+}
+.field input[type=radio][readonly] ~ .field-icon, .field input[type=radio] .readonly ~ .field-icon, .field input[type=radio][disabled] ~ .field-icon, .field input[type=radio] .disabled ~ .field-icon {
+  background: transparent;
+  border: 0.3rem solid #aaa;
+}
+.field input[type=radio][readonly] ~ .field-icon::before, .field input[type=radio] .readonly ~ .field-icon::before, .field input[type=radio][disabled] ~ .field-icon::before, .field input[type=radio] .disabled ~ .field-icon::before {
+  content: "";
+  display: block;
+  background: #aaa;
+}
+.field input[type=radio][disabled] ~ .field-label, .field input[type=radio][disabled] ~ .field-icon, .field input[type=radio] .disabled ~ .field-icon {
+  opacity: 0.5;
+}
+.field-radio {
+  display: flex;
+}
+.field-radio .field-label {
+  display: inline-block;
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+.field-radio .field-icon {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  min-width: 2rem;
+  border: 0.3rem solid #666;
+  border-radius: 100%;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+.field-radio ~ .field-radio {
+  margin-left: 2rem;
+}
+.field-group.opt-box {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.field-group.opt-box.chk {
+  padding-top: 3.5rem;
+}
+.field-group.opt-box .field-radio, .field-group.opt-box .field-checkbox {
+  width: 100%;
+  flex: 1;
+}
+.field-group.opt-box .field-radio:first-child .field-label, .field-group.opt-box .field-checkbox:first-child .field-label {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+.field-group.opt-box .field-radio:last-child .field-label, .field-group.opt-box .field-checkbox:last-child .field-label {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+.field-group.opt-box .field-radio ~ .field-radio, .field-group.opt-box .field-checkbox ~ .field-checkbox {
+  margin: 0;
+  margin-left: -1px;
+}
+.field-group.opt-box .field-label {
+  display: block;
+  padding: 1.5rem;
+  width: 100%;
+  text-align: center;
+  box-shadow: inset 0 0 0 0.1rem #666;
+}
+.field-group.opt-box .field-label + .field-label {
+  margin-left: -0.1rem;
+}
+.field-group.opt-box .field-checkbox {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.field-group.opt-box .field-checkbox .field-label {
+  padding: 4.5rem 1.5rem 1.5rem;
+}
+.field-group.opt-box .field-checkbox .field-icon {
+  width: 2rem;
+  height: 2rem;
+  min-width: 2rem;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/%3E%3Cpath d='M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z'/%3E%3C/svg%3E");
+  vertical-align: top;
+  margin-right: 0.5rem;
+  margin-bottom: -3.5rem;
+  z-index: 2;
+}
+.field-group.opt-box .field-checkbox ~ .field-radio {
+  margin-left: 2rem;
+}
+.field-group.opt-box input[type=radio]:checked ~ .field-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 16 16'%3E%3Cpath d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z'/%3E%3C/svg%3E");
+  border: none;
+  z-index: 2;
+}
+.field-group.opt-box input[type=radio]:checked ~ .field-icon::before {
+  content: "";
+  display: block;
+  display: none;
+}
+.field-group.opt-box input[type=radio]:checked ~ .field-label {
+  background: #2380ff;
+  box-shadow: none;
+  color: #fff;
+  z-index: 1;
+}
+.field-group.opt-box input[type=radio]:checked[readonly] ~ .field-icon, .field-group.opt-box input[type=radio]:checked .readonly ~ .field-icon, .field-group.opt-box input[type=radio]:checked[disabled] ~ .field-icon, .field-group.opt-box input[type=radio]:checked .disabled ~ .field-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23aaa' viewBox='0 0 16 16'%3E%3Cpath d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z'/%3E%3C/svg%3E");
+}
+.field-group.opt-box input[type=radio][readonly] ~ .field-icon, .field-group.opt-box input[type=radio] .readonly ~ .field-icon, .field-group.opt-box input[type=radio][disabled] ~ .field-icon, .field-group.opt-box input[type=radio] .disabled ~ .field-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23aaa' viewBox='0 0 16 16'%3E%3Cpath d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/%3E%3Cpath d='M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z'/%3E%3C/svg%3E");
+}
+.field-group.opt-box input[type=radio][disabled] ~ .field-label, .field-group.opt-box input[type=radio][disabled] ~ .field-icon, .field-group.opt-box input[type=radio] .disabled ~ .field-icon {
+  opacity: 0.35;
 }
 
 .modalPop._bottom > .modalWrap, .modalPop._left > .modalWrap, .modalPop._top > .modalWrap {

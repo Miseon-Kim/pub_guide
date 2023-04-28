@@ -202,44 +202,7 @@
         }
     }
 
-    input[type=radio] {
-        @include pos-offset-l(0,0); @include el-size(0,0);
-        visibility: hidden;
-        background-color:transparent; opacity:0; border:0;
-        &:checked ~ .field-icon {
-            // background-image: svgIconForm(chk-circle-fill, 0048ff);
-            @include pos(relative);
-            border:.3rem solid $color-blue;
-            @include el-content(before){
-                @include pos-offset-l(50%, 50%); transform: translate(-50%, -50%);
-                @include el-size(1rem, 1rem);
-                background:$color-blue; border-radius:100%;
-            }
-        }
-        &[readonly] ~ .field-icon, .readonly ~ .field-icon,
-        &[disabled] ~ .field-icon, .disabled ~ .field-icon {
-            // background-image: svgIconForm(chk-circle-fill, 999);
-            background:transparent;
-            border:.3rem solid $color-gray5;
-            @include el-content(before) {background:$color-gray5;}
-        }
-        &[disabled] ~ .field-label,
-        &[disabled] ~ .field-icon, .disabled ~ .field-icon {opacity:.5;}
-    }
-    &-radio {
-        @include display(flex);
-        #{$field} {
-            &-label {@include display(inline-block); margin-bottom:0; vertical-align:middle;}
-            &-icon {
-                @include display(inline-block);
-                @include el-size(2rem, 2rem); min-width:2rem;
-                border:.3rem solid $color-gray3; border-radius:100%;
-                // background-image: svgIconForm(chk-circle);
-                vertical-align:middle; margin-right:.5rem;
-            }
-        }
-        & ~ .field-radio {margin-left:2rem;}
-    }
+    
 
     &-switch {
         & ~ .field-switch {margin-left:1rem;}
@@ -326,5 +289,100 @@
         }
     }
 
+    input[type=radio] {
+        @include pos-offset-l(0,0); @include el-size(0,0);
+        visibility: hidden;
+        background-color:transparent; opacity:0; border:0;
+        &:checked ~ .field-icon {
+            // background-image: svgIconForm(chk-circle-fill, 0048ff);
+            @include pos(relative);
+            border:.3rem solid $color-blue;
+            @include el-content(before){
+                @include pos-offset-l(50%, 50%); transform: translate(-50%, -50%);
+                @include el-size(1rem, 1rem);
+                background:$color-blue; border-radius:100%;
+            }
+        }
+        &[readonly] ~ .field-icon, .readonly ~ .field-icon,
+        &[disabled] ~ .field-icon, .disabled ~ .field-icon {
+            // background-image: svgIconForm(chk-circle-fill, 999);
+            background:transparent;
+            border:.3rem solid $color-gray5;
+            @include el-content(before) {background:$color-gray5;}
+        }
+        &[disabled] ~ .field-label,
+        &[disabled] ~ .field-icon, .disabled ~ .field-icon {opacity:.5;}
+    }
+    &-radio {
+        @include display(flex);
+        #{$field} {
+            &-label {@include display(inline-block); margin-bottom:0; vertical-align:middle;}
+            &-icon {
+                @include display(inline-block);
+                @include el-size(2rem, 2rem); min-width:2rem;
+                border:.3rem solid $color-gray3; border-radius:100%;
+                vertical-align:middle; margin-right:.5rem;
+            }
+        }
+        & ~ .field-radio {margin-left:2rem;}
+    }
 
+    &-group {
+        &.opt-box {
+            justify-content: center; align-items: center; width: 100%; flex-wrap: wrap;
+            &.chk {padding-top:3.5rem;}
+
+            #{$field} {
+                &-radio, &-checkbox {
+                    width: 100%; flex:1;
+                    &:first-child {
+                        .field-label {border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;}
+                    }
+        
+                    &:last-child {
+                        .field-label {border-top-right-radius: .5rem; border-bottom-right-radius: .5rem;}
+                    }
+                }
+                &-radio ~ .field-radio, &-checkbox ~ .field-checkbox {margin:0; margin-left:-1px;}
+                &-label {
+                    @include display(block);
+                    padding:1.5rem; width: 100%; text-align:center;
+                    box-shadow: inset 0 0 0 .1rem $color-gray3;
+
+                    & + .field-label {margin-left: -.1rem;}
+                }
+
+                &-checkbox {
+                    @include display(inline-flex) {flex-direction:column; justify-content: center; align-items: center;}
+                    #{$field} {
+                        &-label {padding:4.5rem 1.5rem 1.5rem;}
+                        &-icon {
+                            @include el-size(2rem, 2rem); min-width:2rem;
+                            background-image: svgIconForm(chk-circle);
+                            vertical-align:top; margin-right:.5rem; margin-bottom:-3.5rem; z-index:2;
+                        }
+                    }
+                    & ~ .field-radio {margin-left:2rem;}
+                }
+            }
+
+            input[type=radio] {
+                &:checked {
+                    & ~ .field-icon {
+                        @include el-content(before){@include display(none);}
+                        background-image: svgIconForm(chk-circle-fill, fff); border:none; z-index:2;
+                    }
+                    & ~ .field-label {background:$color-blue; box-shadow:none; color:$color-white; z-index:1;}
+                    &[readonly] ~ .field-icon, .readonly ~ .field-icon,
+                    &[disabled] ~ .field-icon, .disabled ~ .field-icon {background-image: svgIconForm(chk-circle-fill, aaa);}
+                }
+                &[readonly] ~ .field-icon, .readonly ~ .field-icon,
+                &[disabled] ~ .field-icon, .disabled ~ .field-icon {background-image: svgIconForm(chk-circle, aaa);}
+                &[disabled] ~ .field-label,
+                &[disabled] ~ .field-icon, .disabled ~ .field-icon {opacity:.35;}
+            }
+            
+        }
+    }
 }
+
