@@ -216,11 +216,12 @@ var COMPONENT_UI = (function (cp, $) {
                     }
                 }
                 
+                
+                $btn.addClass('_selectTxt _rtFocus');
+                cp.modalPop.layerFocusControl($(this));
                 self.showSelect($(this));
-                $btn.addClass('_selectTxt');
             });
         },
-        
     
         showSelect: function ($btn) {
             const self = this,
@@ -250,12 +251,16 @@ var COMPONENT_UI = (function (cp, $) {
                 .animate({bottom: '0'}, 300).show();
                 $selectWrap
                 .css({'max-height':winHeight - 100 + 'px'})
-                .find(" > .modal-container").css({'max-height':winHeight - (selectTitHeight + selectBtnHeight) - 160 + 'px'});
+                .find(" > .modal-container").css({'max-height':winHeight - (selectTitHeight + selectBtnHeight) - 160 + 'px'}).attr("tabindex","0");
             } else {
                 $select
                 .css({'height': selectHeight + 'px'})
                 .animate({bottom: '0'}, 300).show();
             }
+
+            $select.attr({'aria-hidden': 'false', 'tabindex':'0'}).focus();
+            $selectWrap.attr({'role': 'dialog', 'aria-modal': 'true'})
+                    .find('h1, h2, h3, h4, h5, h6').first().attr('tabindex', '0');
 
             dimmedEl.remove(); 
             $('body').addClass('no-scroll').append(dimmedEl);
@@ -279,7 +284,7 @@ var COMPONENT_UI = (function (cp, $) {
             });
         }
     },
-
+    
     cp.modalPop = {
         constEl: {
             btnModal: "._modalBtn",
@@ -412,7 +417,7 @@ var COMPONENT_UI = (function (cp, $) {
                     })
                     .find(" > .modal-container").css({
                         'max-height':winHeight - (modalTitHeight + modalBtnHeight) - 160 + 'px'
-                    }).attr("tabindex","0");;
+                    }).attr("tabindex","0");
                 } else {
                     $modal.css({
                         'height': modalHeight + 'px',
@@ -437,8 +442,10 @@ var COMPONENT_UI = (function (cp, $) {
 
         // 탭으로 포커스 이동 시 팝업이 열린상태에서 팝업 내부해서만 돌도록 제어하는 함수
         layerFocusControl: function ($btn) {
-            var target = $btn.attr('data-modal');
-            var $modal = $('.modalPop[modal-target="' + target + '"]');
+            // var target = $btn.attr('data-modal');
+            // var $modal = $('.modalPop[modal-target="' + target + '"]');
+            const target = $btn.attr('data-modal') || $btn.attr('data-select');
+            const $modal = $('.modalPop[modal-target="' + target + '"], .modalPop[select-target="' + target + '"]');
             var $modalWrap = $modal.find("> .modalWrap");
             
             var $firstEl = $modalWrap.find('a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])').first();
@@ -619,6 +626,196 @@ var COMPONENT_UI = (function (cp, $) {
             });
         }
         
+    },
+
+    cp.toolTip = {
+        constEl: {
+            tooltip: '.tooltip',
+            content: '.tooltip-content',
+            message: '.tooltip-message',
+            close: '.tooltip-close',
+            icoTip: '.ico-tooltip',
+            top: '_top',
+            right: '_right',
+            bottom: '_bottom',
+            left: '_left',
+            active: '_is-active',
+            duration: '250ms',
+            easing: 'cubic-bezier(.86, 0, .07, 1)',
+            space: 10,
+            padding: 32
+        },
+        init() {
+            this.openTip();
+            this.closeTip();
+            $('[data-tooltip]').hover(this.showTip.bind(this), this.openTip.bind(this), this.closeTip.bind(this));
+        },
+        openTip: function() {
+            const self = this;
+            const $tooltipToggle = $('[data-toggle="tooltip"]');
+            $tooltipToggle.click(function() {
+                const $this = $(this);
+              if (!$this.hasClass('_is-active')) {
+                self.showTip(event);
+                $this.addClass('_is-active');
+              }
+            });
+          },
+          
+        closeTip() {
+          const $tooltip = $(this.constEl.tooltip);
+          
+          if ($tooltip.length) {
+            $tooltip.siblings(".ico-tooltip").removeClass(cp.toolTip.constEl.active).focus();
+            $tooltip.removeClass(this.constEl.active).remove();
+          }
+          return this;
+        },
+        
+        focusControl: function () {
+            const $tooltip = $(this.constEl.tooltip);
+            
+            const $firstEl = $tooltip.find('a, button, [tabindex]:not([tabindex="-1"])').first();
+            const $lastEl = $tooltip.find('a, button, [tabindex]:not([tabindex="-1"])').last();
+            
+            $tooltip.on("keydown", function (e) {
+                if (e.keyCode == 9) {
+                if (e.shiftKey) { // shift + tab
+                    if ($(e.target).is($firstEl)) {
+                        $lastEl.focus();
+                        e.preventDefault();
+                        }
+                    } else { // tab
+                        if ($(e.target).is($lastEl)) {
+                        $firstEl.focus();
+                        e.preventDefault();
+                        }
+                    }
+                }
+            });
+            
+        },
+        toolTipHtml(options) {
+          const directionClass = this.constEl[options.direction];
+          const messageHtml = options.message;
+          return `
+            <div class="tooltip ${directionClass}" tabindex="0" role="tooltip">
+                <span class="tooltip-arrow" aria-hidden="true"></span>
+                <div class="tooltip-content">
+                    <p class="tooltip-message">${messageHtml}</p>
+                    <a href="#" onclick="COMPONENT_UI.toolTip.closeTip()" class="ico-tooltip-close"><span class="hide">툴팁닫기</span></a>
+                </div>
+            </div>
+          `;
+        },
+        showTip(event) {
+            const self = this;
+            const $this = $(event.currentTarget);
+            const options = {
+                body:"body",
+                selector: $this,
+                container: $this.parent(),
+                direction: $this.data('direction'),
+                message: $this.data('message')
+            };
+            
+            const directionClass = this.constEl[options.direction];
+            const tooltipWrap = this.constEl[options.container];
+            $this.addClass(`${cp.toolTip.constEl.active} ${directionClass}`);            
+            
+            const $newTooltip = $(this.toolTipHtml(options));
+            if ($(options.body).find('.tooltip').length) {
+                this.closeTip();
+            }
+            $(options.container).append($newTooltip);
+            self.focusControl($(this));
+            setTimeout(function() {
+                const winW = $(window).width();
+                const winH = $(window).outerHeight();
+                const tooltipWidth = $newTooltip.outerWidth();
+                const tooltipHeight = $newTooltip.outerHeight();
+                const elWidth = $this.outerWidth();
+                const elHeight = $this.outerHeight();
+                const elOffsetT = $this.offset().top;
+                const elOffsetL = $this.offset().left;
+                let top = cp.toolTip.calcTop(options.direction, tooltipHeight, elHeight, elOffsetT, winW, winH);
+                let left = cp.toolTip.calcLeft(options.direction, tooltipWidth, elWidth, elOffsetL, winW, winH, options);
+                let right = cp.toolTip.calcRight(options.direction, tooltipWidth, elWidth, elOffsetL, winW, options);
+                
+                // 조건 추가
+                // if (elOffsetL > winW - tooltipWidth) {
+                //     options.direction = 'right';
+                //     $this.data('direction', 'right');
+                //     left = null;
+                //     right = cp.toolTip.calcRight(options.direction, tooltipWidth, elWidth, elOffsetL, options);
+                // } else if (elOffsetL + elWidth < tooltipWidth) {
+                //     options.direction = 'left';
+                //     $this.data('direction', 'left');
+                //     right = null;
+                //     left = cp.toolTip.calcLeft(options.direction, tooltipWidth, elWidth, elOffsetL, winW, winH, options);
+                // } else if (elOffsetT > winH - tooltipHeight) {
+                //     options.direction = 'top';
+                //     $this.data('direction', 'top');
+                //     top = cp.toolTip.calcTop(options.direction, tooltipHeight, elHeight, elOffsetT, winW, winH);
+                // }
+                if (options.direction === 'left' && elOffsetL > winW - tooltipWidth) {
+                    options.direction = 'right';
+                    $this.data('direction', 'right');
+                    left = null;
+                    right = cp.toolTip.calcRight(options.direction, tooltipWidth, elWidth, elOffsetL, options);
+                } else if (options.direction === 'right' && elOffsetL + elWidth < tooltipWidth) {
+                    options.direction = 'left';
+                    $this.data('direction', 'left');
+                    right = null;
+                    left = cp.toolTip.calcLeft(options.direction, tooltipWidth, elWidth, elOffsetL, winW, winH, options);
+                } else if (options.direction === 'bottom' && elOffsetT > winH - tooltipHeight) {
+                    options.direction = 'top';
+                    $this.data('direction', 'top');
+                    top = cp.toolTip.calcTop(options.direction, tooltipHeight, elHeight, elOffsetT, winW, winH);
+                }
+                
+                $newTooltip.css({
+                    top, left, right
+                });                
+                $newTooltip.addClass(cp.toolTip.constEl.active).focus();
+        
+                console.log(winW, (elOffsetL), (winW - elOffsetL));
+            }, 0);
+            
+        },
+        
+        calcTop(direction, tooltipHeight, elHeight) {
+            if (direction === 'top') {
+                return - (tooltipHeight + this.constEl.space);
+            } else if (direction === 'bottom') {
+                return elHeight + this.constEl.space;
+            } else {
+                return -(tooltipHeight / 2) + (elHeight / 2);
+            }
+        },
+        calcLeft(direction, tooltipWidth, elWidth, elOffsetL, options) {
+            if (direction === 'left') {
+                return elOffsetL + this.constEl.space;
+            } else if (direction === 'right') {
+                return
+            } else if (direction === 'bottom' || direction === 'top') {
+                if($(options.container).hasClass("c")) {
+                    return elOffsetL -(tooltipWidth / 2) - (elWidth/2);
+                } else {
+                    return
+                }
+            } else {
+                return
+            }
+        },
+        calcRight(direction, winW, elWidth, elOffsetL, options) {
+            if (direction === 'right') {
+                return winW - elWidth;
+            } else {
+                return
+            }
+        }
+        
     };
 
     cp.init = function () {
@@ -626,6 +823,7 @@ var COMPONENT_UI = (function (cp, $) {
         cp.form.init();
         cp.selectPop.init(); // 바텀시트 select
         cp.modalPop.init();
+        cp.toolTip.init();
     };
 
     cp.init();

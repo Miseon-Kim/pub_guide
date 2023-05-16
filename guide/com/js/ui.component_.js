@@ -1,927 +1,785 @@
-var namespace = 'UI';
+var COMPONENT_UI = (function (cp, $) {
 
-window[namespace] = window[namespace] || {};
-
-/* [S] USER AGENT : [REQUIRED LIBRARY] ua-parser-js */
-(function(global){
-  'use strict';
-
-  global.$window = $(window);
-  global.$document = $(document);
-  global.$html = $('html');
-  global.$body = $('body');
-
-  global.ua = function(){
-    try {
-      if (UAParser) return new UAParser();
-    }
-    catch(error){
-      console.error(`${namespace} ERROR: ${namespace}.ua is required UAParser.`);
-    }
-  }();
-
-  if (global.ua) {
-    global.isMobile = global.ua.getDevice().type === 'mobile';
-    global.isTablet = global.ua.getDevice().type === 'tablet';
-    global.isIOS = global.ua.getOS().name === 'iOS';
-    global.isAOS = global.ua.getOS().name === 'Android';
-    global.isDesktop = !global.isMobile && !global.isTablet && true;
-
-    global.isMobile && global.$html.addClass(':mobile');
-    global.isTablet && global.$html.addClass(':tablet');
-    global.isIOS && global.$html.addClass(':ios');
-    global.isAOS && global.$html.addClass(':aos');
-    global.isDesktop && global.$html.addClass(':desktop');
-  }
-}(window[namespace]));
-/* [E] USER AGENT */
-
-/* [S] COMPONENT */
-(function(global){
-  'use strict';
-
-  global.component = function(options){
-    this.options = $.extend({ on: {} }, options);
-
-    this.on = function(event, callback){
-      if (this.is('object', event)) {
-        $.each(event, function(key, value){
-          this.prop('on')[key] = value;
-        }.bind(this));
-
-        this.bind && this.bind();
-      }
-
-      if (this.is('string', event) && callback) {
-        this.prop('on')[event] = callback;
-
-        switch(event){
-          case 'init': this.bind && this.bind(); break;
-          case 'change': this.change.observe(this); break;
-          case 'scroll': this.scroll.observe(this); break;
-        }
-      }
-    };
-
-    this.is = function (type, target) {
-      return $.type(target) === type;
-    };
-
-    this.prop = function (key, value) {
-      if (value !== undefined) {
-        this.options[key] = value;
-        this.bind && this.bind();
-      }
-      else return this.options[key];
-    };
-
-    this.class = function (string) {
-      return `.${this.prop(string)}`;
-    };
-
-    this.style = function(target, string){
-      var tagname = 'style'
-        , attribute = 'data-selector'
-        , object = {};
-
-      $(`${tagname}[${attribute}=${this.prop('selector')}]`).remove();
-
-      object['text'] = string;
-      object[attribute] = this.prop('selector');
-
-      $(target).append($(`<${tagname}>`, object));
-    };
-
-    this.nearest = function($current, selector){
-      var $result;
-
-      do {
-        $current = $current.children();
-        $result = $current.filter(selector);
-      }
-      while (!$result.length && $current.length)
-
-      return $result;
-    };
-
-    this.pad = function(value, char, length, after){
-      var result = String(value);
-
-      while (result.length < length) {
-        result = after
-          ? result + String(char)
-          : String(char) + result;
-      }
-
-      return result;
-    };
-
-    this.change = {
-      observe: function(context, options){
-        if (!context.prop('on').change) return;
-
-        var config = $.extend({
-          attributes: true,
-          childList: true,
-          subtree: true,
-          characterData: true,
-          attributeOldValue: true,
-          characterDataOldValue: true
-        }, options);
-
-        this.observer && this.disconnect();
-        this.observer = new MutationObserver(context.prop('on').change);
-
-        $.each($(context.class('selector')), function(index, target){
-          this.observer.observe(target, config);
-        }.bind(this));
+  /* COMMON UI */
+  cp.form = {
+      constEl: {
+          inputDiv: $("._input"),
+          inputSelector: "._input > input:not([type='radio']):not([type='checkbox']):not(.exp input)",
+          clearSelector: "._input-clear",
+          clearBtnEl: $('<button type="button" class="field-btn _input-clear _active"><span class="hide">입력값삭제</span></button>')
       },
-      disconnect: function(){
-        this.observer && this.observer.disconnect();
+      
+      init: function() {
+          this.input();
+          this.inpClearBtn();
+          this.secureTxt();
+          this.inpReadonly();
       },
-      takeRecords: function(){
-        return this.observer && this.observer.takeRecords();
+
+      // input Btn Clear
+      input: function () {
+          const inputSelector = this.constEl.inputSelector,
+              clearSelector = this.constEl.clearSelector,
+              clearBtnEl = this.constEl.clearBtnEl;
+
+          $(inputSelector).each(function () {
+              const $inputTxt = $(this);
+
+              if ($inputTxt.prop("readonly") || $inputTxt.prop("disabled")) {
+                  return;
+              }
+
+              function activateClearBtn() {
+                  const $clearBtn = $inputTxt.parent().find(clearSelector);
+              
+                  if ($inputTxt.val()) {
+                      $clearBtn.addClass("_active");
+                      if (!$inputTxt.parent().find(clearSelector + "._active").length) {
+                          $inputTxt.css({width:"calc(100% - 2.4rem)"}).parent().append(clearBtnEl);
+                      }
+                  } else {
+                      $clearBtn.removeClass("_active");
+                      $inputTxt.css({width:""}).parent().find(clearSelector).remove();
+                  }
+              }
+              
+
+              $inputTxt
+              .on("keyup focus input", function () {
+                  activateClearBtn();
+              })
+              .on("blur", function () {
+                  setTimeout(function() {
+                      $inputTxt.css({width:""}).parent().find(clearSelector).remove();
+                  }, 1000);
+              });
+
+              activateClearBtn();
+          });
+      },
+      inpClearBtn: function () {
+          const inputSelector = this.constEl.inputSelector,
+              clearSelector = this.constEl.clearSelector;
+
+          $(document).on("mousedown touchstart keydown", clearSelector + "._active", function (e) {
+              if (e.type === "keydown" && e.which !== 13) return;
+              e.preventDefault();
+              var clearBtn = $(this),
+                  inputTxt = clearBtn.siblings(inputSelector);
+              inputTxt.css({width:"calc(100% - 2.4rem)"}).val('').focus();
+              setTimeout(function() {
+                  clearBtn.remove();
+                  inputTxt.css({width:""});
+              }, 1000);
+          });
+
+      },
+      
+      // 비밀번호 특수문자 모양
+      secureTxt: function() {
+          $('._secureTxt').each(function() {
+              function handleInputFocus(event) {
+                  var secureField = $(event.target).closest("._secureTxt");
+                  var inputField = secureField.find("input");
+                  secureField.find("i._line").css({ opacity: ".5" }).removeClass("_is-active");
+                  var value = inputField.val();
+                  var activeLines = secureField
+                                  .find("i._line")
+                                  .removeClass("_is-active")
+                                  .css({ opacity: ".5" });
+
+                  for (var i = 0; i < value.length && i < secureLine; i++) {
+                      activeLines.eq(i).addClass("_is-active").css({ opacity: "" });
+                  }
+              }
+
+              function handleInputChange(event) {
+                  var secureField = $(event.target).closest("._secureTxt");
+                  var inputField = secureField.find("input");
+                  var value = inputField.val();
+                  var activeLines = secureField.find("i._line").removeClass("_is-active").css({ opacity: ".5" });
+
+                  for (var i = 0; i < value.length && i < secureLine; i++) {
+                      activeLines.eq(i).addClass("_is-active").css({ opacity: "" });
+                  }
+              
+                  if (secureField.hasClass("_num")) {
+                      secureField.find("i._is-active, i._line")[value ? "hide" : "show"]();
+                  }
+              }
+              
+              function handleInputKeyUp(event) {
+                  if (event.keyCode === 8) {
+                      var secureField = $(event.target).closest("._secureTxt");
+                      secureField.find("i._line").eq(event.target.value.length).removeClass("_is-active");
+                  }
+              }
+              
+              var secureLine = parseInt($(this).attr("data-secureLine"));
+              var length = parseInt($(this).attr("data-length"));
+              var secureField = $(this);
+              var iTag = "";
+              
+              for (var i = 0; i < length; i++) {
+                  iTag += '<i aria-hidden="true"></i>';
+              }
+              secureField.append(iTag);
+              
+              var left = 0;
+              var space = 13;
+              var inputField = secureField.find("input");
+              
+              secureField.find("i").each(function (index) {
+              var $this = $(this);
+              $this.width($this.height());
+              $this.css("left", left + "px");
+              
+              if (index < secureLine) {
+                  $this.addClass("_line");
+              }
+              
+              left += space;
+              space = 16;
+              });
+              
+              if (secureField.hasClass("_num")) {
+                  inputField.attr("type", "tel");
+              }
+              
+              inputField.on("focus", handleInputFocus)
+                  .on("input", handleInputChange)
+                  .on("keyup", handleInputKeyUp)
+                  .on("blur", function () {
+                  if (!inputField.val()) {
+                          secureField.find("i._line").css({ opacity: "" }).removeClass("_is-active");
+                  }
+              });
+          });
+      },
+      
+      // input:radio, input:checkbox readonly
+      inpReadonly:function() {
+          // radio, checkbox input 요소에 대한 이벤트 리스너를 등록합니다.
+          $('input[type=radio], input[type=checkbox]').each(function() {
+              // input 요소가 readonly 상태인지 확인합니다.
+              if ($(this).prop('readonly')) {
+              // input 요소의 기존 checked 상태를 저장합니다.
+              var checked = $(this).prop('checked');
+          
+              // input 요소에 대한 click 이벤트를 등록합니다.
+              $(this).on('click', function(event) {
+                  // input 요소가 readonly 상태이면, 이벤트를 취소하고 기존 checked 상태를 유지합니다.
+                  if ($(this).prop('readonly')) {
+                  event.preventDefault();
+                  $(this).prop('checked', checked);
+                  }
+              });
+              }
+          });
+
       }
-    };
+  },
 
-    this.scroll = {
-      observe: function(context, options){
-        if (!context.prop('on').scroll) return;
-
-        var config = $.extend({
-          root: document,
-          rootMargin: '0px 0px 0px 0px',
-          threshold: 0
-        }, options);
-
-        this.observer && this.disconnect();
-        this.observer = new IntersectionObserver(context.prop('on').scroll, config);
-
-        $.each($(context.class('selector')), function(index, target){
-          this.observer.observe(target);
-        }.bind(this));
+  cp.selectPop = {
+      constEl: {
+          btnSelect: "._selectBtn",
+          dimmedEl: $('<div class="dimmed" aria-hidden="true"></div>')
       },
-      disconnect: function(){
-        this.observer && this.observer.disconnect();
+      init: function() {       
+          this.openSelect();
+          this.optSelect();
       },
-      takeRecords: function(){
-        return this.observer && this.observer.takeRecords();
-      },
-      unobserve: function(){
-        this.observer && this.observer.unobserve();
-      }
-    };
-  };
-}(window[namespace]));
-/* [E] COMPONENT */
-
-/* [S] MODAL */
-(function(global){
-  'use strict';
   
-  global.modal = function(){
-      var component = new global.component({
-      container: 'body',
-      selector: '_modal',
-      alert:'_alert',
-      content: '_modal-content',
-      close: '_modal-close',
-      cancel: '_modal-cancel',
-      confirm: '_modal-confirm',
-      top: '_top',
-      right: '_right',
-      bottom: '_bottom',
-      left: '_left',
-      center: '_center',
-      full: '_full',
-      active: ':active',
-      branch: ':modal',
-      duration: '250ms',
-      easing: 'cubic-bezier(.86, 0, .07, 1)',
-      focus: ':rtFocus'
-      });
+      openSelect: function () {
+          const self = this,
+              btnSelect = this.constEl.btnSelect;                
+          $(document).on('click', btnSelect, function() {
+              const $btn = $(this);
+              const target = $btn.attr('data-select');
+              const $select = $('.modalPop[select-target="' + target + '"]');
+              const $selectWrap = $select.find("> .modalWrap");
+              
+              const $activeOption = $select.find('.select-lst > li._is-active');
+              if ($activeOption.length === 0) {
+                  const btnText = $btn.text();
+                  $select.find('.select-lst > li:eq(0)').before('<li class="_is-active"><a href="javascript:;" class="sel-opt _defaultTxt">' + btnText + '</a></li>');
+              } else {
+                  const btnText = $btn.text();
+                  if ($activeOption.find('a').text() !== btnText) {
+                      $activeOption.removeClass('_is-active');
+                      const $newActiveOption = $select.find('.select-lst > li > a').filter(function() {
+                          return $(this).text() === btnText;
+                      }).parent();
+                      $newActiveOption.addClass('_is-active');
+                  } else {
+                      $activeOption.addClass('_is-active');
+                  }
+              }
+              
+              
+              $btn.addClass('_selectTxt _rtFocus');
+              cp.modalPop.layerFocusControl($(this));
+              self.showSelect($(this));
+          });
+      },
   
-      function initial(){
-      this.style(this.prop('container'), style.call(this));
-      this.prop('on').init && this.prop('on').init($(this.class('selector')));
-      }
+      showSelect: function ($btn) {
+          const self = this,
+              dimmedEl = this.constEl.dimmedEl;
+          var target = $btn.attr('data-select');
+          var $select = $('.modalPop[select-target="' + target + '"]');
+          var $selectWrap = $select.find("> .modalWrap");
+          var selectWidth = '';
+          var selectHeight = '';
   
-      function style(){
-      return `
-          ${this.class('selector')} {
-          transition: opacity ${this.prop('duration')} ${this.prop('easing')};
+          $select.addClass('_is-active').show();
+  
+          selectWidth = $select.outerWidth();
+          selectHeight = $selectWrap.outerHeight();                
+          winHeight = $(window).height();
+  
+          selectTitHeight = $selectWrap.find(" > .modal-header").outerHeight();
+          selectConHeight = $selectWrap.find(" > .modal-container").outerHeight();
+          selectBtnHeight = $selectWrap.find(" > .modal-footer").outerHeight();
+
+          if (selectHeight > winHeight) {
+              $select
+              .addClass('_scroll').css({
+                  'max-height':winHeight - 100 + 'px',
+                  'height':''
+              })
+              .animate({bottom: '0'}, 300).show();
+              $selectWrap
+              .css({'max-height':winHeight - 100 + 'px'})
+              .find(" > .modal-container").css({'max-height':winHeight - (selectTitHeight + selectBtnHeight) - 160 + 'px'}).attr("tabindex","0");
+          } else {
+              $select
+              .css({'height': selectHeight + 'px'})
+              .animate({bottom: '0'}, 300).show();
           }
-          ${this.class('selector')} ${this.class('content')} {
-          transition: all ${this.prop('duration')} ${this.prop('easing')};
-          }`;
+
+          $select.attr({'aria-hidden': 'false', 'tabindex':'0'}).focus();
+          $selectWrap.attr({'role': 'dialog', 'aria-modal': 'true'})
+                  .find('h1, h2, h3, h4, h5, h6').first().attr('tabindex', '0');
+
+          dimmedEl.remove(); 
+          $('body').addClass('no-scroll').append(dimmedEl);
+
+          $btn.addClass('_selectTxt');
+      },
+  
+      optSelect: function () {
+          const self = this;
+          $(document).on('click', '.select-lst > li > a.sel-opt', function () {
+              $(this).parent('li').addClass('_is-active').siblings().removeClass('_is-active');
+          });
+          
+          $(document).on('click', '.btn-selChoice', function () {
+              $('.modalPop .btn-close-pop').trigger('click');
+              const selectedOption = $('.select-lst > li._is-active > a.sel-opt');
+              const selectedText = selectedOption.text();
+              const selectTxtElement = $('._selectTxt');
+              selectTxtElement.text(selectedText).removeClass('_selectTxt');
+              selectedOption.addClass('sel-opt');
+          });
       }
+  },
   
-      function handlerEnd(event){}
-  
-      function handlerClick(event){
-      var $target = $(event.target);
-  
-      $target.hasClass(this.prop('cancel')) && this.prop('on').cancel && this.prop('on').cancel();
-      $target.hasClass(this.prop('confirm')) && this.prop('on').confirm && this.prop('on').confirm();
-  
-      this.hide();
-      }
-  
-      function handlerSelector(event){
-      if (!$(event.target).closest(this.class('content')).length) {
-          this.hide();
+  cp.modalPop = {
+      constEl: {
+          btnModal: "._modalBtn",
+          dimmedEl: $('<div class="dimmed" aria-hidden="true"></div>')
+      },
+      init: function() {       
+
+          this.openPop();
+          this.closePop();
+          this.toastPop();
+      },
+      
+      openPop: function () {
+          const self = this,
+              btnModal = this.constEl.btnModal;
+          $(document).on('click', btnModal, function() {
+              $(this).addClass('_rtFocus');
+              self.showModal($(this));
+              self.layerFocusControl($(this));
+          });
+      },
+      
+      showModal: function ($btn) {
+          const self = this,
+              dimmedEl = this.constEl.dimmedEl;
+          const target = $btn.attr('data-modal');
+          const $modal = $('.modalPop[modal-target="' + target + '"]');
+          var $modalWrap = $modal.find("> .modalWrap");
+          var modalWrapClass = $modal.attr('class');
+          var modalWidth = '';
+          var modalHeight = '';
+
+          modalWidth = $modal.outerWidth();              
+          winHeight = $(window).height();
+      
+          if (modalWrapClass.indexOf('_top') !== -1) {
+
+              $modal.addClass('_is-active');
+              modalHeight = $modalWrap.outerHeight();
+
+              $modalWrap.css({
+                  'height': modalHeight + 'px',
+                  'transition': 'opacity 250ms cubic-bezier(.86, 0, .07, 1)'
+              });
+              $modal.animate({
+                  top: '0'
+              }, 300).show();
+          } else if (modalWrapClass.indexOf('_left') !== -1) {
+              $modal.addClass('_is-active');
+
+              modalTitHeight = $modalWrap.find(" > .modal-header").outerHeight();
+              modalConHeight = $modalWrap.find(" > .modal-container").outerHeight();
+              modalBtnHeight = $modalWrap.find(" > .modal-footer").outerHeight();
+
+              modalConMaxHeight = winHeight - modalTitHeight - modalBtnHeight - 40                
+
+              if (modalConHeight > winHeight) {
+                  $modalWrap.css({
+                      'height': 100 + 'vh',
+                      'transition': 'opacity 250ms cubic-bezier(.86, 0, .07, 1)'
+                  }).find('> .modal-container').css({
+                      'height': modalConMaxHeight + 'px',
+                  }).attr("tabindex","0");
+                  $modal.addClass("_scroll").animate({
+                      left: '0',
+                  }, 300).show();
+              } else {
+                  // $modalWrap.css({'height': 100 + '%'});
+                  $modal.animate({
+                      left: '0',
+                      height:'100%',
+                  }, 300).show();
+              }
+
+              
+          } else if (modalWrapClass.indexOf('_center') !== -1) {
+              $modal.addClass('_is-active');
+
+              modalHeight = $modalWrap.outerHeight();
+
+              modalTitHeight = $modalWrap.find(" > .modal-header").outerHeight();
+              modalConHeight = $modalWrap.find(" > .modal-container").outerHeight();
+              modalBtnHeight = $modalWrap.find(" > .modal-footer").outerHeight();
+              
+              // 팝업 요소의 위치를 조정한다.
+              if (modalHeight > winHeight) {
+                  $modal.addClass('_scroll').css({
+                      'margin-left': -modalWidth/2 + 'px',
+                      'margin-top': -(winHeight - 100)/2 + 'px',
+                      'max-height':winHeight - 100 + 'px',
+                      'height':''
+                  }, 100).show();
+                  $modalWrap
+                  .css({
+                      'max-height':winHeight - 100 + 'px',
+                  })
+                  .find(" > .modal-container").css({
+                      'max-height':winHeight - (modalTitHeight + modalBtnHeight) - 160 + 'px'
+                  }).attr("tabindex","0");
+              } else {
+                  $modal.css({
+                      'margin-left': -modalWidth/2 + 'px',
+                      'margin-top': -modalHeight/2 + 'px',
+                      'height': modalHeight + 'px',
+                  }, 100).show();
+              }
+              
+          } else if (modalWrapClass.indexOf('_bottom') !== -1) {
+              $modal.addClass('_is-active');
+              modalHeight = $modalWrap.outerHeight();
+
+              modalTitHeight = $modalWrap.find(" > .modal-header").outerHeight();
+              modalConHeight = $modalWrap.find(" > .modal-container").outerHeight();
+              modalBtnHeight = $modalWrap.find(" > .modal-footer").outerHeight();
+
+              console.log(modalTitHeight, modalConHeight, modalBtnHeight);
+              // 팝업 요소의 위치를 조정한다.
+              if (modalHeight > winHeight) {
+                  $modal.addClass('_scroll').css({
+                      'max-height':winHeight - 100 + 'px',
+                      'height':''
+                  })
+                  .animate({
+                      'bottom': '0',
+                      'transition': 'opacity 250ms cubic-bezier(.86, 0, .07, 1)'
+                  }, 300).show();
+                  $modalWrap
+                  .css({
+                      'max-height':winHeight - 100 + 'px',
+                  })
+                  .find(" > .modal-container").css({
+                      'max-height':winHeight - (modalTitHeight + modalBtnHeight) - 160 + 'px'
+                  }).attr("tabindex","0");
+              } else {
+                  $modal.css({
+                      'height': modalHeight + 'px',
+                  })
+                  .animate({
+                      'bottom': '0',
+                      'transition': 'opacity 250ms cubic-bezier(.86, 0, .07, 1)'
+                  }, 300).show();
+              }
+
+          } 
+
+          $modal.attr({'aria-hidden': 'false', 'tabindex':'0'}).focus();
+          $modalWrap.attr({'role': 'dialog', 'aria-modal': 'true'})
+                  .find('h1, h2, h3, h4, h5, h6').first().attr('tabindex', '0');
+          // 생성된 $dimmed 제거 후 다시 추가
+          dimmedEl.remove(); 
+          $('body').addClass('no-scroll').append(dimmedEl);
+
+          
+      },
+
+      // 탭으로 포커스 이동 시 팝업이 열린상태에서 팝업 내부해서만 돌도록 제어하는 함수
+      layerFocusControl: function ($btn) {
+          // var target = $btn.attr('data-modal');
+          // var $modal = $('.modalPop[modal-target="' + target + '"]');
+          const target = $btn.attr('data-modal') || $btn.attr('data-select');
+          const $modal = $('.modalPop[modal-target="' + target + '"], .modalPop[select-target="' + target + '"]');
+          var $modalWrap = $modal.find("> .modalWrap");
+          
+          var $firstEl = $modalWrap.find('a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])').first();
+          var $lastEl = $modalWrap.find('a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])').last();
+          
+          $modalWrap.on("keydown", function (e) {
+              if (e.keyCode == 9) {
+              if (e.shiftKey) { // shift + tab
+                  if ($(e.target).is($firstEl)) {
+                      $lastEl.focus();
+                      e.preventDefault();
+                      }
+                  } else { // tab
+                      if ($(e.target).is($lastEl)) {
+                      $firstEl.focus();
+                      e.preventDefault();
+                      }
+                  }
+              }
+          });
+      },
+      
+      closePop: function() {
+          const self = this;
+          $(document).on('click', '.modalPop .btn-close-pop', function() {
+              var $modal = $(this).closest('.modalPop');
+              var $modalWrap = $modal.find("> .modalWrap");
+              var modalWrapClass = $modal.attr('class');
+              if (modalWrapClass.indexOf('_top') !== -1) {
+                  $modal.animate({
+                      top: '-100%'
+                  }, 300, function() {
+                      $modal.removeClass('_is-active').hide();
+                  });
+              } else if (modalWrapClass.indexOf('_left') !== -1) {
+                  $modal.animate({
+                      left: '-100%'
+                  }, 300, function() {
+                      $modal.removeClass('_is-active').hide();
+                  });
+                  $modalWrap
+                  .css({
+                      'max-height':'','height':'','transition':''
+                  })
+                  .find(" > .modal-container").css({
+                      'height':''
+                  }).removeAttr("tabindex");
+              } else if (modalWrapClass.indexOf('_center') !== -1) {
+                  $modal
+                  .removeClass('is-active')
+                  .css({
+                      'height':'',
+                      'max-height':''
+                  })
+                  .hide();
+                  $modalWrap
+                  .css({
+                      'max-height':'',
+                  })
+                  .find(" > .modal-container").css({
+                      'max-height':''
+                  }).removeAttr("tabindex");
+              } else if (modalWrapClass.indexOf('_bottom') !== -1) {
+                  $modal.animate({
+                      bottom: '-100%'
+                  }, 300, function() {
+                      $modal
+                      .removeClass('_is-active')
+                      .css({
+                          'height':'',
+                          'max-height':''
+                      })
+                      .hide();
+                      $modalWrap
+                      .css({
+                          'max-height':'',
+                      })
+                      .find(" > .modal-container").css({
+                          'max-height':''
+                      }).removeAttr("tabindex");
+                  });
+              }
+              
+              self.rtFocus($(this));
+
+              $modal.attr({'aria-hidden': 'true'}).removeAttr('tabindex').focus();
+              $modalWrap.attr({'aria-modal': 'false'})
+                  .find('h1, h2, h3, h4, h5, h6').first().removeAttr('tabindex');
+
+              $('body').removeClass('no-scroll');
+              $(this).closest('.modalPop').prev().focus();
+              $('.dimmed').remove();
+          });
+      },
+
+      rtFocus: function(){
+          $('._rtFocus').focus();
+          setTimeout(function() {
+              $('._rtFocus').removeClass('_rtFocus');
+          }, 1000);
+      },
+
+      // toast pop
+      toastPop: function() {
+          const self = this;
+          
+          // 토스트 팝업 생성 함수
+          function createToast(toastMsg) {
+              const toastWrapTemplate = $('<div>', {
+              'class': 'toastWrap',
+              'role': 'alert',
+              'aria-live': 'assertive',
+              'tabindex': '0'
+              }).append(
+                  $('<div>', {'class': 'toast-msg'}).html(toastMsg),
+                  $('<a>', {
+                      'class': 'btn ico-close',
+                      'href': '#',
+                      'aria-label': 'Close'
+                  }).attr("tabindex", "-1").append(
+                      $('<span>', {'class': 'hide'}).text('토스트팝업닫기')
+                  )
+              );
+          
+              $('body').append(toastWrapTemplate);
+          
+              const toast = $('.toastWrap');
+              const $icoClose = $('.ico-close');
+              
+              toast.on('keydown', function(event) {
+                  toast.addClass('_is-keyEvent');                
+                  $icoClose.addClass('_is-active').attr("tabindex", "0");
+                  if (event.key === 'Escape') {
+                      $icoClose.click();
+                  } else if (event.key === 'Tab') {
+                      event.preventDefault();
+                      const focusableElements = toast.find('.ico-close._is-active, [tabindex]');
+                      const $firstElement = focusableElements.first();
+                      const $lastElement = focusableElements.last();
+                      if (event.shiftKey) {
+                          $lastElement.focus();
+                      } else {
+                          $firstElement.focus();
+                      }
+                  }
+              });
+              
+              const closeClickHandler = function() {
+                  toast.removeClass('_is-keyEvent');
+                  
+                  toast.fadeOut(function() {
+                  if (toast.hasClass('toastWrap')) {
+                      toast.remove();
+                  }
+                  $('._toastBtn._rtFocus').focus().removeClass('_rtFocus');
+                  });
+              };
+              
+              $icoClose.on('click', closeClickHandler);
+              
+              const focusableElements = toast.find('.ico-close._is-active, [tabindex]');
+              focusableElements.first().focus();
+              
+              const timer = setTimeout(function() {
+                  if (toast.hasClass('_is-keyEvent')) {
+                      return;
+                  }
+                  closeClickHandler();
+              }, 3000);
           }
+          
+          $('._toastBtn').on('click', function() {
+              $('._toastBtn._rtFocus').removeClass('_rtFocus');
+              $(this).addClass('_rtFocus');
+          
+              const toastMsg = $(this).attr('data-toast');
+              createToast(toastMsg);
+          });
       }
-  
-      component.show = function(options){
+      
+  },
+
+  cp.toolTip = {
+      constEl: {
+          tooltip: '.tooltip',
+          content: '.tooltip-content',
+          message: '.tooltip-message',
+          close: '.tooltip-close',
+          icoTip: '.ico-tooltip',
+          top: '_top',
+          right: '_right',
+          bottom: '_bottom',
+          left: '_left',
+          active: '_is-active',
+          duration: '250ms',
+          easing: 'cubic-bezier(.86, 0, .07, 1)',
+          space: 8,
+          padding: 32
+      },
+      init() {
+        this.closeTip();
+        $('[data-tooltip]').hover(this.showTip.bind(this), this.closeTip.bind(this));
+      },
+      closeTip() {
+        const $tooltip = $(this.constEl.tooltip);
         
-      var options = $.extend({ target: null }, options);
-  
-      if ($(options.target).length) this.prop('target', $(options.target));
-      if (!this.prop('target')) this.prop('target', $(this.class('selector')).eq(0));
-      if (!this.prop('target')) return;
-  
-      $(this.class('selector')).removeClass(this.prop('active'));
-      this.prop('target').addClass(this.prop('active'));
-      // this.prop('close').css({"background":"red"});
-  
-      global.$html.addClass(this.prop('branch'));
-      global.lock.lockup();
-      global.anchor.disable(true);
-  
-      if (options.on) {
-          this.on('confirm', options.on.confirm);
-          this.on('cancel', options.on.cancel);
-      }
-  
-      this.prop('on').show && this.prop('on').show();    
-      this.change.observe(this);
-  
-      // WAH : btn-close focus in - bluewebd
-      setTimeout(function() {
-          $(options.target).find("._modal-content").attr("tabindex","0").focus();
-          // $(options.target).find(".modal-content ._modal-close ").focus();
-      }, 100);
-      
-      
-      // center modal pop auto Height - bluewebd
-      const _popAutoH = $(options.target).find(".modal-content");
-      const _innerContH = $(options.target).find(".modal-inner").outerHeight()
-          , _popHeadH = $(options.target).find(".modal-header").outerHeight()
-          , _popFootH = $(options.target).find(".modal-footer").outerHeight()
-          , _thisContH = _innerContH + _popHeadH + _popFootH        
-          , _docH = $(window).outerHeight();  
-      if (_popAutoH.hasClass("_center")) {
-          if(_docH <= _thisContH ){
-              console.log(_thisContH, _docH);
-              $(options.target).find("._center").css({"height" : "80%"}).find(".modal-main").attr("tabindex","0");
-          }
-      } else if (_popAutoH.hasClass("_bottom")) {
-        if(_docH <= _thisContH ){
-            console.log(_thisContH, _docH);
-            $(options.target).find("._bottom").css({"height" : "90%"}).find(".modal-main").attr("tabindex","0");
+        if ($tooltip.length) {
+          $tooltip.siblings(".ico-tooltip").removeClass(cp.toolTip.constEl.active).focus();
+          $tooltip.removeClass(this.constEl.active).remove();
         }
-    }
+        return this;
+      },
       
-      }; // [e] show
-  
-      component.hide = function(callback){
-      var $selector = this.prop('target') || $(this.class('selector'));
-  
-      global.$html.removeClass(this.prop('branch'));
-      global.lock.unlock();
-      global.anchor.disable(false);
-  
-      $selector.removeClass(this.prop('active')).find("._modal-content").removeAttr("tabindex");
-      callback && callback($selector);
-      this.prop('on').hide && this.prop('on').hide();
-      delete this.prop('on').confirm;
-      delete this.prop('on').cancel;
-  
-      if($selector.hasClass(this.prop('alert'))){
-        $selector.remove();
-      }
-  
-      // WAH : btn-close focus out - bluewebd
-      // WAH : return BTN
-      global.wahFocus.focusOut();
-      
-      };
-  
-      component.bind = function(options){
-      $(this.prop('container')).off('TransitionEnd webkitTransitionEnd', this.class('selector'));
-      // $(this.prop('container')).off('touchstart', this.class('selector'));
-      // $(this.prop('container')).off('click', this.class('selector')); // dimmed closing
-      $(this.prop('container')).off('click', `${this.class('selector')} ${this.class('close')}`);
-      $(this.prop('container')).off('click', `${this.class('selector')} ${this.class('cancel')}`);
-      $(this.prop('container')).off('click', `${this.class('selector')} ${this.class('confirm')}`);
-  
-      $.extend(this.options, options);
-  
-      $(this.prop('container')).on('TransitionEnd webkitTransitionEnd', this.class('selector'), handlerEnd.bind(this));
-      // $(this.prop('container')).on('touchstart', this.class('selector'), handlerSelector.bind(this));
-      // $(this.prop('container')).on('click', this.class('selector'), handlerSelector.bind(this)); // dimmed closing
-      $(this.prop('container')).on('click', `${this.class('selector')} ${this.class('close')}`, handlerClick.bind(this));
-      $(this.prop('container')).on('click', `${this.class('selector')} ${this.class('cancel')}`, handlerClick.bind(this));
-      $(this.prop('container')).on('click', `${this.class('selector')} ${this.class('confirm')}`, handlerClick.bind(this));
-  
-      initial.call(this);
-      };
-  
-      return component;
-  }();
-  }(window[namespace]));
-  /* [E] MODAL */
-
-  /* [S] MODAL - ALERT */
-(function(global){
-  'use strict';
-
-  global.alert = function(){
-    var component = new global.component({
-      container: 'body',
-      selector: '_alert',
-      confirm: '_modal-confirm',
-      cancel: '_modal-cancel'
-    });
-
-    function initial(){
-      this.prop('on').init && this.prop('on').init($(this.class('selector')));
-    }
-    
-    function html(options){
-      return `
-        <div class="modal _modal ${this.prop('selector')}">
-          <div class="modal-content _modal-content _center">
-            <div class="modal-main">
-              <div class="modal-inner alC">${options.message}</div>
-            </div>
-            <div class="modal-footer">
-              <div class="btnWrap grow">
-                <button type="button" aria-role="button" class="btn btn-size md bg ${this.prop('cancel')}">${options.cancel}</button>
-                <button type="button" aria-role="button" class="btn btn-size md bg type2 ${this.prop('confirm')}">${options.confirm}</button>
-              </div>
+      focusControl: function () {
+          const $tooltip = $(this.constEl.tooltip);
+          
+          const $firstEl = $tooltip.find('a, button, [tabindex]:not([tabindex="-1"])').first();
+          const $lastEl = $tooltip.find('a, button, [tabindex]:not([tabindex="-1"])').last();
+          
+          $tooltip.on("keydown", function (e) {
+              if (e.keyCode == 9) {
+              if (e.shiftKey) { // shift + tab
+                  if ($(e.target).is($firstEl)) {
+                      $lastEl.focus();
+                      e.preventDefault();
+                      }
+                  } else { // tab
+                      if ($(e.target).is($lastEl)) {
+                      $firstEl.focus();
+                      e.preventDefault();
+                      }
+                  }
+              }
+          });
+          
+      },
+      html(options) {
+        const directionClass = this.constEl[options.direction];
+        const messageHtml = options.message;
+        return `
+          <div class="tooltip ${directionClass}" tabindex="0">
+            <div class="tooltip-content">
+              <p class="tooltip-message">${messageHtml}</p>
+              <a href="#" onclick="COMPONENT_UI.toolTip.closeTip()" class="ico-tooltip-close"><span class="hide">툴팁닫기</span></a>
             </div>
           </div>
-        </div>`;
-    }
-
-    function handlerClick(event){
-      console.log("aaa");
-      var $target = $(event.target);
-  
-      $target.hasClass(this.prop('cancel')) && this.prop('on').cancel && this.prop('on').cancel();
-      $target.hasClass(this.prop('confirm')) && this.prop('on').confirm && this.prop('on').confirm();
-  
-      // this.hide();
-      $selector.remove();
-      }
-
-    component.show = function(options){
-      var options = $.extend({ target: this.class('selector'), message: 'message', confirm: 'confirm', cancel: null }, options)
-        , timeout;
-
-      $(this.class('selector')).remove();
-      $(this.prop('container')).append(html.call(this, options));
-
-      if (!options.cancel) $(this.class('cancel'), this.class('selector')).remove();
-
-      clearTimeout(timeout);
-
-      timeout = setTimeout(function(){
-        global.modal.show(options);
-      }, 10);
-
-      if (options.on) {
-        this.on('confirm', options.on.confirm);
-        this.on('cancel', options.on.cancel);
-      }
-
-      this.prop('on').show && this.prop('on').show();
-      this.change.observe(this);
-    };
-
-    component.hide = function(){
-      global.modal.hide(function($selector){
-        $selector.remove();
-      });
-
-      this.prop('on').hide && this.prop('on').hide();
-      delete this.prop('on').confirm;
-      delete this.prop('on').cancel;
-    };
-
-    component.bind = function(options){
-      $(this.prop('container')).off('click', `${this.class('selector')} ${this.class('cancel')}`);
-      $(this.prop('container')).off('click', `${this.class('selector')} ${this.class('confirm')}`);
-
-      $.extend(this.options, options);
-
-      $(this.prop('container')).on('click', `${this.class('selector')} ${this.class('cancel')}`, handlerClick.bind(this));
-      $(this.prop('container')).on('click', `${this.class('selector')} ${this.class('confirm')}`, handlerClick.bind(this));
-
-      initial.call(this);
-    };
-
-    return component;
-  }();
-}(window[namespace]));
-/* [E] MODAL - ALERT */
-
-/* [S] LOCK */
-(function(global){
-  'use strict';
-
-  global.lock = function(){
-    var component = new global.component({
-      html: 'html',
-      body: 'body',
-      fixed: 'guide-container',
-      branch: ':lockup'
-    });
-
-    component.lockup = function(){
-      this.prop('scroll', $(this.prop('html')).scrollTop());
-      $(this.prop('html')).addClass(this.prop('branch'));
-      $(this.class('fixed')).css('margin-top', `-${this.prop('scroll')}px`);
-
-      this.prop('on').lockup && this.prop('on').lockup();
-    };
-
-    component.unlock = function(){
-      $(this.prop('html')).removeClass(this.prop('branch'));
-      $(this.prop('html')).scrollTop(this.prop('scroll'));
-      $(this.class('fixed')).removeAttr('style');
-      this.prop('scroll', null);
-
-      this.prop('on').unlock && this.prop('on').unlock();
-    };
-
-    component.bind = function(options){
-      $.extend(this.options, options);
-    };
-
-    return component;
-  }();
-}(window[namespace]));
-/* [E] LOCK */
-
-/* [S] ANCHOR */
-(function(global){
-  global.anchor = function(){
-    var component = new global.component({
-    container: 'body',
-    scroller: 'html',
-    selector: '_anchor',
-    overflow: '_anchor-overflow',
-    button: '_anchor-button',
-    target: '_anchor-target',
-    transform: '_anchor-transform',
-    top: '_anchor-top',
-    before: '_before',
-    after: '_after',
-    active: ':active',
-    scroll: '_scroll',
-    margin: 0,
-    buffer: 20,
-    duration: 250,
-    disable: false
-    });
-
-    function initial(){
-    this.height = $(this.class('selector')).outerHeight();
-    this.prop('on').init && this.prop('on').init($(this.class('selector')));
-    }
-
-    function change(index){
-    var $overflow = $(this.class('overflow'))
-        , $buttons = $(this.class('button'))
-        , $button = $buttons.eq(index)
-        , scrollLeft = $overflow.scrollLeft() + $button.position().left + $button.outerWidth() / 2 - $overflow.width() / 2;
-
-    $buttons.removeClass(this.prop('active'));
-    $button.addClass(this.prop('active'));
-
-    $overflow.stop().animate({ scrollLeft: scrollLeft }, { duration: this.prop('duration') });
-    }
-
-    function disable(boolean, delay){
-    delay = delay || this.prop('duration');
-
-    if (boolean) {
-        this.prop('disable', boolean);
-    }
-    else {
-        clearTimeout(this.timeout);
-        this.timeout = setTimeout(function(){
-        this.prop('disable', boolean);
-        }.bind(this), delay * 1.25);
-    }
-    }
-
-    function handlerTransform(event){
-    var $selector = $(this.class('selector'))
-        , $button = $(this.class('button')).filter(function(index, button){
-        return $(button).hasClass(this.class('active'));
-        }.call(this))
-        , index = $button.length ? $button.index() : 0;
-
-    $selector.hasClass(this.prop('scroll'))
-        ? $selector.removeClass(this.prop('scroll'))
-        : $selector.addClass(this.prop('scroll'));
-
-    change.call(this, index);
-    }
-
-    function handlerClick(event){
-    var $button = $(event.target).closest(this.class('button'))
-        , $target = $($button.attr('href'))
-        , scrollTop = 0, index = 0;
-
-    if ($button.length) {
-        scrollTop = $target.position().top - this.height;
-        index = $button.index();
-    }
-
-    disable.call(this, true);
-    $(this.prop('scroller')).stop().animate({ scrollTop: scrollTop }, { duration: this.prop('duration') });
-    change.call(this, index);
-    disable.call(this, false);
-
-    event.preventDefault();
-    }
-
-    function handlerHorizontal(event){
-    var $scroller = $(event.target)
-        , $selector = $(this.class('selector'));
-
-    if ($scroller.scrollLeft() > 0) {
-        if (!$selector.hasClass(this.prop('before'))) {
-        $selector.addClass(this.prop('before'));
-        }
-    }
-    else {
-        if ($selector.hasClass(this.prop('before'))) {
-        $selector.removeClass(this.prop('before'));
-        }
-    }
-
-    if ($scroller.scrollLeft() + $scroller.width() < $scroller.prop('scrollWidth')) {
-        if (!$selector.hasClass(this.prop('after'))) {
-        $selector.addClass(this.prop('after'));
-        }
-    }
-    else {
-        if ($selector.hasClass(this.prop('after'))) {
-        $selector.removeClass(this.prop('after'));
-        }
-    }
-    }
-
-    function handlerVertical(event){
-    var $scroller = $(this.prop('scroller'))
-        , $buttons = $(this.class('button'))
-        , $targets = $(this.class('target'))
-        , scrollTop = $scroller.scrollTop() + this.height;
-
-    if (this.prop('disable')) return;
-
-    $.each($targets, function(index, target){
-        var $target = $(target);
-
-        if ($target.position().top <= scrollTop && $target.position().top + $target.outerHeight() > scrollTop) {
-        if ($buttons.eq(index).hasClass(this.prop('active'))) return;
-        change.call(this, index);
-        }
-    }.bind(this));
-
-    if ($scroller.scrollTop() + $scroller.height() - this.prop('buffer') > $scroller.prop('scrollHeight') - this.prop('buffer') * 2) {
-        if ($buttons.eq($buttons.last().index()).hasClass(this.prop('active'))) return;
-        change.call(this, $buttons.last().index());
-    }
-    }
-
-    component.disable = function(boolean){
-    disable.call(this, boolean);
-    }
-
-    component.bind = function(options){
-    $(this.prop('container')).off('click', `${this.class('selector')} ${this.class('button')}`);
-    $(this.prop('container')).off('click', `${this.class('selector')} ${this.class('top')}`);
-    $(this.prop('container')).off('click', `${this.class('selector')} ${this.class('transform')}`);
-    $(this.class('overflow')).off('scroll', handlerHorizontal);
-    global.$window.off('scroll', handlerVertical);
-
-    $.extend(this.options, options);
-
-    $(this.prop('container')).on('click', `${this.class('selector')} ${this.class('button')}`, handlerClick.bind(this)).click();
-    $(this.prop('container')).on('click', `${this.class('selector')} ${this.class('top')}`, handlerClick.bind(this));
-    $(this.prop('container')).on('click', `${this.class('selector')} ${this.class('transform')}`, handlerTransform.bind(this));
-    $(this.class('overflow')).on('scroll', handlerHorizontal.bind(this)).scroll();
-    global.$window.on('scroll', handlerVertical.bind(this));
-
-    initial.call(this);
-    };
-
-    return component;
-}();
-}(window[namespace]));
-/* [E] ANCHOR */
-
-/* [S] TOOLTIP */
-(function(global){
-  'use strict';
-
-  global.tooltip = function(){
-    var component = new global.component({
-      container: 'body',
-      selector: '_toolTip',
-      content: '_toolTip-content',
-      message: '_toolTip-message',
-      close: '_toolTip-close',
-      top: '_top',
-      right: '_right',
-      bottom: '_bottom',
-      left: '_left',
-      active: ':active',
-      duration: '250ms',
-      easing: 'cubic-bezier(.86, 0, .07, 1)',
-      direction: 'top',
-      space: 8,
-      padding: 32
-    });
-
-    function initial(){
-      this.style(this.prop('container'), style.call(this));
-      this.prop('on').init && this.prop('on').init($(this.class('selector')));
-    }
-
-    function style(){
-      return `
-        ${this.class('selector')} ${this.class('content')} {
-          transition: opacity ${this.prop('duration')} ${this.prop('easing')};
-        }`;
-    }
-
-    function html(options){
-      var html = `
-      <div class="_toolTip" tabindex="0">
-        <span class="toolTip-content ${this.prop('content')} ${this.prop(options.direction)}">
-          <button type="button" aria-role="button" class="${this.prop('close')}">
-            <span class="hide">창닫기</span>
-          </button>
+        `;
+      },
+      showTip(event) {
+          const self = this;
+          const $this = $(event.currentTarget);
+          // _is-active 클래스가 존재하는 경우 함수 종료
+          if ($this.hasClass('ico-tooltip _is-active')) {
+              return;
+          }
           
-          <span class="toolTip-message ${this.prop('message')}">
-            ${options.message}
-          </span>
-        </span>
-        
-      </div>`;
-
-      return css.call(this, options, html);
-    }
-
-    function css(options, markup){
-      var $html = $(markup)
-        , $target = $(options.selector)
-        , width = function(){
-          var deviceWidth = global.$window.width();
-
-          switch(options.direction){
-            case 'top':
-            case 'bottom': return deviceWidth - options.padding * 2;
-            case 'left': return deviceWidth - options.padding - options.space - (deviceWidth - $target.offset().left);
-            case 'right': return deviceWidth - options.padding - options.space - $target.offset().left - $target.outerWidth();
+          const options = {
+              body:"body",
+              selector: $this,
+              container: $this.parent(),
+              direction: $this.data('direction'),
+              message: $this.data('message')
+          };
+          const directionClass = this.constEl[options.direction];
+          $this.addClass(`${cp.toolTip.constEl.active} ${directionClass}`);
+          
+          
+          const $newTooltip = $(this.html(options));
+          if ($(options.body).find('.tooltip').length) {
+              this.closeTip();
           }
-        }()
-        , left = function(){
-          switch(options.direction){
-            case 'top':
-            case 'bottom': return - ($target.offset().left + $target.outerWidth() / 2) + (width / 2) + options.padding;
-            case 'left':
-            case 'right': return 0;
+          $(options.container).append($newTooltip);
+          self.focusControl($(this));
+          setTimeout(function() {
+              const tooltipWidth = $newTooltip.outerWidth();
+              const tooltipHeight = $newTooltip.outerHeight();
+              const elWidth = $this.outerWidth();
+              const elHeight = $this.outerHeight();
+              const elOffsetT = $this.offset().top;
+              const elOffsetL = $this.offset().left;
+              const top = cp.toolTip.calcTop(options.direction, tooltipHeight, elHeight, elOffsetT);
+              const left = cp.toolTip.calcLeft(options.direction, tooltipWidth, elWidth, elOffsetL);
+              const right = cp.toolTip.calcRight(options.direction, tooltipWidth, elWidth, elOffsetL);
+              $newTooltip.css({
+                  top, left, right
+              });
+              // alert(elOffsetL);
+              $newTooltip.addClass(cp.toolTip.constEl.active).focus();
+          }, 0);
+      },
+      calcTop(direction, tooltipHeight, elHeight) {
+          if (direction === 'top') {
+              return - (tooltipHeight + this.constEl.space);
+          } else if (direction === 'bottom') {
+              return elHeight + this.constEl.space;
+          } else {
+              return -(tooltipHeight / 2) + (elHeight / 2);
           }
-        }()
-        , translate = function(){
-          switch(options.direction){
-            case 'top': return `translateY(calc(-100% - ${this.prop('space')}px))`;
-            case 'bottom': return `translateY(calc(100% + ${this.prop('space')}px))`;
-            case 'left': return `translateX(calc(-100% - ${this.prop('space')}px))`;
-            case 'right': return `translateX(calc(100% + ${this.prop('space')}px))`;
+      },
+      calcLeft(direction, tooltipWidth, elWidth, elOffsetL) {
+          if (direction === 'left') {
+              return elOffsetL + this.constEl.space;
+          } else if (direction === 'right') {
+              return
+          } else {
+              // return elOffsetL -(tooltipWidth / 2) - (elWidth/2);
+              return
           }
-        }.call(this);
-
-        $html.css({ width: width });
-        // $html.css({ transform: translate, width: width });
-        $(this.class('message'), $html).css({ width: width, left: left });
-
-      return $html;
-    }
-
-    function handlerEnd(event){
-      if (!$(event.target).hasClass(this.prop('active'))) {
-        $(event.target).unwrap().remove();
-        this.prop('on').hide && this.prop('on').hide();
+      },
+      calcRight(direction, tooltipWidth, elWidth, elOffsetL) {
+          if (direction === 'left') {
+              return
+          } else if (direction === 'right') {
+              return elWidth + this.constEl.space;
+          } else if (direction === 'top') {
+              return
+          } else {
+              return
+          }
       }
-    }
-
-    function handlerClick(event){
-      var $target = $(event.target);
-      // $target.remove();
-
-      this.hide();
-    }
-
-    component.show = function(options){
-      var options = $.extend({
-          selector: null,
-          message: 'message',
-          direction: this.prop('direction'),
-          padding: this.prop('padding'),
-          space: this.prop('space')
-        }, options);
-
-      if (!options.selector) return;
-      if ($(options.selector).closest(this.class('selector')).length) return this.hide();
-
-      $(this.class('content')).unwrap().remove();
-
-      $(options.selector).wrap($('<a>', { class: this.prop('selector') }));
-      $(options.selector).after(html.call(this, options));
-
-      clearTimeout(this.timeout);
       
-      const _objH = $(this.class('message')).outerHeight()
-          , _objMarginT = -_objH/2;
-      this.timeout = setTimeout(function(){
-        // $(this.class('content')).addClass(this.prop('active'));
-        $(this.class('content')).addClass(this.prop('active')).css({"height":_objH});
-      }.bind(this), 10);
 
-      this.prop('on').show && this.prop('on').show();
+      
     };
+    
 
-    component.hide = function(){
-      $(this.class('content')).removeClass(this.prop('active'));
-      $(this.class('content')).unwrap().remove();
-    };
-
-    component.bind = function(options){
-      $(this.prop('container')).off('TransitionEnd webkitTransitionEnd', `${this.class('selector')} ${this.class('content')}`);
-      $(this.prop('container')).off('click', `${this.class('selector')} ${this.class('close')}`);
-
-      $.extend(this.options, options);
-
-      $(this.prop('container')).on('TransitionEnd webkitTransitionEnd', `${this.class('selector')} ${this.class('content')}`, handlerEnd.bind(this));
-      $(this.prop('container')).on('click', `${this.class('selector')} ${this.class('close')}`, handlerClick.bind(this));
-
-      initial.call(this);
-    };
-
-    return component;
-  }();
-}(window[namespace]));
-/* [E] TOOLTIP */
-
-/* [S] TOAST */
-(function(global){
-  'use strict';
-
-  global.toast = function(){
-    var component = new global.component({
-      container: 'body',
-      selector: '_toast',
-      message: '_toast-message',
-      active: ':active',
-      duration: '250ms',
-      easing: 'cubic-bezier(.86, 0, .07, 1)',
-      delay: 3000
-    });
-
-    function initial(){
-      this.style(this.prop('container'), style.call(this));
-      this.prop('on').init && this.prop('on').init($(this.class('selector')));
-    }
-
-    function style(){
-      return `
-        ${this.class('selector')} {
-          transition: opacity ${this.prop('duration')} ${this.prop('easing')};
-        }`;
-    }
-
-    function html(options){
-      var html = `
-        <div class="${this.prop('selector')}">
-          <p class="${this.prop('message')}">${options.message}</p>
-        </div>`;
-
-      return html;
-    }
-
-    function handlerEnd(event){
-      if (!$(event.target).hasClass(this.prop('active'))) {
-        $(event.target).remove();
-      }
-    }
-
-    component.show = function(options){
-      var options = $.extend({ message: 'message', delay: this.prop('delay') }, options);
-
-      $(this.class('selector')).remove();
-      $(this.prop('container')).append(html.call(this, options));
-
-      setTimeout(function(){
-        $(this.class('selector')).addClass(this.prop('active'));
-
-        clearTimeout(this.timeout);
-
-        this.timeout = setTimeout(function(){
-          $(this.class('selector')).removeClass(this.prop('active'));
-        }.bind(this), options.delay);
-      }.bind(this), 10);
-
-      this.prop('on').show && this.prop('on').show();
-    };
-
-    component.bind = function(options){
-      $(this.prop('container')).off('TransitionEnd webkitTransitionEnd', this.class('selector'));
-
-      $.extend(this.options, options);
-
-      $(this.prop('container')).on('TransitionEnd webkitTransitionEnd', this.class('selector'), handlerEnd.bind(this));
-
-      initial.call(this);
-    };
-
-    return component;
-  }();
-}(window[namespace]));
-/* [E] TOAST */
-
-/* [S] WAH : FOCUS */
-$(function(global) {
-  // WAH : return BTN
-  const _rtBtn = $('[data-focus="true"]');
-  _rtBtn.on("click", function(){
-    var _thisBtn = $(this);
-    _thisBtn.addClass("_rtFocus");
-  });
-});
-
-(function(global){
-'use strict';
-
-global.wahFocus = function(){
-  var component = new global.component({
-    body: 'body',
-    rtBtn: '[data-focus="true"]',
-    focus: '_rtFocus'
-  });
-
-  component.focusOut = function(){
-    const _rtBtn = $('._rtFocus');
-      setTimeout(function() {
-        _rtBtn.removeClass('_rtFocus').focus();
-    }, 100)
-    this.prop('on').focusOut && this.prop('on').focusOut();
+  cp.init = function () {
+      // cp.frontUI.init();
+      cp.form.init();
+      cp.selectPop.init(); // 바텀시트 select
+      cp.modalPop.init();
+      cp.toolTip.init();
   };
 
-  component.bind = function(options){
-    $.extend(this.options, options);
-  };
-
-  return component;
-}();
-}(window[namespace]));
-
-/* [E] WAH : FOCUS */
-
-
-/* [S] INITIALIZE */
-$(function(global){
-  global.initial = function(){
-      this.wahFocus.bind();
-      // this.calendar.bind();
-      // this.collapse.bind();
-      // this.tabs.bind();
-      this.modal.bind();
-      this.alert.bind();
-      // this.select.bind();
-      // this.datepicker.bind();
-      // this.pdf.bind();
-      this.lock.bind();
-      this.tooltip.bind();
-      this.toast.bind();
-      // this.dropdown.bind();
-      // this.input.bind();
-      // this.formatter.bind();
-      // this.checkbox.bind();
-      // this.graph.bind();
-      // this.progress.bind();
-      // this.anchor.bind();
-  };
-
-  global.initial();
-}(window[namespace]));
-/* [E] INITIALIZE */
+  cp.init();
+  return cp;
+}(window.COMPONENT_UI || {}, jQuery));
