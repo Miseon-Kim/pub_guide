@@ -158,13 +158,17 @@
     
     &Wrap {
         @include pos(relative);
+        &.r .tooltip {text-align: left;}
 
     }
 
+    &._right, &._left {max-width: 60%;}
+    &._top, &._bottom {max-width: calc(100% - 20px);}
+
     &-content {
-        @include pos(relative); margin-right:3rem;
+        @include pos(relative); margin-right:2rem;
         .ico-tooltip-close {
-            @include pos-offset-r(0, -3rem);
+            @include pos-offset-r(0, -2rem);
         }
         
     }
@@ -174,76 +178,51 @@
     &._is-active {@include display(block); opacity:1;}
 }
 
+%ico_tipL {
+    @include el-content(before) {
+        top:.6rem; left:auto; right:-1.7rem;
+        transform: rotate(135deg);
+    }
+}
+%ico_tipR {
+    @include el-content(before) {
+        top:.6rem; left:-1.7rem; right:auto;
+        transform: rotate(315deg);
+    }
+}
 .ico-tooltip {
     &._is-active {
         @include pos(relative);
-        &._left {
-            @include el-content(before) {
-                @include pos-offset-r(50%, -.4rem) {z-index:5;}
-                transform: translate(100%, -50%);
-                border: .6rem solid transparent;
-                border-right-color: $color-gray3;
-                border-left: 0;
-                
-            }
-            @include el-content(after) {
-                @include pos-offset-r(50%, -.5rem) {z-index:5;}
-                transform: translate(100%, -50%);
-                border: .6rem solid transparent;
-                border-right-color: $color-white;
-                border-left: 0;
-            }
-            
-        }
-        &._right {
-            @include el-content(before) {
-                @include pos-offset-l(50%, -1.6rem) {z-index:5;}
-                transform: translate(100%, -50%);
-                border: .6rem solid transparent;
-                border-left-color: $color-gray3;
-                border-right: 0;
-            }
-            @include el-content(after) {
-                @include pos-offset-l(50%, -1.7rem) {z-index:5;}
-                transform: translate(100%, -50%);
-                border: .6rem solid transparent;
-                border-left-color: $color-white;
-                border-right: 0;
-            }
-        }
-        &._top {
-            @include el-content(before) {
-                @include pos-offset-l(-.7rem, 50%);
-                transform: translate(-50%, -100%);
-                border: .6rem solid transparent;
-                border-top-color: $color-gray3;
-                border-bottom: 0;
-            }
-            @include el-content(after) {
-                @include pos-offset-l(-.8rem, 50%) {z-index:5;}
-                transform: translate(-50%, -100%);
-                border: .6rem solid transparent;
-                border-top-color: $color-white;
-                border-bottom: 0;
-            }
-        }
-        
-        &._bottom {
-            @include el-content(before) {
-                @include pos-offset-b(-1.4rem, 50%);
-                transform: translate(-50%, -100%);
-                border: .6rem solid transparent;
-                border-bottom-color: $color-gray3;
-                border-top: 0;
-            }
-            @include el-content(after) {
-                @include pos-offset-b(-1.5rem, 50%) {z-index:5;}
-                transform: translate(-50%, -100%);
-                border: .6rem solid transparent;
-                border-bottom-color: $color-white;
-                border-top: 0;
-            }
+        @include el-content(before) {
+            @include pos(absolute) {z-index:5;}
+            @include el-size(1rem, 1rem);
+            background:$color-white;
+            box-shadow: 1px 1px 0 0 $color-gray3;
         }
 
+        &._default {@extend %ico_tipL;}
+        &._left {@extend %ico_tipR;}
+        
+        &._top {
+            @include el-content(before) {
+                top:-1.7rem; left:.4rem; right:auto;
+                transform: rotate(45deg);
+            }
+        }
+        &._bottom {
+            @include el-content(before) {
+                bottom:-1.7rem; left:.4rem; right:auto;
+                transform: rotate(225deg);
+            }
+        }
+    }
+}
+
+.reverse {
+    .ico-tooltip {
+        &._is-active {
+            &._default {@extend %ico_tipR;}
+            &._left {@extend %ico_tipL;}
+        }
     }
 }

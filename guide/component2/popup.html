@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -9,6 +10,7 @@
     
     <!-- [S] PUBLISH COMMON STYLE -->
     <link rel="stylesheet" href="../com/css/cm.common.css">
+    <link rel="stylesheet" href="../com/css/cm.common_tooltip.css">
     <!-- [E] PUBLISH COMMON STYLE -->
 
     <!-- [S] PAGES - STYLE -->
@@ -106,7 +108,39 @@
             <section class="cp-content">
               <h2 class="cp-tit dep02">TOOLTIP</h2>
               <div class="tooltipWrap">
-                툴팁왼쪽툴팁왼쪽툴팁왼쪽툴팁왼쪽
+                기본형
+                <a href="javascript:;" class="ico ico-tooltip" aria-role="button"
+                  data-focus="false"
+                  data-direction="default"
+                  data-message="ToolTip Default :<br><br> 일이삼사오육칠팔구십일이삼사오<br>ToolTip message"
+                  data-toggle="tooltip">
+                  <span class="hide">툴팁</span>
+                </a>
+              </div>
+              <div class="tooltipWrap">
+                기본형 가운데 가운데가운데가운데
+                <a href="javascript:;" class="ico ico-tooltip" aria-role="button"
+                  data-focus="false"
+                  data-direction="default"
+                  data-message="ToolTip message : Default <br> ToolTip message <br> ToolTip message"
+                  data-toggle="tooltip">
+                  <span class="hide">툴팁</span>
+                </a>
+              </div>
+              <div class="tooltipWrap">
+                기본형 텍스트 길다 기본형 텍스트 길다 기본형 텍스트 길다
+                <a href="javascript:;" class="ico ico-tooltip" aria-role="button"
+                  data-focus="false"
+                  data-direction="default"
+                  data-message="ToolTip message : Default <br> ToolTip message <br> ToolTip message"
+                  data-toggle="tooltip">
+                  <span class="hide">툴팁</span>
+                </a>
+              </div>
+              
+              <hr style="height: 1px; margin: 2rem 0; border:0; border-top: 1px solid #666;">
+
+              <div class="tooltipWrap r">
                 <a href="javascript:;" class="ico ico-tooltip" aria-role="button"
                   data-focus="false"
                   data-direction="left"
@@ -114,29 +148,33 @@
                   data-toggle="tooltip">
                   <span class="hide">툴팁</span>
                 </a>
+                왼쪽형
               </div>
-              <div class="tooltipWrap">
-                툴팁왼쪽툴팁왼쪽툴팁왼쪽툴팁왼쪽툴팁왼쪽툴팁왼쪽툴팁왼쪽툴팁왼쪽툴팁왼쪽툴팁왼쪽툴팁왼쪽툴팁왼쪽
+              <div class="tooltipWrap c">
                 <a href="javascript:;" class="ico ico-tooltip" aria-role="button"
                   data-focus="false"
-                  data-direction=""
+                  data-direction="left"
                   data-message="ToolTip message : LEFT <br> ToolTip message <br> ToolTip message"
                   data-toggle="tooltip">
                   <span class="hide">툴팁</span>
                 </a>
+                센터센터
               </div>
               <div class="tooltipWrap r">
-                툴팁 오른쪽
                 <a href="javascript:;" class="ico ico-tooltip" aria-role="button"
                   data-focus="false"
-                  data-direction="right"
-                  data-message="ToolTip message : RIGHT <br> ToolTip message <br> ToolTip message"
+                  data-direction="left"
+                  data-message="ToolTip message : LEFT <br> ToolTip message <br> ToolTip message"
                   data-toggle="tooltip">
                   <span class="hide">툴팁</span>
-                </a>
+                </a> 
+                아이콘 왼쪽, 텍스트가 매우매우매우매우매우매우매우매우매우매우매우 길 경우
               </div>
+              
+              <hr style="height: 1px; margin: 2rem 0; border:0; border-top: 1px solid #666;">
+
               <div class="tooltipWrap">
-                툴팁 상단
+                위로
                 <a href="javascript:;" class="ico ico-tooltip" aria-role="button"
                   data-focus="false"
                   data-direction="top"
@@ -146,7 +184,30 @@
                 </a>
               </div>
               <div class="tooltipWrap c">
-                툴팁 하단
+                위로 c
+                <a href="javascript:;" class="ico ico-tooltip" aria-role="button"
+                  data-focus="false"
+                  data-direction="top"
+                  data-message="ToolTip message : TOP <br> ToolTip message <br> ToolTip message"
+                  data-toggle="tooltip">
+                  <span class="hide">툴팁</span>
+                </a>
+              </div>
+              <div class="tooltipWrap r">
+                <a href="javascript:;" class="ico ico-tooltip" aria-role="button"
+                  data-focus="false"
+                  data-direction="top"
+                  data-message="ToolTip message : TOP <br> ToolTip message <br> ToolTip message"
+                  data-toggle="tooltip">
+                  <span class="hide">툴팁</span>
+                </a>
+                위로 r
+              </div>
+
+              <hr style="height: 1px; margin: 2rem 0; border:0; border-top: 1px solid #666;">
+
+              <div class="tooltipWrap">
+                아래로
                 <a href="javascript:;" class="ico ico-tooltip" aria-role="button"
                   data-focus="false"
                   data-direction="bottom"
@@ -154,6 +215,28 @@
                   data-toggle="tooltip">
                   <span class="hide">툴팁</span>
                 </a>
+              </div>
+              
+              <div class="tooltipWrap c">
+                아래로 c
+                <a href="javascript:;" class="ico ico-tooltip" aria-role="button"
+                  data-focus="false"
+                  data-direction="bottom"
+                  data-message="ToolTip message : BOTTOM <br> ToolTip message <br> ToolTip message"
+                  data-toggle="tooltip">
+                  <span class="hide">툴팁</span>
+                </a>
+              </div>
+              
+              <div class="tooltipWrap r">
+                <a href="javascript:;" class="ico ico-tooltip" aria-role="button"
+                  data-focus="false"
+                  data-direction="bottom"
+                  data-message="ToolTip message : BOTTOM <br> ToolTip message <br> ToolTip message"
+                  data-toggle="tooltip">
+                  <span class="hide">툴팁</span>
+                </a>
+                아래로 r
               </div>
             </section>
 
