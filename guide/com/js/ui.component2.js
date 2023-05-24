@@ -731,39 +731,44 @@ var COMPONENT_UI = (function (cp, $) {
             setTimeout(function() {
                 const winW = $(window).width();
                 const winH = $(window).outerHeight();
-                const tooltipWidth = $newTooltip.outerWidth();
-                const tooltipHeight = $newTooltip.outerHeight();
+                const tooltipWidth = $this.siblings().outerWidth();
+                const tooltipHeight = $this.siblings().outerHeight();
                 const elWidth = $this.outerWidth();
                 const elHeight = $this.outerHeight();
                 const elOffsetT = $this.offset().top;
                 const elOffsetL = $this.offset().left;
                 let thisTooltip = $newTooltip;
 
+                
+                /* 230523 edit [s] */
                 $this.parent().removeClass('reverse');
                 if (options.direction === 'default') {//오른쪽에 노출
                     if( (elOffsetL + 20) >= (winW/3) ){
-                        cp.toolTip.calcRight(tooltipWidth,tooltipHeight,winW,elOffsetL,elOffsetT,thisTooltip);
+                        cp.toolTip.calcRight(tooltipWidth,tooltipHeight,winW,elOffsetL,thisTooltip);
                     }else{
                         $newTooltip.css({
-                            top: elOffsetT - ((tooltipHeight/2) - 10),
-                            left: elOffsetL + 30
+                            top: -((tooltipHeight/2)-10),
+                            left: elOffsetL + 10
                         }); 
                     }
                 } else if (options.direction === 'left') {//왼쪽에 노출,
                     if( (elOffsetL + 20) >= (winW/3)*2 ){
                         $newTooltip.css({
-                            top: elOffsetT - ((tooltipHeight/2) - 10),
-                            left: elOffsetL - (tooltipWidth + 10)
+                            top: -((tooltipHeight/2)-10),
+                            left: elOffsetL - (tooltipWidth + 30)
                         }); 
                     }else{
-                        cp.toolTip.calcLeft(tooltipWidth,tooltipHeight,elOffsetL,elOffsetT,thisTooltip);
+                        cp.toolTip.calcLeft(tooltipWidth,tooltipHeight,elOffsetL,thisTooltip);
                     }
                 } else if (options.direction === 'top') {//위에 노출
-                    let bottomPosT = elOffsetT - (tooltipHeight + 10);
-                    cp.toolTip.calcHorizontal(tooltipWidth,elWidth,winW,elOffsetL,thisTooltip,bottomPosT);
+                    let thisH = $this.siblings().outerHeight();
+                    let bottomPosT = -(thisH+8);
+                    let thisW = $this.siblings().outerWidth();
+                    console.log(thisW)
+                    cp.toolTip.calcHorizontal(thisW,elWidth,winW,elOffsetL,thisTooltip,bottomPosT);
                     
                 } else if (options.direction === 'bottom') {//아래 노출
-                    let bottomPosT = elOffsetT + 30;
+                    let bottomPosT = 32;
                     cp.toolTip.calcHorizontal(tooltipWidth,elWidth,winW,elOffsetL,thisTooltip,bottomPosT);
                     
                 }
@@ -776,55 +781,59 @@ var COMPONENT_UI = (function (cp, $) {
             }, 0);
             
         },
-        calcRight(tooltipWidth,tooltipHeight,winW,elOffsetL,elOffsetT,newTooltip) {
+        calcRight(tooltipWidth,tooltipHeight,winW,elOffsetL,newTooltip) {
             let $thisTooltip = newTooltip;
             if( (tooltipWidth+15) >= (winW-(elOffsetL+20)) ){
                 $thisTooltip.css({
-                    top: elOffsetT - ((tooltipHeight/2) - 10),
-                    left: elOffsetL - (tooltipWidth + 10)
+                    top: -((tooltipHeight/2)-10),
+                    left: elOffsetL - (tooltipWidth + 30)
                 }); 
                 $thisTooltip.parent().addClass('reverse')
             }else{
                 $thisTooltip.css({
-                    top: elOffsetT - ((tooltipHeight/2) - 10),
-                    left: elOffsetL + 30
+                    top: -((tooltipHeight/2)-10),
+                    left: elOffsetL + 10
                 }); 
             }
         },
-        calcLeft(tooltipWidth,tooltipHeight,elOffsetL,elOffsetT,newTooltip) {
+        calcLeft(tooltipWidth,tooltipHeight,elOffsetL,newTooltip) {
             let $thisTooltip = newTooltip;
             if( (tooltipWidth+15) >= elOffsetL ){
                 $thisTooltip.css({
-                    top: elOffsetT - ((tooltipHeight/2) - 10),
-                    left: elOffsetL + 30
+                    top: -((tooltipHeight/2)-10),
+                    left: elOffsetL + 10
                 }); 
                 $thisTooltip.parent().addClass('reverse')
             }else{
                 $thisTooltip.css({
-                    top: elOffsetT - ((tooltipHeight/2) - 10),
-                    left: elOffsetL - (tooltipWidth + 10)
+                    top: -((tooltipHeight/2)-10),
+                    left: elOffsetL - (tooltipWidth + 30)
                 }); 
             }
         },
-        calcHorizontal(tooltipWidth,elWidth,winW,elOffsetL,newTooltip,topPos) {
+        calcHorizontal(tooltipWidth,elWidth,winW,elOffsetL,newTooltip,bottomPosT) {
             let $thisTooltip = newTooltip,
-                $tops = topPos;
+                $tops = bottomPosT;
+                console.log('d',tooltipWidth)
             if( (elOffsetL + 20) >= (winW/3)*2 ){
+                console.log('right',winW,tooltipWidth)
                 $thisTooltip.css({
                     top: $tops,
-                    left: winW - tooltipWidth - 10
+                    left: winW - (tooltipWidth + 40)
                 });
             }else if( (elOffsetL + 20) <= (winW/3) ){
+                console.log('left')
                 $thisTooltip.css({
                     top: $tops,
-                    left: 10
+                    left: 0
                 });
             }else{
                 $thisTooltip.css({
                     top: $tops,
-                    left: elOffsetL - (tooltipWidth / 2) + (elWidth/2)
+                    left: elOffsetL - ((tooltipWidth / 2) + 10 )
                 });
             }
+            /* 230523 edit [e] */
         }//// 툴팁 스크립트 수정(bjh) [e]
         
     };
