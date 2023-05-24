@@ -696,7 +696,8 @@ var COMPONENT_UI = (function (cp, $) {
             
         },
         toolTipHtml(options) {
-          const directionClass = this.constEl[options.direction];
+          // const directionClass = this.constEl[options.direction];
+          const directionClass = options.direction || '_default';
           const messageHtml = options.message;
           return `
             <div class="tooltip ${directionClass}" tabindex="0" role="tooltip">
@@ -714,13 +715,13 @@ var COMPONENT_UI = (function (cp, $) {
                 body:"body",
                 selector: $this,
                 container: $this.parent(),
-                direction: $this.data('direction'),
+                direction: $this.data('direction') || '_default',
                 message: $this.data('message')
             };
             
-            const directionClass = this.constEl[options.direction];
+            const directionClass = options.direction === '_default' ? '_default' : this.constEl[options.direction];
             const tooltipWrap = this.constEl[options.container];
-            $this.addClass(`${cp.toolTip.constEl.active} ${directionClass}`);            
+            $this.addClass(`${cp.toolTip.constEl.active} ${directionClass}`);
             
             const $newTooltip = $(this.toolTipHtml(options));
             if ($(options.body).find('.tooltip').length) {
@@ -742,7 +743,7 @@ var COMPONENT_UI = (function (cp, $) {
                 
                 /* 230523 edit [s] */
                 $this.parent().removeClass('reverse');
-                if (options.direction === 'default') {//오른쪽에 노출
+                if (options.direction === 'default' || '_default') {//오른쪽에 노출
                     if( (elOffsetL + 20) >= (winW/3) ){
                         cp.toolTip.calcRight(tooltipWidth,tooltipHeight,winW,elOffsetL,thisTooltip);
                     }else{
