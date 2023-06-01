@@ -2015,7 +2015,7 @@
   opacity: 1;
 }
 
-.reverse .ico-tooltip._is-active._left::before, .ico-tooltip._is-active._default::before {
+.reverse.ico-tooltip._is-active._left::before, .ico-tooltip._is-active._default::before {
   content: "";
   display: block;
   top: 0.6rem;
@@ -2024,7 +2024,7 @@
   transform: rotate(135deg);
 }
 
-.reverse .ico-tooltip._is-active._default::before, .ico-tooltip._is-active._left::before {
+.reverse.ico-tooltip._is-active._default::before, .ico-tooltip._is-active._left::before {
   content: "";
   display: block;
   top: 0.6rem;

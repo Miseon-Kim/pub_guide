@@ -222,7 +222,7 @@
 }
 
 .reverse {
-    .ico-tooltip {
+    &.ico-tooltip {
         &._is-active {
             &._default {@extend %ico_tipR;}
             &._left {@extend %ico_tipL;}
