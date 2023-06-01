@@ -648,28 +648,37 @@ var COMPONENT_UI = (function (cp, $) {
         init() {
             this.openTip();
             this.closeTip();
+            this.toolIndex();
             $('[data-tooltip]').hover(this.showTip.bind(this), this.openTip.bind(this), this.closeTip.bind(this));
+        },
+        toolIndex() {
+            $('[data-toggle="tooltip"]').each(function(index) {
+                const num = index + 1;
+                const tooltipId = "toolTip_" + num;
+            
+                // aria-describedby 속성 설정
+                $(this).attr("aria-describedby", tooltipId);
+            });
         },
         openTip: function() {
             const self = this;
             const $tooltipToggle = $('[data-toggle="tooltip"]');
             $tooltipToggle.click(function() {
                 const $this = $(this);
-              if (!$this.hasClass('_is-active')) {
-                self.showTip(event);
-                $this.addClass('_is-active');
-              }
+                if (!$this.hasClass('_is-active')) {
+                    $(".ico-tooltip._is-active").removeClass(cp.toolTip.constEl.active).focus();
+                    self.showTip(event);
+                    $this.addClass('_is-active');
+                }
             });
-          },
-          
+        },
         closeTip() {
-          const $tooltip = $(this.constEl.tooltip);
-          
-          if ($tooltip.length) {
-            $tooltip.siblings(".ico-tooltip").removeClass(cp.toolTip.constEl.active).focus();
-            $tooltip.removeClass(this.constEl.active).remove();
-          }
-          return this;
+            const $tooltip = $(this.constEl.tooltip);
+            if ($tooltip.length) {
+                $(".ico-tooltip._is-active").removeClass(cp.toolTip.constEl.active).focus();
+                $tooltip.removeClass('_is-active').remove();
+            }
+            return this;
         },
         
         focusControl: function () {
@@ -696,18 +705,23 @@ var COMPONENT_UI = (function (cp, $) {
             
         },
         toolTipHtml(options) {
-          // const directionClass = this.constEl[options.direction];
-          const directionClass = options.direction || '_default';
-          const messageHtml = options.message;
-          return `
-            <div class="tooltip ${directionClass}" tabindex="0" role="tooltip">
-                <div class="tooltip-content">
-                    <p class="tooltip-message">${messageHtml}</p>
-                    <a href="#" onclick="COMPONENT_UI.toolTip.closeTip()" class="ico-tooltip-close"><span class="hide">툴팁닫기</span></a>
+            const directionClass = this.constEl[options.direction];
+            const messageHtml = options.message;
+        
+            //const tooltipId = $(this.constEl.tooltip).attr('aria-describedby');
+            const tooltipId = options.ariaDescribedBy;
+        
+            return `
+                <div id="${tooltipId}" class="tooltip ${directionClass}" tabindex="0" role="tooltip">
+                    <div class="tooltip-content">
+                        <p class="tooltip-message">${messageHtml}</p>
+                        <a href="javascript:void(0);" onclick="COMPONENT_UI.toolTip.closeTip()" class="ico-tooltip-close"><span class="hide">툴팁닫기</span></a>
+                    </div>
                 </div>
-            </div>
-          `;
-        },
+            `;
+        }
+        ,
+        
         showTip(event) {// 툴팁 스크립트 수정(bjh) [s]
             const self = this;
             const $this = $(event.currentTarget);
@@ -715,61 +729,61 @@ var COMPONENT_UI = (function (cp, $) {
                 body:"body",
                 selector: $this,
                 container: $this.parent(),
-                direction: $this.data('direction') || '_default',
-                message: $this.data('message')
+                direction: $this.data('direction'),
+                message: $this.data('message'),
+                ariaDescribedBy: $this.attr('aria-describedby')
             };
             
-            const directionClass = options.direction === '_default' ? '_default' : this.constEl[options.direction];
+            const directionClass = this.constEl[options.direction];
             const tooltipWrap = this.constEl[options.container];
-            $this.addClass(`${cp.toolTip.constEl.active} ${directionClass}`);
+            $this.addClass(`${cp.toolTip.constEl.active} ${directionClass}`);            
             
             const $newTooltip = $(this.toolTipHtml(options));
             if ($(options.body).find('.tooltip').length) {
                 this.closeTip();
             }
-            $(options.container).append($newTooltip);
+            $('body').append($newTooltip);
             self.focusControl($(this));
             setTimeout(function() {
                 const winW = $(window).width();
                 const winH = $(window).outerHeight();
-                const tooltipWidth = $this.siblings().outerWidth();
-                const tooltipHeight = $this.siblings().outerHeight();
+                const tooltipWidth = $(options.body).find('.tooltip').outerWidth();
+                const tooltipHeight = $(options.body).find('.tooltip').outerHeight();
                 const elWidth = $this.outerWidth();
                 const elHeight = $this.outerHeight();
                 const elOffsetT = $this.offset().top;
                 const elOffsetL = $this.offset().left;
-                let thisTooltip = $newTooltip;
+                let thisTooltip = $(options.body).find('.tooltip');
 
                 
                 /* 230523 edit [s] */
                 $this.parent().removeClass('reverse');
-                if (options.direction === 'default' || '_default') {//오른쪽에 노출
+                if (options.direction === 'default') {//오른쪽에 노출
                     if( (elOffsetL + 20) >= (winW/3) ){
-                        cp.toolTip.calcRight(tooltipWidth,tooltipHeight,winW,elOffsetL,thisTooltip);
+                        cp.toolTip.calcRight(tooltipWidth,tooltipHeight,winW,elOffsetT,elOffsetL,thisTooltip);
                     }else{
                         $newTooltip.css({
-                            top: -((tooltipHeight/2)-10),
-                            left: elOffsetL + 10
+                            top: elOffsetT - ((tooltipHeight/2) - 10),
+                            left: elOffsetL + 30
                         }); 
                     }
                 } else if (options.direction === 'left') {//왼쪽에 노출,
                     if( (elOffsetL + 20) >= (winW/3)*2 ){
                         $newTooltip.css({
-                            top: -((tooltipHeight/2)-10),
-                            left: elOffsetL - (tooltipWidth + 30)
+                            top: elOffsetT - ((tooltipHeight/2) - 10),
+                            left: elOffsetL - (tooltipWidth + 10)
                         }); 
                     }else{
-                        cp.toolTip.calcLeft(tooltipWidth,tooltipHeight,elOffsetL,thisTooltip);
+                        cp.toolTip.calcLeft(tooltipWidth,tooltipHeight,elOffsetL,elOffsetT,thisTooltip);
                     }
                 } else if (options.direction === 'top') {//위에 노출
-                    let thisH = $this.siblings().outerHeight();
-                    let bottomPosT = -(thisH+8);
-                    let thisW = $this.siblings().outerWidth();
-                    console.log(thisW)
+                    let thisH = thisTooltip.outerHeight();
+                    let bottomPosT = elOffsetT - (thisH + 10);
+                    let thisW = thisTooltip.outerWidth();
                     cp.toolTip.calcHorizontal(thisW,elWidth,winW,elOffsetL,thisTooltip,bottomPosT);
                     
                 } else if (options.direction === 'bottom') {//아래 노출
-                    let bottomPosT = 32;
+                    let bottomPosT = elOffsetT + 30;
                     cp.toolTip.calcHorizontal(tooltipWidth,elWidth,winW,elOffsetL,thisTooltip,bottomPosT);
                     
                 }
@@ -782,56 +796,55 @@ var COMPONENT_UI = (function (cp, $) {
             }, 0);
             
         },
-        calcRight(tooltipWidth,tooltipHeight,winW,elOffsetL,newTooltip) {
+        calcRight(tooltipWidth,tooltipHeight,winW,elOffsetT,elOffsetL,newTooltip) {
             let $thisTooltip = newTooltip;
             if( (tooltipWidth+15) >= (winW-(elOffsetL+20)) ){
                 $thisTooltip.css({
-                    top: -((tooltipHeight/2)-10),
-                    left: elOffsetL - (tooltipWidth + 30)
+                    top: elOffsetT - ((tooltipHeight/2) - 10),
+                    left: elOffsetL - (tooltipWidth + 10)
                 }); 
-                $thisTooltip.parent().addClass('reverse')
+                $(".ico-tooltip._is-active").addClass('reverse')
             }else{
                 $thisTooltip.css({
-                    top: -((tooltipHeight/2)-10),
-                    left: elOffsetL + 10
+                    top: elOffsetT - ((tooltipHeight/2) - 10),
+                    left: elOffsetL + 30
                 }); 
             }
         },
-        calcLeft(tooltipWidth,tooltipHeight,elOffsetL,newTooltip) {
-            let $thisTooltip = newTooltip;
+        calcLeft(tooltipWidth,tooltipHeight,elOffsetL,elOffsetT,thisTooltip) {
+            let $thisTooltip = thisTooltip;
             if( (tooltipWidth+15) >= elOffsetL ){
                 $thisTooltip.css({
-                    top: -((tooltipHeight/2)-10),
-                    left: elOffsetL + 10
+                    top: elOffsetT - ((tooltipHeight/2) - 10),
+                    left: elOffsetL + 30
                 }); 
-                $thisTooltip.parent().addClass('reverse')
+                $(".ico-tooltip._is-active").addClass('reverse')
             }else{
                 $thisTooltip.css({
-                    top: -((tooltipHeight/2)-10),
-                    left: elOffsetL - (tooltipWidth + 30)
+                    top: elOffsetT - ((tooltipHeight/2) - 10),
+                    left: elOffsetL - (tooltipWidth + 10)
                 }); 
             }
         },
-        calcHorizontal(tooltipWidth,elWidth,winW,elOffsetL,newTooltip,bottomPosT) {
-            let $thisTooltip = newTooltip,
+        calcHorizontal(tooltipWidth,elWidth,winW,elOffsetL,thisTooltip,bottomPosT) {
+            let $thisTooltip = thisTooltip,
                 $tops = bottomPosT;
-                console.log('d',tooltipWidth)
             if( (elOffsetL + 20) >= (winW/3)*2 ){
                 console.log('right',winW,tooltipWidth)
                 $thisTooltip.css({
                     top: $tops,
-                    left: winW - (tooltipWidth + 40)
+                    left: winW - tooltipWidth - 10
                 });
             }else if( (elOffsetL + 20) <= (winW/3) ){
                 console.log('left')
                 $thisTooltip.css({
                     top: $tops,
-                    left: 0
+                left: 10
                 });
             }else{
                 $thisTooltip.css({
                     top: $tops,
-                    left: elOffsetL - ((tooltipWidth / 2) + 10 )
+                    left: elOffsetL - (tooltipWidth / 2) + (elWidth/2)
                 });
             }
             /* 230523 edit [e] */

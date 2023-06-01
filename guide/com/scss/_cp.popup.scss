@@ -153,7 +153,7 @@
     @include display(none); opacity:0;
     @include pos(absolute) {z-index:1;}
     padding:1rem; background:$color-white; border:.1rem solid $color-gray3;
-    transition: opacity 250ms cubic-bezier(.86, 0, .07, 1);
+    transition: opacity .25s cubic-bezier(.86, 0, .07, 1);
 
     
     &Wrap {
@@ -191,11 +191,13 @@
     }
 }
 .ico-tooltip {
+    @include el-content(before) {opacity:0;}
     &._is-active {
         @include pos(relative);
         @include el-content(before) {
             @include pos(absolute) {z-index:5;}
             @include el-size(1rem, 1rem);
+            opacity:1;
             background:$color-white;
             box-shadow: 1px 1px 0 0 $color-gray3;
         }
@@ -207,6 +209,7 @@
             @include el-content(before) {
                 top:-1.7rem; left:.4rem; right:auto;
                 transform: rotate(45deg);
+                transition: opacity .25s cubic-bezier(.86, 0, .07, 1);
             }
         }
         &._bottom {
