@@ -1,0 +1,234 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: inherit;
+    box-sizing: border-box;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background-size: cover;
+    background-image: linear-gradient(-225deg, #000 0%, #333 100%);
+  }
+  h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -100%;
+    left: calc(50% - 50px);
+    width: 100px;
+    max-width: 600px;
+    height: 100px;
+    -webkit-text-stroke: 1px transparent;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0);
+    color: transparent;
+    background: linear-gradient(225deg, #a445b2 0%, #e30d3f 100%);
+    padding: 10px 20px;
+    font-size: 50px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+    animation: slideDown 2s;
+    -moz-animation: slideDown 2s forwards;
+    -webkit-animation: slideDown 2s forwards;
+    -o-animation: slideDown 2s forwards;
+}
+  .btn-wrap {
+    display: flex;
+    justify-content: center;
+    gap: 3vw;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 60%;
+    animation: fadeIn 2s;
+    -moz-animation: fadeIn 2s forwards;
+    -webkit-animation: fadeIn 2s;
+    -o-animation: fadeIn 2s forwards;
+  }
+  .btn-wrap a {
+    position: relative;
+    font-size: 28px;
+    font-weight: bold;
+    background: linear-gradient(-225deg, #a445b2 0%, #e30d3f 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-radius: 10px;
+    opacity: 0.9;
+    transition: all ease 0.3s;
+  }
+  .btn-wrap a::after {
+    width: 0;
+    height: 2px;
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: #fff;
+    transition: width ease-in-out 0.3s;
+    z-index: -1;
+  }
+  .btn-wrap a:hover {
+    background: none;
+    -webkit-text-fill-color: #fff;
+    color: #fff;
+    transform: scale(1.1);
+    opacity: 1;
+    transition: all ease 0.3s;
+  }
+  .btn-wrap a:hover::after {
+    width: 100%;
+    transition: width ease-in-out 0.3s;
+  }
+  footer{
+    width:100%;
+    position: fixed;
+    left:0;
+    bottom: 20px;
+    color:#999;
+    text-align: center;
+    animation: fadeIn 2s;
+    -moz-animation: fadeIn 2s forwards;
+    -webkit-animation: fadeIn 2s;
+    -o-animation: fadeIn 2s forwards;
+}
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100%{
+      opacity: 1;
+    }
+  }
+  @keyframes slideDown {
+    0% {
+      opacity: 0;
+      color: rgba(255, 255, 255, 0);
+      top: -100%;
+      border-radius: 50%;
+    }
+    80% {
+      opacity: 0.4;
+      left: calc(50% - 50px);
+      top: 37%;
+      width: 100px;
+      height: 100px;
+      color: rgba(255, 255, 255, 0);
+      transform: scale(1.2);
+      border-radius: 50%;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0);
+    }
+    100% {
+      opacity: 1;
+      left: calc(50% - 300px);
+      width: 600px;
+      height: 170px;
+      top: 34%;
+      color: rgba(255, 255, 255, 1);
+      transform: scale(1);
+      border-radius: 50px;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+    }
+  }
+  @-moz-keyframes slideDown {
+    /* Firefox */
+    0% {
+      opacity: 0;
+      color: rgba(255, 255, 255, 0);
+      top: -100%;
+      border-radius: 50%;
+    }
+    80% {
+      opacity: 0.4;
+      left: calc(50% - 50px);
+      top: 37%;
+      width: 100px;
+      height: 100px;
+      color: rgba(255, 255, 255, 0);
+      transform: scale(1.2);
+      border-radius: 50%;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0);
+    }
+    100% {
+      opacity: 1;
+      left: calc(50% - 300px);
+      width: 600px;
+      height: 170px;
+      top: 34%;
+      color: rgba(255, 255, 255, 1);
+      transform: scale(1);
+      border-radius: 50px;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+    }
+  }
+  @-webkit-keyframes slideDown {
+    /* Safari and Chrome */
+    0% {
+      opacity: 0;
+      color: rgba(255, 255, 255, 0);
+      top: -100%;
+      border-radius: 50%;
+    }
+    80% {
+      opacity: 0.4;
+      left: calc(50% - 50px);
+      top: 37%;
+      width: 100px;
+      height: 100px;
+      color: rgba(255, 255, 255, 0);
+      transform: scale(1.2);
+      border-radius: 50%;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0);
+    }
+    100% {
+      opacity: 1;
+      left: calc(50% - 300px);
+      width: 600px;
+      height: 170px;
+      top: 34%;
+      color: rgba(255, 255, 255, 1);
+      transform: scale(1);
+      border-radius: 50px;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+    }
+  }
+  @-o-keyframes slideDown {
+    /* Opera */
+    0% {
+      opacity: 0;
+      color: rgba(255, 255, 255, 0);
+      top: -100%;
+      border-radius: 50%;
+    }
+    80% {
+      opacity: 0.4;
+      left: calc(50% - 50px);
+      top: 37%;
+      width: 100px;
+      height: 100px;
+      color: rgba(255, 255, 255, 0);
+      transform: scale(1.2);
+      border-radius: 50%;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0);
+    }
+    100% {
+      opacity: 1;
+      left: calc(50% - 300px);
+      width: 600px;
+      height: 170px;
+      top: 34%;
+      color: rgba(255, 255, 255, 1);
+      transform: scale(1);
+      border-radius: 50px;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+    }
+  }
+  
