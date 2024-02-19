@@ -156,11 +156,8 @@
                 @include webfont('iconFont', 900);
             }
         }
-
         & + .btnWrap {margin-top:2rem;}
     }
-
-
 }
 
 
@@ -180,7 +177,16 @@
             }
 
             &-tit {
-                &.dep01{@include fontSize("xxl");padding-bottom:.5rem; margin-bottom:1.5rem;}
+                &.dep01{
+                    @include fontSize("xxl");padding-bottom:.5rem; margin-bottom:1.5rem;
+                    .info {
+                        @include fontSize("xs");
+                        color:#ff0000;
+                        line-height: 2rem;
+                        margin-top: 1rem;
+                        display: inline-block;
+                    }
+                }
                 &.dep02{
                     @include fontSize("lg"); background:$color-tbl-thead; padding:.5rem 1rem;
                     @include el-content(before){display:none;}

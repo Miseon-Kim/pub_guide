@@ -93,6 +93,30 @@
         .bottom {place-self: flex-end;}
     }
 
+    /* FIELD - PLACEHOLDER */
+    &._label {
+        & > #{$field} {
+            &-outline {
+                @include pos(relative) {z-index:1;}
+                padding:0 1rem;
+                flex-wrap: wrap;
+
+                & > #{$field} {
+                    &-label {
+                        @include pos-offset-l(0,0);
+                        display:flex; align-items:center;
+                        width:100%; height:100%;
+                        &._is-active {
+                            position: initial; flex:none;
+                            width:100%; margin:1rem 0 0; padding:0;
+                            font-size:var(--space-xs);
+                        }
+                    }
+                }
+            }            
+        }
+    }
+
     /* FIELD - GROUP */
     &-group {
         @include display(flex);
@@ -113,8 +137,8 @@
                 box-shadow: inset 0 0 0 .1rem $color-valid;
                 &:focus-within {box-shadow: inset 0 0 0 .2rem $color-valid;}
             }
-            &-msg {color:$color-valid;}
         }
+        & + #{$fmsg}, #{$fmsg} {color:$color-valid;}
     }
 
     &.invalid {
@@ -123,8 +147,8 @@
                 box-shadow: inset 0 0 0 .1rem $color-invalid;
                 &:focus-within {box-shadow: inset 0 0 0 .2rem $color-invalid;}
             }
-            &-msg {color:$color-invalid;}
         }
+        & + #{$fmsg}, #{$fmsg} {color:$color-invalid;}
     }
 
     /* FIELD - CURSOR */

@@ -1,0 +1,237 @@
+#{$tab} {
+	&-list-wrap {
+		@include overflow (x, auto);
+		@include pos(relative);
+		@include width(100%);
+		margin: 1.5rem auto;
+		border: 0.1rem solid $color-light-gray1;
+		border-width: 0 0 0.1rem 0;
+		white-space: nowrap;
+
+		&#{$tab} {
+			&-expand {
+				.tab-list {
+					@include width(100%);
+			
+					#{$tab} {
+						flex: 1;
+					}
+				}
+			}
+			
+			&-center {
+				.tab-list {
+					@include flex($j-content:center);
+				}
+			}
+
+			&-right {
+				.tab-list {
+					@include flex($j-content:right);
+				}
+			}
+
+			&-line-top {
+				border-width: 0.1rem 0 0 0;
+		
+				&::before {
+					bottom: auto; top: 0;
+				}
+		
+				#{$tab} {
+					& a::before {
+						top: 0;
+						bottom: auto;
+					}
+				}
+			}
+		}
+	}
+
+	&-list {
+		@include display(flex);
+		@include flex;
+		@include pos(relative);
+		min-width: fit-content;
+
+		#{$tab} {
+			@include display(block);
+			flex: none;
+			@include pos(relative);
+			color: $color-gray4;
+			@include align(text, center);
+			@include transition(.5s, color, ease-in-out);
+
+			&~#{$tab} {
+				margin-left: 2rem;
+			}
+
+			a {
+				@include display(block);
+				padding: 1rem;
+			}
+
+			&:hover a {
+				color: $color-blue3;
+			}
+
+			&#{$isActive} a {
+				color: $color-blue3;
+
+				@include el-content(before) {
+					@include pos(absolute);
+					bottom: 0;
+					@include width(0);
+					@include height(0.2rem);
+					background-color: $color-blue3;
+					animation: widthAct .3s linear forwards;
+				}
+			}
+		}
+	}
+
+	&-wrap {
+		@include pos(relative);
+	
+		&#{$tab} {
+			&-vertical {
+				@include display(flex);
+				@include flex($al-items: start);
+
+				#{$tab} {
+					&-list-wrap {
+						@include overflow (x, visible);
+						@include overflow (y, auto);
+						@include width(auto);
+						margin: 0;
+						border-width: 0 0.1rem 0.1rem 0;
+						
+						&::before {
+							@include display(none);
+						}
+					}
+
+					&-list {
+						@include flex($direction: column);
+						min-width: 9rem;
+						@include height(30rem);
+						margin-left: 0;
+		
+						#{$tab}~#{$tab} {
+							margin-left: 0;
+						}
+					}
+
+					&-contents-wrap {
+						flex: 1;
+						@include height(30rem);
+					}
+			
+					&-contents {
+						@include overflow (both, auto);
+						@include height(100%);
+					}
+				}
+			}
+
+			&-scroll,
+			&-scroll-height {
+				.tab-contents-wrap {
+					@include overflow (y, scroll);
+					@include pos(relative);
+					@include height(20rem);
+				}
+			}
+
+			&-moving {
+				.tab-list-wrap {
+					&.tab-line-top {
+						.highlight {
+							bottom: auto;
+							top: 0;
+						}
+					}
+					
+					.tab::before {
+						@include display(none);
+					}
+					
+					.highlight {
+						@include pos(absolute);
+						left: 0; bottom: 0;
+						@include width(6.4rem);
+						@include height(0.2rem);
+						background-color: $color-blue3;
+						@include transition(.2s, all, cubic-bezier(0.0, 0.0, 0.58, 1.0));
+					}
+					#{$isActive} > a::before {
+						content:inherit;
+					}
+					
+				}
+				&.tab-vertical {
+					.highlight {
+						bottom: auto;
+						left: auto;
+						right: 0;
+						@include width(0.2rem);
+						@include height(4rem);
+					}
+				}
+			}
+		}
+	
+		&:not(.tab-scroll, .tab-sticky) {
+			.tab-contents {
+				@include display(none);
+
+				&#{$isActive} {
+					@include display(block);
+				}
+			}
+		}
+	}
+
+	&-contents-wrap {
+		border: 0.1rem solid $color-valid;
+	}
+
+	&-contents {
+		padding: 3rem 5rem 5rem;
+
+		&:nth-child(even) {
+			background: $color-gray7;
+		}
+	}
+
+	&-sticky {
+		#{$tab} {
+			&-list-wrap {
+				@include pos(sticky);
+				top: 0;
+				z-index: 100;
+				background-color: $color-white;
+			}
+			&-contents-wrap {
+				border: none;
+			}
+			&-contents {
+				padding: 8rem 5rem;
+			}
+		}
+	}
+}
+
+@keyframes widthAct {
+	0% {
+		@include width(0);
+		left: 50%;
+	}
+	100% {
+		@include width(100%);
+		left: 0;
+	}
+}
+
+// 안드로이드 old 버전
+.aos_old .tab-sticky .tab-list-wrap {position: relative;}

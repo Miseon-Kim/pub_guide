@@ -20,7 +20,8 @@
         z-index:-1;
     } @else if($ir == "screen") {
         @include ir-reset(0,0);
-        font-size:1px; text-indent:-9999px;
+        font-size:1px; 
+        text-indent:-9999px;
     } 
 }
 
@@ -86,22 +87,11 @@
 	text-decoration:none;
 	color:$color;
 
-    @if ($el-type == "after") {
-        &::after {
-            @include el-content("after");
-            backface-visibility:hidden;
-            position:absolute;
-            @include eff-direction($direction);
-            @content;
-        }
-    } @else if ($el-type == "before") {
-        &::before {
-            @include el-content("before");
-            backface-visibility:hidden;
-            position:absolute;
-            @include eff-direction($direction);
-            @content;
-        }
+    @include el-content($el-type) {
+        backface-visibility:hidden;
+        position:absolute;
+        @include eff-direction($direction);
+        @content;
     }
 }
 // width, height
@@ -116,7 +106,8 @@
 }
 
 @mixin el-size ($width, $height) {
-    width:$width; height:$height;
+    width:$width; 
+    height:$height;
     @content;
 }
 @mixin fullHeight ($height:100vh)  {
@@ -176,7 +167,9 @@
 }
 
 @mixin flexgrow($grow, $shrink, $basis){
-    flex-grow:$grow; flex-shrink:$shrink; flex-basis:$basis;
+    flex-grow:$grow; 
+    flex-shrink:$shrink; 
+    flex-basis:$basis;
     @content;
 }
 
@@ -259,11 +252,15 @@
 
 @mixin btn($type) {
     border-radius:.3rem;
-    &:not(.disabled):not([disabled]):not([aria-disabled="disabled"]):focus {box-shadow:0 0 0 0.1rem rgba(0, 0, 0, .1), 0 2px 5px 0.2rem rgba(0, 0, 0, .15);}
-
+    &:not(.disabled):not([disabled]):not([aria-disabled="disabled"]):focus {
+        box-shadow:0 0 0 0.1rem rgba(0, 0, 0, .1), 0 2px 5px 0.2rem rgba(0, 0, 0, .15);
+    }
     &[aria-disabled="disabled"], &[disabled], &.disabled {
-        opacity: .5; cursor:not-allowed;
-        &:hover, &:focus {opacity: .5; box-shadow: none;}
+        opacity: .5; 
+        cursor:not-allowed;
+        &:hover, &:focus {
+            opacity: .5; box-shadow: none;
+        }
     }
     @if ($type == "line") {
         border:1px $color-gray1 solid;
@@ -276,14 +273,16 @@
             @content;
         }
         &:not(.disabled):not([disabled]):not([aria-disabled="disabled"]):focus, &.is-active {
-            background:$color-gray3; border-color:$color-gray4;
+            background:$color-gray3; 
+            border-color:$color-gray4;
             color:$color-white;
             @include transition(.2s, all, ease-in-out);
             @content;
         }
         &[aria-disabled="disabled"], &[disabled], &.disabled {
             opacity: .5;
-            background:$color-white; border-color:$color-gray1;
+            background:$color-white; 
+            border-color:$color-gray1;
             color:$color-gray1;
         }
         @content;
@@ -292,13 +291,15 @@
         background:$color-gray2;
         color:$color-white;
         &:not(.disabled):not([disabled]):not([aria-disabled="disabled"]):hover {            
-            background:$color-gray4; border-color:$color-gray4;
+            background:$color-gray4; 
+            border-color:$color-gray4;
             color:$color-gray1;
             @include transition(.2s, all, ease-in-out);
             @content;
         }
         &:not(.disabled):not([disabled]):not([aria-disabled="disabled"]):focus, &.is-active {
-            background:$color-gray4; border-color:$color-gray4;
+            background:$color-gray4; 
+            border-color:$color-gray4;
             color:$color-gray1;
             @include transition(.2s, all, ease-in-out);
             @content;
@@ -317,23 +318,27 @@
 
     @if($direction == top){
         transform: translate($translate1, $translate2);
-        bottom:$offest1; left:$offest2;
+        bottom:$offest1; 
+        left:$offest2;
         border-top: .4rem solid $color-gray5;
         border-bottom:none;
 
     } @else if($direction == bottom){
         transform: translate($translate1, $translate2);
-        top:$offest1; left:$offest2;
+        top:$offest1; 
+        left:$offest2;
         border-bottom: .4rem solid $color-gray5;
         border-top:none;
     } @else if($direction == left){
         transform: translate($translate1, $translate2);
-        top:$offest1; right:$offest2;
+        top:$offest1; 
+        right:$offest2;
         border-left: .4rem solid $color-gray5;
         border-right:none;
     } @else if($direction == right){
         transform: translate($translate1, $translate2);
-        top:$offest1; left:$offest2;
+        top:$offest1; 
+        left:$offest2;
         border-right: .4rem solid $color-gray5;
         border-left:none;
     }
@@ -424,7 +429,8 @@
     @if ($line == 1) {
         overflow: hidden;
         text-overflow: ellipsis;
-        -o-text-overflow:ellipsis;-moz-binding:url(ellipsis.xml#ellipsis);
+        -o-text-overflow:ellipsis;
+        -moz-binding:url(ellipsis.xml#ellipsis);
         white-space: nowrap;
         height:$height;
     } @else {
@@ -433,7 +439,8 @@
         -webkit-line-clamp: $line;
         overflow: hidden;
         text-overflow: ellipsis;
-        -o-text-overflow:ellipsis;-moz-binding:url(ellipsis.xml#ellipsis);
+        -o-text-overflow:ellipsis;
+        -moz-binding:url(ellipsis.xml#ellipsis);
         height:$height;
     }
 }

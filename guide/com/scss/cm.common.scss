@@ -21,9 +21,13 @@
 @import 'cp.select';
 @import 'cp.rdochk';
 @import 'cp.popup';
+@import 'cp.accodion';
+@import 'cp.tab';
+@import 'cp.swiper';
+@import 'cp.table';
+
 // @import 'cp.popup2';
 // @import 'cp.form';
-@import 'cp.list';
 /****************************************/
 /*	PART: RESET CSS
 /****************************************/
@@ -112,7 +116,7 @@ legend, caption{@include ir("hide");}
 // @include flex($direction:row, $wrap:nowrap, $j-content:flex-start, $al-items:center)
 
 .fl {@include float(left);}
-.fr {@include float(right);}s
+.fr {@include float(right);}
 .fn {@include float(none !important)}
 
 .scrollY {@include overflow (y, scroll);}
@@ -196,6 +200,7 @@ legend, caption{@include ir("hide");}
 #{$darMode} {
     background-color:$color-darkMode3; color:$color-white;
     body {background-color:$color-darkMode3; color:$color-white;}
+    a {color:$color-white;}
 }
 
 // *********************

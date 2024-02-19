@@ -126,8 +126,8 @@
         @include display(none);
         @include pos(relative); padding-left:2.5rem;
         @include el-content(before) {
-            @include pos-offset-l(0, 0);
-            @include el-size(1.8rem, 2rem); max-width:1.8rem;
+            @include pos-offset-l(50%, 0) {transform: translateY(-50%);}
+            @include el-size(1.8rem, 1.8rem); max-width:1.8rem;
             background:0 50% no-repeat;
             background: svgIcon(ico_infoCircle_fill, 666);
             vertical-align:middle;
@@ -136,8 +136,8 @@
     &-info {
         @include pos(relative);  padding-left:2.5rem;
         @include el-content(before) {
-            @include pos-offset-l(0, 0);
-            @include el-size(1.8rem, 2rem);
+            @include pos-offset-l(.2rem, 0);
+            @include el-size(1.8rem, 1.8rem);
             background:0 50% no-repeat; background: svgIcon(ico_infoCircle, 666);
             vertical-align:middle;
         }
@@ -147,6 +147,7 @@
 }
 
 .invalid {
+    & + #{$fmsg} .ico,
     .ico {
         &-error {
             @include display(inline-block);
@@ -158,6 +159,7 @@
 }
 
 .valid {
+    & + #{$fmsg} .ico,
     .ico {
         &-error {
             @include display(inline-block);
