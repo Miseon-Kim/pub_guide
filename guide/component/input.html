@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui, viewport-fit=cover, user-scalable=no">
+    <title>폼요소 : INPUT</title>
+    
+    <!-- [S] PUBLISH COMMON STYLE -->
+    <link rel="stylesheet" href="../com/css/cm.common.css">
+    <!-- [E] PUBLISH COMMON STYLE -->
+
+    <!-- [S] PAGES - STYLE -->
+    <link rel="stylesheet" href="">
+    <!-- [E] PAGES - STYLE -->
+
+    <!-- [S] LIBRARY - SCRIPT -->
+    <script src="../com/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../com/js/lib/lib.jquery-ui-1.13.2.js"></script>
+    <!-- [E] LIBRARY - SCRIPT -->
+</head>
+<body>
+    <div id="cp-wrap">
+        <div id="cp-container">
+            <h1 class="cp-tit dep01">INPUT</h1>
+
+            <section class="cp-content">
+                <h2 class="cp-tit dep02">기본형</h2>
+                <div class="field">
+                    <label class="field-label">text : default</label>
+                    <div class="field-outline">
+                      <div class="field-input grow _input">
+                        <input type="text" placeholder="기본동작 INPUT" title="">
+                      </div>
+                    </div>
+                    <div class="field-outline">
+                      <div class="field-input grow _input exp"><!-- .exp 클래스 추가시 input clear btn 생성되지 않음 -->
+                        <input type="text" placeholder="예외 : clear btn 없음" title="">
+                      </div>
+                    </div>
+                    <div class="field-outline readonly">
+                      <div class="field-input grow _input">
+                        <input type="text" value="readonly" readonly="readonly">
+                      </div>
+                    </div>
+                    <div class="field-outline disabled">
+                      <div class="field-input grow _input">
+                        <input type="text" placeholder="disabled" disabled="disabled">
+                      </div>
+                      <!-- <button type="button" class="field-btn _input-clear  ico ico-clear">
+                        <span class="hide">입력값삭제</span>
+                      </button> -->
+                    </div>
+                    <p class="field-msg">
+                      <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
+                    </p>
+                    <p class="field-info">
+                      <span class="ico ico-info txt-r">안내성 메세지</span>
+                    </p>
+                  </div>
+
+                  <div class="field valid">
+                    <label class="field-label">text : valid</label>
+                    <div class="field-outline">
+                      <div class="field-input grow _input">
+                        <input type="text" placeholder="placeholder">
+                      </div>
+                      <!-- <button type="button" class="field-btn _input-clear  ico ico-clear">
+                        <span class="hide">입력값삭제</span>
+                      </button> -->
+                    </div>
+                    <p class="field-msg">
+                      <span class="ico ico-error txt-r">입력값의 유효성이 정상입니다.</span>
+                    </p>
+                    <p class="field-info">
+                      <span class="ico ico-info txt-r">안내성 메세지</span>
+                    </p>
+                  </div>
+
+                  <div class="field invalid">
+                    <label class="field-label">text : invalid</label>
+                    <div class="field-outline">
+                      <div class="field-input grow _input">
+                        <input type="text" placeholder="placeholder">
+                      </div>
+                      <!-- <button type="button" class="field-btn _input-clear  ico ico-clear">
+                        <span class="hide">입력값삭제</span>
+                      </button> -->
+                    </div>
+                    <p class="field-msg">
+                      <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
+                    </p>
+                    <p class="field-info">
+                      <span class="ico ico-info txt-r">안내성 메세지</span>
+                    </p>
+                  </div>
+
+                  <div class="field">
+                    <label  class="field-label">number</label>
+                    <div class="field-outline">
+                      <div class="field-input grow _input">
+                        <input type="tel" class="_format _number" placeholder="0">
+                      </div>
+                      <!-- <button type="button" class="field-btn _input-clear  ico ico-clear">
+                        <span class="hide">입력값삭제</span>
+                      </button> -->
+                    </div>
+                    <p class="field-msg">
+                      <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
+                    </p>
+                    <p class="field-info">
+                      <span class="ico ico-info txt-r">안내성 메세지</span>
+                    </p>
+                  </div>
+
+                  <div class="field">
+                    <label class="field-label">price</label>
+                    <div class="field-outline">
+                      <div class="field-input grow _input">
+                        <input type="tel" class="_format _price alR" placeholder="₩0">
+                      </div>
+                      <!-- <button type="button" class="field-btn _input-clear  ico ico-clear">
+                        <span class="hide">입력값삭제</span>
+                      </button> -->
+                    </div>
+                    <p class="field-msg">
+                      <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
+                    </p>
+                    <p class="field-info">
+                      <span class="ico ico-info txt-r">안내성 메세지</span>
+                    </p>
+                  </div>
+
+                  <div class="field">
+                    <label class="field-label">기본형 : password</label>
+                    <div class="field-outline">
+                      <div class="field-input grow _input">
+                        <input type="password" class="_format _password" placeholder="●●●●" maxlength="4">
+                      </div>
+                    </div>
+                    <p class="field-msg">
+                      <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
+                    </p>
+                    <p class="field-info">
+                      <span class="ico ico-info txt-r">안내성 메세지</span>
+                    </p>
+                  </div>
+
+                  <div class="field">
+                    <label class="field-label">특문 커스텀 : password 부분입력</label>
+                    <div class="field-outline pw-group">
+                      <div class="field-input grow _input">
+                        <label class="_secureTxt" data-length="4" data-secureLine="2">
+                          <input type="password" class="_format _password" placeholder="" maxlength="2">
+                        </label>
+                      </div>
+                    </div>
+                    <p class="field-msg">
+                      <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
+                    </p>
+                    <p class="field-info">
+                      <span class="ico ico-info txt-r">안내성 메세지</span>
+                    </p>
+                  </div>
+
+            </section>
+
+            <section class="cp-content">
+              <h2 class="cp-tit dep02">PLACEHODER TYPE</h2>
+              <div class="field _label invalid">
+                <label class="field-label">기본INPUT</label>
+                <div class="field-outline">
+                  <div class="field-input grow _input">
+                    <input type="text" placeholder="기본동작 INPUT" id="label1" title="" data-target="label1">
+                  </div>
+                </div>
+                <p class="field-msg">
+                  <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
+                </p>
+              </div>
+
+              <div class="field _label">
+                <label class="field-label">휴대폰번호 입력</label>
+                <div class="field-outline">
+                  <div class="field-input grow _input">
+                    <input type="tel" class="_format _number" id="mobileNum1" placeholder="휴대전화 앞자리" maxlength="3">
+                  </div>
+                  <span class="field-txt">-</span>
+                  <div class="field-input grow _input">
+                    <input type="tel" class="_format _number" id="mobileNum2"  placeholder="휴대전화 중간자리" maxlength="4">
+                  </div>
+                  <span class="field-txt">-</span>
+                  <div class="field-input grow _input">
+                    <input type="tel" class="_format _number" placeholder="휴대전화 뒷자리" maxlength="4">
+                  </div>
+                </div>
+                <p class="field-msg">
+                  <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
+                </p>
+              </div>
+            </section>
+
+            <section class="cp-content">
+              <h2 class="cp-tit dep02">INPUT MIX</h2>
+              <div class="field">
+                <label class="field-label">휴대전화번호</label>
+                <div class="field-outline">
+                  <div class="field-input grow _input">
+                    <input type="tel" class="_format _number" id="num1" placeholder="휴대전화 앞자리" maxlength="3">
+                  </div>
+                  <span class="field-txt">-</span>
+                  <div class="field-input grow _input">
+                    <input type="tel" class="_format _number" placeholder="휴대전화 중간자리" maxlength="4">
+                  </div>
+                  <span class="field-txt">-</span>
+                  <div class="field-input grow _input">
+                    <input type="tel" class="_format _number" placeholder="휴대전화 뒷자리" maxlength="4">
+                  </div>
+                </div>
+                <p class="field-msg">
+                  <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
+                </p>
+                <p class="field-info">
+                  <span class="ico ico-info txt-r">안내성 메세지</span>
+                </p>
+              </div>
+
+              <div class="field">
+                <label class="field-label">주민등록번호</label>
+                <div class="field-outline">
+                  <div class="field-input grow _input">
+                    <input type="text" class="_format _number" placeholder="생년월일 6자리" maxlength="6">
+                  </div>
+                  <span class="field-txt">-</span>
+                  <div class="field-input grow _input">
+                    <label class="_secureTxt _num" data-length="7" data-secureLine="1">
+                      <input type="password" class="_format _password" placeholder="" maxlength="1">
+                    </label>
+                  </div>
+                </div>
+                <p class="field-msg">
+                  <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
+                </p>
+                <p class="field-info">
+                  <span class="ico ico-info txt-r">안내성 메세지</span>
+                </p>
+              </div>
+            </section>
+
+        </div>
+    </div>
+
+<!-- [S] PAGES - SCRIPT -->
+<script src="./../com/js/ui.component.js"></script>
+<!-- [E] PAGES - SCRIPT -->
+</body>
+</html>

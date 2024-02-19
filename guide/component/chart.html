@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui, viewport-fit=cover, user-scalable=no">
+    <title>차트</title>
+    
+    <!-- [S] PUBLISH COMMON STYLE -->
+    <link rel="stylesheet" href="../com/css/cm.common.css">
+    <!-- [E] PUBLISH COMMON STYLE -->
+
+    <!-- [S] PAGES - STYLE -->
+    <link rel="stylesheet" href="">
+    <!-- [E] PAGES - STYLE -->
+
+    <!-- [S] LIBRARY - SCRIPT -->
+    <script src="../com/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../com/js/lib/lib.jquery-ui-1.13.2.js"></script>
+    <script src="../com/js/lib/chart.js/chart.js"></script>
+    <!-- [E] LIBRARY - SCRIPT -->
+
+</head>
+<body>
+  <div id="cp-wrap">
+    <div id="cp-container">
+      <h1 class="cp-tit dep01">CHART</h1>
+
+      <section class="cp-content">
+        <h2 class="cp-tit dep02">Line</h2>
+        <div class="component">
+          <div style="width: 100%; margin-top: 20px;">
+            <!--차트가 그려질 부분-->
+            <canvas id="myChart"></canvas>
+          </div>
+        </div>
+      </section>
+      <section class="cp-content">
+        <h2 class="cp-tit dep02">BAR</h2>
+        <div class="component">
+          <div style="width: 100%; margin-top: 20px;">
+            <!--차트가 그려질 부분-->
+            <canvas id="myChart02"></canvas>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+  <script type="text/javascript">
+    var ctx = document.getElementById('myChart').getContext("2d");
+    var ctx02 = document.getElementById('myChart02').getContext("2d");
+
+    var gradientFill = ctx.createLinearGradient(0, 0, 0, 140);
+        gradientFill.addColorStop(0, "rgba(19, 201, 190, 0.4)");
+        gradientFill.addColorStop(1, "rgba(217, 217, 217, 0)");
+        
+    var gradientFill02 = ctx.createLinearGradient(0, 0, 0, 200);
+        gradientFill02.addColorStop(0, "rgba(90, 217, 209, 1)");
+        gradientFill02.addColorStop(1, "rgba(35, 176, 167, 1)");
+
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ["7/1", "7/2", "7/3", "7/4", "7/5", "7/6", "7/7"],
+          datasets: [{
+              label: "Data",
+              border:false,
+              borderColor:               "#13C9BE",
+              pointBorderColor:          "#13C9BE",
+              pointBackgroundColor:      "#13C9BE",
+              pointHoverBackgroundColor: "#13C9BE",
+              pointHoverBorderColor:     "#13C9BE",
+              pointBorderWidth: 1,
+              pointHoverRadius: 1,
+              pointHoverBorderWidth: 1,
+              pointRadius: 3,
+              fill: true,
+              backgroundColor: gradientFill,
+              borderWidth: 1,
+              data: [30, 50, 60, 55, 50, 75, 50]
+          }],
+        },
+        options: {
+          plugins: {
+            legend: {
+              display: false,
+            },
+            tooltip: {
+              enabled: false,
+            },
+          },
+          elements:{
+            line:{
+              tension:0.4
+            }
+          },
+          scales: {
+            y: {
+              ticks: {
+                fontColor: "rgba(0,0,0,0.5)",
+                fontStyle: "bold",
+                beginAtZero: true,
+                maxTicksLimit: 5,
+                callback: function(value, index, ticks) {
+                  return  value + '%';
+                }
+              },
+            },
+            x: {
+              grid: {
+                zeroLineColor: "transparent",
+                display: false,
+              },
+              ticks: {
+                fontColor: "rgba(102,112,133,1)",
+                fontStyle: "bold"
+              }
+            }
+          },
+        
+        },
+      });
+
+    var myChart02 = new Chart(ctx02, {
+      type: 'bar',
+      data: {
+        labels: ["7/1", "7/2", "7/3", "7/4", "7/5", "7/6", "7/7"],
+        datasets: [{
+            label: "Data",
+            borderColor:               "#13C9BE",
+            pointBorderWidth: 1,
+            pointHoverRadius: 1,
+            pointHoverBorderWidth: 1,
+            pointRadius: 3,
+            fill: true,
+            backgroundColor: gradientFill02,
+            borderWidth: 0,
+            borderRadius:15,
+            data: [30, 50, 60, 55, 50, 75, 50],
+        }],
+      },
+      options: {
+        maxBarThickness: 15,
+        plugins: {
+          legend: {
+            display: false,
+          },
+          tooltip: {
+            enabled: false,
+          },
+        },
+        elements:{
+          line:{
+            tension:0.4
+          },
+        },
+        scales: {
+            y: {
+              ticks: {
+                fontColor: "rgba(0,0,0,0.5)",
+                fontStyle: "bold",
+                beginAtZero: true,
+                maxTicksLimit: 5,
+                callback: function(value, index, ticks) {
+                  return  value + '%';
+                }
+              },
+            },
+            x: {
+              grid: {
+                zeroLineColor: "transparent",
+                display: false,
+              },
+              ticks: {
+                fontColor: "rgba(102,112,133,1)",
+                fontStyle: "bold"
+              }
+            }
+          },
+      },
+    });
+
+  </script>
+
+</body>
+</html>

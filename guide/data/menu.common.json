@@ -88,5 +88,20 @@
         "complete": "미완료",
         "state": "hold",
         "etc": [""]
+    },
+    {
+        "id": "PG_GUIDE0007",
+        "type": "페이지",
+        "depth1": "공통",
+        "depth2": "공통UI",
+        "depth3": "",
+        "depth4": "",
+        "name": "PG_GUIDE0007",
+        "worker": "TBD2",
+        "workdate": "2023-08-28",
+        "change": "",
+        "complete": "미완료",
+        "state": "hold",
+        "etc": [""]
     }
 ]

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui, viewport-fit=cover, user-scalable=no">
-    <title>타이틀/텍스트</title>
+    <title>타이틀/텍스트/리스트</title>
     
     <!-- [S] PUBLISH COMMON STYLE -->
     <link rel="stylesheet" href="../com/css/cm.common.css">
@@ -18,15 +18,12 @@
     <!-- [S] LIBRARY - SCRIPT -->
     <script src="../com/js/lib/lib.jquery-3.6.3.min.js"></script>
     <script src="../com/js/lib/lib.jquery-ui-1.13.2.js"></script>
-    <script src="../com/js/lib/lib.ua-parser.min.js"></script>
-    <script src="../com/js/lib/lib.cleave.min.js"></script>
-    <script src="../com/js/lib/lib.moment.js"></script>
     <!-- [E] LIBRARY - SCRIPT -->
 </head>
 <body>
     <div id="cp-wrap">
         <div id="cp-container">
-            <h1 class="cp-tit dep01">TITLE / TEXT</h1>
+            <h1 class="cp-tit dep01">TITLE / TEXT / LIST</h1>
 
             <section class="cp-content">
                 <h2 class="cp-tit dep02">TITLE : 기본형 , #333</h2>
@@ -114,10 +111,66 @@
                 <h2 class="cp-tit dep02">TEXT : ellipsis</h2>
                 <div class="component">
                     <p class="txt txt-elp1">ellipsis - Line1 : 보이는 설레는 같이, 동산에는 발휘하기 이상은 구하지 것은 보라. 풍부하게 이상을 구하지 위하여, 가지에 사랑의 있으랴? 있는 끓는 모래뿐일 무엇을 살았으며, 열락의 이상의 부패뿐이다. 보내는 봄날의 사라지지 불어 것이다.</p>
+
                     <p class="txt txt-elp2">ellipsis - Line2 : 보이는 설레는 같이, 동산에는 발휘하기 이상은 구하지 것은 보라. 풍부하게 이상을 구하지 위하여, 가지에 사랑의 있으랴? 있는 끓는 모래뿐일 무엇을 살았으며, 열락의 이상의 부패뿐이다. 보내는 봄날의 사라지지 불어 것이다.</p>
+                    
                     <p class="txt txt-elp3">ellipsis - Line3 : 보이는 설레는 같이, 동산에는 발휘하기 이상은 구하지 것은 보라. 풍부하게 이상을 구하지 위하여, 가지에 사랑의 있으랴? 있는 끓는 모래뿐일 무엇을 살았으며, 열락의 이상의 부패뿐이다. 보내는 봄날의 사라지지 불어 것이다.</p>
                 </div>
                 <div class="codeview"></div>
+            </section>
+
+            <section class="cp-content">
+                <h2 class="cp-tit dep02">LIST</h2>
+                <p class="tit01">타이틀 스타일1 .tit01</p>
+                <p class="tit02">타이틀 스타일2 .tit02</p>
+                <p class="tit03">타이틀 스타일3 .tit03</p>
+                <p class="tit04">타이틀 스타일4 .tit04</p>
+                <p class="tit05">타이틀 스타일5 .tit05</p>
+
+                <ul class="list01">
+                    <li>리스트 스타일 .list01</li>
+                    <li>리스트 스타일 .list01
+                        <ul>
+                            <li>리스트 SUB 스타일</li>
+                            <li>리스트 스타일</li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="list01">
+                    <li><span class="tit">제목</span>ul 리스트 스타일 변형 .list01 .tit</li>
+                    <li><span class="tit">제목</span>ul 리스트 스타일 변형 .list01 .tit
+                        <ul>
+                            <li>리스트 SUB 스타일</li>
+                            <li>리스트 스타일</li>
+                        </ul>
+                    </li>
+                </ul>
+                <ol class="list02">
+                    <li>숫자리스트 스타일 .list02</li>
+                    <li>숫자리스트 스타일 .list02
+                        <ol class="circle-num">
+                            <li>라운드 숫자리스트 .circle-num</li>
+                            <li>라운드 숫자리스트 .circle-num</li>
+                            <li>라운드 숫자리스트 .circle-num</li>
+                        </ol>
+                    </li>
+                    <li>숫자리스트 스타일 .list02</li>
+                    <li>숫자리스트 스타일 .list02</li>
+                    <li>숫자리스트 스타일 .list02</li>
+                </ol>
+
+                <ol class="step step-box">
+                    <li>리스트스타일 .step</li>
+                    <li>리스트스타일 .step
+                        <ul class="bul">
+                            <li>리스트 SUB 스타일 .bul</li>
+                            <li>리스트 스타일 .bul</li>
+                            <li>리스트 스타일 .bul</li>
+                        </ul>
+                    </li>
+                    <li>리스트스타일 .step</li>
+                    <li>리스트스타일 .step</li>
+                </ol>
             </section>
 
         </div>

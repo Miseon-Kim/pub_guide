@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui, viewport-fit=cover, user-scalable=no">
+    <title>아코디언</title>
+    
+    <!-- [S] PUBLISH COMMON STYLE -->
+    <link rel="stylesheet" href="../com/css/cm.common.css">
+    <!-- [E] PUBLISH COMMON STYLE -->
+
+    <!-- [S] PAGES - STYLE -->
+    <link rel="stylesheet" href="">
+    <!-- [E] PAGES - STYLE -->
+
+    <!-- [S] LIBRARY - SCRIPT -->
+    <script src="../com/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../com/js/lib/lib.jquery-ui-1.13.2.js"></script>
+    <!-- [E] LIBRARY - SCRIPT -->
+</head>
+<body>
+    <div id="cp-wrap">
+        <div id="cp-container">
+            <h1 class="cp-tit dep01">아코디언</h1>
+				<!-- 아코디언 전체 감싸는 클래스 accordion-wrap
+				기본형: 제목이 버튼으로 토글
+				버튼형: 버튼으로만 토글
+				스크롤탑: data-scroll="top"
+				하나만 열림: data-type="oneToggle"
+				체크박스 동의하면 닫힘: data-type="toggleChk"
+				토글 안에 토글: data-type="double"
+				-->
+            <section class="cp-content">
+				<h2 class="cp-tit dep02">기본형</h2>
+				<div class="field">
+					<!-- [S] 아코디언 01 - 제목으로 토글 -->
+					<div class="accordion-wrap">
+						<dl class="accordion">
+							<dt class="accordion-header">
+								<a href="javascript:void(0);" class="toggle-tit btn-toggle" aria-expanded="false" aria-label="열기"><span>아코디언 제목입니다</span>
+								</a>
+							</dt>
+							<dd class="accordion-contents">
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+							</dd>
+						</dl>
+						<dl class="accordion">
+							<dt class="accordion-header">
+								<a href="javascript:void(0);" class="toggle-tit btn-toggle" aria-expanded="false" aria-label="열기"><span>아코디언 제목입니다</span>
+								</a>
+							</dt>
+							<dd class="accordion-contents">
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+							</dd>
+						</dl>
+						<dl class="accordion">
+							<dt class="accordion-header">
+								<a href="javascript:void(0);" class="toggle-tit btn-toggle" aria-expanded="false" aria-label="열기"><span>아코디언 제목입니다</span>
+								</a>
+							</dt>
+							<dd class="accordion-contents">
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+							</dd>
+						</dl>
+						<dl class="accordion">
+							<dt class="accordion-header">
+								<a href="javascript:void(0);" class="toggle-tit btn-toggle" aria-expanded="false" aria-label="열기"><span>아코디언 제목입니다</span>
+								</a>
+							</dt>
+							<dd class="accordion-contents">
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+							</dd>
+						</dl>
+					</div>
+					<!-- [E] 아코디언 01 -->
+				</div>
+			</section>
+            <section class="cp-content">
+				<h2 class="cp-tit dep02">스크롤탑</h2>
+				<div class="field">
+					<!-- [S] 아코디언 02 - 스크롤탑 -->
+					<div class="accordion-wrap" data-scroll="top">
+						<dl class="accordion">
+							<dt class="accordion-header">
+								<a href="javascript:void(0);" class="toggle-tit btn-toggle" aria-expanded="false" aria-label="열기"><span>아코디언 제목입니다</span>
+								</a>
+							</dt>
+							<dd class="accordion-contents">
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+							</dd>
+						</dl>
+						<dl class="accordion">
+							<dt class="accordion-header">
+								<a href="javascript:void(0);" class="toggle-tit btn-toggle" aria-expanded="false" aria-label="열기"><span>아코디언 제목입니다</span>
+								</a>
+							</dt>
+							<dd class="accordion-contents">
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+							</dd>
+						</dl>
+						<dl class="accordion">
+							<dt class="accordion-header">
+								<a href="javascript:void(0);" class="toggle-tit btn-toggle" aria-expanded="false" aria-label="열기"><span>아코디언 제목입니다</span>
+								</a>
+							</dt>
+							<dd class="accordion-contents">
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+							</dd>
+						</dl>
+						<dl class="accordion">
+							<dt class="accordion-header">
+								<a href="javascript:void(0);" class="toggle-tit btn-toggle" aria-expanded="false" aria-label="열기"><span>아코디언 제목입니다</span>
+								</a>
+							</dt>
+							<dd class="accordion-contents">
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+							</dd>
+						</dl>
+					</div>
+					<!-- [E] 아코디언 02 -->
+				</div>
+			</section>
+			<section class="cp-content">
+				<h2 class="cp-tit dep02">하나만 열림, 버튼 style 02</h2>
+				<div class="field">
+					<!-- [S] 아코디언 03 - 하나만 열림, 버튼 style 02 -->
+					<div class="accordion-wrap" data-type="oneToggle">
+						<dl class="accordion">
+							<dt class="accordion-header">
+								<a href="javascript:void(0);" class="toggle-tit btn-toggle btn-style-02" aria-expanded="false" aria-label="열기"><span>아코디언 제목입니다</span>
+								</a>
+							</dt>
+							<dd class="accordion-contents">
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+							</dd>
+						</dl>
+						<dl class="accordion">
+							<dt class="accordion-header">
+								<a href="javascript:void(0);" class="toggle-tit btn-toggle btn-style-02" aria-expanded="false" aria-label="열기"><span>아코디언 제목입니다</span>
+								</a>
+							</dt>
+							<dd class="accordion-contents">
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+							</dd>
+						</dl>
+						<dl class="accordion">
+							<dt class="accordion-header">
+								<a href="javascript:void(0);" class="toggle-tit btn-toggle btn-style-02" aria-expanded="false" aria-label="열기"><span>아코디언 제목입니다</span>
+								</a>
+							</dt>
+							<dd class="accordion-contents">
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+							</dd>
+						</dl>
+						<dl class="accordion">
+							<dt class="accordion-header">
+								<a href="javascript:void(0);" class="toggle-tit btn-toggle btn-style-02" aria-expanded="false" aria-label="열기"><span>아코디언 제목입니다</span>
+								</a>
+							</dt>
+							<dd class="accordion-contents">
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+							</dd>
+						</dl>
+					</div>
+					<!-- [E] 아코디언 03 -->
+				</div>
+			</section>
+			<section class="cp-content">
+							<h2 class="cp-tit dep02">버튼만 토글 가능, 버튼 active color 변경
+								</h2>
+							<div class="field">
+								<!-- [S] 아코디언 04 - 버튼만 토글 가능, 버튼 active color 변경 -->
+								<div class="accordion-wrap">
+									<dl class="accordion">
+										<dt class="accordion-header">
+											<span class="toggle-tit">아코디언 제목입니다</span>
+											<a href="javascript:void(0);" class="btn-toggle btn-act-orange" aria-expanded="false" aria-label="열기"></a>
+										</dt>
+										<dd class="accordion-contents">
+											<p>아코디언 내용입니다</p>
+											<p>아코디언 내용입니다</p>
+											<p>아코디언 내용입니다</p>
+											<p>아코디언 내용입니다</p>
+										</dd>
+									</dl>
+									<dl class="accordion">
+										<dt class="accordion-header">
+											<span class="toggle-tit">아코디언 제목입니다</span>
+											<a href="javascript:void(0);" class="btn-toggle btn-act-orange" aria-expanded="false" aria-label="열기"></a>
+										</dt>
+										<dd class="accordion-contents">
+											<p>아코디언 내용입니다</p>
+											<p>아코디언 내용입니다</p>
+											<p>아코디언 내용입니다</p>
+											<p>아코디언 내용입니다</p>
+										</dd>
+									</dl>
+									<dl class="accordion">
+										<dt class="accordion-header">
+											<span class="toggle-tit">아코디언 제목입니다</span>
+											<a href="javascript:void(0);" class="btn-toggle btn-act-orange" aria-expanded="false" aria-label="열기"></a>
+										</dt>
+										<dd class="accordion-contents">
+											<p>아코디언 내용입니다</p>
+											<p>아코디언 내용입니다</p>
+											<p>아코디언 내용입니다</p>
+											<p>아코디언 내용입니다</p>
+										</dd>
+									</dl>
+								</div>
+								<!-- [E] 아코디언 04 -->
+							</div>
+            </section>
+			<section class="cp-content">
+				<h2 class="cp-tit dep02">제목 유형</h2>
+				<div class="field">
+					<!-- [S] 아코디언 05 - 제목 유형 -->
+					<div class="accordion-wrap">
+						<dl class="accordion">
+							<!-- 1. 제목 전체 토글 -->
+							<dt class="accordion-header">
+								<a href="javascript:void(0);" class="toggle-tit btn-toggle" aria-expanded="false" aria-label="열기"><span>1. 제목 전체 토글</span>
+								</a>
+							</dt>
+							<dd class="accordion-contents">
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+							</dd>
+						</dl>
+						<dl class="accordion">
+							<!-- 2. 토글 버튼 따로 -->
+							<dt class="accordion-header">
+								<span class="toggle-tit">2. 토글 버튼 따로</span>
+								<a href="javascript:void(0);" class="btn-toggle" aria-expanded="false" aria-label="열기"></a>
+							</dt>
+							<dd class="accordion-contents">
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+							</dd>
+						</dl>
+						<dl class="accordion">
+							<!-- 3. 체크박스 포함 제목 토글 -->
+							<dt class="accordion-header flex square">
+								<label class="field-checkbox">
+									<input type="checkbox">
+									<i class="field-icon"></i>
+									<span class="field-label">동의</span>
+								</label>
+								<a href="javascript:void(0);" class="toggle-tit btn-toggle" aria-expanded="false" aria-label="열기"><span>3. 체크박스 포함 제목 토글</span>
+								</a>
+							</dt>
+							<dd class="accordion-contents">
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+							</dd>
+						</dl>
+						<dl class="accordion">
+							<!-- 4. 체크박스 토글 버튼 따로 -->
+							<dt class="accordion-header flex square">
+								<label class="field-checkbox">
+									<input type="checkbox">
+									<i class="field-icon"></i>
+									<span class="field-label">동의</span>
+								</label>
+								<span class="toggle-tit">4. 체크박스 토글 버튼 따로</span>
+								<a href="javascript:void(0);" class="btn-toggle" aria-expanded="false" aria-label="열기"></a>
+							</dt>
+							<dd class="accordion-contents">
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+							</dd>
+						</dl>
+						<dl class="accordion">
+							<!-- 5. 제목 토글, 더보기버튼 -->
+							<dt class="accordion-header flex square">
+								<label class="field-checkbox">
+									<input type="checkbox">
+									<i class="field-icon"></i>
+									<span class="field-label">동의</span>
+								</label>
+								<a href="javascript:void(0);" class="toggle-tit btn-toggle btn-none" aria-expanded="false" aria-label="열기"><span>5. 제목 토글, 더보기버튼</span>
+								</a>
+								<a href="#페이지이동" class="btn-more" aria-label="더보기 이동"></a>
+							</dt>
+							<dd class="accordion-contents">
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+							</dd>
+						</dl>
+					</div>
+					<!-- [E] 아코디언 05 -->
+				</div>
+            </section>
+			<section class="cp-content">
+				<h2 class="cp-tit dep02">체크박스 - 동의 체크하면 닫힘, 전체동의</h2>
+				<div class="field">
+					<!-- [S] 아코디언 06 - 체크박스 - 동의 체크하면 닫히는 경우
+						동의 체크하면 해당 accordion 닫히고 다음 accordion 열림(동의 체크 되어있을 경우 변화없음)
+					-->
+					<div class="accordion-wrap" data-type="toggleChk">
+						<dl class="accordion">
+							<dt class="accordion-header flex square">
+								<label class="field-checkbox">
+									<input type="checkbox">
+									<i class="field-icon"></i>
+									<span class="field-label">동의</span>
+								</label>
+								<a href="javascript:void(0);" class="toggle-tit btn-toggle btn-none _is-active" aria-expanded="false" aria-label="열기"><span>개인정보 처리방침 약관</span>
+								</a>
+								<a href="#페이지이동" class="btn-more" aria-label="더보기 이동"></a>
+							</dt>
+							<dd class="accordion-contents" style="display: block;">
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+							</dd>
+						</dl>
+						<dl class="accordion">
+							<dt class="accordion-header flex square">
+								<label class="field-checkbox">
+									<input type="checkbox" id="chkAll">
+									<i class="field-icon"></i>
+									<span class="field-label">전체 동의</span>
+								</label>
+								<a href="javascript:void(0);" class="toggle-tit btn-toggle btn-none" aria-expanded="false" aria-label="열기"><span>개인정보 처리방침 약관</span>
+								</a>
+								<a href="#페이지이동" class="btn-more" aria-label="더보기 이동"></a>
+							</dt>
+							<dd class="accordion-contents">
+								<div class="c-line">
+									<label class="field-checkbox">
+										<input type="checkbox" name="exChk">
+										<i class="field-icon"></i>
+										<span class="field-label">아코디언 내용입니다</span>
+									</label>
+									<p>아코디언 내용입니다</p>
+									<p>아코디언 내용입니다</p>
+									<p>아코디언 내용입니다</p>
+								</div>
+								<div class="c-line" style="margin-top: 20px;">
+									<label class="field-checkbox">
+										<input type="checkbox" name="exChk">
+										<i class="field-icon"></i>
+										<span class="field-label">아코디언 내용입니다</span>
+									</label>
+									<p>아코디언 내용입니다</p>
+									<p>아코디언 내용입니다</p>
+									<p>아코디언 내용입니다</p>
+								</div>
+								<div class="c-line" style="margin-top: 20px;">
+									<label class="field-checkbox">
+										<input type="checkbox" name="exChk">
+										<i class="field-icon"></i>
+										<span class="field-label">아코디언 내용입니다</span>
+									</label>
+									<p>아코디언 내용입니다</p>
+									<p>아코디언 내용입니다</p>
+									<p>아코디언 내용입니다</p>
+								</div>
+							</dd>
+						</dl>
+						<dl class="accordion">
+							<dt class="accordion-header flex square">
+								<label class="field-checkbox">
+									<input type="checkbox">
+									<i class="field-icon"></i>
+									<span class="field-label">동의</span>
+								</label>
+								<a href="javascript:void(0);" class="toggle-tit btn-toggle btn-none _is-active" aria-expanded="false" aria-label="열기"><span>개인정보 처리방침 약관</span>
+								</a>
+								<a href="#페이지이동" class="btn-more" aria-label="더보기 이동"></a>
+							</dt>
+							<dd class="accordion-contents">
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+							</dd>
+						</dl>
+					</div>
+					<!-- [E] 아코디언 06 -->
+				</div>
+            </section>
+			<section class="cp-content">
+				<h2 class="cp-tit dep02">토글 안에 토글</h2>
+				<div class="field">
+					<!-- [S] 아코디언 07 - 토글 안에 토글 -->
+					<div class="accordion-wrap" data-type="double">
+						<dl class="accordion">
+							<dt class="accordion-header">
+								<a href="javascript:void(0);" class="toggle-tit btn-toggle" aria-expanded="false" aria-label="열기"><span>아코디언 제목입니다</span>
+								</a>
+							</dt>
+							<dd class="accordion-contents">
+								<div class="accordion-wrap" data-scroll="top">
+									<dl class="accordion">
+										<dt class="accordion-header">
+											<a href="javascript:void(0);" class="toggle-tit btn-toggle" aria-expanded="false" aria-label="열기"><span>아코디언 제목입니다</span>
+											</a>
+										</dt>
+										<dd class="accordion-contents">
+											<p>아코디언 내용입니다</p>
+											<p>아코디언 내용입니다</p>
+											<p>아코디언 내용입니다</p>
+											<p>아코디언 내용입니다</p>
+										</dd>
+									</dl>
+									<dl class="accordion">
+										<dt class="accordion-header">
+											<a href="javascript:void(0);" class="toggle-tit btn-toggle" aria-expanded="false" aria-label="열기"><span>아코디언 제목입니다</span>
+											</a>
+										</dt>
+										<dd class="accordion-contents">
+											<p>아코디언 내용입니다</p>
+											<p>아코디언 내용입니다</p>
+											<p>아코디언 내용입니다</p>
+											<p>아코디언 내용입니다</p>
+										</dd>
+									</dl>
+								</div>
+							</dd>
+						</dl>
+						<dl class="accordion">
+							<dt class="accordion-header">
+								<a href="javascript:void(0);" class="toggle-tit btn-toggle" aria-expanded="false" aria-label="열기"><span>아코디언 제목입니다</span>
+								</a>
+							</dt>
+							<dd class="accordion-contents">
+								<div class="accordion-wrap">
+									<dl class="accordion">
+										<dt class="accordion-header">
+											<a href="javascript:void(0);" class="toggle-tit btn-toggle" aria-expanded="false" aria-label="열기"><span>아코디언 제목입니다</span>
+											</a>
+										</dt>
+										<dd class="accordion-contents">
+											<p>아코디언 내용입니다</p>
+											<p>아코디언 내용입니다</p>
+											<p>아코디언 내용입니다</p>
+											<p>아코디언 내용입니다</p>
+										</dd>
+									</dl>
+									<dl class="accordion">
+										<dt class="accordion-header">
+											<a href="javascript:void(0);" class="toggle-tit btn-toggle" aria-expanded="false" aria-label="열기"><span>아코디언 제목입니다</span>
+											</a>
+										</dt>
+										<dd class="accordion-contents">
+											<p>아코디언 내용입니다</p>
+											<p>아코디언 내용입니다</p>
+											<p>아코디언 내용입니다</p>
+											<p>아코디언 내용입니다</p>
+										</dd>
+									</dl>
+								</div>
+							</dd>
+						</dl>
+						<dl class="accordion">
+							<dt class="accordion-header">
+								<a href="javascript:void(0);" class="toggle-tit btn-toggle" aria-expanded="false" aria-label="열기"><span>아코디언 제목입니다</span>
+								</a>
+							</dt>
+							<dd class="accordion-contents">
+								<div class="accordion-wrap">
+									<dl class="accordion">
+										<dt class="accordion-header">
+											<a href="javascript:void(0);" class="toggle-tit btn-toggle" aria-expanded="false" aria-label="열기"><span>아코디언 제목입니다</span>
+											</a>
+										</dt>
+										<dd class="accordion-contents">
+											<p>아코디언 내용입니다</p>
+											<p>아코디언 내용입니다</p>
+											<p>아코디언 내용입니다</p>
+											<p>아코디언 내용입니다</p>
+										</dd>
+									</dl>
+									<dl class="accordion">
+										<dt class="accordion-header">
+											<a href="javascript:void(0);" class="toggle-tit btn-toggle" aria-expanded="false" aria-label="열기"><span>아코디언 제목입니다</span>
+											</a>
+										</dt>
+										<dd class="accordion-contents">
+											<p>아코디언 내용입니다</p>
+											<p>아코디언 내용입니다</p>
+											<p>아코디언 내용입니다</p>
+											<p>아코디언 내용입니다</p>
+										</dd>
+									</dl>
+								</div>
+							</dd>
+						</dl>
+					</div>
+					<!-- [E] 아코디언 07 -->
+				</div>
+			</section>
+			<section class="cp-content">
+				<h2 class="cp-tit dep02">슬라이드업</h2>
+				<div class="field">
+					<!-- [S] 아코디언 08 - 슬라이드업 -->
+					<div class="accordion-wrap" data-scroll="top">
+						<dl class="accordion">
+							<dt class="accordion-header">
+								<a href="javascript:void(0);" class="toggle-tit btn-toggle" aria-expanded="false" aria-label="열기"><span>* 알려드립니다.</span>
+								</a>
+							</dt>
+							<dd class="accordion-contents">
+								<p>공지 1</p>
+								<p>공지 2</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>공지 1</p>
+								<p>공지 2</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>공지 1</p>
+								<p>공지 2</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+								<p>아코디언 내용입니다</p>
+							</dd>
+						</dl>
+					</div>
+					<!-- [E] 아코디언 08 -->
+				</div>
+			</section>
+        </div>
+    </div>
+
+<!-- [S] PAGES - SCRIPT -->
+<script src="./../com/js/ui.component.js"></script>
+<!-- [E] PAGES - SCRIPT -->
+</body>
+</html>

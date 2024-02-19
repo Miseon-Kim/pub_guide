@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui, viewport-fit=cover, user-scalable=no">
+    <title>폼요소 : SELECT</title>
+    
+    <!-- [S] PUBLISH COMMON STYLE -->
+    <link rel="stylesheet" href="../com/css/cm.common.css">
+    <!-- [E] PUBLISH COMMON STYLE -->
+
+    <!-- [S] PAGES - STYLE -->
+    <link rel="stylesheet" href="">
+    <!-- [E] PAGES - STYLE -->
+
+    <!-- [S] LIBRARY - SCRIPT -->
+    <script src="../com/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../com/js/lib/lib.jquery-ui-1.13.2.js"></script>
+    <!-- [E] LIBRARY - SCRIPT -->
+</head>
+<body>
+    <div id="cp-wrap">
+        <div id="cp-container">
+            <h1 class="cp-tit dep01">SELECT</h1>
+
+            <section class="cp-content">
+              <h2 class="cp-tit dep02">INPUT MIX</h2>
+              <div class="field">
+                <label class="field-label">이메일</label>
+                <div class="field-outline">
+                  <div class="field-input grow _input">
+                    <input type="tel" class="_format _number" placeholder="메일아이디" maxlength="3">
+                  </div>
+                  <span class="field-txt">@</span>
+                  <div class="field-select grow">
+                    <select class="select-sys" title="메일도메인">
+                      <option>선택해주세요</option>
+                      <option>naver.com</option>
+                      <option>daum.net</option>
+                      <option>gmail.com</option>
+                    </select>
+                  </div>
+                </div>
+                <p class="field-msg">
+                  <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
+                </p>
+                <p class="field-info">
+                  <span class="ico ico-info txt-r">안내성 메세지</span>
+                </p>
+              </div>
+
+              <div class="field">
+                <label class="field-label">주민등록번호</label>
+                <div class="field-outline">
+                  <div class="field-input grow _input">
+                    <input type="text" class="_format _number" placeholder="생년월일 6자리" maxlength="6">
+                  </div>
+                  <span class="field-txt">-</span>
+                  <div class="field-input grow _input">
+                    <label class="_secureTxt _num" data-length="7" data-secureLine="1">
+                      <input type="password" class="_format _password" placeholder="" maxlength="1">
+                    </label>
+                  </div>
+                </div>
+                <p class="field-msg">
+                  <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
+                </p>
+                <p class="field-info">
+                  <span class="ico ico-info txt-r">안내성 메세지</span>
+                </p>
+              </div>
+            </section>
+
+            <section class="cp-content">
+              <h2 class="cp-tit dep02">select : UI select</h2>
+              <div class="field">
+                <label class="field-label">휴대전화번호</label>
+                <div class="field-outline">
+                  <button class="btn btn-size md bg _selectBtn" data-select="select1">선택</button>
+                  <div class="field-input grow _input">
+                    <input type="tel" class="_format _number" placeholder="휴대전화 앞자리" maxlength="3">
+                  </div>
+                </div>
+                <!-- [s] modal : _bottom-->
+                <div class="modalPop _bottom" select-target="select1">
+                  <div class="modalWrap">
+                      <div class="modal-title">
+                        <h2 class="tit dep02">통신사를 선택해주세요</h2>
+                        <a href="#" class="btn-close-pop ico ico-pop-close" role="button"><span class="hide">창닫기</span></a>
+                      </div>
+                      <div class="modal-container">
+                        <ul class="select-lst">
+                          <li><a href="javascript:;" class="sel-opt">SKT</a></li>
+                          <li><a href="javascript:;" class="sel-opt">KT</a></li>
+                          <li><a href="javascript:;" class="sel-opt">LG U+</a></li>
+                          <li><a href="javascript:;" class="sel-opt">알뜰폰</a></li>
+                        </ul>
+                      </div>
+                      <div class="modal-footer">
+                        <div class="btnWrap grow">
+                          <button class="btn btn-size md type2 bg btn-selChoice">선택</button>
+                          <button class="btn btn-size md bg btn-close-pop">취소</button>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+                <!--// [e] modal : _bottom-->
+              </div>
+            </section>
+
+
+
+        </div>
+    </div>
+
+<!-- [S] PAGES - SCRIPT -->
+<script src="./../com/js/ui.component.js"></script>
+<!-- [E] PAGES - SCRIPT -->
+</body>
+</html>

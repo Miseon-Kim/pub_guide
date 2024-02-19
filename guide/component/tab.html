@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui, viewport-fit=cover, user-scalable=no">
+    <title>탭</title>
+    
+    <!-- [S] PUBLISH COMMON STYLE -->
+    <link rel="stylesheet" href="../com/css/cm.common.css">
+    <!-- [E] PUBLISH COMMON STYLE -->
+       
+    <!-- [S] PAGES - STYLE -->
+    <link rel="stylesheet" href="">
+    <!-- [E] PAGES - STYLE -->
+      
+    <!-- [S] LIBRARY - SCRIPT -->
+    <script src="../com/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../com/js/lib/lib.jquery-ui-1.13.2.js"></script>
+    <!-- [E] LIBRARY - SCRIPT -->
+</head>
+<body>
+    <div id="cp-wrap">
+        <div id="cp-container">
+            <h1 class="cp-tit dep01">탭 메뉴</h1>		
+			<!-- 
+				전체 wrapper 클래스 tab-wrap
+				highlight 클래스 tab-moving,
+				컨텐츠 스크롤 이동 클래스 tab-scroll,
+				탭 세로 정렬 클래스 tab-vertical
+
+				탭 메뉴 wrapper 클래스 tab-list-wrap
+				block 형 클래스 tab-expand,
+				가운데 정렬 클래스 tab-center,
+				line 상단 정렬 클래스 tab-line-top,
+				오른쪽 정렬 클래스 tab-right
+
+				탭메뉴 제목이 없을 경우 aria-label 추가
+			-->
+            <section class="cp-content">
+				<h2 class="cp-tit dep02">block 형, 새창으로 이동</h2>
+				<!-- [S] tab list block 형식, 새창으로 이동 -->
+				<div class="tab-wrap" data-roll="tab" id="tab-1">
+					<div class="tab-list-wrap tab-expand">
+						<ul class="tab-list">
+							<li class="tab _is-active"><a href="#새창" target="">Tab 01</a></li>
+							<li class="tab"><a href="#새창" target="">Tab 02</a></li>
+							<li class="tab"><a href="#새창" target="">Tab 03</a></li>
+							<li class="tab"><a href="#새창" target="">Tab 04</a></li>
+							<li class="tab"><a href="#새창" target="">Tab 05</a></li>
+						</ul>
+					</div>
+				</div>
+				<!-- [E] tab list block 형식, 새창으로 이동 -->
+			</section>		
+            <section class="cp-content">
+				<h2 class="cp-tit dep02">왼쪽 정렬, 액션</h2>
+				<!-- [S] tab list align left 형식, 액션 있음 -->
+				<div class="tab-wrap tab-moving" data-roll="tab" id="tab-2">
+					<div class="tab-list-wrap">
+						<ul class="tab-list">
+							<li class="tab _is-active"><a href="javascript:void(0);">Tab 01 Tab 01</a></li>
+							<li class="tab"><a href="javascript:void(0);">Tab 02</a></li>
+							<li class="tab"><a href="javascript:void(0);">Tab 03</a></li>
+							<li class="tab"><a href="javascript:void(0);">Tab 04</a></li>
+						</ul>
+					</div>
+
+					<div class="tab-contents-wrap">
+						<div class="tab-contents _is-active">
+							<h3 class="hide">Tab 01</h3>
+							tab-2_1
+						</div>
+						<div class="tab-contents">
+							<h3 class="hide">Tab 02</h3>
+							tab-2_2
+						</div>
+						<div class="tab-contents">
+							<h3 class="hide">Tab 03</h3>
+							tab-2_3
+						</div>
+						<div class="tab-contents">
+							<h3 class="hide">Tab 04</h3>
+							tab-2_4
+						</div>
+					</div>
+				</div>
+				<!-- [E] tab list align left 형식, 액션 있음 -->
+			</section>
+            <section class="cp-content">
+				<h2 class="cp-tit dep02">가운데 정렬, line top</h2>
+				<!-- [S] tab list align center 형식, line style top -->
+				<div class="tab-wrap" data-roll="tab" id="tab-3">
+					<div class="tab-list-wrap tab-center tab-line-top">
+						<ul class="tab-list">
+							<li class="tab _is-active"><a href="javascript:void(0);">Tab 01</a></li>
+							<li class="tab"><a href="javascript:void(0);">Tab 02</a></li>
+							<li class="tab"><a href="javascript:void(0);">Tab 03</a></li>
+							<li class="tab"><a href="javascript:void(0);">Tab 04</a></li>
+						</ul>
+					</div>
+
+					<div class="tab-contents-wrap">
+						<div class="tab-contents _is-active">
+							<h3 class="hide">Tab 01</h3>
+							tab-3_1
+						</div>
+						<div class="tab-contents">
+							<h3 class="hide">Tab 02</h3>
+							tab-3_2
+						</div>
+						<div class="tab-contents">
+							<h3 class="hide">Tab 03</h3>
+							tab-3_3
+						</div>
+						<div class="tab-contents">
+							<h3 class="hide">Tab 04</h3>
+							tab-3_4
+						</div>
+					</div>
+				</div>
+				<!-- [E] tab list align center 형식, line style top -->
+			</section>
+            <section class="cp-content">
+				<h2 class="cp-tit dep02">가로 / 세로 / 액션</h2>
+				<!-- [S] 가로/세로 선택 -->
+				<div class="tab-wrap sel-h-v" data-roll="tab">
+					<div class="tab-list-wrap">
+						<ul class="tab-list">
+							<li class="tab _is-active" data-type="horizontal"><a href="javascript:void(0);">Horizontal</a></li>
+							<li class="tab" data-type="vertical"><a href="javascript:void(0);">Vertical</a></li>
+						</ul>
+					</div>
+				</div>
+				<!-- [E] 가로/세로 선택 -->
+				<!-- [S] tab list 가로/세로 형식 -->
+				<div class="tab-wrap tab-moving" data-roll="tab" id="tab-4" style="width: 400px; max-width: 100%;">
+					<div class="tab-list-wrap">
+						<ul class="tab-list">
+							<li class="tab _is-active"><a href="javascript:void(0);">Tab 01</a></li>
+							<li class="tab"><a href="javascript:void(0);">Tab 02</a></li>
+							<li class="tab"><a href="javascript:void(0);">Tab 03</a></li>
+							<li class="tab"><a href="javascript:void(0);">Tab 04</a></li>
+							<li class="tab"><a href="javascript:void(0);">Tab 05</a></li>
+							<li class="tab"><a href="javascript:void(0);">Tab 06</a></li>
+							<li class="tab"><a href="javascript:void(0);">Tab 07</a></li>
+							<li class="tab"><a href="javascript:void(0);">Tab 08</a></li>
+							<li class="tab"><a href="javascript:void(0);">Tab 09</a></li>
+							<li class="tab"><a href="javascript:void(0);">Tab 10</a></li>
+						</ul>
+					</div>
+
+					<div class="tab-contents-wrap">
+						<div class="tab-contents _is-active">
+							<h3 class="hide">Tab 01</h3>
+							tab-4_1
+						</div>
+						<div class="tab-contents">
+							<h3 class="hide">Tab 02</h3>
+							tab-4_2
+						</div>
+						<div class="tab-contents">
+							<h3 class="hide">Tab 03</h3>
+							tab-4_3
+						</div>
+						<div class="tab-contents">
+							<h3 class="hide">Tab 04</h3>
+							tab-4_4
+						</div>
+						<div class="tab-contents">
+							<h3 class="hide">Tab 05</h3>
+							tab-4_5
+						</div>
+						<div class="tab-contents">
+							<h3 class="hide">Tab 06</h3>
+							tab-4_6
+						</div>
+						<div class="tab-contents">
+							<h3 class="hide">Tab 07</h3>
+							tab-4_7
+						</div>
+						<div class="tab-contents">
+							<h3 class="hide">Tab 08</h3>
+							tab-4_8
+						</div>
+						<div class="tab-contents">
+							<h3 class="hide">Tab 09</h3>
+							tab-4_9
+						</div>
+						<div class="tab-contents">
+							<h3 class="hide">Tab 10</h3>
+							tab-4_10
+						</div>
+					</div>
+				</div>
+				<!-- [E] tab list 세로 형식 -->
+			</section>
+            <section class="cp-content">
+				<h2 class="cp-tit dep02">오른쪽 정렬, contents 스크롤 이동</h2>
+				<!-- [S] tab list align right 형식, one page 이동 -->
+				<div class="tab-wrap tab-scroll" data-roll="tab" id="tab-5">
+					<div class="tab-list-wrap tab-right">
+						<ul class="tab-list">
+							<li class="tab _is-active"><a href="javascript:void(0);">Tab 01</a></li>
+							<li class="tab"><a href="javascript:void(0);">Tab 02</a></li>
+							<li class="tab"><a href="javascript:void(0);">Tab 03</a></li>
+							<li class="tab"><a href="javascript:void(0);">Tab 04</a></li>
+							<li class="tab"><a href="javascript:void(0);">Tab 05</a></li>
+							<li class="tab"><a href="javascript:void(0);">Tab 06</a></li>
+						</ul>
+					</div>
+
+					<div class="tab-contents-wrap">
+						<div class="tab-contents _is-active">
+							<h3 class="hide">Tab 01</h3>
+							tabpn-1
+							<p>Where does it come from?
+								Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+								
+								The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+						</div>
+						<div class="tab-contents">
+							<h3 class="hide">Tab 02</h3>
+							tabpn-2
+							<p>Where does it come from?
+								Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+								
+								The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+						</div>
+						<div class="tab-contents">
+							<h3 class="hide">Tab 03</h3>
+							tabpn-3
+							<p>Where does it come from?
+								Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+								
+								The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+						</div>
+						<div class="tab-contents">
+							<h4 class="hide">Tab 04</h4>
+							tabpn-4
+							<p>Where does it come from?
+								Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+								
+								The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+						</div>
+						<div class="tab-contents">
+							<h3 class="hide">Tab 05</h3>
+							tabpn-5
+							<p>Where does it come from?
+								Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+								
+								The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.Where does it come from?
+								Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+								Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+								
+								The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+						</div>
+						<div class="tab-contents">
+							<h3 class="hide">Tab 06</h3>
+							tabpn-6
+							<p>Where does it come from?
+								Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+								
+								The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+						</div>
+					</div> 
+				</div>
+				<!-- [E] tab list align right 형식, one page 이동 -->
+			</section>
+        </div>
+    </div>
+
+<!-- [S] PAGES - SCRIPT -->
+<script src="./../com/js/ui.component.js"></script>
+<!-- [E] PAGES - SCRIPT -->
+</body>
+</html>

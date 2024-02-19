@@ -1,6 +1,6 @@
 [
     {
-        "directory": "./component2"
+        "directory": "./component"
     },
     {   
         "id": "button",
@@ -8,7 +8,7 @@
     },
     {   
         "id": "text",
-        "name": "타이틀/텍스트"
+        "name": "타이틀/텍스트/리스트"
     },
     {   
         "id": "input",
@@ -29,5 +29,25 @@
     {   
         "id": "toggle",
         "name": "아코디언"
+    },
+    {
+        "id": "tab",
+        "name": "탭 메뉴"
+    },
+    {
+        "id": "tab-sticky",
+        "name": "탭 Sticky"
+    },
+    {
+        "id": "swiper3",
+        "name": "Swiper v3.4.2"
+    },
+    {
+        "id": "table",
+        "name": "[웹접근성] TABLE"
+    },
+    {
+        "id": "chart",
+        "name": "차트"
     }
 ]

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui, viewport-fit=cover, user-scalable=no">
+<title>TABLE</title>
+
+<!-- [S] PUBLISH COMMON STYLE -->
+<link rel="stylesheet" href="../com/css/cm.common.css">
+<!-- [E] PUBLISH COMMON STYLE -->
+
+<!-- [S] PAGES - STYLE -->
+<link rel="stylesheet" href="">
+<!-- [E] PAGES - STYLE -->
+
+<!-- [S] LIBRARY - SCRIPT -->
+<script src="../com/js/lib/lib.jquery-3.6.3.min.js"></script>
+<script src="../com/js/lib/lib.jquery-ui-1.13.2.js"></script>
+<!-- [E] LIBRARY - SCRIPT -->
+</head>
+<body>
+<div id="cp-wrap" style="overflow-x: scroll">
+    <div id="cp-container">
+        <h1 class="cp-tit dep01">TABLE<span class="btnWrap"><button class="btn btn-size s bg type2 btn-desc">CASE 설명 보기</button></span>
+        <section class="cp-content">
+            <div class="splitWrap">
+                <div class="desc">
+                    <p>DTD가 html5라는 전제로 table내에 summary는 무조건 삭제처리 함</p>
+                    <ul class="case">
+                        <li>
+                            <strong>데이터 테이블 기본</strong>
+                            <div>스크립트에서 자동으로 th의 텍스트를 수집해서 caption 정보로 제공해줌</div>
+                        </li>
+                        <li>
+                            <strong>배치용 테이블</strong>
+                            <ul class="bul">
+                            <li>테이블 내에 thead, th가 존재하지 않는 테이블은 배치용 테이블로 간주하여 caption의 정보를 삭제한다.</li>
+                            <li>배치용 테이블 내에 th가 존재할 경우 <b>table[data-caption="basic"]</b>적용하면 th를 td로 바꾸고 caption의 정보를 삭제한다.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>테이블 내에 기존에 작성된 caption을 유지하고 싶은 경우</strong>
+                            <ul class="bul">
+                            <li><b>table[data-caption="keep"]</b>를 적용하면 기존에 작성된 caption을 그대로 유지해서 보여준다.</li>
+                            <li><b>*** 중복테이블은 2개까지만 적용됨</b></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>테이블 안에 테이블이 존재하는 경우</strong>
+                            <ul class="bul">
+                            <li>중복 테이블인 경우 부모 테이블에는 부모 th 정보만 caption에 제공하고, 종속 테이블에는 종속 th의 정보만 caption으로 제공하도록 한다.</li>
+                            <li>부모 테이블에는 <b>table[data-caption="parentTbl"]</b>을 적용하고, 종속 테이블에는 <b>table[data-caption="innerTbl"]</b>을 적용하도록 한다.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>caption에 strong 태그를 이용하여 별도의 제목을 넣어주고 싶은 경우</strong>
+                            <div><b>table[data-tbl="넣고싶은 제목"]</b>을 넣으면 caption>strong로 내용이 적용됨</div>
+                        </li>
+                        <li>
+                            <strong>데이터 테이블의 제목셀에 scope 속성 추가</strong>
+                            <ul class="bul">
+                            <li>thead > th에 <b>scope="col, colgroup"</b></li>
+                            <li>tbody > th에 <b>scope="row, rowgroup"</b></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="tblExWrap">
+                    <p>CASE 1 : 데이터 테이블 기본</p>
+                    <table>
+                    <colgroup>
+                        <col span="4">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                        <th>CASE 1 제목</th>
+                        <th>제목1-1</th>
+                        <th>제목1-2</th>
+                        <th>제목1-3</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <td>내용</td>
+                        <td>내용</td>
+                        <td>내용</td>
+                        <td>내용</td>
+                        </tr>
+                    </tbody>
+                
+                    </table>
+                
+                    <p>CASE 2 : 배치용 테이블</p>
+                    <table summary="삭제됐나?">
+                    <caption>삭제됐나?</caption>
+                    <tr>
+                        <td>배치용 테이블에 summary, caption 제공</td>
+                        <td>제목셀없음 / 내용셀</td>
+                    </tr>
+                    </table>
+                
+                    <table data-caption="basic" summary="삭제됐나?">
+                    <caption>삭제됐나?</caption>
+                    <tr>
+                        <th>
+                        배치용 테이블에 summary, caption th 제공
+                        <br><strong>table[data-caption="basic"]적용</strong>
+                        </th>
+                        <td>제목셀없음 / 내용셀</td>
+                    </tr>
+                    </table>
+                
+                    <p>CASE 3 : 테이블 안에 기존에 작성된 caption을 유지하고 싶은 경우<br>[table data-caption="keep"]</p>
+                    <table data-caption="keep" summary="삭제됐나?">
+                    <caption>기존 caption을 그대로 보여줘</caption>
+                    <tbody>
+                        <tr>
+                        <th>열제목1</th>
+                        <td>소내용</td>
+                        <td>소내용</td>
+                        </tr>
+                        <tr>
+                        <th>열제목2</th>
+                        <td>소내용</td>
+                        <td>소내용</td>
+                        </tr>
+                    </tbody>
+                    </table>
+                
+                    <p>CASE 4 : 테이블 안에 테이블<br>[data-caption="parentTbl" > data-caption="innerTbl"]</p>
+                    <table summary="삭제됐나?" data-caption="parentTbl" data-tbl="">
+                    <thead>
+                        <tr>
+                        <th>제목1</th>
+                        <th>제목2</th>
+                        <th>제목3</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <th>제목a</th>
+                        <td>내용</td>
+                        <td>내용</td>
+                        </tr>
+                        <tr>
+                        <th>제목b</th>
+                        <td>내용</td>
+                        <td>
+                            <table data-caption="innerTbl" data-tbl="종속 테이블 제목을 작성함">
+                            <caption></caption>
+                            <thead>
+                                <tr>
+                                <th>소제목1-1</th>
+                                <th>소제목2</th>
+                                <th>소제목3</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                <th>소제목a</th>
+                                <td>소내용</td>
+                                <td>소내용</td>
+                                </tr>
+                            </tbody>
+                            </table>
+                        </td>
+                        </tr>
+                    </tbody>
+                    </table>
+                
+                    <p>CASE 5 : caption에 제목과 내용을 분리적용</p>
+                    <table data-tbl="테이블 제목을 작성함" summary="삭제됐나?">
+                    <caption></caption>
+                    <thead>
+                        <tr>
+                        <th>제목1</th>
+                        <th>제목2</th>
+                        <th>제목3</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <th>열제목1</th>
+                        <td>내용</td>
+                        <td>내용</td>
+                        </tr>
+                        <tr>
+                        <th>열제목2</th>
+                        <td>내용</td>
+                        <td>내용</td>
+                        </tr>
+                    </tbody>
+                    </table>
+                    
+                    <p>CASE 6 : 제목 셀에 scope 추가</p>
+                    <table summary="삭제됐나?">
+                    <caption></caption>
+                    <thead>
+                        <tr>
+                        <th>제목1</th>
+                        <th>제목2</th>
+                        <th colspan="2">제목3</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <th>열제목1</th>
+                        <td>내용</td>
+                        <td>내용</td>
+                        <td>내용</td>
+                        </tr>
+                        <tr>
+                        <th rowspan="2">열제목2</th>
+                        <td>내용</td>
+                        <td>내용</td>
+                        <td>내용</td>
+                        </tr>
+                        <tr>
+                        <td>내용</td>
+                        <td>내용</td>
+                        <td>내용</td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
+                </div>
+        </section>
+    </div>
+</div>
+<script>
+$('table').each(function () {
+    // summary 속성 제거
+    $(this).removeAttr('summary');
+
+    var hasHeader = $(this).find('th').length > 0;
+
+    if (!hasHeader) {
+        // 헤더가 없는 테이블인 경우 caption 제거
+        $(this).find('caption').remove();
+    } else {
+        var captionType = $(this).data('caption');
+        var dataTblTit = $(this).data('tbl');
+        var tblCaption = $(this).find('caption');
+        var tblCaptionTit = tblCaption.text().trim();
+        var tblColgroup = $(this).find('colgroup');
+
+        // 캡션 처리 함수 호출
+        processCaption.call(this, tblCaption, tblColgroup); // 'this', caption, colgroup 정보를 넘겨줌
+
+        // th에 scope 속성 추가
+        $(this).find('thead th').attr('scope', 'col');
+        $(this).find('tbody th').attr('scope', 'row');
+    }
+});
+
+function processCaption(tblCaption, tblColgroup) {
+    var captionType = $(this).data('caption');
+    var dataTblTit = $(this).data('tbl');
+
+    // 이미 처리된 경우 return
+    if (tblCaption.hasClass('processedCaption')) {
+        return;
+    }
+
+    // 캡션 정보 변수에 저장
+    var currentCaptionTit = dataTblTit || tblCaption.text().trim();
+
+    if (captionType === 'basic') {
+        // basic 타입인 경우
+        tblCaption.remove();
+
+        $(this).find('th').each(function () {
+            var thHTML = $(this).html();
+            $(this).replaceWith('<td>' + thHTML + '</td>');
+        });
+    } else if (captionType === 'parentTbl') {
+        handleParentTable.call(this, tblCaption, currentCaptionTit); // 'this'와 caption 정보를 넘겨줌
+    } else if (captionType === 'keep') {
+        // keep 타입인 경우 기존 caption 정보를 유지함
+    } else {
+        handleRegularTable.call(this, tblCaption, currentCaptionTit, tblColgroup); // 'this', caption, colgroup 정보를 넘겨줌
+    }
+}
+
+function handleParentTable(tblCaption, currentCaptionTit) {
+    var parentCaptionText = $(this).find('> thead > tr > th, > tbody > tr > th').map(function () {
+        return $(this).text();
+    }).get().join(', ');
+
+    // 캡션 삭제
+    tblCaption.remove();
+
+    if (currentCaptionTit) {
+        var captionHtml = getCaptionHtml(currentCaptionTit, parentCaptionText); // 새로운 캡션 정보 생성
+        insertCaption.call(this, tblCaption, captionHtml); // 'this'와 caption 정보를 넘겨줌
+    }
+}
+
+function handleRegularTable(tblCaption, currentCaptionTit, tblColgroup) {
+    var captionText = $(this).find('> thead > tr > th, > tbody > tr > th').map(function () {
+        return $(this).text();
+    }).get().join(', ');
+
+    // 캡션 삭제
+    tblCaption.remove();
+
+    if (tblColgroup.length > 0) {
+        // colgroup이 존재하는 경우
+        var captionHtml = getCaptionHtml(currentCaptionTit, captionText); // 새로운 캡션 정보 생성
+        tblColgroup.before(captionHtml); // 'this'와 caption 정보를 넘겨줌
+    } else {
+        // colgroup이 없는 경우
+        insertCaption.call(this, tblCaption, getCaptionHtml(currentCaptionTit, captionText)); // 'this'와 caption 정보를 넘겨줌
+    }
+}
+
+function insertCaption(tblCaption, captionHtml) {
+    var tableThead = $(this).find('thead');
+    var tableTbody = $(this).find('tbody');
+
+    if (tableThead.length > 0) {
+        tableThead.before(captionHtml);
+    } else {
+        tableTbody.before(captionHtml);
+    }
+}
+
+function getCaptionHtml(title, text) {
+    return '<caption class="processedCaption"><strong>' + title + '</strong><p>' + text + ' 로 구성된 표' + '</p></caption>';
+}
+
+
+/* h1 button */
+$(".btn-desc").click(function(){
+    $(".desc").toggle();
+});
+</script>
+</body>
+</html>
