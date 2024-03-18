@@ -8,7 +8,8 @@
 <title>TABLE</title>
 
 <!-- [S] PUBLISH COMMON STYLE -->
-<link rel="stylesheet" href="../com/css/cm.common.css">
+<link rel="stylesheet" href="../../asset/com/css/cm.common.css">
+<link rel="stylesheet" href="../com/css/cm.guide.css">
 <!-- [E] PUBLISH COMMON STYLE -->
 
 <!-- [S] PAGES - STYLE -->
@@ -16,8 +17,8 @@
 <!-- [E] PAGES - STYLE -->
 
 <!-- [S] LIBRARY - SCRIPT -->
-<script src="../com/js/lib/lib.jquery-3.6.3.min.js"></script>
-<script src="../com/js/lib/lib.jquery-ui-1.13.2.js"></script>
+<script src="../../asset/com/js/lib/lib.jquery-3.6.3.min.js"></script>
+<script src="../../asset/com/js/lib/lib.jquery-ui-1.13.2.js"></script>
 <!-- [E] LIBRARY - SCRIPT -->
 </head>
 <body>
@@ -25,7 +26,7 @@
     <div id="cp-container">
         <h1 class="cp-tit dep01">TABLE<span class="btnWrap"><button class="btn btn-size s bg type2 btn-desc">CASE 설명 보기</button></span>
         <section class="cp-content">
-            <div class="splitWrap">
+            <div class="splitWrap cp-tbl">
                 <div class="desc">
                     <p>DTD가 html5라는 전제로 table내에 summary는 무조건 삭제처리 함</p>
                     <ul class="case">
@@ -56,6 +57,10 @@
                         </li>
                         <li>
                             <strong>caption에 strong 태그를 이용하여 별도의 제목을 넣어주고 싶은 경우</strong>
+                            <div><b>table>caption</b>에 내용을 넣으면 caption>strong로 내용이 적용됨</div>
+                        </li>
+                        <li>
+                            <strong>기존 작성된 caption을 삭제하고, 원하는 내용을 넣고 싶은 경우</strong>
                             <div><b>table[data-tbl="넣고싶은 제목"]</b>을 넣으면 caption>strong로 내용이 적용됨</div>
                         </li>
                         <li>
@@ -68,7 +73,7 @@
                     </ul>
                 </div>
                 
-                <div class="tblExWrap">
+                <div class="tblWrap">
                     <p>CASE 1 : 데이터 테이블 기본</p>
                     <table>
                     <colgroup>
@@ -113,7 +118,7 @@
                     </tr>
                     </table>
                 
-                    <p>CASE 3 : 테이블 안에 기존에 작성된 caption을 유지하고 싶은 경우<br>[table data-caption="keep"]</p>
+                    <p>CASE 3 : 테이블 안에 기존에 작성된 caption을 변경없이 형태 그대로 유지하고 싶은 경우<br>table[data-caption="keep"]</p>
                     <table data-caption="keep" summary="삭제됐나?">
                     <caption>기존 caption을 그대로 보여줘</caption>
                     <tbody>
@@ -131,7 +136,8 @@
                     </table>
                 
                     <p>CASE 4 : 테이블 안에 테이블<br>[data-caption="parentTbl" > data-caption="innerTbl"]</p>
-                    <table summary="삭제됐나?" data-caption="parentTbl" data-tbl="">
+                    <table summary="삭제됐나?" data-caption="parentTbl" data-tbl="부모테이블의 캡션은 직접 작성">
+                    <caption></caption>
                     <thead>
                         <tr>
                         <th>제목1</th>
@@ -171,9 +177,13 @@
                     </tbody>
                     </table>
                 
-                    <p>CASE 5 : caption에 제목과 내용을 분리적용</p>
-                    <table data-tbl="테이블 제목을 작성함" summary="삭제됐나?">
-                    <caption></caption>
+                    <p>
+                        CASE 5 : caption에 내용을 작성하면 caption>strong에 적용됨
+                        <span class="wg-ico wg-ico-star block">table[data-caption="keep"]은 caption의 구조변경없이 작성된 형태 그대로의 유지임.(조건이 다름)</span>
+                    </p>
+                    
+                    <table summary="삭제됐나?">
+                    <caption>caption의 내용은 caption>strong에 적용됨</caption>
                     <thead>
                         <tr>
                         <th>제목1</th>
@@ -195,9 +205,33 @@
                     </tbody>
                     </table>
                     
-                    <p>CASE 6 : 제목 셀에 scope 추가</p>
-                    <table summary="삭제됐나?">
-                    <caption></caption>
+                    <p>CASE 6 : data-tbl에 내용을 작성하면 기존 작성된 caption을 삭제하고 caption>strong에 적용됨</p>
+                    <table data-tbl="table[data-tbl]에 제목을 작성함" summary="삭제됐나?">
+                    <caption>삭제됐나?</caption>
+                    <thead>
+                        <tr>
+                        <th>제목1</th>
+                        <th>제목2</th>
+                        <th>제목3</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <th>열제목1</th>
+                        <td>내용</td>
+                        <td>내용</td>
+                        </tr>
+                        <tr>
+                        <th>열제목2</th>
+                        <td>내용</td>
+                        <td>내용</td>
+                        </tr>
+                    </tbody>
+                    </table>
+                    
+                    <p>CASE 7 : 제목 셀에 scope 추가</p>
+                    <table  summary="삭제됐나?">
+                    <caption>제목 셀에 scope 추가</caption>
                     <thead>
                         <tr>
                         <th>제목1</th>
@@ -230,109 +264,11 @@
         </section>
     </div>
 </div>
+
+<!-- [S] PAGES - SCRIPT -->
+<script src="../../asset/com/js/ui.component.js"></script>
+<!-- [E] PAGES - SCRIPT -->
 <script>
-$('table').each(function () {
-    // summary 속성 제거
-    $(this).removeAttr('summary');
-
-    var hasHeader = $(this).find('th').length > 0;
-
-    if (!hasHeader) {
-        // 헤더가 없는 테이블인 경우 caption 제거
-        $(this).find('caption').remove();
-    } else {
-        var captionType = $(this).data('caption');
-        var dataTblTit = $(this).data('tbl');
-        var tblCaption = $(this).find('caption');
-        var tblCaptionTit = tblCaption.text().trim();
-        var tblColgroup = $(this).find('colgroup');
-
-        // 캡션 처리 함수 호출
-        processCaption.call(this, tblCaption, tblColgroup); // 'this', caption, colgroup 정보를 넘겨줌
-
-        // th에 scope 속성 추가
-        $(this).find('thead th').attr('scope', 'col');
-        $(this).find('tbody th').attr('scope', 'row');
-    }
-});
-
-function processCaption(tblCaption, tblColgroup) {
-    var captionType = $(this).data('caption');
-    var dataTblTit = $(this).data('tbl');
-
-    // 이미 처리된 경우 return
-    if (tblCaption.hasClass('processedCaption')) {
-        return;
-    }
-
-    // 캡션 정보 변수에 저장
-    var currentCaptionTit = dataTblTit || tblCaption.text().trim();
-
-    if (captionType === 'basic') {
-        // basic 타입인 경우
-        tblCaption.remove();
-
-        $(this).find('th').each(function () {
-            var thHTML = $(this).html();
-            $(this).replaceWith('<td>' + thHTML + '</td>');
-        });
-    } else if (captionType === 'parentTbl') {
-        handleParentTable.call(this, tblCaption, currentCaptionTit); // 'this'와 caption 정보를 넘겨줌
-    } else if (captionType === 'keep') {
-        // keep 타입인 경우 기존 caption 정보를 유지함
-    } else {
-        handleRegularTable.call(this, tblCaption, currentCaptionTit, tblColgroup); // 'this', caption, colgroup 정보를 넘겨줌
-    }
-}
-
-function handleParentTable(tblCaption, currentCaptionTit) {
-    var parentCaptionText = $(this).find('> thead > tr > th, > tbody > tr > th').map(function () {
-        return $(this).text();
-    }).get().join(', ');
-
-    // 캡션 삭제
-    tblCaption.remove();
-
-    if (currentCaptionTit) {
-        var captionHtml = getCaptionHtml(currentCaptionTit, parentCaptionText); // 새로운 캡션 정보 생성
-        insertCaption.call(this, tblCaption, captionHtml); // 'this'와 caption 정보를 넘겨줌
-    }
-}
-
-function handleRegularTable(tblCaption, currentCaptionTit, tblColgroup) {
-    var captionText = $(this).find('> thead > tr > th, > tbody > tr > th').map(function () {
-        return $(this).text();
-    }).get().join(', ');
-
-    // 캡션 삭제
-    tblCaption.remove();
-
-    if (tblColgroup.length > 0) {
-        // colgroup이 존재하는 경우
-        var captionHtml = getCaptionHtml(currentCaptionTit, captionText); // 새로운 캡션 정보 생성
-        tblColgroup.before(captionHtml); // 'this'와 caption 정보를 넘겨줌
-    } else {
-        // colgroup이 없는 경우
-        insertCaption.call(this, tblCaption, getCaptionHtml(currentCaptionTit, captionText)); // 'this'와 caption 정보를 넘겨줌
-    }
-}
-
-function insertCaption(tblCaption, captionHtml) {
-    var tableThead = $(this).find('thead');
-    var tableTbody = $(this).find('tbody');
-
-    if (tableThead.length > 0) {
-        tableThead.before(captionHtml);
-    } else {
-        tableTbody.before(captionHtml);
-    }
-}
-
-function getCaptionHtml(title, text) {
-    return '<caption class="processedCaption"><strong>' + title + '</strong><p>' + text + ' 로 구성된 표' + '</p></caption>';
-}
-
-
 /* h1 button */
 $(".btn-desc").click(function(){
     $(".desc").toggle();

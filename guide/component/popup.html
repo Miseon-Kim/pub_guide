@@ -9,7 +9,7 @@
     <title>팝업/알럿/토스트</title>
     
     <!-- [S] PUBLISH COMMON STYLE -->
-    <link rel="stylesheet" href="../com/css/cm.common.css">
+    <link rel="stylesheet" href="../../asset/com/css/cm.common.css">
     <!-- [E] PUBLISH COMMON STYLE -->
 
     <!-- [S] PAGES - STYLE -->
@@ -17,8 +17,8 @@
     <!-- [E] PAGES - STYLE -->
 
     <!-- [S] LIBRARY - SCRIPT -->
-    <script src="../com/js/lib/lib.jquery-3.6.3.min.js"></script>
-    <script src="../com/js/lib/lib.jquery-ui-1.13.2.js"></script>
+    <script src="../../asset/com/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../../asset/com/js/lib/lib.jquery-ui-1.13.2.js"></script>
     <!-- [E] LIBRARY - SCRIPT -->
 </head>
 <body>
@@ -62,9 +62,12 @@
                             <a href="#" class="btn-close-pop ico ico-pop-close" role="button"><span class="hide">창닫기</span></a>
                         </div>
                         <div class="modal-container"><p>Center Modal Content</p></div>
-                        <div class="btnWrap grow">
-                            <button class="btn btn-size md type2 bg btn-close-pop">확인</button>
-                        </div>
+                        <div class="modal-footer">
+                          <div class="btnWrap grow">
+                              <button class="btn btn-size md type2 bg">확인</button>
+                              <button class="btn btn-size md bg btn-close-pop">취소</button>
+                          </div>
+                      </div>
                     </div>
                 </div>
             
@@ -248,7 +251,7 @@
     </div>
 
 <!-- [S] PAGES - SCRIPT -->
-<script src="./../com/js/ui.component.js"></script>
+<script src="../../asset/com/js/ui.component.js"></script>
 <!-- [E] PAGES - SCRIPT -->
 </body>
 </html>

@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="ko" class="">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="format-detection" content="telephone=no">
+
+<link rel="stylesheet" type="text/css" href="./com/css/pg.workSheet.css">
+<link rel="stylesheet" type="text/css" href="./com/css/cm.guide.css">
+<script src="../../asset/com/js/lib/lib.jquery-3.6.3.min.js"></script>
+<script src="../../asset/com/js/lib/lib.swiper.8.4.7.min.js"></script>
+<script src="./com/js/pg.guideCommon.js"></script>
+
+<!-- codeview -->
+<link rel="stylesheet" type="text/css" href="./codeview/styles/shCoreDefault.css">
+<script src="./codeview/scripts/shCore.js"></script>
+<script src="./codeview/scripts/shAutoloader.js"></script>
+<script src="./codeview/scripts/shBrushJScript.js"></script>
+<script src="./codeview/scripts/shBrushXml.js"></script>
+<script src="./codeview/scripts/shBrushCss.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+
+<title>퍼블리싱 기본가이드 | Publishing Guide</title>
+</head>
+<body data-project="app" data-util="document">
+
+<div id="pgWrap" data-category="document">
+    <!-- [S] HEADER --> 
+    <header id="pgHeader"></header>
+    <!-- [E] HEADER -->
+
+	<div class="pg_titles">
+		<h2>퍼블리싱 기본가이드</h2>
+	</div>
+
+    <!-- [S] CONTENTS -->
+    <div id="pgContainer">
+        <div class="pg_content">
+
+            <!-- [S] MENU LIST -->
+            <div class="pg_board_tab swiper-initialized swiper-horizontal swiper-pointer-events swiper-free-mode">
+				<ul class="swiper-wrapper" aria-live="polite">
+					<li class="swiper-slide active" role="group"><a href="#pgWrap" role="button">문서 가이드</a></li>
+                    <li class="swiper-slide" role="group"><a href="#doc2" role="button">컨텐츠 가이드</a></li>
+                    <li class="swiper-slide" role="group"><a href="#doc3" role="button">SCSS 가이드</a></li>
+                    <li class="swiper-slide" role="group"><a href="#doc4" role="button">JS 가이드</a></li>
+                    <li class="swiper-slide" role="group"><a href="#doc5" role="button">주석 가이드</a></li>
+                    <li class="swiper-slide" role="group"><a href="#doc6" role="button">예약어 가이드</a></li>
+				</ul>
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+            </div>
+            <!-- [E] MENU LIST -->
+
+            <div class="pg-contentWrap">
+                <section class="pg-docSection">
+                    <div class="wg-hgroup">
+                        <h2 class="wgTit01">문서 가이드</h2>
+                    </div>
+                    <article class="wg-fxWrap wg-rowWrap">
+                        <div class="wg-contBoxWrap wg-fx">
+                            <dl class="wg-contBody">
+                                <dt>프로젝트 준수 가이드</dt>
+                                <dd class="wg-txtCont">
+                                    <!--  PC WEB 프로젝트일때 사용 -->
+                                    <strong class="wg-TxtTit">PC 해상도</strong>
+                                    <div class="wg-lstBody"><b>1280*1024 기준</b>으로 하되 해상도 100% CENTER 정렬</div>
+                                </dd>
+                                <dd class="wg-lstCont">
+                                    <!--  MOBILE WEB/APP 프로젝트일때 사용 -->
+                                    <strong class="wg-TxtTit">MOBILE</strong>
+                                    <div class="wg-lstBody">
+                                        <ul class="wg-lst-bar">
+                                            <li><strong>display</strong> : <b>360*640 기준</b>으로 하되 가로모드(740px) 반영, 최적화 대상 화면 비율은 9:16 및 1:2 비율을 유지한다.</li>
+                                            <li><strong>Device</strong> : <b>Samsung Galaxy S24</b>에 최적화</li>
+                                            <li><strong>OS Version</strong> : Android <b>14 이상</b> IOS <b>17</b> 이상 지원</li>
+                                            <li class="wg-ico wg-ico-star"><a href="https://blog.naver.com/hyehyun1221/222533209820" target="_blank" class="btn btn-size md txt uline">스크린해상도 확인</a></li>
+                                        </ul>   
+                                    </div>
+                                </dd>
+                                <dd class="wg-lstCont">
+                                    <strong class="wg-TxtTit">Cross Browing</strong>
+                                    <ul class="wg-lstBody wg-lst-bar">
+                                        <li><b>Chrome를 기준</b>으로 하되, ieEdge, Firefox를 준수하며 Safari 화면 유지 적용한다.</li>
+                                        <li class="wg-ico wg-ico-star">크로스브라우징 IE 호환성보기로 인한 오류 방지를 위해 항상 IE 최신 브라우저 렌더링이 되도록 META TAG 설정
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-css: true">
+                                                &lt;meta http-equiv="X-UA-Compatible" content="IE=edge">
+                                                </pre>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </dd>
+                                <dd class="wg-lstCont">
+                                    <strong class="wg-TxtTit">web accessibility</strong>
+                                    <ul class="wg-lstBody wg-lst-bar">
+                                        <li><b>한국형 웹 콘텐츠 접근성 지침 2.1을 기준</b>으로 하되, 준수가이드 범위는 <a href="https://www.wah.or.kr:444/Participation/guide.asp" class="btn btn-size md txt uline">웹접근성연구소 제공 가이드</a> 참고</li>
+                                        <li>접근성 준수를 위해 IR 적용시 <b>display:none;</b> 또는 <b>visibility::hidden;</b> <strong class="txt_underLine">사용 금지</strong></li>
+                                    </ul>
+                                </dd>
+                            </dl>
+                        </div><!--// .wg-contBoxWrap end -->
+
+                        <div class="wg-contBoxWrap wg-fx">
+                            <dl class="wg-contBody">
+                                <dt>DOCTYPE / language TYPE / Encoding / Entity code</dt>
+                                <dd class="wg-txtCont">
+                                    <strong class="wg-TxtTit">DOCTYPE</strong>
+                                    <div class="wg-lstBody wg-ico wg-ico-bar">DTD 선언시 앞에 공백이 오지 않도록 해야하며, 문서 최상단에 선언되어야 함.
+                                        <div class="wg-codeBox">
+                                            <pre class="brush: js; html-css: true">
+                                            /* HTML5 DTD 선언 */
+                                            &lt;!DOCTYPE html>
+                                            &lt;html lang="ko">
+                                            </pre>
+                                        </div>
+                                    </div>
+                                </dd>
+                                <dd class="wg-txtCont">
+                                    <strong class="wg-TxtTit">language TYPE</strong>
+                                    <div class="wg-lstBody wg-ico wg-ico-star">다국어 적용이 필요한 경우 해당 로컬 언어는 <a href="https://www.w3.org/WAI/ER/IG/ert/iso639.htm" target="_blank" class="btn btn-size md txt uline">ISO 639 국가코드 및 언어코드</a>에서 확인후 반영
+                                        <div class="wg-codeBox">
+                                            <pre class="brush: js; html-css: true">
+                                            /* language TYPE : 한국어 */
+                                            &lt;html lang="ko">
+                                            </pre>
+                                        </div>
+                                    </div>
+                                </dd>
+                                <dd class="wg-lstCont">
+                                    <strong class="wg-TxtTit">ENCODING TYPE</strong>
+                                    <div class="wg-lstBody wg-ico wg-ico-bar">문서인코딩 <b>utf-8 필수</b>
+                                        <div class="wg-codeBox">
+                                            <pre class="brush: js; html-css: true">
+                                            /* HTML ENCODING */
+                                            &lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                                            /* CSS & JS ENCODING */
+                                            @charset "utf-8";
+                                            </pre>
+                                        </div>
+                                    </div>
+                                </dd>
+                                <dd class="wg-lstCont">
+                                    <strong class="wg-TxtTit">ENTITY CODE</strong>
+                                    <ul class="wg-lstBody wg-lst-bar">
+                                        <li>특수문자 사용시 entity code 적용</li>
+                                        <li class="wg-ico wg-ico-star">참고 : <a href="http://www.w3schools.com/html/html_entities.asp" target="_blank" title="새창" class="btn btn-size md txt uline">HTML Entities</a></li>
+                                    </ul>
+                                    <div class="wg-codeCont">
+                                        <ul class="wg-lstBody wg-lst-bar wg-splitWrap col2">
+                                            <li><b>₩</b>&nbsp;:&nbsp;&amp;#8361;</li>
+                                            <li><b>"</b>&nbsp;:&nbsp;&amp;quot;</li>
+                                            <li><b>&amp;</b>&nbsp;:&nbsp;&amp;amp;</li>
+                                            <li><b>&lt;</b>&nbsp;:&nbsp;&amp;lt;</li>
+                                            <li><b>&gt;</b>&nbsp;:&nbsp;&amp;gt;</li>
+                                            <li><b>·</b>&nbsp;:&nbsp;&amp;middot;</li>
+                                            <li><b>[공백]</b>&nbsp;:&nbsp;&amp;nbsp;</li>
+                                        </ul>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </div><!--// .wg-contBoxWrap end -->
+                    </article>
+                    <article class="wg-fxWrap wg-colWrap">
+                        <div class="wg-contBoxWrap wg-fx">
+                            <dl class="wg-contBody">
+                                <dt>META TAG</dt>
+                                <dd class="wg-txtCont">
+                                    <div class="wg-lstBody wg-ico wg-ico-star">상세내용 기획과 협의필요</div>
+                                    <div class="wg-codeBox">
+                                        <pre class="brush: js; html-script: true">
+                                            <!-- default -->
+                                            &lt;meta http-equiv="X-UA-Compatible" content="IE=edge">
+                                            &lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                                            &lt;meta http-equiv="imagetoolbar" content="no">
+                                            
+                                            <!-- cash del -->
+                                            &lt;meta http-equiv="Pragma" content="no-cache" />
+                                            &lt;meta http-equiv="Expires" content="-1" />
+                                            &lt;meta http-equiv="cache-control" content="no-store" />
+    
+                                            <!-- search info -->
+                                            &lt;meta name="Author" content="PROJECT">
+                                            &lt;meta name="title" content="PROJECT">
+                                            &lt;meta name="keywords" content="publishing, 퍼블리싱 가이드">
+                                            &lt;meta name="description" content="PUBLISHING GUIDE">
+    
+                                            <!-- only Mobile -->
+                                            &lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+                                            &lt;meta name="format-detection" content="telephone=no">
+    
+                                            <!-- quick icon --> ``````  
+                                            &lt;link rel="apple-touch-icon" href="https://img.url.com/icon_touch.png" />
+                                            &lt;link rel="shortcut icon" href="https://img.url.com/icon_shortcut.png" />
+                                            </pre>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </div>
+                    </article>
+                    
+                </section>
+
+                <hr class="target_hr" id="doc2" />
+                <section class="pg-docSection">
+                    <div class="wg-hgroup">
+                        <h2 class="wgTit01">컨텐츠가이드</h2>
+                    </div>
+                    <article class="wg-fxWrap wg-rowWrap">
+                        <div class="wg-colWrap">
+                            <div class="wg-contBoxWrap wg-fx">
+                                <dl class="wg-contBody">
+                                    <dt>SKIP NAVIGATION 적용시 주의사항</dt>
+                                    <dd class="wg-txtCont">
+                                        <!-- <strong class="wg-TxtTit">스크롤되는 컨텐츠에 키보드 접근 제공</strong> -->
+                                        <ul class="wg-lstBody wg-lst-bar">
+                                            <li><b>[본문 바로가기]에 대한 건너뛰기 기능은 필수로 제공</b>해야 한다.</li>
+                                            <li>ie 브라우저 버그로 html5의 시멘틱 태그로 건너뛰기 동작이 되지 않으므로 html5시멘틱 태그가 아닌 <b>div, hn 등으로 건너뛰기가 진행될 수 있도록 제공</b> 해야된다.
+                                                <div class="wg-codeBox">
+                                                    <pre class="brush: js; html-script: true;">
+                                                        <!-- Skip Navigation -->
+                                                        &lt;a href="#container" class="skip">본문바로가기&lt;/a>
+                                                        ...
+                                                        &lt;div id="container">
+                                                    </pre>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </div><!--// .wg-contBoxWrap end -->
+    
+                            <div class="wg-contBoxWrap wg-fx">
+                                <dl class="wg-contBody">
+                                    <dt>문서 타이틀 작성 가이드</dt>
+                                    <dd class="wg-txtCont">
+                                        <strong class="wg-TxtTit">HTML 문서내 TITLE 작성</strong>
+                                        
+                                        <ul class="wg-lstBody wg-lst-bar">
+                                            <li>프로젝트 상황에 따라 문서타이틀 작성 규칙 수정 적용</li>
+                                        </ul>
+                                        <div class="wg-codeBox">
+                                            <pre class="brush: js; html-script: true">
+                                            <!-- 본문(일반) 페이지타이틀 작성 -->
+                                            &lt;title>페이지 타이틀 | 프로젝트&lt;/title>
+    
+                                            <!-- 본문(글쓰기가 있는 페이지) 페이지타이틀 작성 -->
+                                            &lt;title>[목록] 페이지 타이틀 | 프로젝트&lt;/title>
+                                            &lt;title>[글작성] 페이지 타이틀 | 프로젝트&lt;/title>
+    
+                                            <!-- 팝업 페이지타이틀 작성 -->
+                                            &lt;title>[팝업] 페이지 타이틀 | 프로젝트&lt;/title>
+                                            </pre>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div><!--// .wg-contBoxWrap end -->
+    
+                            <div class="wg-contBoxWrap wg-fx">
+                                <dl class="wg-contBody">
+                                    <dt>[a]엘리먼트 주의사항</dt>
+                                    <dd class="wg-txtCont">
+                                        <strong class="wg-TxtTit">[a] 엘리먼트 사용시 주의사항</strong>
+                                        <ul class="wg-lstBody wg-lst-bar">
+                                            <li>새창을 포함하는 a 태그에는 반드시 <b>target="_blank"</b> 와 <b>title="새창"</b> 표시 필수</b>
+                                                <b class="wg-ico wg-ico-star">스크린리더 업데이트 이후 둘중 하나만 작성시 인식 불가하기 때문에 둘 모두 함께 표기</b>
+                                                <div class="wg-codeBox">
+                                                    <pre class="brush: html;">
+                                                        &lt;a href="pop.html" target="_blank" title="새창">...&lt;/a>
+                                                    </pre>
+                                                </div>
+                                            </li>
+                                            <li>id 값 또는 javascript 값으로 이동할 경우 클릭시 다른 곳으로 포커스가 이동하지 않도록 <b>포커스 유지 처리</b> 필수</b>
+                                                <div class="wg-codeBox">
+                                                    <pre class="brush: html;">
+                                                        <!-- HTML 태그 내 포커스 유지처리 -->
+                                                        &lt;a href="#tabMenu" onclick="return false;">...&lt;/a>
+                                                        &lt;a href="#tabMenu" onclick="javascript:void(0);">...&lt;/a>
+    
+                                                        &lt;a href="#" onclick="javascript:openWin('view', 'URL'); return false;">...&lt;/a>
+                                                        &lt;a href="javascript:void(0);" onclick="javascript:openWin('view', 'URL');">...&lt;/a>
+    
+                                                        <!-- JS 함수 내 포커스 유지처리 -->
+                                                        $('.element).click(function(e) {
+                                                            e.preventDefault();
+                                                        });
+                                                    </pre>
+                                                </div>
+                                            </li>
+                                            <li>상태 정보를 포함하는 a 태그에는 반드시 <b>title 요소에 현재 상태에 대한 대체정보 제공</b> 필수</b>
+                                                <div class="wg-codeBox">
+                                                    <pre class="brush: html;">
+                                                        &lt;a href="javascript:void(0);" title="선택됨">탭Show/Hide 방식 적용시 선택된  a 요소에 title 제공&lt;/a>
+                                                        &lt;a href="javascript:void(0);" title="열림">아코디언 등의 동작이 발생할 경우 열림/닫힘으로 a 요소에 title 제공&lt;/a>
+                                                        &lt;a href="javascript:void(0);" title="재생">움직이는 컨텐츠의 정지/재생 컨트롤에 대해 a 요소에 title 제공&lt;/a>
+                                                    </pre>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </div><!--// .wg-contBoxWrap end -->
+                        </div><!--// wg-colWrap e-->
+    
+                        <div class="wg-colWrap">
+                            <div class="wg-contBoxWrap wg-fx">
+                                <dl class="wg-contBody">
+                                    <dt>대체텍스트 작성 가이드</dt>
+                                    <dd class="wg-txtCont">
+                                        <strong class="wg-TxtTit">정보를 담고 있는 이미지 요소</strong>
+                                        <ul class="wg-lstBody wg-lst-bar">
+                                            <li><b>&lt;img>, &lt;area>, &lt;input type="image"></b> 요소는 반드시 <b>alt=""</b> 속성으로 대체 텍스트 제공 필수
+                                                <div class="wg-codeBox">
+                                                    <pre class="brush: html;">
+                                                        <!-- img -->
+                                                        &lt;img src="img.jpg" alt="대체텍스트">
+    
+                                                        <!-- img Map -->
+                                                        &lt;img src="img.jpg" alt="대체텍스트" usemap="imgMap">
+                                                        &lt;map id="imgMap" name="imgMap">
+                                                        &lt;area shape="rect" coords="0 0 50 100" href="URL" alt="대체텍스트">
+                                                        &lt;/map>
+    
+                                                        <!-- input:image -->
+                                                        &lt;input type="image" alt="대체텍스트">
+                                                    </pre>
+    
+                                                </div>
+                                            </li>
+                                            <li>이미지+텍스트 링크 또는 정보를 담고 있지 않은 이미지(배경이미지 포함)와 같이 디자인 요소에 국한된 이미지의 경우 <b>alt="" 빈 값으로 처리</b></b>
+                                                <div class="wg-codeBox">
+                                                    <pre class="brush: html;">
+                                                        &lt;div style="background:url(정보 없는 단순 배경이미지.gif)">
+                                                        &lt;img src="정보 없는 단순 장식 이미지.gif" alt="">
+                                                        &lt;a href="#">&lt;img src="logo.gif" alt="">COMPANY NAME&lt;/a>
+                                                    </pre>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </dd>
+                                    <dd class="wg-txtCont">
+                                        <strong class="wg-TxtTit">대체 텍스트가 길거나 대체 컨텐츠 마크업이 필요한 경우</strong>
+                                        <div class="wg-lstBody wg-ico wg-ico-bar">IR 기법을 적용하는 경우 CSS 선언을 통해 해당 클래스 적용. <b>(style="display:none", "visibility:hidden" longdesc 속성 사용 불가)</b>
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-css: true;">
+                                                    /* CSS IR */
+                                                    .hide {position:absolute !important; overflow:hidden !important; height:1px !important; width:1px !important; margin:0 !important; padding:0 !important; line-height:0 !important; border:0; clip:rect(1px 1px 1px 1px);}
+                                                </pre>
+                                            </div>
+                                        </div>
+                                    </dd>
+                                    <dd class="wg-txtCont">
+                                        <strong class="wg-TxtTit">iframe/frame TITLE 속성에 대체정보 제공</strong>
+                                        <div class="wg-lstBody wg-ico wg-ico-bar">iframe/frame : <b>title 속성 필수</b> 아이프레임의 용도를 설명하거나 개발구현을 위한 빈프레임일 경우에도 title 속성을 제공해야 한다.
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-script: true;">
+                                                    <!-- 용도가 있는 iframe/frame -->
+                                                    &lt;iframe title="프린트 모듈프레임">
+    
+                                                    <!-- 용도가 없는 빈 iframe/frame -->
+                                                    &lt;iframe title="Blank Frame">
+                                                    &lt;iframe title="빈프레임">
+                                                </pre>
+                                            </div>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div><!--// .wg-contBoxWrap end -->
+    
+                            <div class="wg-contBoxWrap wg-fx">
+                                <dl class="wg-contBody">
+                                    <dt>[div] 엘리먼트 주의사항</dt>
+                                    <dd class="wg-txtCont">
+                                        <strong class="wg-TxtTit">스크롤되는 컨텐츠에 키보드 접근 제공</strong>
+                                        <div class="wg-lstBody wg-ico wg-ico-bar"><code>style="overflow:scroll"</code>, <code>style="overflow-y:scroll"</code>, <code>style="overflow-x:scroll"</code> 등의 스크롤이 표시되는 경우 키보드 접근을 위해 해당 엘리먼트에  <code><b>tabindex="0"</b></code>을 제공해야 한다.
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-script: true;">
+                                                    &lt;div style="height:150px; overflow-y:scroll;" tabindex="0">
+                                                </pre>
+                                            </div>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div><!--// .wg-contBoxWrap end -->
+                            
+                        </div><!--// .wg-colWrap end-->
+                    </article>
+
+                    <article class="wg-fxWrap wg-colWrap">
+                        <div class="wg-contBoxWrap wg-fx">
+                            <dl class="wg-contBody">
+                                <dt>FORM 요소 작성 가이드</dt>
+                                <dd class="wg-txtCont">
+                                    <strong class="wg-TxtTit">입력 폼 속성 정의 순서</strong>
+                                    <div class="wg-codeBox">
+                                        <pre class="brush: js; html-script: true">
+                                        <!-- 텍스트 박스 -->
+                                        &lt;input type="text" name="" value="" title="" placeholder="" class="" style="">
+    
+                                        <!-- 이미지 버튼 -->
+                                        &lt;input type="image" name="" src="" alt="" class="" style="">
+    
+                                        <!-- radio/checkbox -->
+                                        &lt;input type="radio" name="" id="" value="" class="" style="" checked="checked">
+                                        &lt;input type="checkbox" name="" id="" value="" class="" style="" checked="checked">
+    
+                                        <!-- textarea -->
+                                        &lt;textarea cols="" rows="" title="" class="" style="">
+                                        </pre>
+                                    </div>
+                                </dd>
+                                <dd class="wg-txtCont">
+                                    <strong class="wg-TxtTit">label + FORM 요소</strong>
+                                    <ul class="wg-lstBody wg-lst-bar">
+                                        <li>label이 필요한 form 요소 작성시 <b>반드시 label에 종속하여 코드를 작성</b>하도록 하며, 해당 label/form 요소의 꾸밈 css는 <b>[class="field-checkbox"]/[class="field-radio"]</b>를 통해 정의하도록 한다.</b></li>
+                                        <li>form 요소와 매핑이 되는 항목이 <span class="txt_underLine">있는 경우</span> <b>반드시 label for와 form요소의 id가 1:1 매핑이 될 수 있도록 구성</b>한다.
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-script: true">
+                                                    <!-- 체크박스 -->
+                                                    &lt;label class="field-checkbox" for="formId1">
+                                                        &lt;input type="checkbox" id="formId1" checked="checked">
+                                                        &lt;i class="field-icon">&lt;/i>
+                                                        &lt;span class="field-label">레이블텍스트&lt;/span>
+                                                    &lt;/label>
+
+                                                    <!-- 라디오 -->
+                                                    &lt;label class="field-radio" for="formId2">
+                                                        &lt;input type="radio" id="formId2" name="rdoGroup" checked="checked">
+                                                        &lt;i class="field-icon">&lt;/i>
+                                                        &lt;span class="field-label">레이블텍스트&lt;/span>
+                                                    &lt;/label>
+                                                </pre>
+                                            </div>
+                                        </li>
+                                        <li>form 요소와 매핑이 되는 항목이 <span class="txt_underLine">없는 경우</span> <b>[title] 속성을 이용하여 해당 form 요소의 대체설명을 제공</b>헤애 한다.
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-script: true">
+                                                <!-- label이 없는 input:checkbox -->
+                                                &lt;label class="field-checkbox" for="formId1">
+                                                    &lt;input type="checkbox" id="formId1" title="서식요소 설명" checked="checked">
+                                                    &lt;i class="field-icon">&lt;/i>
+                                                &lt;/label>
+
+                                                <!-- label이 없는 input:radio -->
+                                                &lt;label class="field-radio" for="formId2">
+                                                    &lt;input type="radio" id="formId2" name="rdoGroup" title="서식요소 설명" checked="checked">
+                                                    &lt;i class="field-icon">&lt;/i>
+                                                &lt;/label>
+
+                                                <!-- label이 없는 input:text -->
+                                                &lt;input type="text" name="" id="" value="" title="서식요소 설명" placeholder="" class="" style="">
+    
+                                                <!-- label이 없는 select -->
+                                                &lt;select title="서식요소 설명" class="" style="">
+    
+                                                <!-- label이 없는 textarea -->
+                                                &lt;textarea cols="" rows="" title="서식요소 설명" class="" style="">
+                                                </pre>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </dd>
+                            </dl>
+                        </div>
+    
+                        <div class="wg-contBoxWrap wg-fx">
+                            <dl class="wg-contBody">
+                                <dt>TABLE 작성 가이드</dt>
+                                <dd class="wg-txtCont">
+                                    <strong class="wg-TxtTit">DATA TABLE</strong>
+                                    <ul class="wg-lstBody wg-lst-bar">
+                                        <li>table Mark up에 <b>thead, th를 포함</b>하고 있는 경우 무조건 데이터테이블로 간주</li>
+                                        <li>데이터 테이블일 경우 Mark up 작성 순서(필수) : <b>table>caption[표의 제목+설명]>colgroup>thead>tfoot>tbody</b></li>
+                                        <li>데이터 테이블일 경우 <strong class="uline">caption의 속성 사용 필수</strong></li>
+                                        <li><b>[ui.component.js / cp.tblCaption()]</b>에서 데이터 테이블의 <strong class="uline">caption 자동 적용 : component/table.html 참고</strong></li>
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-script: true">
+                                                    <!-- 기본 DATA TABLE 구조 -->
+                                                    &lt;table>
+                                                    &lt;caption>
+                                                        &lt;strong>데이터 테이블 제목&lt;/strong>
+                                                        &lt;p>데이터 테이블 설명&lt;/p>
+                                                    &lt;/caption>&lt;!-- 데이터 테이블일 경우 caption 작성 필수. -->
+                                                    &lt;colgroup>
+                                                        &lt;col>&lt;col>
+                                                    &lt;/colgroup>                                            
+                                                    &lt;thead>&lt;!-- thead, th의 유무에 따라 데이터 테이블과 배치용 테이블을 구분 -->
+                                                        &lt;tr>
+                                                            &lt;th scope="col">제목셀&lt;/th>&lt;!-- thead, th의 유무에 따라 데이터 테이블과 배치용 테이블을 구분 -->
+                                                            &lt;th scope="col">제목셀&lt;/th>&lt;!-- thead, th의 유무에 따라 데이터 테이블과 배치용 테이블을 구분 -->
+                                                        &lt;/tr>
+                                                    &lt;/thead>
+                                                    &lt;tfoot>
+                                                        &lt;tr>
+                                                            &lt;th scope="row">제목셀&lt;/th>&lt;!-- thead, th의 유무에 따라 데이터 테이블과 배치용 테이블을 구분 -->
+                                                            &lt;td>내용셀&lt;/td>
+                                                        &lt;/tr>
+                                                    &lt;/tfoot>
+                                                    &lt;tbody>
+                                                        &lt;tr>
+                                                            &lt;th scope="row">제목셀&lt;/th>&lt;!-- thead, th의 유무에 따라 데이터 테이블과 배치용 테이블을 구분 -->
+                                                            &lt;td>내용셀&lt;/td>
+                                                        &lt;/tr>
+                                                    &lt;/tbody>
+                                                &lt;/table>
+                                                </pre>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </dd>
+                                <dd class="wg-txtCont">
+                                    <strong class="wg-TxtTit">scope 작성 가이드</strong>
+                                    <ul class="wg-lstBody wg-lst-bar">
+                                        <li>scope-col / scope-colgroup 작성 예
+                                            <div class="tblWrap">
+                                                <table class="c">
+                                                    <caption>데이터테이블:scope-col 작성 예</caption>
+                                                    <colgroup>
+                                                        <col style="width:20%" span="5">
+                                                    </colgroup>
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">scope=col</th>
+                                                            <th colspan="2" scope="colgroup">scope=colgroup</th>
+                                                            <th scope="col">scope=col</th>
+                                                            <th scope="col">scope=col</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>내용셀</td>
+                                                            <td>내용셀</td>
+                                                            <td>내용셀</td>
+                                                            <td>내용셀</td>
+                                                            <td>내용셀</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-script: true">
+                                                &lt;table>
+                                                    &lt;caption>데이터테이블:scope-col&lt;/caption>
+                                                    &lt;colgroup>
+                                                        &lt;col style="width:20%">
+                                                    &lt;/colgroup>
+                                                    &lt;thead>
+                                                        &lt;tr>
+                                                            &lt;th scope="col">scope=col&lt;/th>
+                                                        &lt;/tr>
+                                                    &lt;/thead>
+                                                    &lt;tbody>
+                                                        &lt;tr>
+                                                            &lt;td>&nbsp;&lt;/td>
+                                                        &lt;/tr>
+                                                    &lt;/tbody>
+                                                &lt;/table>
+                                                </pre>
+                                            </div>
+                                        </li>
+                                        <li>scope-row 작성 예
+                                            <div class="tblWrap">
+                                                <table class="c">
+                                                    <caption>데이터테이블:scope-row 작성 예</caption>
+                                                    <colgroup>
+                                                        <col style="width:20%" span="5">
+                                                    </colgroup>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">scope=row</th>
+                                                            <td>내용셀</td>
+                                                            <td>내용셀</td>
+                                                            <td>내용셀</td>
+                                                            <td>내용셀</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th rowspan="2" scope="rowgroup">scope=row</th>
+                                                            <td>내용셀</td>
+                                                            <td>내용셀</td>
+                                                            <td>내용셀</td>
+                                                            <td>내용셀</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>내용셀</td>
+                                                            <td>내용셀</td>
+                                                            <td>내용셀</td>
+                                                            <td>내용셀</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-script: true">
+                                                &lt;table>
+                                                    &lt;caption>데이터테이블:scope-row&lt;/caption>
+                                                    &lt;colgroup>
+                                                        &lt;col style="width:20%" span="5">
+                                                    &lt;/colgroup>
+                                                    &lt;tbody>
+                                                        &lt;tr>
+                                                            &lt;th scope="row">scope=row&lt;/th>
+                                                            &lt;td>&nbsp;&lt;/td>
+                                                            &lt;td>&nbsp;&lt;/td>
+                                                            &lt;td>&nbsp;&lt;/td>
+                                                            &lt;td>&nbsp;&lt;/td>
+                                                        &lt;/tr>
+                                                    &lt;/tbody>
+                                                &lt;/table>
+                                                </pre>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </dd>
+                            </dl>
+                        </div>
+                    </article>
+                    
+                </section>
+
+                <hr class="target_hr" id="doc3" />
+                <section class="pg-docSection">
+                    <div class="wg-hgroup">
+                        <h2 class="wgTit01">SCSS 가이드</h2>
+                    </div>
+                    <article class="wg-fxWrap wg-colWrap">
+                        <div class="wg-contBoxWrap wg-fx">
+                            <dl class="wg-contBody">
+                                <dt>CSS 방법론</dt>
+                                <dd class="wg-txtCont">
+                                    <strong class="wg-TxtTit">OOCSS(Object Oriented CSS)</strong>
+                                    <ul class="wg-lstBody wg-lst-bar">
+                                        <li>OOCSS(Object Oriented CSS)는 CSS를 모듈(module)방식으로 작성하여 중복을 줄이는 방식의 방법론</li>
+                                        <li>OOCSS는 가장 많이 사용되는 방법론으로 구조와 스타일을 분리하여 작성합니다. <br>중복되는 디자인 요소를 따로 빼내어 작성하기 때문에 반복적으로 사용가능합니다. 또한 코드의 재사용성이 높아져 적은 코드량으로 최적의 성능을 보입니다.</li>
+                                        <li>다중 클래스 사용으로 인해 코드의 가독성이 떨어질 수 있으나 공통된 부분을 찾아 어디서나 재활용 할수 있다는 장점이 있기 때문에 OOCSS 방법론에 따라 작성합니다</li>
+                                    </ul>
+                                </dd>
+                            </dl>
+                        </div>
+                        
+                    </article>
+                    <article class="wg-fxWrap wg-rowWrap">
+                        <div class="wg-contBoxWrap wg-fx">
+                            <dl class="wg-contBody">
+                                <dt>SCSS 가이드</dt>
+                                <dd class="wg-txtCont">
+                                    <strong class="wg-TxtTit">SCSS 구조</strong>
+                                    <ul class="wg-lstBody wg-lst-bar">
+                                        <li>[./asset/scss] 폴더에 작성되어 있으며, 글로벌(전역SCSS)과 기본/페이지별 SCSS로 구분됨
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: html;">
+                                                    <!-- 글로벌 CSS -->
+                                                    _variables.scss // 변수선언
+                                                    _mixin.scss // mixin 함수선언
+                                                    _font.scss // 웹폰트선언
+                                                    _cp.text.scss // 컴포넌트 : 텍스트 관련
+                                                    _cp.button.scss // 컴포넌트 : 버튼 관련
+                                                    _cp.ico.scss // 컴포넌트 : 아이콘 관련
+                                                    _cp.input.scss // 컴포넌트 : input 관련
+                                                    _cp.select.scss // 컴포넌트 : select 관련
+                                                    _cp.rdochk.scss // 컴포넌트 : 라디오/체크박스 관련
+                                                    _cp.popup.scss // 컴포넌트 : 팝업 관련
+                                                    _cp.accodion.scss // 컴포넌트 : 아코디언 관련
+                                                    _cp.tab.scss // 컴포넌트 : 탭 관련
+                                                    _cp.swiper.scss // 컴포넌트 : 스와이퍼 관련
+                                                    _cp.table.scss // 컴포넌트 : 테이블 관련
+
+                                                    <!-- 기본/페이지별 CSS -->
+                                                    cm.common.scss // 컴파일 후 페이지에 작성될 css가 생성
+                                                    &lt;link rel="stylesheet" href="../com/css/cm.common.css">
+                                                </pre>
+    
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </dd>
+                                <dd class="wg-txtCont">
+                                    <strong class="wg-TxtTit">SCSS 파일명 작성 규칙</strong>
+                                    <ul class="wg-lstBody wg-lst-bar">
+                                        <li>컴파일 된 css 파일은 기본적으로 <b>[./asset/css/]</b> 폴더 내에 포함된다.</li>
+                                        <li>프로젝트 내 공통적으로 사용되는 SCSS 파일은 <b>[cm.*.scss]</b>의 형태로 작성되며, 각 컴퍼넌트에 대한 파일은 <b>[_cp.*.scss]</b>의 형태로 작성되어 cm.common.scss import 하도록 한다.
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-css: true;">
+                                                    @import 'variables';
+                                                    @import 'mixin';
+                                                    @import 'font';
+                                                    @import 'cp.text';
+                                                    @import 'cp.button';
+                                                    @import 'cp.ico';
+                                                    @import 'cp.input';
+                                                    @import 'cp.select';
+                                                    @import 'cp.rdochk';
+                                                    @import 'cp.popup';
+                                                    @import 'cp.accodion';
+                                                    @import 'cp.tab';
+                                                    @import 'cp.swiper';
+                                                    @import 'cp.table';
+                                                </pre>
+                                            </div>
+                                        </li>
+                                        <li>각 컴퍼넌트별 SCSS가 구분되어 작성되도록 구성</li>
+                                    </ul>
+                                </dd>
+                            </dl>
+                        </div><!--// .wg-contBoxWrap end -->
+
+                        <div class="wg-contBoxWrap wg-fx">
+                            <dl class="wg-contBody">
+                                <dt>SCSS 가이드</dt>
+                                <dd class="wg-txtCont">
+                                    <strong class="wg-TxtTit">SCSS 기본사용 규칙</strong>
+                                    <ul class="wg-lstBody wg-lst-bar">
+                                        <li>
+                                            속성값은 반드시 변수로 적용되도록 작성한다. (_variables.scss 에 선언된 변수값을 참고)<br>
+                                            <p class="wg-ico wg-ico-star">WSG에 따라 필요시 _variables.scss 에 선언된 변수값을 수정/추가 할 수 있다.</p>
+                                        </li>
+                                        <li>엘리먼트 상위에 선언되는 wrap가 있는 클래스는 카멜 스타일로 선언(ex. classWrap) 그외 클래스는 예약어-클래스명, 또는 클래스성격-클래스명 등의 형태인 (-)하이픈으로 연겨된 클래스명을 갖도록 작성한다
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-css: true;">
+                                                    /* 카멜선언 */
+                                                    .btnWrap {}
+                                                    .tblWrap {}
+                                                    .lstWrap {}
+                                                    
+                                                    /* (-) 하이픈선언 */
+                                                    .btn {
+                                                        &-style {}
+                                                    }
+                                                    .cont {
+                                                        &-desc {}
+                                                    }
+                                                </pre>
+                                            </div>
+                                        </li>
+                                        <li>scss 속성 선언시 모든 속성은 소문자로 작성되어야 하며, 선언된 속성과 속성 사이는 빈칸으로 구분하고 속성과 속성값 사이에 빈칸은 적용하지 않는다.</b>
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-css: true;">
+                                                    /* 잘못된 사용 예
+                                                    1. 속성과 속성값 사이 빈칸 적용
+                                                    2. 속성에 대문자 사용
+                                                    */
+                                                    .example {display: block; Background: $color-white; COLOR: $color-black;}
+                                                    
+                                                    /* 올바른 사용 예 */
+                                                    .example {display:block; background:$color-white; color:$color-black;}
+                                                </pre>
+                                            </div>
+                                        </li>
+                                        <li>페이지내 style 사용은 금하며, <b>예외적으로 input 또는 팝업(레이어팝업 포함) 사이즈 지정이 필요한 경우 style="width" 사용</b>할 수 있다.</li>
+                                        <li>문서내 margin/padding 사용이 필요할 경우 해당 요소의 클래스내에서 처리하며, 아래 예시와 같이 <b>inner style 또는 공통클래스(ex. marT15, padL20 등)를 만들어 사용하지 않는다</b>
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-script: true;">
+                                                    &lt;!-- 잘못된 사용 예 -->
+                                                    &lt;p style="margin-top:20px; padding-bottom:15px;">사용금지&lt;/p>
+                                                    &lt;p class="marT20 padL20">사용금지&lt;/p>
+                                                    
+                                                    &lt;!-- 올바른 사용 예 -->
+                                                    p.sampleBox {margin-top:20px; padding-bottom:15px;}
+                                                    &lt;p class="sampleBox">inner style 또는 공통클래스(ex. marT15, padL20 등)를 만들어 사용하지 않는다.&lt;/p>
+                                                </pre>
+                                            </div>
+                                        </li>
+                                        <li>속성값으로 한글폰트 및 이미지 URL 표기시 <b>작은 따옴표{''}를 사용</b>하며, <b>모든 속성의 마지막에는 세미콜론(;)을 작성</b>하도록 한다.
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: css; html-css: true">
+                                                div {font-family:'맑은고딕', '돋움'; background:url(/front/img/temp.gif);} /* 속성 마지막에는 반드시 (;) 작성. */
+                                                </pre>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </dd>
+                            </dl>
+                        </div><!--// .wg-contBoxWrap end -->
+                    </article>
+                </section>
+
+                <hr class="target_hr" id="doc4" />
+                <section class="pg-docSection">
+                    <div class="wg-hgroup">
+                        <h2 class="wgTit01">JS 가이드</h2>
+                    </div>
+                    <article class="wg-fxWrap wg-colWrap">
+                        <div class="wg-contBoxWrap wg-fx">
+                            <dl class="wg-contBody">
+                                <dt>JS 가이드</dt>
+                                <dd class="wg-txtCont">
+                                    <strong class="wg-TxtTit">JQUERY 선언</strong>
+                                    <ul class="wg-lstBody wg-lst-bar">
+                                        <li>jquery 버전은 항상 <b>최신 버전(jQuery 3.x 기준)을 사용</b>하며, 필요시 하위 버전과의 호환성을 위해 jQuery Migrate를 함께 사용할 수 있다.
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-script: true;">
+                                                    <!-- jquery default -->
+                                                    &lt;script type="text/javascript" src="./asset/js/plugin/lib.jquery-3.7.1.min.js">&lt;/script>
+                                                    <!-- jquery 버전 호환성 - 필요시 사용 -->
+                                                    &lt;script type="text/javascript" src="./com/js/jquery-migrate-3.4.0.min.js">&lt;/script>
+                                                    <!-- jquery UI -->
+                                                    &lt;script type="text/javascript" src="./com/js/jquery-ui-1.13.2.js">&lt;/script>
+                                                </pre>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </dd>
+                                <dd>
+                                    <strong class="wg-TxtTit">JS 파일명 작성 규칙</strong>
+                                    <ul class="wg-lstBody wg-lst-bar">
+                                        <li>js 파일은 기본적으로 <b>[./asset/js/]</b> 폴더 내에 포함된다.</li>
+                                        <li>각 파일마다 성격에 따라 지정된 접두어로 시작되며, [.]로 파일명 네임을 구분하도록 한다.</li>                                        
+                                        <li>jquery library/plugin 을 사용할 경우 파일명 앞에 <b>[lib.*.js], [pg.*.js]</b>의 형태로 작성되어야 한다.
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-script: true;">
+                                                    &lt;script type="text/javascript" src="./asset/js/plugin/lib.jquery-3.7.1.min.js">&lt;/script>
+                                                    &lt;script type="text/javascript" src="./asset/js/plugin/pg.cropper.js">&lt;/script>
+                                                </pre>
+                                            </div>
+                                        </li>
+                                        <li>퍼블리싱팀에서 작성하는 js 파일은 <b>[ui.*.js]</b>의 형태로 작성되어야 한다.
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-script: true;">
+                                                    &lt;script type="text/javascript" src="./asset/js/ui.component.js">&lt;/script>
+                                                </pre>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </dd>
+                            </dl>
+                        </div><!--// .wg-contBoxWrap end -->
+                    </article>
+                </section>
+
+                <hr class="target_hr" id="doc5" />
+                <section class="pg-docSection">
+                    <div class="wg-hgroup">
+                        <h2 class="wgTit01">주석 가이드</h2>
+                    </div>
+                    <article class="wg-fxWrap wg-rowWrap">
+                        <div class="wg-contBoxWrap wg-fx">
+                            <dl class="wg-contBody">
+                                <dt>주석 가이드</dt>
+                                <dd class="wg-txtCont">
+                                    <strong class="wg-TxtTit">HTML 주석 가이드</strong>
+                                    <ul class="wg-lstBody wg-lst-bar">
+                                        <li>섹션, 모듈, 단락의 구분을 위해 사용되는 주석은 시작과 끝을 항상 표시해야 한다.
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-script: true;">
+                                                    <!-- [S] 섹션타입1 -->
+                                                    &lt;section class="content">...&lt;/section>
+                                                    <!--// [E] 섹션타입1 -->
+                                                </pre>
+                                            </div>
+                                        </li>
+                                        <li>작업자 전달용으로 주석 작성 필요시
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-script: true;">
+                                                    <!-- [P] : 퍼블리셔를 위한 주석입니다. -->
+                                                    <!-- [D] : 개발자를 위한 주석입니다. -->
+                                                    <!-- [P/D] : 퍼블리셔 & 개발자를 위한 주석입니다. -->
+                                                </pre>
+                                            </div>
+                                        </li>                                        
+                                        <li>수정변동이 발생되어 히스토리를 위해 주석 작성 필요시
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-script: true;">
+                                                    <!-- YYYY.MM.DD 작업자명 히스토리 -->
+                                                </pre>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </dd>
+                            </dl>
+                        </div>
+
+                        <div class="wg-contBoxWrap wg-fx">
+                            <dl class="wg-contBody">
+                                <dt>주석 가이드</dt>
+                                <dd class="wg-txtCont">
+                                    <strong class="wg-TxtTit">CSS 주석 가이드</strong>
+                                    <ul class="wg-lstBody wg-lst-bar">
+                                        <li>선언된 SCSS의 카테고리, 성격 등으로 내용이 구분되는 경우
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-css: true;">
+                                                    /* 메뉴명, 카테고리명, 성격 */
+                                                    .menu {}
+                                                </pre>
+                                            </div>
+                                        </li>                              
+                                        <li>수정변동이 발생되어 히스토리를 위해 주석 작성 필요시
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-css: true;">
+                                                    /* YYYY-MM-DD 작업자명
+                                                       기존 코드 주석처리 및 수정내용/히스토리 작성
+                                                       .desc-box {color:$color-white;}
+                                                    */
+                                                    .desc-box {color:$color-orange;}
+                                                </pre>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </dd>
+                            </dl>
+                        </div>
+                    </article>
+                </section>
+
+                <hr class="target_hr" id="doc6" />
+                <section class="pg-docSection">
+                    <div class="wg-hgroup">
+                        <h2 class="wgTit01">예약어 가이드</h2>
+                    </div>
+                    <article class="wg-fxWrap wg-colWrap">
+                        <div class="wg-contBoxWrap wg-fx">
+                            <dl class="wg-contBody">
+                                <dt>SCSS 예약어 가이드 : 카멜 표기법 + (-)하이픈 표기법 사용</dt>
+                                <dd class="wg-txtCont">
+                                    <p class="wg-ico wg-ico-star" style="margin-bottom:2rem;"><strong class="uline">_variables.scss</strong>에 선언된 예약어 참고</p>
+                                    <strong class="wg-TxtTit">레이아웃 관련 CSS 예약어</strong>
+                                    <!-- <div class="wg-lstBody">- ID 및 예약어 클래스는 카멜표기법(camelCase)으로 적용</div> -->
+                                    <ul class="wg-lstBody wg-lst-bar wg-splitWrap col2">
+                                        <li><b>.wrap</b>&nbsp;:&nbsp;문서 전체를 감싸는 전체영역</li>
+                                        <li><b>.header</b>&nbsp;:&nbsp;GNB를 포함하는 상단 영역</li>
+                                        <li><b>.skipMenu</b>&nbsp;:&nbsp;건너띄기 css 예약어</li>
+                                        <li><b>.container</b>&nbsp;:&nbsp;본문 내용을 보함하는 컨텐츠 영역<br>* [본문 바로가기]의 스킵네비게이션 타겟 영역으로 <strong class="uline">반드시 div로 적용</strong></li>
+                                        <li><b>.lnbWrap</b>&nbsp;:&nbsp;컨텐츠 영역 분할시 왼쪽 영역</li>
+                                        <li><b>.content</b>&nbsp;:&nbsp;본문 내용을 보함하는 컨텐츠 영역</li>
+                                        <li><b>.footer</b>&nbsp;:&nbsp;하단 컨텐츠 영역</li>
+                                        <li><b>.popWrap, .popContainer, .popContent, .popFooter, .btn_popClose</b>&nbsp;:&nbsp;팝업(레이어팝업) 관련 css 예약어</li>
+                                    </ul>
+                                </dd>
+                                <dd class="wg-txtCont">
+                                    <strong class="wg-TxtTit">컨텐츠 공통 ID/CSS 예약어</strong>
+                                    <!-- <div class="wg-lstBody">- ID 및 예약어 클래스는 카멜표기법(camelCase)으로 적용</div> -->
+                                    <ul class="wg-lstBody wg-lst-bar wg-splitWrap col2">
+                                        <li><b>.dep01, .dep02, .dep03, .dep04...</b>&nbsp;:&nbsp;주로 멀티클래스로 적용되며, 각 컨텐츠의 뎁스를 구분하는 역할을 한다.</li>
+                                        <li><b>._is-active</b>&nbsp;:&nbsp;컨텐츠 활성화시 적용되는 클래스</li>
+                                        <li>
+                                            <b>.hgroupWrap</b><br>
+                                            타이틀 영역. 멀티클래스 .dep01, .dep02, .dep03, .dep04... 등을 통해 hn 단계별 구분
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-script: true;">
+                                                    &lt;div class="hgroupWrap">
+                                                        &lt;h1 class="tit dep01">1depth 타이틀&lt;/h1>
+                                                    &lt;/div>
+                                                </pre>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <b>.depthWrap</b><br>
+                                            뎁스별 컨텐츠 영역. 멀티클래스 .dep01, .dep02, .dep03, .dep04... 등을 통해 컨텐츠 뎁스별 구분
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-script: true;">
+                                                    &lt;div class="depthWrap dep02">
+                                                        &lt;div class="hgroupWrap">
+                                                            &lt;h2 class="tit dep02">2depth 타이틀&lt;/h2>
+                                                        &lt;/div>
+                                                        &lt;div class="descWrap">
+                                                        텍스트 컨텐츠
+                                                        &lt;/div>
+                                                    &lt;/div>
+                                                </pre>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <b>.tabWrap</b> : tab 컨텐츠. 서브탭일 경우 멀티클래스로 .sub 적용. 하위 클래스로 .tabMenu 구성
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-script: true;">
+                                                    &lt;div class="tabWrap">
+                                                        &lt;ul class="tabMenu">
+                                                            &lt;li>&lt;a href="" class="_is-active" title="선택됨">탭1&lt;/a>&lt;/li>
+                                                            &lt;li>&lt;a href="">탭2&lt;/a>&lt;/li>
+                                                        &lt;/ul>
+    
+                                                        &lt;ul class="tabMenu sub">
+                                                        ...
+                                                        &lt;/ul>
+                                                    &lt;/div>
+                                                </pre>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <b>.tblWrap</b> : table 형태의 컨텐츠. 멀티클래스 .col .row 적용
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-script: true;">
+                                                    <!-- COL TYPE TABLE -->
+                                                    &lt;div class="tblWrap">
+                                                        &lt;table class="tbl-col">
+                                                        ...
+                                                        &lt;/table>
+                                                    &lt;/div>
+    
+                                                    <!-- ROW TYPE TABLE -->
+                                                    &lt;div class="tblWrap">
+                                                        &lt;table class="tbl-row">
+                                                        ...
+                                                        &lt;/table>
+                                                    &lt;/div>
+    
+                                                    <!-- 복합 TABLE -->
+                                                    &lt;div class="tblWrap">
+                                                        &lt;table class="tbl-col tbl-row">
+                                                        ...
+                                                        &lt;/table>
+                                                    &lt;/div>
+                                                </pre>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <b>.lstWrap</b><br>
+                                            li 의 리스트 형태의 컨텐츠. 하위 클래스로 ul.lst가 적용되며, li의 꾸밈에 따라 해당 ul에 .bar, .square, .circle, .txt... 의 멀티클래스 적용
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-script: true;">
+                                                    &lt;div class="lstWrap">
+                                                        &lt;ul class="lst ico-bar">
+                                                        &lt;/ul>
+                                                    &lt;/div>
+                                                </pre>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <b>.dlWrap</b><br>
+                                            dl>dt+dd 형태의 컨텐츠
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-script: true;">
+                                                    &lt;div class="dlWrap">
+                                                        &lt;dl>
+                                                            &lt;dt>&lt;/dt>&lt;dd>&lt;/dd>
+                                                        &lt;/dl>
+                                                    &lt;/div>
+                                                </pre>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <b>.btnWrap</b><br>
+                                            버튼 컨텐츠. 하위 컨텐츠 클래스로 .btn이 적용되며, 해당 컨텐츠의 멀티클래스로 .type1, .type2, .type3..., .lg, .mid, .sm 등이 적용된다.
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-script: true;">
+                                                    &lt;div class="btnWrap">
+                                                        &lt;a href="#" class="btn mid type1">&lt;/a>
+                                                        &lt;a href="#" class="btn mid type2">&lt;/a>
+                                                    &lt;/div>
+                                                </pre>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <b>.icoWrap, .markWrap</b><br>
+                                            아이콘 또는 라벨 등의 컨텐츠. 하위 컨텐츠 클래스로 .ico, .mark가 적용되며, 해당 컨텐츠의 멀티클래스로 아이콘 모양의 고유네임 또는 .type1, .type2, .type3..., .lg, .mid, .sm 등이 적용된다.
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-script: true;">
+                                                    <!-- 아이콘 관련 -->
+                                                    &lt;div class="icoWrap">
+                                                        &lt;a href="#" class="ico ico-home">&lt;/a>
+                                                        &lt;a href="#" class="ico ico-print">&lt;/a>
+                                                    &lt;/div>
+    
+                                                    <!-- 마크, 라벨, 위험도 등의 표식 관련 -->
+                                                    &lt;div class="labelWrap">
+                                                        &lt;a href="#" class="label label-1">&lt;/a>
+                                                        &lt;a href="#" class="label label-2">&lt;/a>
+                                                    &lt;/div>
+                                                </pre>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <b>.descWrap</b><br>
+                                            텍스트로 구성된 컨텐츠
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-script: true;">
+                                                    &lt;div class="descWrap">
+                                                        ...
+                                                    &lt;/div>
+                                                </pre>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <b>.imgWrap, .chartWrap</b><br>
+                                            이미지, 차트로 구성된 컨텐츠
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-script: true;">
+                                                    &lt;div class="imgWrap">
+                                                        &lt;img src="img.gif" alt="">
+                                                    &lt;/div>
+    
+                                                    &lt;div class="chartWrap">
+                                                        차트영역
+                                                    &lt;/div>
+                                                </pre>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <b>.msgWrap</b><br>
+                                            참고메세지 컨텐츠
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-script: true;">
+                                                    &lt;div class="msgWrap">
+                                                        &lt;p class="msg ico ico-star">* 참고/가이드 메세지&lt;/p>
+                                                    &lt;/div>
+    
+                                                    &lt;div class="msgWrap">
+                                                        &lt;ul class="msg ico ico-star">
+                                                            &lt;li>* 참고/가이드 메세지&lt;/li>
+                                                        &lt;/ul>
+                                                    &lt;/div>
+                                                </pre>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <b>.splitWrap</b><br>
+                                            분할 컨텐츠. 멀티클래스로 .col2, .col3, .col4... 하위 클래스로 .colSec 적용
+                                            <div class="wg-codeBox">
+                                                <pre class="brush: js; html-script: true;">
+                                                    &lt;div class="splitWrap col2">
+                                                        &lt;div class="colSec">분할컨텐츠1&lt;/div>
+                                                        &lt;div class="colSec">분할컨텐츠2&lt;/div>
+                                                    &lt;/div>
+                                                </pre>
+                                            </div>
+                                        </li>
+                                        <li class="wg-split-none">
+                                            <b>.noteWrap</b>&nbsp;:&nbsp;페이지 전체 주의사항/알립니다 등의 컨텐츠
+                                            
+                                        </li>
+                                        <li class="wg-split-none">
+                                            <b>.agreeWrap</b>&nbsp;:&nbsp;약관 컨텐츠. 해당 컨텐츠에 <code>tabindex="0"</code> 필수
+                                            
+                                        </li>
+                                        <li class="wg-split-none">
+                                            <b>.alL, .alC, .alR, .l, .c, .r</b>&nbsp;:&nbsp;텍스트 정렬 관련 예약어
+                                            
+                                        </li>
+                                    </ul>                            
+                                </dd>
+                            </dl>
+                        </div><!--// .wg-contBoxWrap end -->
+                    </article>
+
+                    <article class="wg-fxWrap wg-colWrap">
+                        <div class="wg-contBoxWrap wg-fx">
+                            <dl class="wg-contBody">
+                                <dt>이미지 예약어 가이드 : 언더스코어('_') 표기법 사용</dt>
+                                <dd class="wg-txtCont">
+                                    <!-- <strong class="wg-TxtTit">기본 예약어</strong> -->
+                                    <ul class="wg-lstBody wg-lst-bar">
+                                        <li>아래에 지정한 <b>기본 예약어는 필수사용</b>이며, 그외 발생되는 명칭은 해당 파트의 규칙에 따라 조합</li>
+                                        <li>언더스코어 표기법 사용시 너무많은 (_)가 생성되지 않도록 의미전달 수준의 영문축약 권장</li>
+                                        <li><b>이미지 스프라이트(image sprite)가 적용</b>되는 경우 해당 이미지명은 <b>카멜표기법 적용</b></li>
+                                    </ul>
+                                    <div class="tblWrap">
+                                    <table summary="이미지 예약어 안내">
+                                        <caption>이미지 예약어 사용</caption>
+                                        <colgroup>
+                                            <col width="15%" span="2" />
+                                            <col width="25%" />
+                                            <col width="*" />
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" colspan="2">종류</th>
+                                                <th scope="col">네이밍</th>
+                                                <th scope="col">사용예</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row" class="alC" rowspan="12">주요 컨텐츠 이미지</th>
+                                                <th scope="row" class="alL">타이틀</th>
+                                                <td class="itemtit02">tit_</td>
+                                                <td>tit_company_h2.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">텍스트</th>
+                                                <td class="itemtit02">txt_</td>
+                                                <td>txt_company_01.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">아이콘</th>
+                                                <td class="itemtit02">ico_</td>
+                                                <td>icoSet.png, ico_new.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">블릿</th>
+                                                <td class="itemtit02">bul_dot_, bul_arr_, bul_squ_, bul_bar_, bul_h*</td>
+                                                <td>bul_dot_list.gif bul_arr_blue.gif bul_bar_01.gif bul_h1.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">버튼</th>
+                                                <td class="itemtit02">btn_</td>
+                                                <td>btn_srch.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">탭</th>
+                                                <td class="itemtit02">tab_</td>
+                                                <td>tab_menu.gif, tab_menu_on.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">이미지</th>
+                                                <td class="itemtit02">img_</td>
+                                                <td>img_company_01.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">썸네일</th>
+                                                <td class="itemtit02">thumb_</td>
+                                                <td>thumb_100x100.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">임시</th>
+                                                <td class="itemtit02">temp_</td>
+                                                <td>temp_img01.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">백그라운드</th>
+                                                <td class="itemtit02">bg_</td>
+                                                <td>bg_header.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">사이즈표기</th>
+                                                <td class="itemtit02">_사이즈x사이즈</td>
+                                                <td>img_100x100.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">팝업</th>
+                                                <td class="itemtit02">pop_</td>
+                                                <td>pop_tit_h1.gif, pop_bg_cont.gif</td>
+                                            </tr>
+                                        </tbody>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row" class="alC" rowspan="21">주요 버튼/아이콘<br>관련 이미지</th>
+                                                <th scope="row" class="alL">검색</th>
+                                                <td class="itemtit02">_srch_</td>
+                                                <td>btn_srch.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">다음</th>
+                                                <td class="itemtit02">_next_</td>
+                                                <td>btn_next.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">이전</th>
+                                                <td class="itemtit02">_prev_</td>
+                                                <td>btn_prev.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">맨앞</th>
+                                                <td class="itemtit02">_first_</td>
+                                                <td>btn_first.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">맨뒤</th>
+                                                <td class="itemtit02">_end_</td>
+                                                <td>btn_end.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">다운로드</th>
+                                                <td class="itemtit02">_down_</td>
+                                                <td>btn_down_excel.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">글쓰기, 작성자</th>
+                                                <td class="itemtit02">_write_, _writer_</td>
+                                                <td>btn_write.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">수정</th>
+                                                <td class="itemtit02">_mod_</td>
+                                                <td>btn_mod.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">등록</th>
+                                                <td class="itemtit02">_reg_</td>
+                                                <td>btn_reg.gif, txt_reg.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">덧글</th>
+                                                <td class="itemtit02">_re_</td>
+                                                <td>ico_re.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">답변</th>
+                                                <td class="itemtit02">_reply_</td>
+                                                <td>btn_reply.gif, ico_reply.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">삭제</th>
+                                                <td class="itemtit02">_del_</td>
+                                                <td>btn_del.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">목록</th>
+                                                <td class="itemtit02">_lst_</td>
+                                                <td>btn_lst.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">확인</th>
+                                                <td class="itemtit02">_ok_</td>
+                                                <td>btn_ok.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">취소</th>
+                                                <td class="itemtit02">_cancel_</td>
+                                                <td>btn_cancel.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">동의</th>
+                                                <td class="itemtit02">_agree_</td>
+                                                <td>btn_agree.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">신청</th>
+                                                <td class="itemtit02">_application_</td>
+                                                <td>btn_application.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">보기</th>
+                                                <td class="itemtit02">_view_</td>
+                                                <td>btn_view.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">더보기</th>
+                                                <td class="itemtit02">_more_</td>
+                                                <td>btn_more.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">바로가기/링크연결</th>
+                                                <td class="itemtit02">_go_ / _lnk_</td>
+                                                <td>btn_go_home.gif / btn_lnk_site.gif/td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">창닫기</th>
+                                                <td class="itemtit02">_close_</td>
+                                                <td>btn_close.gif</td>
+                                            </tr>
+                                        </tbody>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row" class="alC" rowspan="9">양식<br>관련 이미지</th>
+                                                <th scope="row" class="alL">회원가입</th>
+                                                <td class="itemtit02">_join_</td>
+                                                <td>btn_join .gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">탈퇴</th>
+                                                <td class="itemtit02">_mout_</td>
+                                                <td>btn_mout .gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">로그인 / 로그아웃</th>
+                                                <td class="itemtit02">_login_ / _logout_</td>
+                                                <td>btn_login.gif / btn_logout.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">아이디 / 비밀번호</th>
+                                                <td class="itemtit02">_id_ / _pw_</td>
+                                                <td>txt_id .gif / txt_pw.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">찾기</th>
+                                                <td class="itemtit02">_find_</td>
+                                                <td>btn_find.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">우편번호</th>
+                                                <td class="itemtit02">_zipcode_</td>
+                                                <td>btn_zipcode.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">달력</th>
+                                                <td class="itemtit02">_calendar</td>
+                                                <td>btn_calendar.gif, ico_calendar.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">스케쥴러</th>
+                                                <td class="itemtit02">_sche_</td>
+                                                <td>btn_sche.gif, ico_sche.gif</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="alL">일 / 주 / 달 / 년</th>
+                                                <td class="itemtit02">_dd_ / _ww_ / _mm_ / _yy_</td>
+                                                <td>txt_dd.gif / txt_ww.gif / txt_mm.gif / txt_yy.gif</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                </dd>
+                            </dl>
+                        </div><!--// .wg-contBoxWrap end -->
+                    </article>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- [E] CONTENTS -->
+</div>
+
+</body>
+</html>

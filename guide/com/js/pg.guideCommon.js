@@ -17,7 +17,7 @@ $(function () {
   if (localStorage.lightMode == "dark") $('html').attr("light-mode", "dark");
   guide.header();  
   makeBoard();
-  
+
   $(window).resize();
 });
 var makeBoard = function () {  
@@ -101,7 +101,7 @@ var makeBoard = function () {
       }
     },
     error: function (xhr, status, error) {
-      console.error('에러발생', xhr, status, error);
+      // console.error('에러발생', xhr, status, error);
     }
   });
 

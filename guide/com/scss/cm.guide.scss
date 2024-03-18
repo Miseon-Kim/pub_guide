@@ -2,8 +2,8 @@
 /****************************************/
 /*	PART: IMPORT CSS
 /****************************************/
-@import 'variables';
-@import 'mixin';
+@import '../../../asset/com/scss/variables';
+@import '../../../asset/com/scss/mixin';
 
 /****************************************/
 /*	PART: GUIDE PAGE STYLE
@@ -47,6 +47,124 @@
         // @include pos-offset-l(0,0);
     }
 }
+
+.wg {
+    &-hgroup {
+        padding:2.5rem 2rem 2rem;
+        .wgTit01 {
+            font-size:var(--space-mx);
+            @include el-content(before, inline-block) {
+                content:'\f550';
+                font-family:'iconFont'; color:#302CA4; font-size:var(--space-ms);
+                margin-right:0.5rem; vertical-align:middle;
+            }
+        }
+    }
+    &-fxWrap {
+        @include display(flex);
+        & ~ & {margin-top:4rem;}
+    }
+    &-rowWrap {
+        & > .wg {
+            &-fx {
+                flex:1; max-width:50%; justify-content: space-between;
+                // & ~ .wg-fx {margin-top:4rem;}
+            }
+            &-colWrap {max-width:50%;}
+        }
+    }
+    
+    &-colWrap {
+        flex-direction: column;
+        &-fx {
+            & ~ .wg-fx {margin-top:4rem;}
+        }
+    }
+    
+    &-contBoxWrap {@include display(flex); padding:0 2rem;}
+    &-contBody {
+        width:100%;
+        background:$color-white; color:$color-gray1; border:1px solid $color-white; box-shadow: 0 0 13px 0 rgba(82,63,105,.1);
+
+        & > dt {
+            padding:2rem; font-size:1.5rem;
+            & + dd {border-top:1px solid #ebedf2;}
+        }
+        & > dd {
+            padding:2rem;
+            & + dd {padding-top:0;}
+        }
+    }
+    &-TxtTit {
+        @include display(inline-block);
+        padding:0.5rem 1rem; margin-bottom:0.5rem;
+        background:#E8E9FB; color:#4d5cf2; border-radius:0.5rem;
+    }
+    &-lstBody {padding:0.5rem;}
+    &-example {
+        margin-top:1rem;
+        & + .wg-TxtTit {margin-top:2rem;}
+    }
+    &-lst-bar {
+        & > li, .wg-ico {text-indent:-0.5rem; margin-left:0.5rem;}
+        & > li {
+            @include el-content(before) {
+                @include display(inline-block);
+                content:'-'; margin-right:0.5rem;
+            }
+            & ~ li {margin-top:0.5rem;}
+        }
+    }
+    &-ico {
+        @include el-content(before, inline-block) {
+            font-family:'iconFont';
+            content:'-'; margin-right:0.5rem;
+        }
+        &.wg-ico {
+            &-bar {
+                @include el-content(before, inline-block) {
+                    content:'-';
+                }
+            }
+            &-info {
+                @include el-content(before, inline-block) {
+                    content:'\f22d'; color:#FD397A;
+                }
+            }
+            &-star {
+                @include el-content(before, inline-block) {
+                    content:'*'; color:#BE4BDB;
+                }
+            }
+        }
+    }
+
+    &-splitWrap {
+        @include display(flex); flex-wrap:wrap;
+        &.col2 {
+            & > li {
+                @include display(inline-block);
+                flex-direction: column; width:48%; padding:0 0.5rem 0.5rem;
+                &:nth-child(even) {margin-left:1%;}
+                &.wg-split-none {flex-direction:row; display:block; width:100%; margin:0;}
+            }
+            &.wg-lst-bar > li ~ li {margin-top:0;}
+            & > .colSec {
+                @include display(inline-block);
+                flex-direction: column;
+                width:49%; padding:0 0.5rem 0.5rem;
+
+                &:nth-child(even) {margin-left:2%;}
+                &.col-full {width:100%;}
+            }
+            
+        }
+
+        .col-full {float:none; clear:both;}
+    }
+}
+
+.wg-lst-bar > li > *, .wg-ico > * {text-indent:0;}
 
 // GNB
 .component-nav {
@@ -97,6 +215,7 @@
 .pg {
     &-contentWrap {padding:2rem;}
 }
+
 .component {
     &-lst {
         @include display(flex);
@@ -227,4 +346,118 @@
 
 #{$hr} {
     &.divice {@include display(block); visibility:visible; background:$color-gray5; border:none; height:1px;}
+}
+
+/* TABLE */
+.cp-tbl {
+    @include display(flex) {justify-content:start;}
+    @include fontSize("xs"); font-weight: 400; margin-top:1rem;
+
+    #{$tbl} {
+        &Wrap {
+        & > p:first-child {margin-top:0;}
+        p {margin:4rem 0 1rem;}
+        table{
+            @include width;
+            & + table {margin-top:2rem;}
+    
+            th, td {padding:1rem; @include line(border, .1rem $color-gray5 solid);}
+            th {border-color:$color-gray3;}
+    
+            thead {
+            th {background:$color-light-blue2;}
+            & + tbody {
+                & > tr:first-child th, & > tr:first-child td {@include line(border, none, top)}
+            }
+            }    
+            tbody {
+                th {background:$color-light-yellow1;}
+            }    
+        }
+
+        caption {
+            @include pos(relative !important);
+            padding:1.5rem 1rem .5rem !important;
+            background-color:$color-gray6;
+            font-size:var(--space-xs) !important;
+            @include line(border, 1px $color-gray8 solid !important);
+        
+            @include el-content(before) {                
+                background-color:$color-gray5;
+                @include display(inline-block !important) {content:'Table Caption' !important;}
+                @include pos-offset-l(-.5rem !important, -.5rem !important);
+                padding:.3rem 1rem;
+            }
+        
+            & > p {margin:0 !important;}
+        }
+        legend, caption {
+            @include overflow(both, visible !important);
+            @include el-size(auto !important, auto !important);
+            margin: auto !important;
+            line-height: inherit !important;
+            clip: auto;
+        } 
+        
+        }
+    }
+
+    .desc {
+        @include display(none);
+        @include width(50rem);
+        background:$color-light-green1; padding:15px;
+        margin-right:5rem;
+        @include line(border, .1rem $color-light-green2 solid);
+
+        p {
+        @include el-content(before) {
+            @include display(inline-block);
+            @include el-size(.2rem, 1rem);
+            background-color:$color-orange;
+            margin-right:5px;
+        }
+        & ~ p, & ~ ul {margin-top:10px;}
+        }
+    }
+
+    ul{
+        p{
+        @include el-content(before){@include display(none);}
+        }
+    }
+
+    b {color:$color-red;}
+    strong {
+        color:$color-green;
+        font-weight: bold;
+        & + div, & + ul {margin-top:1rem;}
+    }
+
+    .bul{
+        & > li {
+        @include pos(relative);
+        margin:.2rem 0 0; padding:0 0 .4rem 1.3rem; color:$color-black;
+
+        @include el-content(before) {
+            @include pos-offset-l(.7rem, .5rem);
+            @include el-size(.3rem, .3rem);
+            border-radius: 100%; background-color:$color-blue2;
+        }
+        }
+    }
+    .case {
+        counter-reset: number 0;
+        & > li {
+        padding:10px 0; @include line(border, .1rem $color-light-green2 solid, top);
+        @include el-content(before) {
+            @include display(inline-block){content:'CASE' counter(number);}
+            counter-increment: number;
+            color:$color-white; font-weight:400; font-size:var(--space-3xs);
+            background-color:$color-green;
+            padding:.3rem .5rem; margin-right:.5rem; border-radius:.3rem;
+            @include align(valign, top);
+        }
+        }
+    }
+
 }

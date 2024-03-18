@@ -1,0 +1,926 @@
+[
+    {
+        "id": "",
+        "type": "수정", 
+        "depth1": "로그인",
+        "depth2": "",
+        "depth3": "",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/27",
+              "schedule_e": "5/31"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "수정", 
+        "depth1": "서비스관리",
+        "depth2": "시스템점검관리",
+        "depth3": "목록",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/27",
+              "schedule_e": "5/31"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "수정", 
+        "depth1": "서비스관리",
+        "depth2": "시스템점검관리",
+        "depth3": "등록",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/27",
+              "schedule_e": "5/31"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "수정", 
+        "depth1": "서비스관리",
+        "depth2": "코드관리",
+        "depth3": "목록",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/27",
+              "schedule_e": "5/31"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "수정[팝업]", 
+        "depth1": "서비스관리",
+        "depth2": "코드관리",
+        "depth3": "코드추가",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/27",
+              "schedule_e": "5/31"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "수정[팝업]", 
+        "depth1": "서비스관리",
+        "depth2": "코드관리",
+        "depth3": "코드수정",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/27",
+              "schedule_e": "5/31"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "신규", 
+        "depth1": "서비스관리",
+        "depth2": "캐시관리",
+        "depth3": "프로퍼티관리",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/20",
+              "schedule_e": "5/24"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "신규", 
+        "depth1": "서비스관리",
+        "depth2": "캐시관리",
+        "depth3": "WAS 메모리갱신",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/20",
+              "schedule_e": "5/24"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "수정", 
+        "depth1": "서비스관리",
+        "depth2": "카드상품",
+        "depth3": "목록",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/20",
+              "schedule_e": "5/24"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "수정", 
+        "depth1": "서비스관리",
+        "depth2": "카드상품",
+        "depth3": "등록",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/20",
+              "schedule_e": "5/24"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "수정", 
+        "depth1": "서비스관리",
+        "depth2": "카드상품",
+        "depth3": "상세",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/20",
+              "schedule_e": "5/24"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "수정", 
+        "depth1": "서비스관리",
+        "depth2": "카드상품",
+        "depth3": "수정",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/20",
+              "schedule_e": "5/24"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "수정", 
+        "depth1": "고객관리",
+        "depth2": "고객관리",
+        "depth3": "목록",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/27",
+              "schedule_e": "5/31"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "수정", 
+        "depth1": "고객관리",
+        "depth2": "고객관리",
+        "depth3": "상세",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/27",
+              "schedule_e": "5/31"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "수정[팝업]", 
+        "depth1": "고객관리",
+        "depth2": "고객관리",
+        "depth3": "상세",
+        "depth4": "초기화",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/27",
+              "schedule_e": "5/31"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "수정", 
+        "depth1": "고객관리",
+        "depth2": "카드관리",
+        "depth3": "목록",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/27",
+              "schedule_e": "5/31"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "수정", 
+        "depth1": "고객관리",
+        "depth2": "카드관리",
+        "depth3": "상세",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/27",
+              "schedule_e": "5/31"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "수정", 
+        "depth1": "고객관리",
+        "depth2": "단말기관리",
+        "depth3": "목록",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/27",
+              "schedule_e": "5/31"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "수정", 
+        "depth1": "고객관리",
+        "depth2": "단말기관리",
+        "depth3": "상세",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/27",
+              "schedule_e": "5/31"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "신규", 
+        "depth1": "컨텐츠관리",
+        "depth2": "약관관리",
+        "depth3": "목록",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/27",
+              "schedule_e": "5/31"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "신규", 
+        "depth1": "컨텐츠관리",
+        "depth2": "약관관리",
+        "depth3": "등록",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/27",
+              "schedule_e": "5/31"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "신규", 
+        "depth1": "컨텐츠관리",
+        "depth2": "약관관리",
+        "depth3": "상세",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/27",
+              "schedule_e": "5/31"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "신규", 
+        "depth1": "컨텐츠관리",
+        "depth2": "약관관리",
+        "depth3": "수정",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/27",
+              "schedule_e": "5/31"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "신규", 
+        "depth1": "게시판관리",
+        "depth2": "긴급공지팝업관리",
+        "depth3": "목록",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/7",
+              "schedule_e": "5/17"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "신규", 
+        "depth1": "게시판관리",
+        "depth2": "긴급공지팝업관리",
+        "depth3": "등록",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/7",
+              "schedule_e": "5/17"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "신규", 
+        "depth1": "게시판관리",
+        "depth2": "긴급공지팝업관리",
+        "depth3": "상세",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/7",
+              "schedule_e": "5/17"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "신규", 
+        "depth1": "게시판관리",
+        "depth2": "긴급공지팝업관리",
+        "depth3": "수정",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/7",
+              "schedule_e": "5/17"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "수정", 
+        "depth1": "게시판관리",
+        "depth2": "FAQ",
+        "depth3": "목록",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/7",
+              "schedule_e": "5/17"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "수정", 
+        "depth1": "게시판관리",
+        "depth2": "FAQ",
+        "depth3": "등록",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/7",
+              "schedule_e": "5/17"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "수정", 
+        "depth1": "게시판관리",
+        "depth2": "FAQ",
+        "depth3": "상세",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/7",
+              "schedule_e": "5/17"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "수정", 
+        "depth1": "게시판관리",
+        "depth2": "FAQ",
+        "depth3": "수정",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/7",
+              "schedule_e": "5/17"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "수정", 
+        "depth1": "로그관리",
+        "depth2": "트랜잭션 로그",
+        "depth3": "목록",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "6/3",
+              "schedule_e": "6/7"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "수정", 
+        "depth1": "로그관리",
+        "depth2": "트랜잭션 로그",
+        "depth3": "상세",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "6/3",
+              "schedule_e": "6/7"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "수정", 
+        "depth1": "로그관리",
+        "depth2": "유저로그",
+        "depth3": "목록",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "6/3",
+              "schedule_e": "6/7"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "수정", 
+        "depth1": "로그관리",
+        "depth2": "유저로그",
+        "depth3": "상세",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "6/3",
+              "schedule_e": "6/7"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "수정", 
+        "depth1": "로그관리",
+        "depth2": "관리자로그",
+        "depth3": "목록",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "6/3",
+              "schedule_e": "6/7"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "신규", 
+        "depth1": "통계관리",
+        "depth2": "승인건수 월별 통계",
+        "depth3": "",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/7",
+              "schedule_e": "5/17"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "신규", 
+        "depth1": "통계관리",
+        "depth2": "회원수 월별 통계",
+        "depth3": "",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/7",
+              "schedule_e": "5/17"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "신규", 
+        "depth1": "통계관리",
+        "depth2": "승인건수 일별 통계",
+        "depth3": "",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/7",
+              "schedule_e": "5/17"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "신규", 
+        "depth1": "통계관리",
+        "depth2": "회원수 일별 통계",
+        "depth3": "",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "5/7",
+              "schedule_e": "5/17"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "신규", 
+        "depth1": "휴대폰관리",
+        "depth2": "휴대폰 인증 로그",
+        "depth3": "목록",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "6/3",
+              "schedule_e": "6/7"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "신규", 
+        "depth1": "휴대폰관리",
+        "depth2": "휴대폰 인증 로그",
+        "depth3": "상세",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "6/3",
+              "schedule_e": "6/7"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "신규", 
+        "depth1": "휴대폰관리",
+        "depth2": "NICE/KCB분산 기능 거래 조정",
+        "depth3": "",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "6/3",
+              "schedule_e": "6/7"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    },
+    {
+        "id": "",
+        "type": "신규", 
+        "depth1": "휴대폰관리",
+        "depth2": "NICE/KCB분산 기능 거래 조정",
+        "depth3": "",
+        "depth4": "",
+        "name": "",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "6/3",
+              "schedule_e": "6/7"
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": [""]
+    }
+]

@@ -2,7 +2,7 @@
 /****************************************/
 /*	PART: IMPORT CSS
 /****************************************/
-@import 'cm.common';
+@import '../../../asset/com/scss/cm.common';
 /****************************************/
 /*	PART: work sheet PAGE STYLE
 /****************************************/
@@ -459,6 +459,9 @@ html.util_show {
 
 #{$pgNav} + #{$pgContainer} {margin:0 0 0 20rem;}
 #{$pgContent} {padding:3rem 2rem;}
+[data-category='document'] {
+    #{$pgContent} {padding-top:0 !important;}
+}
 
 #{$htmlM} {
     #{$pgTit}, #{$pgStatus} {padding-right:37rem;}
@@ -608,20 +611,6 @@ html.util_show {
 
 
 .btm {
-    &_guide {
-        margin-top:1rem;
-        font-size:var(--space-sm); color:$color-gray3;
-
-        &_top {
-            @include pos(absolute) {top:.8rem; left:.8rem;}
-            @include el-size(3rem, 3rem);background-color:$color-blue2;
-            background-image: svgIcon(btn_guide_top); background-size:1.5rem 1.5rem;
-            background-repeat:no-repeat; background-position:50% 50%;
-            border-radius:100%;transform:scale(0);
-            @extend %transition3s;
-        }
-    }
-
     &_btn_set {
         @include pos(fixed) {bottom:2rem; right:2rem;}
         @include el-size(4.6rem, 4.6rem);
@@ -632,10 +621,29 @@ html.util_show {
         &.active{
             width:8.5rem;
             background-color:$color-blue2;
-            .btn_guide_top{background:$color-white; background-image: svgIcon(btn_guide_top, 0048ff); transform:scale(1);}
+            .btn_guide_top{
+                background:$color-white svgIcon(btn_guide_top, 0048ff) 50% 50%;
+                transform:scale(1); opacity:1;}
             .btn_light_mode::after {background:$color-blue2;}
+            
         }
         button{outline:none;}
+
+        .btn{
+            &_guide {
+                margin-top:1rem;
+                font-size:var(--space-sm); color:$color-gray3;
+        
+                &_top {
+                    @include pos(absolute) {top:.6rem; left:.8rem;}
+                    @include el-size(3rem, 3rem);
+                    background:$color-blue2 svgIcon(btn_guide_top, $color-white) 50% 50%; background-size:1.5rem 1.5rem;
+                    border-radius:100%; transform:scale(0); opacity:0;
+                    @extend %transition3s;
+                }
+            }
+        }
+        
     }
 }
 
@@ -903,6 +911,7 @@ html.util_show {
     ul {
         @include display(flex) {white-space:nowrap;}
         li {
+            &.swiper-slide {width:auto;}
             & + li {margin-left:.5rem;}
         }
     }
@@ -995,6 +1004,7 @@ html.util_show {
                 select {
                     @include el-size(100%, 2.7rem) {line-height:2.5rem;}
                     border:none; background-color:$color-white;font-weight:700; font-size:var(--space-sm); color:$color-gray3;
+                    @include align(text, center);
                 }
             }
 
@@ -1007,13 +1017,22 @@ html.util_show {
                 @include pos(relative);
                 line-height:2rem; margin-top:.1rem; padding:.7rem .5rem;
                 background-color:$color-light-gray3;
-                font-size:var(--space-ms); color:$color-gray3;vertical-align:middle; word-break:break-all;
+                font-size:var(--space-ms); color:$color-gray3;vertical-align:middle; word-break:keep-all;
 
                 &.deps, &.name {text-align:left;}
                 %pgTbletdSpan {
                     @include display(inline-block);
                     @include el-size(6rem, 2.2rem) {line-height:2rem;}
                     font-size:var(--space-sm); color:$color-gray3;
+                }
+                .schedule {
+                    @include display(block);
+                    padding:.5rem 0;
+                    &.schedule_s {color:$color-brown3;}
+                    &.schedule_e {
+                        color:$color-brown;
+                        @include line(border, 1px $color-gray6 dashed, top);
+                    }
                 }
                 &.type {
                     & > span {
@@ -1027,10 +1046,13 @@ html.util_show {
                         @extend %pgTbletdSpan;background-color:$color-light-gray1;
                         border-radius:2.2rem;
 
-                        &.ing{background-color:$color-light-blue1; color:$color-black;}
-                        &.done{background-color:$color-yellow3; color:$color-black;}
+                        &.ready{background-color:$color-light-gray1; color:$color-gray4;}
+                        &.ing{background-color:$color-light-green2; color:$color-black;}
+                        &.done{background-color:$color-yellow3; color:$color-black; font-weight:700;}
                         &.del{background-color:$color-gray3; color:$color-white; font-weight:700;}
                         &.hold{background-color:$color-light-brown1; color:$color-white;font-weight:700;}
+                        &.msg{background-color:$color-brown; color:$color-white;font-weight:700;}
+                        
                     }
                 }
                 &.etc{width:15rem;}
@@ -1431,7 +1453,10 @@ html.util_show {
         @include flex;
         flex-wrap:wrap;
 
-        & > li {margin-bottom:4rem;}
+        & > li {
+            margin-bottom:4rem;
+            // #{$tbl} {@include line(border, .1rem solid $color-gray3, top);}
+        }
     }
 
     &-wrap {
@@ -1532,17 +1557,15 @@ html.util_show {
             border-top:1px $color-gray1 solid;
         }
 
-        th {
-            background:$color-light-gray1;
-        }
-        td {
-            background:$color-light-gray2;
+        th {background:$color-light-gray1;}
+        td {background:$color-light-gray2;}
+
+        tbody {
+            tr:first-child > th, tr:first-child > td {@include line(border, 1px #222 solid, top)}
         }
         
-        tr {
-            &:first-child {
-                & > th, & > td {border-top:0;}
-            }
+        thead + tbody {
+            tr:first-child th, tr:first-child td {@include line(border, none, top)}
         }
     }
 }
@@ -1702,6 +1725,11 @@ html.util_show {
 }
 
 
+.pg {
+    &-docSection {
+        & + hr {display:block; border:0; height:18rem;}
+    }
+}
 
 // media Query import
-@import 'mediaquery';
+@import '../../../asset/com/scss/mediaquery';

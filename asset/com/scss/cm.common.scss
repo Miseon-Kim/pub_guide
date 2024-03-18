@@ -1,0 +1,208 @@
+@charset "utf-8";
+
+/****************************************/
+/*	Name: PUBLISHING GUIDE
+/*	PART: GUIDE PAGE STYLE
+/*	Version: 1.0
+/*	Author: [써냐]BLUEWEBD™
+/****************************************/
+
+/****************************************/
+/*	PART: IMPORT CSS
+/****************************************/
+@import 'variables';
+@import 'mixin';
+@import 'font';
+@import 'cp.text';
+@import 'cp.button';
+@import 'cp.ico';
+@import 'cp.input';
+@import 'cp.select';
+@import 'cp.rdochk';
+@import 'cp.popup';
+@import 'cp.accodion';
+@import 'cp.tab';
+@import 'cp.swiper';
+@import 'cp.table';
+
+// @import 'cp.popup2';
+// @import 'cp.form';
+/****************************************/
+/*	PART: RESET CSS
+/****************************************/
+* {box-sizing: border-box;}
+html {font-size:62.5%;padding:0;margin:0;} /* rem default 10px */
+body{
+    background:$color-white;
+    @include width;
+    @include overflow(x, hidden);
+     /* 뷰표트 변환시 폰트크기 자동확대 방지. */
+    -webkit-text-size-adjust:none;
+}
+/* HTML, body 높이값 100% 고정 */
+html, body{
+    @include fullHeight;
+}
+
+body,div,dl,dt,dd,ul,ol,li,hgroup,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,
+legend,textarea,p,blockquote,th,td,input,select,textarea,button{margin:0;padding:0;}
+fieldset,img{border:0 none;}
+dl,ul,ol,menu,li {list-style:none;}
+blockquote, q {quotes:none;}
+address,caption,cite,code,dfn,em,var,i,b {font-style:normal; font-weight:400;}
+blockquote:before, blockquote:after,q:before, q:after {content:'';content:none;}
+input,select,textarea,button {vertical-align:middle;font-size:100%;}
+button {border:0 none;background-color:transparent;cursor:pointer;} /* 포커스 라인 비활성처리*/
+table {background-color:transparent;border-spacing:0;border-collapse:collapse;}
+
+input,
+textarea,
+select {background-color: transparent;}
+input:checked[type='checkbox'] {background-color:#666; -webkit-appearance:checkbox;}
+input[type='text'],input[type='password'],input[type='submit'],
+input[type='search'],input[type='tel'],input[type='email'] { -webkit-appearance:none; border-radius:0; -webkit-border-radius:0; -moz-border-radius:0; -ms-border-radius:0; -o-border-radius:0;}
+input[type='search']::-webkit-search-cancel-button {-webkit-appearance:none;}
+/* 
+select {appearance:none; -webkit-appearance:none; -moz-appearance:none; border-radius:0; ; -webkit-border-radius:0 ; -moz-border-radius:0 ; -ms-border-radius:0 ; -o-border-radius:0 ; border-color: #ccc; text-indent: 10px;  background:url(../../img/ico_selarrow.png) 100% 50% no-repeat; background-size:auto calc(1.8rem/3);}
+*/
+select::-ms-expand {display:none;} /* IE9 이상 select 화살표 삭제 */
+/* select {border-radius:0; ; -webkit-border-radius:0 ; -moz-border-radius:0 ; -ms-border-radius:0 ; -o-border-radius:0 ; border-color: #ccc; text-indent: 10px; } */
+
+body,th,td,input,select,textarea,button {
+    @include fontSize($size:"base");
+    @include webfont($fontNoto, 400);
+    color:$color-default;
+}
+input[type='text']:read-only, input[type='password']:read-only,
+input[type='text']:disabled, input[type='password']:disabled {background:#f6f6f6;}
+
+
+strong {@include webfont("NotoSansKR", 400);}
+b {@include webfont("NotoSansKR", 600);}
+a {display:inline-block; color:$color-default; text-decoration:none;/*outline:transparent;*/} 
+a:active, a:hover {text-decoration:none;}
+
+legend, caption{@include ir("hide");}
+#{$hr} {
+    display:none; visibility:hidden;
+}
+
+/****************************************/
+/*	PART: BASIC CSS
+/****************************************/
+.hide {@include ir("hide");}
+.blind {@include ir("blind");}
+.screen {@include ir("screen");}
+.full {width:100% !important;}
+
+/* ALIGN */
+.alL, .l {@include align("text", left);}
+.alC, .c {@include align("text", center);}
+.alR, .r {@include align("text", right);}
+
+.vm {@include align("valign", middle);}
+.vt {@include align("valign", top);}
+.vb {@include align("valign", bottom);}
+
+.posR {@include pos(relative);}
+.posA {@include pos(absolute);}
+.block {@include display(block !important);}
+.inBlock {@include display(inline-block !important);}
+.flex {
+    @include display(flex);
+    align-items: center;
+    &.center {justify-content: center;}
+    &.between {justify-content: space-between;}
+    &.col {flex-direction: column;}
+}
+// @include flex($direction:row, $wrap:nowrap, $j-content:flex-start, $al-items:center)
+
+.fl {@include float(left);}
+.fr {@include float(right);}
+.fn {@include float(none !important)}
+
+.scrollY {@include overflow (y, scroll);}
+.scrollX {@include overflow (x, scroll);}
+
+.underline {
+    text-decoration:underline;
+    &:active, &:hover {
+        text-decoration:underline;
+    }
+}
+.bold {@include webfont($fontNoto, 600);}
+.fBlue { color: $color-blue2 !important; }
+.fGray { color: $color-gray1 !important; }
+.fs-md {@include fontSize(1.6rem !important);}
+.fs-s {@include fontSize(1.3rem !important);}
+.fs-xs {@include fontSize(1.2rem !important);}
+.fs-xxs {@include fontSize(.9rem !important);}
+
+/* only number */
+.roboto {@include webfont($fontRoboto, 400); letter-spacing: 0; }
+.roboto-m {@include webfont($fontRoboto, 500); letter-spacing: 0; }
+*[data-lang=en], *[data-lang=num] {@include webfont('roboto', 400);}
+
+.asterisk {
+    position: relative;
+    @include fontSize("base");
+    color: $color-blue;
+    font-weight: normal;
+    padding-left: 1rem;
+    &:before{
+        content:"\002A";
+        display: inline-block;
+        position: absolute;
+        top: .4rem;
+        left: 0rem;
+        margin-right: 2px;
+    }
+}
+.comment {
+    @include fontSize("xs");    
+    color: $color-default;
+    font-weight: normal;
+    & + #{$inputWrap} { margin-top: 1.4rem; }
+}
+
+.bgWh { background-color: $color-white; }
+.bgGr { background-color: $color-light-gray2; }
+.bgYll { background-color: $color-yellow; }
+.border{ border: 1px solid $color-gray6; }
+.w100 { width: 10rem !important; }
+.full { width: 100% !important;  }
+
+.win_status { position: fixed; top:0; left:0; right:0; bottom:0; z-index: -1; background: transparent; }
+
+.split {
+    @include display(flex);
+    @include flex(row, nowrap, space-between, center);
+    
+    &.hgroup {
+        & > .tit {vertical-align: middle;}
+        & > .col {@include flexbox(1, 0, 30%); @include align("text", right); vertical-align: middle;}
+    }
+    
+    &.col2 {
+        & > * {width:50%;}
+        & > .cp-tit + .btnWrap {min-width:70%;}
+    }
+}
+
+.uline {
+    @include display(inline-block);
+    @include el-content(after){
+        background:$color-yellow2;
+        height:1rem;
+        margin-top:-1rem;
+        // border-bottom:1px $color-gray1 solid;
+    }
+}
+
+#{$darMode} {
+    background-color:$color-darkMode3; color:$color-white;
+    body {background-color:$color-darkMode3; color:$color-white;}
+    a {color:$color-white;}
+}
+
+// *********************

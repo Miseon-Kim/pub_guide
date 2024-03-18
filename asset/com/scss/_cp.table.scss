@@ -1,0 +1,27 @@
+/* TABLE */
+#{$tbl} {
+  &Wrap {
+    & > p:first-child {margin-top:0;}
+    p {margin:4rem 0 1rem;}
+    table {
+        @include width;
+        & + table {margin-top:2rem;}
+
+        th, td {padding:1rem; @include line(border, .1rem $color-gray5 solid);}
+        th {border-color:$color-gray3;}
+
+        thead {
+          th {background:$color-light-blue2;}
+          & + tbody {
+              & > tr:first-child th, & > tr:first-child td {@include line(border, none, top)}
+          }
+        }
+        tbody {
+            th {background:$color-light-yellow1;}
+        }    
+    }
+  
+  }
+}
+
+

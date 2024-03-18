@@ -8,7 +8,7 @@
     <title>폼요소 : INPUT</title>
     
     <!-- [S] PUBLISH COMMON STYLE -->
-    <link rel="stylesheet" href="../com/css/cm.common.css">
+    <link rel="stylesheet" href="../../asset/com/css/cm.common.css">
     <!-- [E] PUBLISH COMMON STYLE -->
 
     <!-- [S] PAGES - STYLE -->
@@ -16,8 +16,8 @@
     <!-- [E] PAGES - STYLE -->
 
     <!-- [S] LIBRARY - SCRIPT -->
-    <script src="../com/js/lib/lib.jquery-3.6.3.min.js"></script>
-    <script src="../com/js/lib/lib.jquery-ui-1.13.2.js"></script>
+    <script src="../../asset/com/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../../asset/com/js/lib/lib.jquery-ui-1.13.2.js"></script>
     <!-- [E] LIBRARY - SCRIPT -->
 </head>
 <body>
@@ -32,6 +32,9 @@
                     <div class="field-outline">
                       <div class="field-input grow _input">
                         <input type="text" placeholder="기본동작 INPUT" title="">
+                        <button type="button" class="field-btn _input-clear _active  ico ico-clear">
+                          <span class="hide">입력값삭제</span>
+                        </button>
                       </div>
                     </div>
                     <div class="field-outline">
@@ -48,9 +51,6 @@
                       <div class="field-input grow _input">
                         <input type="text" placeholder="disabled" disabled="disabled">
                       </div>
-                      <!-- <button type="button" class="field-btn _input-clear  ico ico-clear">
-                        <span class="hide">입력값삭제</span>
-                      </button> -->
                     </div>
                     <p class="field-msg">
                       <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
@@ -226,6 +226,56 @@
                 </p>
               </div>
 
+              <div class="field auth">
+                <label class="field-label" for="auth_num">인증</label>
+                <div class="field-outline">
+                  <div class="field-input grow _input">
+                    <input type="tel" class="_format _number" id="auth_num" placeholder="인증번호" maxlength="6">
+                    <span class="auth-time">03:00</span>
+                  </div>
+                </div>
+                <button class="btn btn-size md bg btn-auth">인증요청</button>
+                <p class="field-msg">
+                  <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
+                </p>
+                <p class="field-info">
+                  <span class="ico ico-info txt-r">안내성 메세지</span>
+                </p>
+              </div>
+
+              <div class="field">
+                <label class="field-label" for="auth_num">인증요청-버튼적용</label>
+                <div class="field-outline auth">
+                  <div class="field-input grow _input">
+                    <input type="tel" class="_format _number" id="auth_num" placeholder="인증번호" maxlength="6">
+                    <!-- <span class="auth-time">03:00</span> -->
+                  </div>
+                  <button class="btn btn-size s bg btn-auth">인증요청</button>
+                </div>
+                <p class="field-msg">
+                  <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
+                </p>
+                <p class="field-info">
+                  <span class="ico ico-info txt-r">안내성 메세지</span>
+                </p>
+              </div>
+
+              <div class="field">
+                <label class="field-label" for="auth_num">인증번호입력</label>
+                <div class="field-outline auth">
+                  <div class="field-input grow _input">
+                    <input type="tel" class="_format _number" id="auth_num" placeholder="인증번호" maxlength="6">
+                    <span class="auth-time">03:00</span>
+                  </div>
+                </div>
+                <p class="field-msg">
+                  <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
+                </p>
+                <p class="field-info">
+                  <span class="ico ico-info txt-r">안내성 메세지</span>
+                </p>
+              </div>
+
               <div class="field">
                 <label class="field-label">주민등록번호</label>
                 <div class="field-outline">
@@ -252,7 +302,7 @@
     </div>
 
 <!-- [S] PAGES - SCRIPT -->
-<script src="./../com/js/ui.component.js"></script>
+<script src="../../asset/com/js/ui.component.js"></script>
 <!-- [E] PAGES - SCRIPT -->
 </body>
 </html>
