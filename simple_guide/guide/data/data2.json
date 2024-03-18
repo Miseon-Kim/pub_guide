@@ -1,0 +1,16 @@
+{
+  "workList": [
+    {
+      "depth": "조회 &gt; 전계좌보기",
+      "화면명": "전계좌보기",
+      "path": "https://open.standardchartered.co.kr/main/H03501?menuid=OIB01010000000000",
+      "state": "작업중",
+      "작업일": "2023-07-31",
+      "작업자": "김OO",
+      "접근성체크": "검수중",
+      "file": "",
+      "fileName": "",
+      "비고": ""
+    }
+  ]
+}

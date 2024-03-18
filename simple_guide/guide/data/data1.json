@@ -1,0 +1,40 @@
+{
+  "workList": [
+    {
+      "depth": "공통 &gt; HEADER",
+      "화면명": "HEADER",
+      "path": "https://open.standardchartered.co.kr/login/index",
+      "state": "작업중",
+      "작업일": "2023-07-31",
+      "작업자": "김OO",
+      "접근성체크": "검수중",
+      "file": "",
+      "fileName": "",
+      "비고": ""
+    },
+    {
+      "depth": "홈 &gt; 로그인",
+      "화면명": "로그인",
+      "path": "https://open.standardchartered.co.kr/login/index",
+      "state": "작업중",
+      "작업일": "2023-07-31",
+      "작업자": "김OO",
+      "접근성체크": "검수중",
+      "file": "/template.pptx",
+      "fileName": "template.pptx",
+      "비고": "<ul class='memoWrap'>\n<li>비고텍스트1</li>\n<li><a href='sample.html'>비고링크1</a></li>\n</ul>"
+    },
+    {
+      "depth": "홈 &gt; 로그인",
+      "화면명": "로그인",
+      "path": "https://open.standardchartered.co.kr/login/index",
+      "state": "완료",
+      "작업일": "2023-07-31",
+      "작업자": "김OO",
+      "접근성체크": "준수",
+      "file": "",
+      "fileName": "",
+      "비고": "<ul class='memoWrap'>\n<li>비고텍스트1</li>\n<li><a href='sample.html'>비고링크1</a></li>\n</ul>"
+    }
+  ]
+}
