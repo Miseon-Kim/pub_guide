@@ -212,6 +212,8 @@ var COMPONENT_UI = (function (cp, $) {
             this.secureTxt();
             this.inpReadonly();
             this.lbPlaceHolder();
+            this.inputRange();
+            this.inputRangeDouble();
         },
   
         inputSetting:function(){
@@ -445,6 +447,105 @@ var COMPONENT_UI = (function (cp, $) {
                 }
             });
   
+        },
+
+        // input:range
+        inputRange: function() {
+            const rangeSelector = $('.range-slider');
+
+            rangeSelector.each(function() {
+                const rangeInput = $(this).find('._range');
+                const rangeValue = $(this).find('._value');
+                const rangeInfo = $(this).find('.range-info');
+                rangeValue.each(function() {
+                    const defaultvalue = rangeInput.attr('value');
+                    if(!rangeValue.attr('range-value')) {
+                        rangeValue.text(defaultvalue);
+                    }
+                    rangeInfo.css({
+                        'left' : defaultvalue +'%', 
+                        'margin-left' : `-${rangeInfo.outerWidth() / 2}px`
+                    });
+                    rangeInput.css('background', `linear-gradient(to right, #333 ${defaultvalue}%, #ccc ${defaultvalue}%)`);
+                });
+                rangeInput.on('input', function(){
+                    const rangeInputValue = Math.floor(this.value);
+                    const newValue = Number(($(this).val() - $(this).attr('min')) * 100 / ($(this).attr('max') - $(this).attr('min')));
+                    const newPosition = 8 - (newValue * 0.16); //해당 thumb.width()/2 (newValue * 0.thumb.width())
+                    
+                    rangeInput.attr('value', rangeInputValue)
+                    if(!rangeValue.attr('range-value')) {
+                        rangeValue.text(rangeInputValue);
+                    }
+                    
+                    rangeInfo.css({
+                        'left' : `calc(${newValue}% + (${newPosition}px))`,
+                        'margin-left' : `-${rangeInfo.outerWidth() / 2}px`
+                    });
+
+                    if( rangeInputValue == $(this).attr('min') ) {
+                        rangeInfo.addClass('left');
+                    } else if ( rangeInputValue == $(this).attr('max') ) {
+                        rangeInfo.addClass('right');
+                    } else {
+                        rangeInfo.removeClass('left');
+                        rangeInfo.removeClass('right');
+                    }
+                    rangeInput.css('background', `linear-gradient(to right, #333 ${newValue}%, #ccc ${newValue}%)`);
+                });
+            });
+        },
+
+        // input:doublerange
+        inputRangeDouble: function() {
+            const doublerangevalue = $(".slider-container .double-slider");
+            const doublerangeInputvalue = $(".range-slider.double .field-input input[type=range]");
+            const doubleInputvalue = $(".range-slider.double .field-input input[type=number]");
+
+            let doubleGap = 500; //최소 gap
+
+            function rangeInputWidth() {
+                let minVal = parseInt(doublerangeInputvalue.eq(0).val());
+                let maxVal = parseInt(doublerangeInputvalue.eq(1).val());
+
+                let diff = maxVal - minVal;
+
+                if (diff < doubleGap) {
+                    if ($(this).hasClass("min-range")) {
+                        doublerangeInputvalue.eq(0).val(maxVal - doubleGap);
+                    } else {
+                        doublerangeInputvalue.eq(1).val(minVal + doubleGap);
+                    }
+                } else {
+                    doubleInputvalue.eq(0).val(minVal);
+                    doubleInputvalue.eq(1).val(maxVal);
+                    doublerangevalue.css("left", `${(minVal / doublerangeInputvalue.eq(0).attr("max")) * 100}%`);
+                    doublerangevalue.css("right", `${100 - (maxVal / doublerangeInputvalue.eq(1).attr("max")) * 100}%`);
+                }
+            }
+            rangeInputWidth(); //초기화
+
+            doubleInputvalue.on("input", function() {
+                let minp = parseInt(doubleInputvalue.eq(0).val());
+                let maxp = parseInt(doubleInputvalue.eq(1).val());
+                let diff = maxp - minp;
+
+                if (diff >= doubleGap && maxp <= doublerangeInputvalue.eq(1).attr("max")) {
+                    if ($(this).hasClass("min-input")) {
+                        doublerangeInputvalue.eq(0).val(minp);
+                        let value1 = doublerangeInputvalue.eq(0).attr("max");
+                        doublerangevalue.css("left", `${(minp / value1) * 100}%`);
+                    } else {
+                        doublerangeInputvalue.eq(1).val(maxp);
+                        let value2 = doublerangeInputvalue.eq(1).attr("max");
+                        doublerangevalue.css("right", `${100 - (maxp / value2) * 100}%`);
+                    }
+                }
+            });
+
+            doublerangeInputvalue.on("input", function() {
+                rangeInputWidth()
+            });
         }
     },
   

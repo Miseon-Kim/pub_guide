@@ -1,0 +1,198 @@
+.cNav-wrap {
+    @include pos(relative);
+    @include el-size(100%, 40rem);
+    @include line(border, .2rem $color-light-blue2 solid);
+}
+
+$quick:'.quick';
+$qkIcoEl:5rem;
+#{$quick} {
+    &-wrap {
+        @include display(flex);
+        gap:1rem;
+
+        .ico-nav {
+            @include el-size($qkIcoEl, $qkIcoEl);
+            border-radius:100%;
+            background-color:$color-green4;
+        }
+        &.topR {
+            @include pos-offset-r(0,0);
+            #{$quick} {
+                &-menu {order:2;}
+                &-nav {
+                    flex-flow:row-reverse;
+                }
+            }
+        }
+        &.btmL {
+            @include pos-offset-b(0,0);
+            flex-flow:column wrap;
+            
+            #{$quick} {
+                &-menu {order:1;}
+                &-nav {
+                    flex-flow:column-reverse wrap;
+                }
+            }
+            
+        }
+        &.btmR {
+            @include pos-offset-b(0,inherit) {right:0;}
+            flex-flow:column wrap;
+            
+            #{$quick} {
+                &-menu {order:1;}
+                &-nav {
+                    flex-flow:column-reverse wrap;
+                }
+            }
+            
+        }
+    }
+
+            
+    $barEl:calc($qkIcoEl - 2.4rem);
+    %barNavEl {
+        @include pos-offset-l(50%, calc(50% - $barEl/2));
+        @include display(block);
+        @include el-size($barEl, .2rem);
+        background:$color-white;
+    };
+
+    &-menu {
+        @include pos(relative);
+        @include display(flex) {flex-flow:column wrap; gap:1rem;}
+        &.ico-nav {background-color:$color-blue5;}
+        & > span.bar {
+            @include el-content(both) {
+                @extend %barNavEl;
+            }
+            @include el-content(before) {top:calc(50% - 1rem);}
+            @include el-content(after) {top:calc(50% + 1rem);}
+        }
+        & > em.bar {
+            @include el-content(both) {
+                @extend %barNavEl; transform: rotate(0);
+            }
+        }        
+        & > .bar {@include el-content(both) {@extend %transition3s;}}
+        &._is-active, &:hover {
+            & > span.bar {
+                @include el-content(both) {top:50%; opacity:0;}
+            }
+            & > em.bar {
+                @include el-content(before) {transform: rotate(45deg);}
+                @include el-content(after) {transform: rotate(-45deg);}
+            }
+            & + #{$quick}-nav {
+                & > li {
+                    transform:scale(1);
+                    opacity:1;
+                    @extend %transition3s;
+                }
+                @include trans-delay('li', 3, 0.05s);
+            }
+        }
+    }
+    &-nav {
+        @include display(flex); gap:1rem;
+        & > li {transform-origin: 50% 50%; transform:scale(0); opacity:0; @extend %transition3s;}
+        @include trans-delay('li', 3, 0.05s);
+    }
+}
+
+.round {
+    @include pos(relative){z-index:2;}
+    flex:none;
+
+    #{$quick} {
+        &-nav {
+            @include pos-offset-l(0,0){z-index:-1;}
+            & > li {
+                transform-origin: 0 0;
+                transform:translate(0,0);
+                @include pos-offset-l(0,0){z-index:-1;}
+                @extend %transition3s;
+                
+                // transform:translate(-5rem, 5rem);
+            }
+        }
+        &-menu {
+            &._is-active, &:hover {
+                & + #{$quick}-nav {
+                    & > li {
+                        transform-origin: 0 0;
+                        transform:translate(0,0);
+                        @extend %transition3s;
+                    }
+                    @include floatMu-rotate('li', 3, 45deg, 10rem);
+                }
+            }
+        }
+
+    }
+    &.topR {
+        #{$quick} {
+            &-menu {
+                &._is-active, &:hover {
+                    & + #{$quick}-nav {
+                        @include floatMu-rotate('li', 3, 45deg, 10rem, topR);
+                    }
+                }
+            }
+        }
+        
+    }
+    &.topC {
+        transform: translate(calc(50% - $qkIcoEl), calc(100% - $qkIcoEl));
+        @include pos-offset-l(0, 50%);
+        #{$quick} {
+            &-menu {
+                &._is-active, &:hover {
+                    & + #{$quick}-nav {
+                        @include floatMu-rotate('li', 3, 45deg, 10rem, topC);
+                    }
+                }
+            }
+        }
+        
+    }
+    &.btmL {
+        @include pos-offset-b(0, 0);
+        #{$quick} {
+            &-menu {
+                &._is-active, &:hover {
+                    & + #{$quick}-nav {
+                        @include floatMu-rotate('li', 3, 45deg, 10rem, btmL);
+                    }
+                }
+            }
+        }
+    }
+    &.btmC {
+        transform: translate(calc(50% - $qkIcoEl), calc(100% - $qkIcoEl));
+        @include pos-offset-b(0, 50%);
+        #{$quick} {
+            &-menu {
+                &._is-active, &:hover {
+                    & + #{$quick}-nav {
+                        @include floatMu-rotate('li', 3, 45deg, 10rem, btmC);
+                    }
+                }
+            }
+        }
+    }
+    &.btmR {
+        @include pos-offset-b(0, inherit){right:0;}
+        #{$quick} {
+            &-menu {
+                &._is-active, &:hover {
+                    & + #{$quick}-nav {
+                        @include floatMu-rotate('li', 3, 45deg, 10rem, btmR);
+                    }
+                }
+            }
+        }
+    }
+}

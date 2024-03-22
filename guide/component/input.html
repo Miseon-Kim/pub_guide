@@ -12,7 +12,8 @@
     <!-- [E] PUBLISH COMMON STYLE -->
 
     <!-- [S] PAGES - STYLE -->
-    <link rel="stylesheet" href="">
+    <!-- D/P : 컴퍼넌트 예시화면용이므로 페이지 제작시 적용하지 않음 -->
+    <link rel="stylesheet" type="text/css" href="../com/css/cm.guide.css">
     <!-- [E] PAGES - STYLE -->
 
     <!-- [S] LIBRARY - SCRIPT -->
@@ -298,8 +299,73 @@
               </div>
             </section>
 
+            <section class="cp-content">
+              <h2 class="cp-tit dep02">INPUT RANGE</h2>
+
+              <div class="field range-slider">
+                <label class="field-label">range step 있을 때</label>
+                <div class="field-input">
+                  <input type="range" min="0" max="100" value="50" step="10" class="_range" />
+                  <div class="range-info">
+                    <span class="_value"></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field range-slider">
+                <label class="field-label">range step 없을 때</label>
+                <div class="field-input">
+                  <input type="range" min="0" max="100" value="50" step="any" class="_range" />
+                  <div class="range-info"><span class="_value"></span></div>
+                </div>
+              </div>
+
+              <div class="field range-slider">
+                <label class="field-label">메세지 출력</label>
+                <div class="field-input">
+                  <input type="range" min="0" max="100" value="50" step="10" class="_range" />
+                  <div class="range-info"><span class="_value" range-value="70">메세지 출력</span></div>
+                </div>
+              </div>
+            </section>
+
+            <section class="cp-content">
+              <h2 class="cp-tit dep02">INPUT RANGE DOUBLE</h2>
+
+              <div class="field range-slider double">
+                <div class="double-input-container">
+                  <div class="double-input">
+                    <span>min value</span>
+                    <div class="field-outline">
+                      <div class="field-input">
+                        <input type="number" class="min-input" value="2500"> 
+                      </div>
+                    </div>
+                  </div>
+                  <div class="double-input">
+                    <span>max value</span>
+                    <div class="field-outline">
+                      <div class="field-input">
+                        <input type="number" class="max-input" value="8500"> 
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="slider-container"> 
+                  <div class="double-slider"></div> 
+                </div>
+                <div class="field-input">
+                  <input type="range" min="0" max="10000" value="2500" step="1" class="min-range" />
+                  <input type="range" min="0" max="10000" value="8500" step="1" class="max-range" />
+                  <!-- <div class="range-info"><span class="_value"></span></div> -->
+                </div>
+              </div>
+            </section>
+
         </div>
     </div>
+
+    <div class="test"></div>
 
 <!-- [S] PAGES - SCRIPT -->
 <script src="../../asset/com/js/ui.component.js"></script>

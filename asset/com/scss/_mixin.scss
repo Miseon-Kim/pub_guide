@@ -79,6 +79,60 @@
     transition:$time $el $effect;
     @content;
 }
+/* [S] 엘리먼트 갯수에 따른 transition-delay-time */
+@function calc-delay($index, $delay-increment) {
+    @return $index * $delay-increment;
+}
+  
+@mixin trans-delay($el, $count, $delay-increment) {
+    @for $i from 1 through $count {
+        #{$el}:nth-child(#{$i}) {
+        transition-delay: calc-delay($i - 1, $delay-increment);
+        }
+    }
+}
+/* [E] 엘리먼트 갯수에 따른 transition-delay-time */
+
+/* [S] 플로팅 메뉴 갯수에 따른 회전 */
+@function cal-translate($index, $angle-per-item, $size, $direction, $rotate) {
+    $angle: 0;
+    @if $direction == "topR" or $direction == "topC" or $direction == "btmL" or $direction == "btmC" or $direction == "btmR" {
+        $angle: ($rotate - ($angle-per-item * ($index - 1))); 
+    } @else {
+        $angle: $angle-per-item * ($index - 1);
+    }
+    $translate-x: $size * sin($angle);
+    $translate-y: $size * cos($angle);
+    @return $translate-x $translate-y;
+}
+
+@mixin floatMu-rotate($el, $count, $angle-per-item, $size, $direction: "right", $rotate: null) {
+    $default-rotate: null;
+    @if $direction == "topR" {
+        $default-rotate: 0deg;
+    }@else if $direction == "topC" {
+        $default-rotate: 45deg;
+    } @else if $direction == "btmC" {
+        $default-rotate: 225deg;
+    } @else if $direction == "btmL" {
+        $default-rotate: 180deg;
+    } @else if $direction == "btmR" {
+        $default-rotate: 270deg;
+    } 
+    
+    $translate-values: null;
+    @for $i from 1 through $count {
+        #{$el}:nth-child(#{$i}) {
+            $current-rotate: if($rotate, $rotate, $default-rotate); // $rotate 변수가 null이면 $default-rotate을 사용합니다.
+            $translate-values: cal-translate($i, $angle-per-item, $size, $direction, $current-rotate); 
+            transform: translate(nth($translate-values, 1), nth($translate-values, 2));
+        }
+    }
+}
+// @include floatMu-rotate('엘리먼트 또는 클래스', 요소의 갯수, 요소간 간격, 요소의 거리, 위치, 전체각도 변경);
+// mixin은 3개 기준이며, 요소의 갯수가 3개 이상인 경우에는 요소의 갯수에 따라 요소간 간격, 거리, 전체각도를 변경해주어야 함
+// @include floatMu-rotate('li', 4, 30deg, 12rem, btmL, 180deg);
+/* [E] 플로팅 메뉴 갯수에 따른 회전 */
 
 @mixin line-effect($color, $el-type, $direction) {
     backface-visibility:hidden;
