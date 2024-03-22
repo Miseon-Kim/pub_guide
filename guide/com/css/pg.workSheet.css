@@ -28,6 +28,10 @@
   --space-4xl: 4.8rem;
 }
 
+/* [S] 엘리먼트 갯수에 따른 transition-delay-time */
+/* [E] 엘리먼트 갯수에 따른 transition-delay-time */
+/* [S] 플로팅 메뉴 갯수에 따른 회전 */
+/* [E] 플로팅 메뉴 갯수에 따른 회전 */
 /* function */
 /* WEB FONT */
 @font-face {
@@ -1531,6 +1535,102 @@
   border-color: #ffcc23;
 }
 
+.field input[type=range] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  width: 100%;
+  height: 0.6rem !important;
+  padding: 0 !important;
+  cursor: pointer;
+  outline: none;
+  border-radius: 1.5rem;
+}
+.field input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background: #fff;
+  width: 1.6rem;
+  height: 1.6rem;
+  border: 0.25rem solid #333;
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-transform: translateY(calc(-50% + 8px));
+          transform: translateY(calc(-50% + 8px));
+}
+.field.range-slider {
+  position: relative;
+}
+.field.range-slider.double .slider-container {
+  background: #ccc;
+  position: relative;
+  height: 0.6rem;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+}
+.field.range-slider.double .slider-container .double-slider {
+  position: absolute;
+  background-color: #333;
+  height: 100%;
+}
+.field.range-slider.double .field-input {
+  position: relative;
+  height: 100%;
+}
+.field.range-slider.double .field-input input[type=range] {
+  position: absolute;
+  top: -5px;
+  pointer-events: none;
+}
+.field.range-slider.double .field-input input[type=range]::-webkit-slider-thumb {
+  pointer-events: auto;
+}
+.field.range-slider .range-info {
+  position: absolute;
+  bottom: 4.8rem;
+  padding: 0.6rem 1rem;
+  background-color: #fff;
+  border: 1px solid #333;
+  text-align: center;
+}
+.field.range-slider .range-info:after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 50%;
+  bottom: -0.4rem;
+  right: auto;
+  width: 1rem;
+  height: 1rem;
+  background: #fff;
+  -webkit-box-shadow: 1px 1px 0 0 #333;
+          box-shadow: 1px 1px 0 0 #333;
+  -webkit-transform: translateX(-50%) rotate(45deg);
+          transform: translateX(-50%) rotate(45deg);
+}
+.field.range-slider .range-info.left {
+  left: calc(0% + 20px) !important;
+  margin-left: -22px !important;
+}
+.field.range-slider .range-info.left:after {
+  left: 0.4rem;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.field.range-slider .range-info.right {
+  left: auto !important;
+  right: 0;
+}
+.field.range-slider .range-info.right:after {
+  left: auto;
+  right: 0.6rem;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+/* [S] 엘리먼트 갯수에 따른 transition-delay-time */
+/* [E] 엘리먼트 갯수에 따른 transition-delay-time */
+/* [S] 플로팅 메뉴 갯수에 따른 회전 */
+/* [E] 플로팅 메뉴 갯수에 따른 회전 */
 /* function */
 .field .select-sys {
   width: 100%;
@@ -1609,6 +1709,10 @@
   background-position: 100% 100%;
 }
 
+/* [S] 엘리먼트 갯수에 따른 transition-delay-time */
+/* [E] 엘리먼트 갯수에 따른 transition-delay-time */
+/* [S] 플로팅 메뉴 갯수에 따른 회전 */
+/* [E] 플로팅 메뉴 갯수에 따른 회전 */
 /* function */
 .field input[type=checkbox] {
   position: absolute;
@@ -2119,7 +2223,7 @@
   opacity: 0.35;
 }
 
-.frame_device, .pg_layout .pg_layout_content > div, .pg_layout div::before, .pg_layout div, .pg_board_scroll > div, .pg_status_box .bar, .pg_alert_btn_set button, .panel_head, .search_title, .pg_project_status .pg_project_ing .ing, .pg_project_status .pg_project_ing, .pg_project_status pgCount > strong, .pg_project_status pgCount > span, .pg_board_tab, .btn_light_mode > i::after, .btn_light_mode > i::before, .btn_light_mode::after, .btn_light_mode::before, .btn_guide_top, .btm_btn_set .btn_guide_top, .btm_btn_set, .pg_titles h2, .pg_titles .pg_project_status, .pg_titles, #pgWrap, .pg_nav > ul > li > a, .pg_project .current::after, #pgHeader .switch > ul > li > a, #pgHeader .pg_util .btn_responsive > i > i, #pgHeader .pg_util .btn_responsive > i::after, #pgHeader .pg_util .btn_responsive > i::before, #pgHeader .pg_util .btn_responsive > i, #pgHeader .pg_util .btn_responsive::after, #pgHeader .pg_util .btn_responsive::before, #pgHeader .pg_util .btn_responsive, #pgHeader .pg_util .btn_nav span::after, #pgHeader .pg_util .btn_nav span::before, #pgHeader .pg_util .btn_nav span, #pgHeader .pg_util .pg_search #btnPgSearch, .swiper-pagination, .btn-toggle.btn-style-02::before, .btn-toggle.btn-style-02::after, .btn-toggle:not([class*=btn-style])::after, .modalPop._bottom > .modalWrap, .modalPop._left > .modalWrap, .modalPop._top > .modalWrap {
+.frame_device, .pg_layout .pg_layout_content > div, .pg_layout div::before, .pg_layout div, .pg_board_scroll > div, .pg_status_box .bar, .pg_alert_btn_set button, .panel_head, .search_title, .pg_project_status .pg_project_ing .ing, .pg_project_status .pg_project_ing, .pg_project_status pgCount > strong, .pg_project_status pgCount > span, .pg_board_tab, .btn_light_mode > i::after, .btn_light_mode > i::before, .btn_light_mode::after, .btn_light_mode::before, .btn_guide_top, .btm_btn_set .btn_guide_top, .btm_btn_set, .pg_titles h2, .pg_titles .pg_project_status, .pg_titles, #pgWrap, .pg_nav > ul > li > a, .pg_project .current::after, #pgHeader .switch > ul > li > a, #pgHeader .pg_util .btn_responsive > i > i, #pgHeader .pg_util .btn_responsive > i::after, #pgHeader .pg_util .btn_responsive > i::before, #pgHeader .pg_util .btn_responsive > i, #pgHeader .pg_util .btn_responsive::after, #pgHeader .pg_util .btn_responsive::before, #pgHeader .pg_util .btn_responsive, #pgHeader .pg_util .btn_nav span::after, #pgHeader .pg_util .btn_nav span::before, #pgHeader .pg_util .btn_nav span, #pgHeader .pg_util .pg_search #btnPgSearch, .round .quick-menu._is-active + .quick-nav > li, .round .quick-menu:hover + .quick-nav > li, .round .quick-nav > li, .quick-nav > li, .quick-menu._is-active + .quick-nav > li, .quick-menu:hover + .quick-nav > li, .quick-menu > .bar::after, .quick-menu > .bar::before, .swiper-pagination, .btn-toggle.btn-style-02::before, .btn-toggle.btn-style-02::after, .btn-toggle:not([class*=btn-style])::after, .modalPop._bottom > .modalWrap, .modalPop._left > .modalWrap, .modalPop._top > .modalWrap {
   -webkit-transition: 0.3s all ease-in-out;
   transition: 0.3s all ease-in-out;
 }
@@ -3173,6 +3277,337 @@
   background: #f3f1ea;
 }
 
+.cNav-wrap {
+  position: relative;
+  width: 100%;
+  height: 40rem;
+  border: 0.2rem #d9e4fa solid;
+}
+
+.quick-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+}
+.quick-wrap .ico-nav {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 100%;
+  background-color: #1e9a8f;
+}
+.quick-wrap.topR {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.quick-wrap.topR .quick-menu {
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+}
+.quick-wrap.topR .quick-nav {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-flow: row-reverse;
+          flex-flow: row-reverse;
+}
+.quick-wrap.btmL {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+}
+.quick-wrap.btmL .quick-menu {
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+}
+.quick-wrap.btmL .quick-nav {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-flow: column-reverse wrap;
+          flex-flow: column-reverse wrap;
+}
+.quick-wrap.btmR {
+  position: absolute;
+  bottom: 0;
+  left: inherit;
+  right: 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+}
+.quick-wrap.btmR .quick-menu {
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+}
+.quick-wrap.btmR .quick-nav {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-flow: column-reverse wrap;
+          flex-flow: column-reverse wrap;
+}
+.quick .quick-menu > em.bar::after, .quick .quick-menu > em.bar::before, .quick .quick-menu > span.bar::after, .quick .quick-menu > span.bar::before {
+  position: absolute;
+  top: 50%;
+  left: calc(50% - 1.3rem);
+  display: block;
+  width: 2.6rem;
+  height: 0.2rem;
+  background: #fff;
+}
+.quick-menu {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  gap: 1rem;
+}
+.quick-menu.ico-nav {
+  background-color: #008fba;
+}
+.quick-menu > span.bar::before {
+  content: "";
+  display: block;
+}
+.quick-menu > span.bar::after {
+  content: "";
+  display: block;
+}
+.quick-menu > span.bar::before {
+  content: "";
+  display: block;
+  top: calc(50% - 1rem);
+}
+.quick-menu > span.bar::after {
+  content: "";
+  display: block;
+  top: calc(50% + 1rem);
+}
+.quick-menu > em.bar::before {
+  content: "";
+  display: block;
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
+}
+.quick-menu > em.bar::after {
+  content: "";
+  display: block;
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
+}
+.quick-menu > .bar::before {
+  content: "";
+  display: block;
+}
+.quick-menu > .bar::after {
+  content: "";
+  display: block;
+}
+.quick-menu._is-active > span.bar::before, .quick-menu:hover > span.bar::before {
+  content: "";
+  display: block;
+  top: 50%;
+  opacity: 0;
+}
+.quick-menu._is-active > span.bar::after, .quick-menu:hover > span.bar::after {
+  content: "";
+  display: block;
+  top: 50%;
+  opacity: 0;
+}
+.quick-menu._is-active > em.bar::before, .quick-menu:hover > em.bar::before {
+  content: "";
+  display: block;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.quick-menu._is-active > em.bar::after, .quick-menu:hover > em.bar::after {
+  content: "";
+  display: block;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+.quick-menu._is-active + .quick-nav > li, .quick-menu:hover + .quick-nav > li {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  opacity: 1;
+}
+.quick-menu._is-active + .quick-nav li:nth-child(1), .quick-menu:hover + .quick-nav li:nth-child(1) {
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+}
+.quick-menu._is-active + .quick-nav li:nth-child(2), .quick-menu:hover + .quick-nav li:nth-child(2) {
+  -webkit-transition-delay: 0.05s;
+          transition-delay: 0.05s;
+}
+.quick-menu._is-active + .quick-nav li:nth-child(3), .quick-menu:hover + .quick-nav li:nth-child(3) {
+  -webkit-transition-delay: 0.1s;
+          transition-delay: 0.1s;
+}
+.quick-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+}
+.quick-nav > li {
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  opacity: 0;
+}
+.quick-nav li:nth-child(1) {
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+}
+.quick-nav li:nth-child(2) {
+  -webkit-transition-delay: 0.05s;
+          transition-delay: 0.05s;
+}
+.quick-nav li:nth-child(3) {
+  -webkit-transition-delay: 0.1s;
+          transition-delay: 0.1s;
+}
+
+.round {
+  position: relative;
+  z-index: 2;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+}
+.round .quick-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.round .quick-nav > li {
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.round .quick-menu._is-active + .quick-nav > li, .round .quick-menu:hover + .quick-nav > li {
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+.round .quick-menu._is-active + .quick-nav li:nth-child(1), .round .quick-menu:hover + .quick-nav li:nth-child(1) {
+  -webkit-transform: translate(0rem, 10rem);
+          transform: translate(0rem, 10rem);
+}
+.round .quick-menu._is-active + .quick-nav li:nth-child(2), .round .quick-menu:hover + .quick-nav li:nth-child(2) {
+  -webkit-transform: translate(7.0710678119rem, 7.0710678119rem);
+          transform: translate(7.0710678119rem, 7.0710678119rem);
+}
+.round .quick-menu._is-active + .quick-nav li:nth-child(3), .round .quick-menu:hover + .quick-nav li:nth-child(3) {
+  -webkit-transform: translate(10rem, 0rem);
+          transform: translate(10rem, 0rem);
+}
+.round.topR .quick-menu._is-active + .quick-nav li:nth-child(1), .round.topR .quick-menu:hover + .quick-nav li:nth-child(1) {
+  -webkit-transform: translate(0rem, 10rem);
+          transform: translate(0rem, 10rem);
+}
+.round.topR .quick-menu._is-active + .quick-nav li:nth-child(2), .round.topR .quick-menu:hover + .quick-nav li:nth-child(2) {
+  -webkit-transform: translate(-7.0710678119rem, 7.0710678119rem);
+          transform: translate(-7.0710678119rem, 7.0710678119rem);
+}
+.round.topR .quick-menu._is-active + .quick-nav li:nth-child(3), .round.topR .quick-menu:hover + .quick-nav li:nth-child(3) {
+  -webkit-transform: translate(-10rem, 0rem);
+          transform: translate(-10rem, 0rem);
+}
+.round.topC {
+  -webkit-transform: translate(calc(50% - 5rem), calc(100% - 5rem));
+          transform: translate(calc(50% - 5rem), calc(100% - 5rem));
+  position: absolute;
+  top: 0;
+  left: 50%;
+}
+.round.topC .quick-menu._is-active + .quick-nav li:nth-child(1), .round.topC .quick-menu:hover + .quick-nav li:nth-child(1) {
+  -webkit-transform: translate(7.0710678119rem, 7.0710678119rem);
+          transform: translate(7.0710678119rem, 7.0710678119rem);
+}
+.round.topC .quick-menu._is-active + .quick-nav li:nth-child(2), .round.topC .quick-menu:hover + .quick-nav li:nth-child(2) {
+  -webkit-transform: translate(0rem, 10rem);
+          transform: translate(0rem, 10rem);
+}
+.round.topC .quick-menu._is-active + .quick-nav li:nth-child(3), .round.topC .quick-menu:hover + .quick-nav li:nth-child(3) {
+  -webkit-transform: translate(-7.0710678119rem, 7.0710678119rem);
+          transform: translate(-7.0710678119rem, 7.0710678119rem);
+}
+.round.btmL {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.round.btmL .quick-menu._is-active + .quick-nav li:nth-child(1), .round.btmL .quick-menu:hover + .quick-nav li:nth-child(1) {
+  -webkit-transform: translate(0rem, -10rem);
+          transform: translate(0rem, -10rem);
+}
+.round.btmL .quick-menu._is-active + .quick-nav li:nth-child(2), .round.btmL .quick-menu:hover + .quick-nav li:nth-child(2) {
+  -webkit-transform: translate(7.0710678119rem, -7.0710678119rem);
+          transform: translate(7.0710678119rem, -7.0710678119rem);
+}
+.round.btmL .quick-menu._is-active + .quick-nav li:nth-child(3), .round.btmL .quick-menu:hover + .quick-nav li:nth-child(3) {
+  -webkit-transform: translate(10rem, 0rem);
+          transform: translate(10rem, 0rem);
+}
+.round.btmC {
+  -webkit-transform: translate(calc(50% - 5rem), calc(100% - 5rem));
+          transform: translate(calc(50% - 5rem), calc(100% - 5rem));
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+}
+.round.btmC .quick-menu._is-active + .quick-nav li:nth-child(1), .round.btmC .quick-menu:hover + .quick-nav li:nth-child(1) {
+  -webkit-transform: translate(-7.0710678119rem, -7.0710678119rem);
+          transform: translate(-7.0710678119rem, -7.0710678119rem);
+}
+.round.btmC .quick-menu._is-active + .quick-nav li:nth-child(2), .round.btmC .quick-menu:hover + .quick-nav li:nth-child(2) {
+  -webkit-transform: translate(0rem, -10rem);
+          transform: translate(0rem, -10rem);
+}
+.round.btmC .quick-menu._is-active + .quick-nav li:nth-child(3), .round.btmC .quick-menu:hover + .quick-nav li:nth-child(3) {
+  -webkit-transform: translate(7.0710678119rem, -7.0710678119rem);
+          transform: translate(7.0710678119rem, -7.0710678119rem);
+}
+.round.btmR {
+  position: absolute;
+  bottom: 0;
+  left: inherit;
+  right: 0;
+}
+.round.btmR .quick-menu._is-active + .quick-nav li:nth-child(1), .round.btmR .quick-menu:hover + .quick-nav li:nth-child(1) {
+  -webkit-transform: translate(-10rem, 0rem);
+          transform: translate(-10rem, 0rem);
+}
+.round.btmR .quick-menu._is-active + .quick-nav li:nth-child(2), .round.btmR .quick-menu:hover + .quick-nav li:nth-child(2) {
+  -webkit-transform: translate(-7.0710678119rem, -7.0710678119rem);
+          transform: translate(-7.0710678119rem, -7.0710678119rem);
+}
+.round.btmR .quick-menu._is-active + .quick-nav li:nth-child(3), .round.btmR .quick-menu:hover + .quick-nav li:nth-child(3) {
+  -webkit-transform: translate(0rem, -10rem);
+          transform: translate(0rem, -10rem);
+}
+
 /****************************************/
 /*	PART: RESET CSS
 /****************************************/
@@ -3635,7 +4070,7 @@ html[light-mode=dark] a {
 /****************************************/
 /*	PART: work sheet PAGE STYLE
 /****************************************/
-.frame_device, .pg_layout .pg_layout_content > div, .pg_layout div::before, .pg_layout div, .pg_board_scroll > div, .pg_status_box .bar, .pg_alert_btn_set button, .panel_head, .search_title, .pg_project_status .pg_project_ing .ing, .pg_project_status .pg_project_ing, .pg_project_status pgCount > strong, .pg_project_status pgCount > span, .pg_board_tab, .btn_light_mode > i::after, .btn_light_mode > i::before, .btn_light_mode::after, .btn_light_mode::before, .btn_guide_top, .btm_btn_set .btn_guide_top, .btm_btn_set, .pg_titles h2, .pg_titles .pg_project_status, .pg_titles, #pgWrap, .pg_nav > ul > li > a, .pg_project .current::after, #pgHeader .switch > ul > li > a, #pgHeader .pg_util .btn_responsive > i > i, #pgHeader .pg_util .btn_responsive > i::after, #pgHeader .pg_util .btn_responsive > i::before, #pgHeader .pg_util .btn_responsive > i, #pgHeader .pg_util .btn_responsive::after, #pgHeader .pg_util .btn_responsive::before, #pgHeader .pg_util .btn_responsive, #pgHeader .pg_util .btn_nav span::after, #pgHeader .pg_util .btn_nav span::before, #pgHeader .pg_util .btn_nav span, #pgHeader .pg_util .pg_search #btnPgSearch, .modalPop._top > .modalWrap, .modalPop._left > .modalWrap, .modalPop._bottom > .modalWrap, .btn-toggle:not([class*=btn-style])::after, .btn-toggle.btn-style-02::before, .btn-toggle.btn-style-02::after, .swiper-pagination {
+.frame_device, .pg_layout .pg_layout_content > div, .pg_layout div::before, .pg_layout div, .pg_board_scroll > div, .pg_status_box .bar, .pg_alert_btn_set button, .panel_head, .search_title, .pg_project_status .pg_project_ing .ing, .pg_project_status .pg_project_ing, .pg_project_status pgCount > strong, .pg_project_status pgCount > span, .pg_board_tab, .btn_light_mode > i::after, .btn_light_mode > i::before, .btn_light_mode::after, .btn_light_mode::before, .btn_guide_top, .btm_btn_set .btn_guide_top, .btm_btn_set, .pg_titles h2, .pg_titles .pg_project_status, .pg_titles, #pgWrap, .pg_nav > ul > li > a, .pg_project .current::after, #pgHeader .switch > ul > li > a, #pgHeader .pg_util .btn_responsive > i > i, #pgHeader .pg_util .btn_responsive > i::after, #pgHeader .pg_util .btn_responsive > i::before, #pgHeader .pg_util .btn_responsive > i, #pgHeader .pg_util .btn_responsive::after, #pgHeader .pg_util .btn_responsive::before, #pgHeader .pg_util .btn_responsive, #pgHeader .pg_util .btn_nav span::after, #pgHeader .pg_util .btn_nav span::before, #pgHeader .pg_util .btn_nav span, #pgHeader .pg_util .pg_search #btnPgSearch, .modalPop._top > .modalWrap, .modalPop._left > .modalWrap, .modalPop._bottom > .modalWrap, .btn-toggle:not([class*=btn-style])::after, .btn-toggle.btn-style-02::before, .btn-toggle.btn-style-02::after, .swiper-pagination, .quick-menu > .bar::before, .quick-menu > .bar::after, .quick-menu._is-active + .quick-nav > li, .quick-menu:hover + .quick-nav > li, .quick-nav > li, .round .quick-nav > li, .round .quick-menu._is-active + .quick-nav > li, .round .quick-menu:hover + .quick-nav > li {
   -webkit-transition: 0.3s all ease-in-out;
   transition: 0.3s all ease-in-out;
 }
