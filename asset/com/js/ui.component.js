@@ -246,7 +246,8 @@ var COMPONENT_UI = (function (cp, $) {
                 var placeholderValue = $(this).attr('placeholder');
   
                 parentInput.attr('data-target', inputId);                
-                
+
+                // input이 여러개일때 첫번째 또는 지정된 input와 매핑되도록 적용하는 내용 추가할것
                 labelElOut.attr({'for': inputId, 'data-name': inputId});
                 
                 $(this).attr('title', placeholderValue);
@@ -281,7 +282,32 @@ var COMPONENT_UI = (function (cp, $) {
                         $newFieldLabel.removeClass('_is-active');
                     }
                 }
-                
+                /*
+                // placeholder 위로 이동
+                // $fieldLabel.on("click", function(){
+                //     $(".field-outline").removeClass("_is-active");
+                //     $(this).addClass("_is-active");
+                //     $fieldOutline.addClass("_is-active");
+
+                //       // input 포커스시 ghkaustmzmfhf dlehd
+                //     const target = $(this),
+                //           targetOffset = target.offset().top - 120,
+                //           docH = $(document).height();
+                //           winH = $(window).height();
+                //     if((docH - targetOffset) < winH) {
+                //         $(".containerWrap").addClass("scroll-space);
+                //     }
+                //     $("html, body").animation)({scrollTop : targetOffset}, 500);
+                // });
+                // $(document).on("click", function(e){
+                //     if(!$(e.target).closet($fieldBox).length) {
+                //         if($fieldInputs.val().trim() === "") {
+                //             #fieldLabel.removeClass("_is-active");
+                //             #fieldOutline.removeClass("_is-active");
+                //         }
+                //     }
+                // });
+                */
                 // label 클릭 이벤트
                 $newFieldLabel.on("click", function () {
                     $(this).addClass('_is-active');
@@ -320,36 +346,70 @@ var COMPONENT_UI = (function (cp, $) {
             $(inputSelector).each(function () {
                 const $inputTxt = $(this);
   
-                if ($inputTxt.prop("readonly") || $inputTxt.prop("disabled")) {
+                if($inputTxt.prop("readonly") || $inputTxt.prop("disabled")) {
                     return;
                 }
-  
+                $inputTxt.parent().append(clearBtnEl);
                 function activateClearBtn() {
                     const $clearBtn = $inputTxt.parent().find(clearSelector);
-                
-                    if ($inputTxt.val()) {
-                        $clearBtn.addClass("_active");
-                        if (!$inputTxt.parent().find(clearSelector + "._active").length) {
-                            $inputTxt.css({width:"calc(100% - 2.4rem)"}).parent().append(clearBtnEl);
-                        }
+
+                    if($('html').hasClass("ios) || $('html').hasClass("ios_old)) {
+                        $inputTxt.parent().attr({
+                            "contenteditable" : "false"
+                        });
+                    }
+                    if($inputTxt.val()) {
+                        $inputTxt.parent().addClass("_hasClear");
                     } else {
-                        $clearBtn.removeClass("_active");
-                        $inputTxt.css({width:""}).parent().find(clearSelector).remove();
+                        $inputTxt.parent().removeClass("_hasClear");
                     }
                 }
-                
-  
+
                 $inputTxt
                 .on("keyup focus input", function () {
-                    activateClearBtn();
+                    setTimeout(function(){
+                        $inputTxt.parent().parent().addClass("_is-active");    
+                        activateClearBtn();
+                    }, 100);
+                    
                 })
-                .on("blur", function () {
+                .on("blur focusout", function () {
                     setTimeout(function() {
-                        $inputTxt.css({width:""}).parent().find(clearSelector).remove();
-                    }, 1000);
+                        $inputTxt.parent().removeClass("_hasClear");
+                        $inputTxt.removeClass("_is-active").parents(".field-outline").remove("_is-active");
+
+                        if(!$inputTxt.val()) {
+                            $inputTxt.removeClass("_is-active");
+                        }
+                    }, 100);
                 });
   
-                activateClearBtn();
+                // function activateClearBtn() {
+                //     const $clearBtn = $inputTxt.parent().find(clearSelector);
+                
+                //     if ($inputTxt.val()) {
+                //         $clearBtn.addClass("_active");
+                //         if (!$inputTxt.parent().find(clearSelector + "._active").length) {
+                //             $inputTxt.css({width:"calc(100% - 2.4rem)"}).parent().append(clearBtnEl);
+                //         }
+                //     } else {
+                //         $clearBtn.removeClass("_active");
+                //         $inputTxt.css({width:""}).parent().find(clearSelector).remove();
+                //     }
+                // }
+                
+  
+                // $inputTxt
+                // .on("keyup focus input", function () {
+                //     activateClearBtn();
+                // })
+                // .on("blur", function () {
+                //     setTimeout(function() {
+                //         $inputTxt.css({width:""}).parent().find(clearSelector).remove();
+                //     }, 1000);
+                // });
+  
+                // activateClearBtn();
             });
         },
         inpClearBtn: function () {
@@ -361,11 +421,38 @@ var COMPONENT_UI = (function (cp, $) {
                 e.preventDefault();
                 var clearBtn = $(this),
                     inputTxt = clearBtn.siblings(inputSelector);
-                inputTxt.css({width:"calc(100% - 2.4rem)"}).val('').focus();
-                setTimeout(function() {
-                    clearBtn.remove();
-                    inputTxt.css({width:""});
-                }, 1000);
+
+                setTimeout(function(){
+                    if($("html").hasClass("ios") || $("html").hasClass("ios_old")) {
+                        inputTxt.css({
+                            width:"calc(100% - 2.4rem)"
+                        }).val("").trigger("input").focus();
+                        inputTxt.parent().attr({
+                            "contenteditable" : "true"
+                        }).focus();
+
+                        setTimeout(function(){
+                            inputTxt.focus();
+                        }, 100);
+
+                        inputTxt.parent().removeClass("_hasClear").removeAttr("contentsditable");
+                    } else {
+                        inputTxt.css({
+                            width:"clac(100% - 2.4rem)"
+                        }).val("").focus();
+
+                        setTimeout(function(){
+                            inputTxt.focus();
+                        }, 100);
+
+                        inputTxt.parent().removeClass("_hasClear")
+                    }
+                }, 100);
+                // inputTxt.css({width:"calc(100% - 2.4rem)"}).val('').focus();
+                // setTimeout(function() {
+                //     clearBtn.remove();
+                //     inputTxt.css({width:""});
+                // }, 1000);
             });
   
         },
@@ -604,7 +691,17 @@ var COMPONENT_UI = (function (cp, $) {
                         $activeOption.addClass('_is-active');
                     }
                 }
-                
+
+                // 셀렉트 포커스 이동
+                // const target = $(this),
+                //           targetOffset = target.offset().top - 120,
+                //           docH = $(document).height();
+                //           winH = $(window).height();
+                //     if((docH - targetOffset) < winH) {
+                //         $(".containerWrap").addClass("scroll-space);
+                //     }
+                //     $("html, body").animation)({scrollTop : targetOffset}, 500);
+
                 
                 $btn.addClass('_selectTxt _rtFocus');
                 cp.modalPop.layerFocusControl($(this));
@@ -1979,6 +2076,65 @@ var COMPONENT_UI = (function (cp, $) {
     
   };
 
+cp.loading = {
+    init:function() {},
+    loadingStart:function(_txt, _target) {
+        var txt = _txt;
+        
+        if(_target != "" && _target != undefined) {
+            var target = _target;
+        } else {
+            target = 'body';
+        }
+
+        if(_txt != "" && _txt != undefined) {
+            var resultTxt = '<p class="txt">' + txt + '</p>';
+            $(target).append(
+                '<div class="loadingWrap"><p class="hide">로딩중</p></div>
+            );
+        } else {
+            $(target).append(
+                '<div class="loadingWrap"><p class="hide">로딩중</p></div>
+            );
+        }
+        $("body").addClass("no-scroll");
+    },
+    loadingEnd:function() {
+        $(".loadingWrap").remove();
+        $("body").removeClass("no-scroll");
+    }
+};
+
+cp.imgRotate = {
+    init:function(callback) {
+        this.imgRotateCheck(callback);
+    },
+    imgRotateCheck:function(callback) {
+        $("img").each(function(){
+            var img = $(this);
+
+            img.on("load", function(){
+                var width =  img.get(0).naturalWidth,
+                    height =  img.get(0).naturalHeight,
+
+                if(width < height) {
+                    img.parent().addClass("rotate");
+                } else {
+                    img.parent().removeClass("rotate");
+                }
+            });
+
+            if(this.complete) {
+                img.triigger("load");
+            }
+        });
+
+        if(callback && typeof callback === "fuction") {
+            callback();
+        }
+    }
+};
+
 
   cp.init = function () {
     cp.uaCheck.init();
@@ -1991,6 +2147,8 @@ var COMPONENT_UI = (function (cp, $) {
     cp.tab.init();
     cp.tabSwiper.init();
     cp.swiper.init();
+    cp.loading.init();
+    cp.imgRotate.init();
   };
 
   cp.init();
