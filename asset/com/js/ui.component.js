@@ -56,6 +56,8 @@ var COMPONENT_UI = (function (cp, $) {
         mobileCheck: function() {
             var user = navigator.userAgent;
             var mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            var versionAos = this.getAOSVersion();
+            var versionIos = this.getIOSVersion();
             
             if (mobile) {
                 mobile = user.match(/lg/i) != null ? "lg"
@@ -65,11 +67,21 @@ var COMPONENT_UI = (function (cp, $) {
   
                 // aos인 경우 버전 체크
                 if (mobile === "aos") {
-                    var version = this.getAOSVersion();
-                    if (version > 0 && version <= 7) {
+                    if (versionAos > 0 && versionAos <= 7) {
                         mobile += "_old"; // aos_old 클래스 추가
                     }
+                    console.log("AOS Ver : ", versionAos);
+                } else if (mobile === "ios") {
+                    if (versionIos) {
+                        var major = versionIos[0];
+                        var minor = versionIos[1];
+                        console.log("IOS Ver : ", major + "." + minor);
+                        if(major < 15 || (major === 15 && minor <= 3)) {
+                            mobile += "_old"; // aos_old 클래스 추가    
+                        }
+                    }
                 }
+                
             } else {
                 mobile = this.browserCheck();
             }
@@ -80,6 +92,14 @@ var COMPONENT_UI = (function (cp, $) {
             var ua = navigator.userAgent;
             var match = ua.match(/Android\s([0-9]+)/);
             return match ? parseInt(match[1], 10) : -1;
+        },
+        getIOSVersion: function() {
+            var ua = navigator.userAgent;
+            var match = ua.match(/OS (\d+)_(\d+)_?(\d+)?/);
+            if(match) {
+                return [parseInt(match[1], 10), parseInt(match[2], 10),parseInt(match[3] || 0, 10)];
+            }
+            return null;
         },
         addChkClass: function() {
             var browser = this.browserCheck();
