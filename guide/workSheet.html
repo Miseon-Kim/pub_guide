@@ -6,13 +6,13 @@
 <meta name="format-detection" content="telephone=no">
 
 <link rel="stylesheet" type="text/css" href="./com/css/pg.workSheet.css">
-<script src="../../asset/com/js/lib/lib.jquery-3.6.3.min.js"></script>
-<script src="../../asset/com/js/lib/lib.swiper.8.4.7.min.js"></script>
+<script src="./com/js/lib/lib.jquery-3.6.3.min.js"></script>
+<script src="./com/js/lib/lib.swiper.8.4.7.min.js"></script>
 <script src="./com/js/pg.workSheet.js"></script>
 
 <title>Worksheet | Publishing Guide</title>
 </head>
-<body data-project="app" data-util="worksheet" data-json="./data/fo.app.json">
+<body data-project="app" data-util="worksheet">
 
 <div id="pgWrap" data-category="worksheet">
     <!-- [S] HEADER -->
@@ -46,12 +46,11 @@
             <!-- [S] WORK LIST -->
             <div class="pg_board_tab swiper-initialized swiper-horizontal swiper-pointer-events swiper-free-mode">
 				<ul class="swiper-wrapper" aria-live="polite">
-					<li class="swiper-slide active"><button type="button" data-json="./data/fo.app.json">우리페이APP</button></li>
-					<li class="swiper-slide"><button type="button" data-json="./data/bo.wooripay.json">관리자:우리페이</button></li>
-					<li class="swiper-slide"><button type="button" data-json="./data/bo.acs.json">관리자:ACS</button></li>
+					<li class="swiper-slide active swiper-slide-active" rel="panel0" role="group" aria-label="1 / N"><button type="button" data-json="./data/menu.common.json">공통</button></li>
+					<!-- <li class="swiper-slide swiper-slide-next" rel="panel1" role="group" aria-label="2 / 19"><button type="button" data-json="./workLst1.json">메뉴1</button></li> -->
 				</ul>
-                <span class="swiper-notification"></span>
-                <span class="swiper-notification"></span>
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
             </div>
             <!-- [E] WORK LIST -->
         </div>

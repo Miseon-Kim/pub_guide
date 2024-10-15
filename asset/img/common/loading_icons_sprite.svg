@@ -1,0 +1,80 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="752" height="80" viewBox="0 0 752 80">
+  <g id="그룹_59660" data-name="그룹 59660" transform="translate(-204 -50)">
+    <g id="icon_widget_card_80px" transform="translate(876 50)">
+      <rect id="bg" width="80" height="80" fill="none"/>
+      <g id="icon_widget_card_40px" transform="translate(-42 -77)">
+        <rect id="Rectangle_82" data-name="Rectangle 82" width="40" height="40" transform="translate(62 97)" fill="none"/>
+        <rect id="사각형_548" data-name="사각형 548" width="31" height="24" rx="5" transform="translate(70 132.5) rotate(-90)" fill="#fff"/>
+        <rect id="사각형_550" data-name="사각형 550" width="5" height="6" rx="1.5" transform="translate(79.5 105.5)" fill="#3182f7"/>
+      </g>
+    </g>
+    <g id="icon_widget_money_80px" transform="translate(764 50)">
+      <rect id="bg-2" data-name="bg" width="80" height="80" fill="none"/>
+      <g id="icon_widget_money_40px" transform="translate(-42 -77)">
+        <rect id="Rectangle_82-2" data-name="Rectangle 82" width="40" height="40" transform="translate(62 97)" fill="none"/>
+        <path id="합치기_3" data-name="합치기 3" d="M6312.487,10556h-16.976a6.48,6.48,0,0,1-5.335-2.745,11.979,11.979,0,0,1-2.175-6.824,14.466,14.466,0,0,1,.943-4.962,16.958,16.958,0,0,1,6.893-8.488,13.226,13.226,0,0,1,7.084-1.981h2.159a13.239,13.239,0,0,1,7.084,1.981,16.97,16.97,0,0,1,6.893,8.488,14.535,14.535,0,0,1,.943,4.962,12.023,12.023,0,0,1-2.175,6.824,6.483,6.483,0,0,1-5.282,2.745Zm-11.784-26a12.248,12.248,0,0,1-2.57-3.918,1.522,1.522,0,0,1-.13-.506,1.468,1.468,0,0,1,1.359-1.576h9.27a1.444,1.444,0,0,1,.514.13,1.474,1.474,0,0,1,.718,1.952h-.008a12.059,12.059,0,0,1-2.567,3.918Z" transform="translate(-6222 -10423)" fill="#fff" stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="1"/>
+        <g id="그룹_418" data-name="그룹 418" transform="translate(76 118)">
+          <path id="패스_1015" data-name="패스 1015" d="M12.889,16.8l2.381,7,2.381-7,2.381,7,2.381-7" transform="translate(-11.651 -16.8)" fill="none" stroke="#3182f7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+          <line id="선_22" data-name="선 22" x1="2.326" transform="translate(9.674 3.5)" fill="none" stroke="#3182f7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+          <line id="선_23" data-name="선 23" x1="2.326" transform="translate(0 3.5)" fill="none" stroke="#3182f7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        </g>
+        <rect id="사각형_15837" data-name="사각형 15837" width="9" height="2" rx="1" transform="translate(77.5 106.5)" fill="#3182f7"/>
+      </g>
+    </g>
+    <g id="icon_widget_document_80px" transform="translate(652 50)">
+      <rect id="bg-3" data-name="bg" width="80" height="80" fill="none"/>
+      <g id="icon_widget_document_40px" transform="translate(-42 -77)">
+        <rect id="Rectangle_82-3" data-name="Rectangle 82" width="40" height="40" transform="translate(62 97)" fill="none"/>
+        <rect id="사각형_527" data-name="사각형 527" width="30" height="26" rx="5" transform="translate(67 104.5)" fill="#fff" stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="1"/>
+        <rect id="사각형_530" data-name="사각형 530" width="4" height="6" rx="2" transform="translate(71.999 102.5)" fill="#3182f7" stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="1"/>
+        <rect id="사각형_531" data-name="사각형 531" width="4" height="6" rx="2" transform="translate(87.999 102.5)" fill="#3182f7" stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="1"/>
+        <rect id="사각형_525" data-name="사각형 525" width="18" height="2" rx="1" transform="translate(72.999 116.5)" fill="#3182f7"/>
+        <rect id="사각형_526" data-name="사각형 526" width="14" height="2" rx="1" transform="translate(72.999 121.5)" fill="#3182f7"/>
+      </g>
+    </g>
+    <g id="icon_widget_coupon_80px" transform="translate(540 50)">
+      <rect id="bg-4" data-name="bg" width="80" height="80" fill="none"/>
+      <g id="icon_widget_coupon_40px" transform="translate(-42 -77)">
+        <rect id="Rectangle_82-4" data-name="Rectangle 82" width="40" height="40" transform="translate(62 97)" fill="none"/>
+        <path id="합치기_2" data-name="합치기 2" d="M6535,10552h-18.193a4.908,4.908,0,0,1-4.809-5v-16a4.908,4.908,0,0,1,4.809-5H6538a5,5,0,0,1,5,5v3.761a1.5,1.5,0,0,1-1.011,1.414,3,3,0,0,0,0,5.651,1.5,1.5,0,0,1,1.011,1.414v3.76a5,5,0,0,1-5,5Z" transform="translate(-6444.999 -10422)" fill="#fff" stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="1"/>
+        <g id="그룹_411" data-name="그룹 411" transform="translate(0.333 -0.667)">
+          <path id="Vector_50" data-name="Vector 50" d="M0,7.5,7.5,0" transform="translate(77.917 113.917)" fill="none" stroke="#3182f7" stroke-linecap="round" stroke-width="2" style="isolation: isolate"/>
+          <path id="Ellipse_112" data-name="Ellipse 112" d="M.366,2.134a1.25,1.25,0,1,1,1.768,0A1.25,1.25,0,0,1,.366,2.134Z" transform="translate(84.167 120.167)" fill="#3182f7" style="isolation: isolate"/>
+          <path id="Ellipse_113" data-name="Ellipse 113" d="M.366,2.134a1.25,1.25,0,1,1,1.768,0A1.25,1.25,0,0,1,.366,2.134Z" transform="translate(76.667 112.667)" fill="#3182f7" style="isolation: isolate"/>
+        </g>
+      </g>
+    </g>
+    <g id="icon_widget_point_80px" transform="translate(428 50)">
+      <rect id="bg-5" data-name="bg" width="80" height="80" fill="none"/>
+      <g id="icon_widget_point_40px" transform="translate(-42 -77)">
+        <rect id="Rectangle_82-5" data-name="Rectangle 82" width="40" height="40" transform="translate(62 97)" fill="none"/>
+        <path id="다각형_1" data-name="다각형 1" d="M17.935,1.859a3,3,0,0,1,4.352,1.413l.166.405A3,3,0,0,0,25,5.53l.433.033a3,3,0,0,1,2.686,3.695l-.108.449a3,3,0,0,0,.968,2.985l.35.3a3,3,0,0,1,0,4.563l-.35.3a3,3,0,0,0-.968,2.985l.108.449a3,3,0,0,1-2.686,3.695L25,25.016a3,3,0,0,0-2.545,1.852l-.166.405a3,3,0,0,1-4.352,1.413l-.358-.221a3,3,0,0,0-3.153,0l-.358.221a3,3,0,0,1-4.352-1.413l-.166-.405A3,3,0,0,0,7,25.016l-.433-.033a3,3,0,0,1-2.686-3.695l.108-.449a3,3,0,0,0-.968-2.985l-.35-.3a3,3,0,0,1,0-4.563l.35-.3A3,3,0,0,0,3.99,9.707l-.108-.449A3,3,0,0,1,6.568,5.563L7,5.53A3,3,0,0,0,9.546,3.678l.166-.405a3,3,0,0,1,4.352-1.413l.358.221a3,3,0,0,0,3.154,0Z" transform="translate(66 101.409)" fill="#fff" stroke="#fff" stroke-linejoin="round" stroke-width="1.5"/>
+        <g id="그룹_356" data-name="그룹 356" transform="translate(-209.5 -223)">
+          <line id="선_24" data-name="선 24" y2="10" transform="translate(289.5 335.5)" fill="none" stroke="#3182f7" stroke-linecap="round" stroke-width="2"/>
+          <path id="패스_1150" data-name="패스 1150" d="M6,6H3.1A3.053,3.053,0,0,1,0,3H0A3.053,3.053,0,0,1,3.1,0H6" transform="translate(295.5 341.503) rotate(180)" fill="none" stroke="#3182f7" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+        </g>
+      </g>
+    </g>
+    <g id="icon_widget_receipt_80px" transform="translate(316 50)">
+      <rect id="bg-6" data-name="bg" width="80" height="80" fill="none"/>
+      <g id="icon_widget_receipt_40px" transform="translate(-42 -77)">
+        <rect id="Rectangle_82-6" data-name="Rectangle 82" width="40" height="40" transform="translate(62 97)" fill="none"/>
+        <path id="합치기_1" data-name="합치기 1" d="M24.836,22.878,22.62,21.347a1.779,1.779,0,0,0-1.876,0l-2.216,1.531a1.779,1.779,0,0,1-1.876,0l-2.215-1.531a1.779,1.779,0,0,0-1.876,0l-2.215,1.531a1.779,1.779,0,0,1-1.876,0L6.256,21.347a1.664,1.664,0,0,0-.938-.267,1.668,1.668,0,0,0-.938.267L2.165,22.878a1.657,1.657,0,0,1-.938.267,1.657,1.657,0,0,1-.938-.267A.558.558,0,0,1,0,22.441V.144a4,4,0,0,1,4-4H23a4,4,0,0,1,4,4v22.3a.558.558,0,0,1-.29.437,1.777,1.777,0,0,1-1.875,0Z" transform="translate(68.499 107.356)" fill="#fff" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/>
+        <g id="그룹_413" data-name="그룹 413" transform="translate(76 113.5)">
+          <path id="패스_1015-2" data-name="패스 1015" d="M12.889,16.8l2.381,7,2.381-7,2.381,7,2.381-7" transform="translate(-11.651 -16.8)" fill="none" stroke="#3182f7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+          <line id="선_22-2" data-name="선 22" x1="2.326" transform="translate(9.674 3.5)" fill="none" stroke="#3182f7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+          <line id="선_23-2" data-name="선 23" x1="2.326" transform="translate(0 3.5)" fill="none" stroke="#3182f7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        </g>
+      </g>
+    </g>
+    <g id="icon_widget_card_80px-2" data-name="icon_widget_card_80px" transform="translate(204 50)">
+      <rect id="bg-7" data-name="bg" width="80" height="80" fill="none"/>
+      <g id="icon_widget_card_40px-2" data-name="icon_widget_card_40px" transform="translate(-42 -77)">
+        <rect id="Rectangle_82-7" data-name="Rectangle 82" width="40" height="40" transform="translate(62 97)" fill="none"/>
+        <rect id="사각형_548-2" data-name="사각형 548" width="31" height="24" rx="5" transform="translate(70 132.5) rotate(-90)" fill="#fff"/>
+        <rect id="사각형_550-2" data-name="사각형 550" width="5" height="6" rx="1.5" transform="translate(79.5 105.5)" fill="#3182f7"/>
+      </g>
+    </g>
+  </g>
+</svg>

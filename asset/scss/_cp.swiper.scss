@@ -1,0 +1,408 @@
+#{$tab} {
+  &-swiper {
+    width:100%;
+    background:$color-white;
+    @include overflow(x, hidden);
+  }
+  &-nav {
+    @include pos-offset(relative); @include overflow(x, hidden);
+    height:5rem;
+    background-color: $color-white;
+    padding-right:2rem;
+
+    #{$swiper}{
+      &-slide {
+        display:block;
+        width:auto; @include overflow(y, hidden);
+        cursor: pointer;      
+        & > a {
+          padding:1rem;
+          @include font($color: $color-gray2);
+          @include align(text, center);
+          
+          @include el-content(after) {
+            width:0; height:.2rem;
+          }
+        }
+        &.active > a {
+          font-weight:700;
+          @include line-effect($color-blue3, after, center) {
+            @include transition(0.5s, width, ease);
+            width:100%; height:.2rem;
+            bottom:0;
+            background:$color-green2;
+            border-radius:.4rem;
+          }
+        }
+      }
+    }
+    &.moveBar {
+      #{$swiper}{
+        &-slide {
+          &.active > a {
+            @include el-content(after, none);
+          }
+        }
+      }
+    }
+  }
+  &-active-bar {
+    @include pos-offset($bottom:.9rem, $left:0);
+    height:.3rem; margin-left:1.5rem;
+    background:$color-orange; border-radius:.4rem;
+    transition-property: all;
+  }
+  &-content {
+    @include overflow (both, hidden); height:20rem;
+    .swiper-slide {
+      color:$color-white;
+      line-height: 20rem;
+      @include align(text, center);
+      cursor: pointer;
+      background-color:$color-tbl-thead;
+
+      &:nth-child(odd) {background-color:$color-blue4;}
+    }
+  }
+}
+
+#{$swiper}{
+  $sw:'.swiper-wrapper';
+  &-wrap {@include pos-offset(relative);}
+
+  &-content {
+    @include overflow (both, hidden); height:20rem;
+    .swiper-slide {
+      color:$color-white;
+      line-height: 20rem;
+      @include align(text, center);
+      cursor: pointer;
+      background-color:$color-tbl-thead;
+
+      &:nth-child(odd) {background-color:$color-blue4;}
+    }
+  }
+
+  &-container{
+    &-vertical{
+      touch-action: pan-x;
+      & > .swiper{
+        &-wrapper {
+          flex-direction: column;
+        }
+      } 
+    }
+  }
+
+  &-free-mode{
+    & > #{$sw} {
+      transition-timing-function: ease-out;
+      margin: 0 auto;
+    }
+  }
+
+  &-vertical{
+    & > #{$sw} {
+      flex-direction: column;
+    }
+  }
+
+  &-wrapper{
+    @include flex;
+    @include pos-offset(relative, $z-index:1);
+    width:100%; height:100%;
+    box-sizing: content-box;
+  }
+
+  &-slide{
+    flex-shrink: 0;
+    width:100%; height:100%;
+    @include pos-offset(relative);
+  }
+
+  &-pagination{
+    @include pos-offset($z-index:10);
+    @include align(text, center);
+    @extend %transition3s;
+    transform: translate3d(0,0,0);
+
+    &-bullet{
+      display:inline-block;
+      width:1rem; height:1rem !important;
+      opacity: 1 !important;
+      background: $color-white !important;
+      @include line(border, .2rem solid $color-blue4 !important, $radius: 100%);
+
+      &-active{
+        background: $color-blue4 !important;
+        width:2rem !important;
+        border-radius: 1.5rem !important;
+        opacity: 1;
+        background: $color-blue2
+      }
+
+      &:focus{
+        @include line(outline, 0.2rem solid $color-black);
+        outline-offset: 0.1rem;
+
+        &:not(:focus-visible){
+          outline: none !important;
+        }
+      }
+    }
+  }
+
+  &-button {
+    &-next {
+      @include pos-offset($top:50%, $right:1rem, $z-index: 10);
+      width:2.7rem; height:4.4rem;
+      margin-top: -2.2rem;
+      cursor: pointer;
+      background-size: 2.7rem 4.4rem;
+      background-position: center;
+      background-repeat: no-repeat;
+      @include el-content(after) {
+        @include obj-offset-align($direction:vertical);
+        right: 0.75rem;
+        width:2.2rem; height:2.2rem;
+        @include line(border, 0.2rem solid $color-blue);
+        border-width: 0.2rem 0.2rem 0 0;
+        transform: translateY(-50%) rotate(45deg);
+      }
+
+      & span{
+        @include pos-offset;
+        clip: rect(0 0 0 0);
+        width:.1rem; height:.1rem;
+        margin: -0.1rem;
+        @include overflow(both, hidden);
+      }
+    }
+    &-prev{
+      @include pos-offset($top:50%, $left:2rem, $z-index: 10);
+      width:2.7rem; height:4.4rem;
+      margin-top: -2.2rem;
+      cursor: pointer;
+      background-size: 2.7rem 4.4rem;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      @include el-content(after) {
+        @include obj-offset-align($direction:vertical);
+        right: 0.75rem;
+        width: 2.2rem; height: 2.2rem;
+        @include line(border, 0.2rem solid $color-blue);
+        border-width: 0.2rem 0.2rem 0 0;
+        transform: translateY(-50%) rotate(225deg);
+      }
+
+      & span{
+        @include pos-offset;
+        clip: rect(0 0 0 0);
+        @include el-size(0.1rem, 0.1rem);
+        margin: -0.1rem;
+        @include overflow(both, hidden);
+      }
+    }
+  }
+
+  &-container{
+    &-3d{
+      perspective: 120rem;
+
+      & #{$sw}{
+        transform-style: preserve-3d;
+      }
+    }
+  }
+
+}
+
+.swip{
+  &-rt{
+    @include pos-offset(relative);
+
+    &:last-child{
+      margin-bottom: 2rem;
+    }
+  }
+
+  &-swiper{
+    @include overflow(both, hidden);
+    height:20rem;
+
+    & .swiper{
+      &-slide{
+        color: $color-white;
+        line-height: 20rem;
+        @include align(text, center);
+        cursor: pointer;
+        background-color: $color-tbl-thead;
+        margin-top: 1rem;
+        height:19rem;
+    
+        &:nth-child(odd){
+          background-color: $color-blue4;
+        }
+      }
+
+      &-pagination{
+        @include pos-offset($bottom: -2.5rem);
+        width:100%;
+    
+        &-bullet {
+          margin-right: 0.5rem; 
+        }
+      }
+    }
+  }
+
+  &-wrap{
+    @include flex($j-content: center);
+  }
+}
+
+.play-btn-wrap {
+  margin-left: 7rem;
+  
+  & > button {
+    @include pos-offset($bottom: -2.5rem, $z-index: 100);
+    width:5rem; height:2rem;    
+    border-radius: 1rem;
+    background: $color-blue4;
+    padding:0;
+    cursor: pointer;
+    & > span {
+      display:inline-block;
+      @include font(xs, $color: $color-white);
+    }
+
+    // & span{
+    //   @include pos(absolute);
+    //   clip: rect(0 0 0 0);
+    //   @include el-size(0.1rem, 0.1rem);
+    //   margin: -0.1rem;
+    //   @include overflow(both, hidden);
+    // }
+  }
+}
+
+[swiper-effect="coverflow"] {
+  .swiper-slide {
+    transition: transform 0.3s ease; /* 슬라이드 전환 효과 */
+  }
+}
+
+.swiper8 {
+  .swiper {
+    &-button {
+      &-prev, &-next {
+        width:3.2rem; height:3.2rem; background:$color-black;     
+        @include el-content(after) {
+          width:1.4rem; height:1.4rem;
+          border-color:$color-white;
+        } 
+      }
+      &-prev {
+        left:0;
+        @include el-content(after) {
+          left:calc(50% - .4rem);
+          right:auto;
+        }
+      }
+      &-next {
+        right:0;
+        @include el-content(after) {
+          right:calc(50% - .4rem);
+        }
+      }
+  
+      &-disabled {opacity:.4;}
+    }
+  
+    &-pagination {
+      width:100%; margin-top:1rem;
+      @include flex($j-content:center, $al-items:center);
+      & > * + * {margin-left:.5rem;}
+    }
+  }
+  
+  // SVG ICON
+  @function swiperIcon($iconName, $color: 666, $backgroundRepeat: no-repeat, $bgPosition:50% 50%) {
+    $iconList: (
+    // Guide Search BTN
+    btnAutoPlay:"%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 384 512'%3E%3Cpath fill='%23#{$color}' d='M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z'/%3E%3C/svg%3E%0A",
+    btnAutoPause:"%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3Cpath fill='%23#{$color}' d='M48 64C21.5 64 0 85.5 0 112L0 400c0 26.5 21.5 48 48 48l32 0c26.5 0 48-21.5 48-48l0-288c0-26.5-21.5-48-48-48L48 64zm192 0c-26.5 0-48 21.5-48 48l0 288c0 26.5 21.5 48 48 48l32 0c26.5 0 48-21.5 48-48l0-288c0-26.5-21.5-48-48-48l-32 0z'/%3E%3C/svg%3E%0A",
+    );
+    $swiperIcon: map-get($iconList, $iconName);
+    $backgroundImage: url("data:image/svg+xml;charset=utf8,#{$swiperIcon}");
+    @return $backgroundImage $backgroundRepeat $bgPosition;
+    // @return url("data:image/svg+xml;charset=utf8,#{$svgIcon}");
+    //background: swiperIcon(btnAutoPlay);
+  }
+
+  .btn-autoplay {
+    width:2rem; height:2rem; border-radius: 100%;
+    margin-top:.5rem;
+    background:$color-blue6;
+    @include flex($j-content:center, $al-items:center);
+    .ico-playbtn {
+      display:block; width:1rem; height:1rem;
+    }
+    &.play {
+      .ico-playbtn {
+        background: swiperIcon(btnAutoPlay, FFD43B);
+        background-size:auto 1rem;
+      }
+      &._is-active {
+        background-color:$color-green;
+        .ico-playbtn {
+          background: swiperIcon(btnAutoPlay, FFD43B);
+        }
+      }
+    }
+    &.stop {
+      .ico-playbtn {
+        background: swiperIcon(btnAutoPause, FFD43B);
+        background-size:auto 1rem;
+      }
+    }
+  }
+  [auto-btn="both"] {
+    .playbtn {
+      @include flex($j-content:flex-end);
+      .btn-autoplay {
+        & + .btn-autoplay  {margin-left:.5rem;}
+
+        &.play {
+          &._is-active {
+            background-color:$color-pk;
+            .ico-playbtn {
+              background: swiperIcon(btnAutoPlay, FFD43B);
+            }
+          }
+        }
+
+        &.stop {
+          &._is-active {
+            background-color:$color-pk;
+            .ico-playbtn {
+              background: swiperIcon(btnAutoPause, FFD43B);
+            }
+          }
+        }
+      }
+    }
+  }
+  [auto-height="true"] {
+    .swiper-content {height: auto;}
+    .swiper-slide {
+      height: 100px;
+      line-height: 100px;
+      &:nth-child(2n) {
+        height: 200px;
+        line-height: 200px;
+      }
+    }
+  }
+}

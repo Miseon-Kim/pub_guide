@@ -1,0 +1,223 @@
+#{$tab} {
+	&-list-wrap {
+		@include overflow (x, auto);
+		@include pos-offset(relative);
+		width:100%;
+		margin: 1.5rem auto;
+		@include line(border, 0.1rem solid $color-light-gray1);
+		border-width: 0 0 0.1rem 0;
+		white-space: nowrap;
+
+		&#{$tab} {
+			&-expand {
+				.tab-list {
+					width:100%;
+			
+					#{$tab} {
+						flex: 1;
+					}
+				}
+			}
+			
+			&-center {
+				.tab-list {
+					@include flex($j-content:center);
+				}
+			}
+
+			&-right {
+				.tab-list {
+					@include flex($j-content:right);
+				}
+			}
+
+			&-line-top {
+				border-width: 0.1rem 0 0 0;
+		
+				&::before {
+					bottom: auto; top: 0;
+				}
+		
+				#{$tab} {
+					& a::before {
+						top: 0;
+						bottom: auto;
+					}
+				}
+			}
+		}
+	}
+
+	&-list {
+		@include flex;
+		@include pos-offset(relative);
+		min-width: fit-content;
+
+		#{$tab} {
+			display:block;
+			flex: none;
+			@include pos-offset(relative);
+			color: $color-gray4;
+			@include align(text, center);
+			@include transition(.5s, color, ease-in-out);
+
+			&~#{$tab} {
+				margin-left: 2rem;
+			}
+
+			a {
+				display:block;
+				padding: 1rem;
+			}
+
+			&:hover a {
+				color: $color-blue3;
+			}
+
+			&#{$isActive} a {
+				color: $color-blue3;
+
+				@include el-content(before) {
+					@include pos-offset($bottom: 0);width:0; height:.2rem;
+					background-color: $color-blue3;
+					animation: widthAct .3s linear forwards;
+				}
+			}
+		}
+	}
+
+	&-wrap {
+		@include pos-offset(relative);
+	
+		&#{$tab} {
+			&-vertical {
+				@include flex($al-items: start);
+
+				#{$tab} {
+					&-list-wrap {
+						@include overflow (x, visible);
+						@include overflow (y, auto);
+						width:auto;
+						margin: 0;
+						border-width: 0 0.1rem 0.1rem 0;
+
+						@include el-content(before, none);
+					}
+
+					&-list {
+						@include flex($direction: column);
+						min-width: 9rem; height:30rem;
+						margin-left: 0;
+		
+						#{$tab}~#{$tab} {
+							margin-left: 0;
+						}
+					}
+
+					&-contents-wrap {
+						flex: 1;
+						height:30rem;
+					}
+			
+					&-contents {
+						@include overflow (both, auto);
+						height:100%;
+					}
+				}
+			}
+
+			&-scroll,
+			&-scroll-height {
+				.tab-contents-wrap {
+					@include overflow (y, scroll);
+					@include pos-offset(relative);
+					height:20rem;
+				}
+			}
+
+			&-moving {
+				.tab-list-wrap {
+					&.tab-line-top {
+						.highlight {
+							bottom: auto;
+							top: 0;
+						}
+					}
+					.tab {
+						@include el-content(before, none);
+					}
+					
+					.highlight {
+						@include pos-offset($left:0, $bottom:0);
+						width:6.4rem; height:0.2rem;
+						background-color: $color-blue3;
+						@include transition(.2s, all, cubic-bezier(0.0, 0.0, 0.58, 1.0));
+					}
+					#{$isActive} > a {
+						@include el-content(before) {content:inherit;}
+					}
+					
+				}
+				&.tab-vertical {
+					.highlight {
+						bottom: auto;
+						left: auto;
+						right: 0;
+						width:0.2rem; height:4rem;
+					}
+				}
+			}
+		}
+	
+		&:not(.tab-scroll, .tab-sticky) {
+			.tab-contents {
+				display:none;
+
+				&#{$isActive} {
+					display:block;
+				}
+			}
+		}
+	}
+
+	&-contents-wrap {
+		@include line(border, .1rem solid $color-valid);
+	}
+
+	&-contents {
+		padding: 3rem 5rem 5rem;
+
+		&:nth-child(even) {
+			background: $color-gray7;
+		}
+	}
+
+	&-sticky {
+		#{$tab} {
+			&-list-wrap {
+				@include pos-offset(sticky, $top:0, $z-index: 100);
+				background-color: $color-white;
+			}
+			&-contents-wrap {
+				border: none;
+			}
+			&-contents {
+				padding: 8rem 5rem;
+			}
+		}
+	}
+}
+
+@keyframes widthAct {
+	0% {
+		width:0;
+		left: 50%;
+	}
+	100% {
+		width:100%;
+		left: 0;
+	}
+}
+
+// 안드로이드 old 버전
+.aos_old .tab-sticky .tab-list-wrap {@include pos-offset(relative);}

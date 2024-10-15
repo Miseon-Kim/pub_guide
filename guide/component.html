@@ -6,12 +6,11 @@
 <meta name="format-detection" content="telephone=no">
 
 <link rel="stylesheet" type="text/css" href="./com/css/pg.workSheet.css">
-<link rel="stylesheet" type="text/css" href="./com/css/cm.guide.css">
-<script src="../../asset/com/js/lib/lib.jquery-3.6.3.min.js"></script>
-<script src="../../asset/com/js/lib/lib.swiper.8.4.7.min.js"></script>
+<script src="./com/js/lib/lib.jquery-3.6.3.min.js"></script>
+<script src="./com/js/lib/lib.swiper.8.4.7.min.js"></script>
 <script src="./com/js/pg.guideCommon.js"></script>
 
-<title>Worksheet | Publishing Guide</title>
+<title>COMPONENT | Publishing Guide</title>
 </head>
 <body data-project="app" data-util="component" data-json="./data/componentTile.json">
 
@@ -33,9 +32,11 @@
             <!-- [S] WORK LIST -->
             <div class="pg_board_tab swiper-initialized swiper-horizontal swiper-pointer-events swiper-free-mode">
 				<ul class="swiper-wrapper" aria-live="polite">
-					<li class="swiper-slide active" role="group"><a href="#button" role="button">버튼</a></li>
+					<li class="swiper-slide active" role="group"><a href="#@svg_urlEncoder" role="svgUrlEncoder">SVG url-encoder</a></li>
+                    <li class="swiper-slide" role="group"><a href="#@loading" role="loading">로딩</a></li>
+                    <li class="swiper-slide" role="group"><a href="#button" role="button">버튼</a></li>
                     <li class="swiper-slide" role="group"><a href="#text" role="button">타이틀/텍스트/리스트</a></li>
-                    <li class="swiper-slide" role="group"><a href="#form" role="button">INPUT</a></li>
+                    <li class="swiper-slide" role="group"><a href="#input" role="button">INPUT</a></li>
                     <li class="swiper-slide" role="group"><a href="#rdochk" role="button">라디오/체크박스</a></li>
                     <li class="swiper-slide" role="group"><a href="#select" role="button">SELECT</a></li>
                     <li class="swiper-slide" role="group"><a href="#popup" role="button">팝업/알럿</a></li>
@@ -43,6 +44,8 @@
                     <li class="swiper-slide" role="group"><a href="#tab" role="button">탭 메뉴</a></li>
                     <li class="swiper-slide" role="group"><a href="#tab-sticky" role="button">탭 Sticky</a></li>
                     <li class="swiper-slide" role="group"><a href="#swiper3" role="button">swiper v3.4.2</a></li>
+                    <li class="swiper-slide" role="group"><a href="#swiperV8" role="button">swiper v8.4.7</a></li>
+                    <li class="swiper-slide" role="group"><a href="#page-scrollTop" role="button">페이지 GO TO TOP</a></li>
                     <li class="swiper-slide" role="group"><a href="#table" role="button">[웹접근성] TABLE</a></li>
                     <li class="swiper-slide" role="group"><a href="#chart" role="button">차트</a></li>
 				</ul>

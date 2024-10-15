@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui, viewport-fit=cover, user-scalable=no">
+    <title>Loading</title>
+    
+    <!-- [S] PUBLISH COMMON STYLE -->
+    <link rel="stylesheet" href="../../asset/css/cm.common.css">
+    <!-- [E] PUBLISH COMMON STYLE -->
+
+    <!-- [S] PAGES - STYLE -->
+    <link rel="stylesheet" href="">
+    <!-- [E] PAGES - STYLE -->
+
+    <!-- [S] LIBRARY - SCRIPT -->
+    <script src="../../asset/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../../asset/js/lib/lib.jquery-ui-1.13.2.js"></script>
+    <!-- [E] LIBRARY - SCRIPT -->
+
+    <!-- [S] @TEMP - GUIDE STYLE -->
+    <link rel="stylesheet" href="../com/css/cm.guide.css">
+    <!-- [E] @TEMP - GUIDE STYLE -->
+</head>
+<body>
+    <div id="cp-wrap">
+        <div id="cp-container">
+            <h1 class="cp-tit dep01">Loading</h1>
+
+            <section class="cp-content">
+                <p class="">페이지 로딩</p>
+                <div class="btnWrap">
+                    <button class="btn btn-size md bg" onclick="
+                        COMPONENT_UI.loading.loadingInit();
+                        setTimeout(function() {COMPONENT_UI.loading.loadingRemove(); }, 5000);
+                        ">로딩타입1</button>
+                </div>
+                <div class="btnWrap">
+                    <button class="btn btn-size md bg" onclick="
+                        COMPONENT_UI.loading.loadingInit('circle');
+                        setTimeout(function() {COMPONENT_UI.loading.loadingRemove(); }, 5000);
+                        ">로딩타입2</button>
+                </div>
+                <div class="btnWrap">
+                    <button class="btn btn-size md bg" onclick="
+                        COMPONENT_UI.loading.loadingInit('', '로딩중입니다');
+                        // setTimeout(function() {COMPONENT_UI.loading.loadingRemove(); }, 5000);
+                        ">로딩타입3 - 텍스트추가</button>
+                </div>
+            </section>
+
+        </div>
+    </div>
+<!-- [S] PAGES - SCRIPT -->
+<script src="../../asset/js/ui.component.js"></script>
+<script>
+COMPONENT_UI.loading.loadingInit();
+setTimeout(function () {
+    COMPONENT_UI.loading.loadingRemove();
+}, 5000);
+
+</script>
+</body>
+</html>

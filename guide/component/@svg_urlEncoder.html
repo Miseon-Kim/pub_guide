@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui, viewport-fit=cover, user-scalable=no">
+    <title>버튼</title>
+    
+    <!-- [S] PUBLISH COMMON STYLE -->
+    <link rel="stylesheet" href="../../asset/css/cm.common.css">
+    <!-- [E] PUBLISH COMMON STYLE -->
+
+    <!-- [S] PAGES - STYLE -->
+    <link rel="stylesheet" href="">
+    <!-- [E] PAGES - STYLE -->
+
+    <!-- [S] LIBRARY - SCRIPT -->
+    <script src="../../asset/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../../asset/js/lib/lib.jquery-ui-1.13.2.js"></script>
+    <!-- [E] LIBRARY - SCRIPT -->
+
+    <!-- [S] @TEMP - GUIDE STYLE -->
+    <link rel="stylesheet" href="../com/css/cm.guide.css">
+    <style>
+        html, body, dl, dt, dd {padding:0; margin:0; word-break:keep-all;}
+body {font-family:"malgun ghothic", "맑은 고딕"; font-size:12px; color:#333; background:#e4eaee;}
+textarea {width:100%; height:100%; font-family:"Arial","verdana"; border:none; outline:none;}
+button {border:none;}
+
+.split {display:flex; flex-wrap:wrap; width:70%; justify-content:space-between; align-items:flex-start; margin:auto;}
+.split .col {width:calc(100%/2 - 20px); margin-bottom:20px;}
+.split .col.full {width:100%;}
+.codeView > dt {display:flex; justify-content:space-between; align-items: center; font-size:16px; font-weight:bold; min-height:28px;}
+.codeView > dt button {padding:5px 10px; background:#008fba; color:#fff; border-radius:5px;}
+.codeView > dd {margin-top:10px; padding:20px; height:150px; background:#fff; border-radius:20px;}
+.codeView > dd > div {height:100%;}
+
+@media (max-width: 430px) {
+  .split {width:90%;}
+  .split .col {width:100%;}
+  .codeView > dt > span {width:75%;}
+  body {}
+} 
+
+    </style>
+    <!-- [E] @TEMP - GUIDE STYLE -->
+</head>
+<body>
+    <div id="cp-wrap">
+        <div id="cp-container">
+            <h1 class="cp-tit dep01">SVG url-encoder</h1>
+            
+            <section class="cp-content split">
+                <dl class="col codeView">
+                    <dt>SVG Path 입력</dt>
+                    <dd>
+                        <textarea id="inputPath" placeholder="SVG Path 값을 입력하세요" oninput="encodeSVGPath()"></textarea>
+                    </dd>
+                </dl>
+                <dl class="col codeView">
+                    <dt>
+                        <span>CSS background-image URL</span>
+                        <button onclick="copyToClipboard('outputPath')">복사</button>
+                    </dt>
+                    <dd>
+                        <textarea id="outputPath" placeholder="인코딩된 CSS 값이 여기 표시됩니다"></textarea>
+                    </dd>
+                </dl>
+                <dl class="col codeView">
+                    <dt>
+                        <span>SCSS 함수적용 background-image</span>
+                        <button onclick="copyToClipboard('outputSCSSPath')">복사</button>
+                    </dt>
+                    <dd>
+                        <textarea id="outputSCSSPath" placeholder="'data:image/svg+xml;charset=utf8,' 가 생략된 값이 여기 표시됩니다"></textarea>
+                    </dd>
+                </dl>
+                <dl class="col codeView">
+                    <dt>
+                        <span>이미지 미리보기</span>
+                    </dt>
+                    <dd>
+                        <div id="sample-img" style=""></div>
+                    </dd>
+                </dl>
+            </section>
+
+        </div>
+    </div>
+
+<script>
+    // SVG를 Data URL 형식으로 인코딩하는 함수
+function encodeSVG(data) {
+    let formattedData = data
+        .replace(/>\s{1,}</g, `><`) // 태그 사이의 공백 제거
+        .replace(/\s{2,}/g, ` `)   // 불필요한 공백 줄이기
+        .replace(/\n|\r/g, '');    // 줄바꿈 문자 제거
+
+    // ASCII 범위 내의 문자만 인코딩하고 한글은 그대로 유지
+    let encoded = formattedData.split(/([^ -~]+)/).map(part => {
+        return /^[ -~]+$/.test(part) ? encodeURIComponent(part) : part; // ASCII 범위 내의 문자만 인코딩
+    }).join('');
+
+    encoded = encoded
+        .replace(/%20/g, ' ')      // 공백 처리
+        .replace(/%3D/g, "=")      
+        .replace(/%22/g, "'")      
+        .replace(/%3A/g, ':')      
+        .replace(/%2F/g, '/')      
+        .replace(/%27/g, "'");     
+
+    return encoded;
+}
+
+// 입력된 SVG Path를 인코딩하여 CSS 배경 이미지 URL 및 SCSS 함수 코드를 생성하는 함수
+function encodeSVGPath() {
+    const inputPath = document.getElementById("inputPath").value;
+    const sampleImg = document.getElementById("sample-img");
+
+    if (!inputPath) {
+        document.getElementById("outputPath").value = '';
+        document.getElementById("outputSCSSPath").value = '';
+        sampleImg.style.backgroundImage = ''; // 입력이 비어있을 경우 배경 이미지 제거
+        return;
+    }
+
+    const escaped = encodeSVG(inputPath); // SVG Path를 인코딩
+
+    // CSS background-image URL 생성
+    const cssOutput = `url("data:image/svg+xml,%0A${escaped}%0A")`;
+    document.getElementById("outputPath").value = `background-image: ${cssOutput};`;
+
+    // SCSS 함수 코드 생성
+    const scssOutput = `"${escaped}%0A"`; // 이스케이프 처리된 문자열
+    document.getElementById("outputSCSSPath").value = scssOutput;
+
+    // sample-img div에 배경 이미지 적용
+    sampleImg.style.backgroundImage = cssOutput; // 배경 이미지 설정
+    sampleImg.style.backgroundSize = 'contain'; // 배경 크기를 컨테인으로 조정
+    sampleImg.style.backgroundRepeat = 'no-repeat'; // 반복 방지
+}
+
+// 클립보드에 복사하는 함수
+function copyToClipboard(outputId) {
+    const outputTextarea = document.getElementById(outputId);
+    outputTextarea.select();
+    document.execCommand("copy");
+    alert("복사되었습니다: " + outputTextarea.value);
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,375 @@
+#{$field} {
+    
+    input[type=password] {
+        font-family:$fontRoboto;
+        // @include fontSize("lg");
+        &::placeholder {
+            font-family: $fontRoboto;
+            -webkit-text-security:none;
+            @include fontSize("xl");
+        }
+
+        &:read-only {color:$color-gray4;}
+        &::-webkit-input-placeholder {
+            transform: scale(0.77);
+            transform-origin: 0 50%;
+        }
+        &::-moz-placeholder {
+            font-size: 14px;
+            opacity: 1;
+        }
+        &:-ms-input-placeholder {
+            font-size: 14px;
+            font-family:$fontRoboto;
+        }
+    }
+
+    input[type=range] {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: .6rem !important;
+        padding: 0 !important;
+        cursor: pointer;
+        outline: none;
+        border-radius: 1.5rem;
+        &::-webkit-slider-thumb { 
+            -webkit-appearance: none;
+            background: $color-white;
+            width: 1.6rem;
+            height: 1.6rem;
+            border: 0.25rem solid $color-default;
+            border-radius: 50%;
+            cursor: pointer;
+            transform: translateY(calc(-50% + 8px));
+        }
+    }
+
+    &.range-slider {
+        @include pos-offset(relative);
+        &.double {
+            .slider-container {
+                background: $color-gray8;
+                @include pos-offset(relative);
+                height: .6rem;
+                border-radius: .5rem;
+                margin-top: 2rem;
+                .double-slider {
+                    @include pos-offset;
+                    background-color: $color-default;
+                    height: 100%;
+                }
+            }
+            .field-input {
+                @include pos-offset(relative);
+                height: 100%;
+                input[type=range] {
+                    @include pos-offset($top: -5px);
+                    pointer-events: none;
+                    &::-webkit-slider-thumb {
+                        pointer-events: auto;
+                    }
+                }
+            }
+        }
+        .range-info, .doublerange-info {
+            @include pos-offset($bottom:4.8rem);
+            padding: .6rem 1rem;
+            background-color: $color-white;
+            @include line(border, .1rem solid $color-default);
+            text-align: center; text-wrap:nowrap;
+            &:after {
+                content:'';
+                display:block;
+                @include pos-offset($left:50%, $bottom:-.4rem, $right:auto);
+                width: 1rem;
+                height: 1rem;
+                background: $color-white;
+                box-shadow: 1px 1px 0 0 $color-default;
+                transform: translateX(-50%) rotate(45deg);
+            }
+            &.left {
+                left: calc(0% + 20px) !important;
+                margin-left: -22px !important;
+                &:after {
+                    left: .4rem;
+                    transform: rotate(45deg);
+                }
+                &.gap {
+                    @include el-content(after) {left:3.4rem;}
+                }
+            }
+            &.right {
+                left: auto !important;
+                right: 0;
+                &:after {
+                    left: auto;
+                    right: .4rem;
+                    transform: rotate(45deg);
+                }
+                &.gap {
+                    @include el-content(after) {right:3.0rem;}
+                }
+            }
+        }
+        .doublerange-info {
+            bottom: 2.4rem;
+            &.right {
+                right: 0;
+                margin-right: 0 !important;
+            }
+        }
+    }
+
+
+    &.grow, .grow {flex:1 0 0;}
+    
+    
+    &-btn {@include flex($j-content:center, $al-items:center); flex-shrink:0;}
+    &-label {display:block; margin-bottom: 1rem;}
+    &-txt {@include flex($al-items:center); flex-shrink:0;}
+    &-msg {margin-top:.5rem;}
+    &-info {margin-top:.5rem; color:$color-gray3;}
+
+    /* FIELD - INPUT */
+    &-input {
+        height: 4.0rem;
+        input:not([type=checkbox]):not([type=radio]) {padding: 1.0rem 0; width: 100%; height: 100%; border: 0; background-color: transparent;}
+        input:not([type=checkbox]):not([type=radio]):focus {outline: none;}
+        input:not([type=checkbox]):not([type=radio])::placeholder {color:$color-gray8;}
+
+        &.right {input {@include align(text, right);}}
+        &.center {input {@include align(text, center);}}
+
+        &.mid_num {
+            @include pos-offset(relative);
+            max-width:1.1rem;
+            padding-right:0;
+            input::placeholder {
+                font-size:.4rem;}
+        }
+    }
+
+    /* FIELD - OUTLINE */
+    // 인증번호 [필드 + 인증시간] + [인증번호]
+    &.auth {
+        #{$field} {
+            &-outline {
+                display:inline-flex; width:calc(100% - 8rem);
+            }
+            &-input {
+                @include flex;
+                .auth-time {
+                    display:block;
+                    margin-left:1rem;
+                    align-self:center; order:3;
+                }
+            }
+            ._input-clear {order:2;}
+            
+        }
+    }
+    &-outline {
+        @include flex($al-items: stretch);
+        min-height: 4.0rem;
+        border-radius: .5rem; box-shadow: inset 0 0 0 .1rem $color-gray8; background:$color-white;
+        transition: box-shadow 250ms cubic-bezier(.65,.05,.36,1);
+
+        &:focus-within {box-shadow: inset 0 0 0 .2rem $color-gray4;}
+
+        // 인증번호 필드 + 인증번호 & 인증번호 필드 + 인증시간
+        &.auth {
+            display:inline-flex;
+            width:100%;
+            // width:calc(100% - 8rem);
+
+            #{$field} {
+                &-input {@include flex;}
+                ._input-clear {order:2;}
+            }
+        
+            .auth-time {
+                margin-left:1rem;
+                align-self:center; order:3;
+            }
+            .btn-auth {align-self: center; margin-right:1rem;}
+        }
+
+        &.pw {
+            &-group {
+                &.type2 {
+                    & > ._input {
+                        max-width: 3rem;
+                        &:first-child {padding-right:0;}
+                    }
+                }
+            }
+        }
+        
+        &.grow {flex:1 0 0;}
+        & > * {padding:0 1rem;}
+        & > * + * {padding-left:0;}
+        
+        &.column {
+            flex-direction: column;
+            & > * {padding:1rem;} 
+            & > * + * {padding-top:0;}
+            .right {place-self: flex-end;}
+        }
+
+        &.readonly {color:$color-gray2; cursor: default; pointer-events: none;}
+        &.disabled {
+            opacity:.8; cursor:default; pointer-events:none;
+            background:$color-gray7;}
+
+        .center {place-self: center;}
+        .bottom {place-self: flex-end;}
+    }
+
+    /* FIELD - PLACEHOLDER TYPE */
+    &._label {
+        #{$field} {
+            &-outline {
+                @include pos-offset(relative, $z-index:1);
+                padding:0 1rem;
+                @include flex($al-items:center, $al-content: center, $wrap:wrap);
+                // flex-wrap: wrap;
+
+                & > *:not(.field-label) {display:none; @extend %transition3s;}
+                &._hasValue {
+                    & > *:not(.field-label) {display:flex; @extend %transition3s;}
+                }
+
+                & #{$field} {
+                    &-label {
+                        // @include pos-offset($top:0, $left:0);
+                        width:100%; height:100%; margin-bottom:0;
+                        @extend %transition3s;
+                        &._is-active {
+                            padding:1rem 0;
+                            @include font(xs); @extend %transition3s;
+                        }
+                    }
+                }
+                &._is-active {
+                    & > *:not(.field-label) {display:flex; @extend %transition3s;}
+                }
+            }            
+        }
+    }
+
+    /* FIELD - GROUP */
+    &-group {
+        @include flex;
+
+        & + & {margin-top:1rem;}
+        & + #{$field} {margin-top:1rem;}
+        
+        #{$field} {
+            & + & {margin-top:0; margin-left:1rem;}
+        }
+    }
+    & + &-group {margin-top:1rem;}
+
+    /* FIELD - VALID */
+    &.valid {
+        #{$field} {
+            &-outline {
+                box-shadow: inset 0 0 0 .1rem $color-valid;
+                &:focus-within {box-shadow: inset 0 0 0 .2rem $color-valid;}
+            }
+        }
+        & + #{$fmsg}, #{$fmsg} {color:$color-valid;}
+    }
+
+    &.invalid {
+        #{$field} {
+            &-outline {
+                box-shadow: inset 0 0 0 .1rem $color-invalid;
+                &:focus-within {box-shadow: inset 0 0 0 .2rem $color-invalid;}
+            }
+        }
+        & + #{$fmsg}, #{$fmsg} {color:$color-invalid;}
+    }
+
+    /* FIELD - CURSOR */
+    &-label, &-checkbox, &-radio, &-select select {cursor: pointer;}
+    /* FIELD - DISABLED */
+    &.disabled .field-outline,
+    &.disabled .field-checkbox,
+    &.disabled .field-radio,
+    & .field-checkbox.disabled,
+    & .field-radio.disabled {opacity: 0.35; cursor: default; pointer-events: none;}
+    &.disabled .field-outline {background-color:$color-gray6;}
+
+    /* FIELD - READONLY */
+    &.readonly .field-outline,
+    &.readonly .field-checkbox,
+    &.readonly .field-radio,
+    & .field-checkbox.readonly,
+    & .field-radio.readonly {cursor: default; pointer-events: none;}
+    &.readonly input,
+    &.readonly textarea,
+    &.readonly .field-checkbox .field-label,
+    &.readonly .field-radio .field-label,
+    & .field-checkbox.readonly .field-label,
+    & .field-radio.readonly .field-label {color:$color-gray2;}
+}
+
+
+/* FIELD - INPUT SCRIPT */
+._input {
+    @include flex($al-items:center);
+    &._clear {width:calc(100% - 2.2rem);}
+    &-clear {
+        display:none;
+        pointer-events:none; touch-action: none;
+        @include el-size(1.4rem, 1.4rem);
+        background:$color-gray4;
+        border-radius:100%;
+        @include pos-offset(relative);
+        @include el-content(both) {
+            @include el-size(.8rem,.1rem);
+            @include pos-offset($top:calc(50%), $left:calc(50%));
+            background:$color-white;
+        }
+        
+        @include el-content(before) {transform:translate(-50%, -50%) rotate(45deg);}
+        @include el-content(after) {transform:translate(-50%, -50%) rotate(-45deg);}
+
+        &._active {
+            @include flex(inline-flex, $j-content:flex-end) { align-self:center;}
+            pointer-events:all; 
+            margin-left:.5rem;
+        }
+    }
+    input {
+        &._password {
+            @include font($fontweight:700);
+            &::placeholder {@include font(xxs, $fontweight:700); letter-spacing:.5rem;}
+            // &:read-only, &:disabled { padding-top:1.3rem;}
+        }
+    }
+
+    ._secureTxt {
+        @include pos-offset(relative); display:block; height:4rem;
+        & > input[type="password"] {
+            @include pos-offset(relative, $z-index:2); color:transparent;
+            &::placeholder {color:transparent;}
+        }
+
+        & > i {
+            @include pos-offset($top:50%, $left:0, $z-index:1);
+            transform: translate(0, -50%);
+            display:block; @include el-size(1rem, 1rem);
+            background:$color-gray2;
+            @include line(border, .1rem solid $color-gray2, $radius:100%);
+
+            & + i {margin-left:.3rem;}
+            &._line {
+                background:$color-white; border-color:$color-gray3;
+                &._is-active {background:$color-yellow3; border-color:$color-yellow3;}
+            }
+        }
+    }
+}

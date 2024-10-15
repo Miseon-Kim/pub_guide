@@ -65,7 +65,6 @@ var makeBoard = function () {
     html += '<col class="d4" style="width:auto">';
     html += '<col style="width:300px">';
     html += '<col style="width:90px">';
-    html += '<col style="width:110px">';
     html += '<col style="width:100px">';
     html += '<col style="width:100px">';
     html += '<col style="width:80px">';
@@ -86,14 +85,17 @@ var makeBoard = function () {
     html += '<option value="">작업자</option>';
     html += '</select>';
     html += '</th>';
-    html += '<th scope="col" class="c_date">WBS</th>';
-    html += '<th scope="col" class="c_date">작업일</th>';
-    html += '<th scope="col" class="m_date">수정일</th>';
-    html += '<th scope="col" class="complete">';
+    html += '<th scope="col" class="c_date">';
     html += '<select>';
-    html += '<option value="">상태</option>';
+    html += '<option value="">작업일</option>';
     html += '</select>';
     html += '</th>';
+    html += '<th scope="col" class="m_date">';
+    html += '<select>';
+    html += '<option value="">수정일</option>';
+    html += '</select>';
+    html += '</th>';
+    html += '<th scope="col" class="complete">상태</th>';
     html += '<th scope="col" class="etc">비고</th>';
     html += '</tr>';
     html += '</thead>';
@@ -163,11 +165,6 @@ var makeBoard = function () {
         } else {
           trHtml += '<td class="worker"></td>';
         }
-        if (obj.schedule) {
-          trHtml += '<td class="c_date"><span class="schedule schedule_s">' + obj.schedule[0].schedule_s + '</span><span class="schedule schedule_e">' + obj.schedule[0].schedule_e +'</span></td>'
-        } else {
-          trHtml += '<td class="c_date"></td>';
-        }
         if (obj.workdate) {
           trHtml += '<td class="c_date">' + obj.workdate + '</td>';
         } else {
@@ -179,20 +176,16 @@ var makeBoard = function () {
           trHtml += '<td class="m_date"></td>';
         }
         // if (obj.complete && obj.state == undefined) {
-        if (obj.state == 'msg') {
-          trHtml += '<td class="complete"><span class="msg">' + obj.complete + '</span></td>';
-        } else if (obj.state === 'done') {
-          trHtml += '<td class="complete"><span class="done">완료</span></td>';
+        if (obj.state == 'complete') {
+          trHtml += '<td class="complete"><span class="done">' + obj.complete + '</span></td>';
         } else if (obj.state === 'del') {
           trHtml += '<td class="complete"><span class="del">삭제</span></td>';
         } else if (obj.state === 'hold') {
           trHtml += '<td class="complete"><span class="hold">보류</span></td>';
         } else if (obj.workdate) {
-          trHtml += '<td class="complete"><span class="ing">작업중</span></td>';
-        }else if (obj.schedule) {
-          trHtml += '<td class="complete"><span class="ready">대기중</span></td>';
-        }  else {
-          trHtml += '<td class="complete"><span></span></td>';
+          trHtml += '<td class="complete"><span class="ing">검수중</span></td>';
+        } else {
+          trHtml += '<td class="complete"><span>대기중</span></td>';
         }
         if (obj.etc) {
           var remark = '';
@@ -201,7 +194,7 @@ var makeBoard = function () {
               remark += '<li class="design">' + this + '</li>';
             } else if (this.indexOf('기획확인') != -1) {
               remark += '<li class="plan">' + this + '</li>';
-            } else if (this.indexOf('기타') != -1) {
+            } else if (this.indexOf('접근성') != -1) {
               remark += '<li class="wa">' + this + '</li>';
             } else {
               remark += '<li>' + this + '</li>';
@@ -985,7 +978,7 @@ var guide = {
         var num = $waCheck.length,
           $btn = $this.find('.btn_wa');
         $waCheck.closest('tr').addClass('wa');
-        if (!$btn.length) $this.find('.pg_alert_btn_set').append('<button type="button" class="btn_wa">기타확인 필요 <strong>[' + num + ']</strong></button>');
+        if (!$btn.length) $this.find('.pg_alert_btn_set').append('<button type="button" class="btn_wa">접근성확인 필요 <strong>[' + num + ']</strong></button>');
       }
     });
     $('.pg_alert_btn_set').find('button').on('click', function (e) {

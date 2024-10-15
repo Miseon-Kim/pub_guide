@@ -8,18 +8,21 @@
     <title>타이틀/텍스트/리스트</title>
     
     <!-- [S] PUBLISH COMMON STYLE -->
-    <link rel="stylesheet" href="../../asset/com/css/cm.common.css">
+    <link rel="stylesheet" href="../../asset/css/cm.common.css">
     <!-- [E] PUBLISH COMMON STYLE -->
 
     <!-- [S] PAGES - STYLE -->
-    <!-- D/P : 컴퍼넌트 예시화면용이므로 페이지 제작시 적용하지 않음 -->
-    <link rel="stylesheet" type="text/css" href="../com/css/cm.guide.css">
+    <link rel="stylesheet" href="">
     <!-- [E] PAGES - STYLE -->
 
     <!-- [S] LIBRARY - SCRIPT -->
-    <script src="../../asset/com/js/lib/lib.jquery-3.6.3.min.js"></script>
-    <script src="../../asset/com/js/lib/lib.jquery-ui-1.13.2.js"></script>
+    <script src="../../asset/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../../asset/js/lib/lib.jquery-ui-1.13.2.js"></script>
     <!-- [E] LIBRARY - SCRIPT -->
+
+    <!-- [S] @TEMP - GUIDE STYLE -->
+    <link rel="stylesheet" href="../com/css/cm.guide.css">
+    <!-- [E] @TEMP - GUIDE STYLE -->
 </head>
 <body>
     <div id="cp-wrap">
@@ -122,56 +125,67 @@
 
             <section class="cp-content">
                 <h2 class="cp-tit dep02">LIST</h2>
-                <p class="tit01">타이틀 스타일1 .tit01</p>
-                <p class="tit02">타이틀 스타일2 .tit02</p>
-                <p class="tit03">타이틀 스타일3 .tit03</p>
-                <p class="tit04">타이틀 스타일4 .tit04</p>
-                <p class="tit05">타이틀 스타일5 .tit05</p>
 
-                <ul class="list01">
-                    <li>리스트 스타일 .list01</li>
-                    <li>리스트 스타일 .list01
-                        <ul>
-                            <li>리스트 SUB 스타일</li>
-                            <li>리스트 스타일</li>
+                <ul class="lst bullet">
+                    <li>리스트 스타일 - 블릿</li>
+                    <li>리스트 스타일 - 블릿</li>
+                    <li>2뎁스
+                        <ul class="lst bullet">
+                            <li>리스트 스타일 - 블릿</li>
+                            <li>리스트 스타일 - 블릿</li>
                         </ul>
                     </li>
                 </ul>
-                <ul class="list01">
-                    <li><span class="tit">제목</span>ul 리스트 스타일 변형 .list01 .tit</li>
-                    <li><span class="tit">제목</span>ul 리스트 스타일 변형 .list01 .tit
-                        <ul>
-                            <li>리스트 SUB 스타일</li>
-                            <li>리스트 스타일</li>
+                <p class="lst bullet">텍스트 스타일 - 블릿</p>
+
+                <ul class="lst bar">
+                    <li>리스트 스타일 - bar</li>
+                    <li>리스트 스타일 - bar</li>
+                    <li>2뎁스
+                        <ul class="lst bar">
+                            <li>리스트 스타일 - bar</li>
+                            <li>리스트 스타일 - bar</li>
+                            <li>3뎁스
+                                <ul class="lst bar">
+                                    <li>리스트 스타일 - bar</li>
+                                    <li>리스트 스타일 - bar</li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                 </ul>
-                <ol class="list02">
-                    <li>숫자리스트 스타일 .list02</li>
-                    <li>숫자리스트 스타일 .list02
-                        <ol class="circle-num">
-                            <li>라운드 숫자리스트 .circle-num</li>
-                            <li>라운드 숫자리스트 .circle-num</li>
-                            <li>라운드 숫자리스트 .circle-num</li>
-                        </ol>
+                <p class="lst bar">텍스트 스타일 - bar</p>
+
+                <ul class="lst star">
+                    <li>리스트 스타일 - star</li>
+                    <li>
+                        리스트 스타일 - star
+                        <p class="lst star">텍스트 스타일 - star</p>
                     </li>
-                    <li>숫자리스트 스타일 .list02</li>
-                    <li>숫자리스트 스타일 .list02</li>
-                    <li>숫자리스트 스타일 .list02</li>
+                </ul>
+
+                <ol class="lst num">
+                    <li>리스트 스타일 - number</li>
+                    <li>
+                        리스트 스타일 - number
+                        <p class="lst star">텍스트 스타일 - star</p>
+                    </li>
                 </ol>
 
-                <ol class="step step-box">
-                    <li>리스트스타일 .step</li>
-                    <li>리스트스타일 .step
-                        <ul class="bul">
-                            <li>리스트 SUB 스타일 .bul</li>
-                            <li>리스트 스타일 .bul</li>
-                            <li>리스트 스타일 .bul</li>
-                        </ul>
+                <ol class="lst num-circle">
+                    <li>리스트 스타일 - Circle Num</li>
+                    <li>리스트 스타일 - Circle Num
+                        <p class="lst star">텍스트 스타일 - star</p>
                     </li>
-                    <li>리스트스타일 .step</li>
-                    <li>리스트스타일 .step</li>
                 </ol>
+
+                <ol class="lst num-step">
+                    <li>리스트 스타일 - Step Num</li>
+                    <li>리스트 스타일 - Step Num
+                        <p class="lst star">텍스트 스타일 - star</p>
+                    </li>
+                </ol>
+                
             </section>
 
         </div>

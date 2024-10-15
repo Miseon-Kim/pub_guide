@@ -9,21 +9,25 @@
     <title>팝업/알럿/토스트</title>
     
     <!-- [S] PUBLISH COMMON STYLE -->
-    <link rel="stylesheet" href="../../asset/com/css/cm.common.css">
+    <link rel="stylesheet" href="../../asset/css/cm.common.css">
     <!-- [E] PUBLISH COMMON STYLE -->
 
     <!-- [S] PAGES - STYLE -->
-    <!-- D/P : 컴퍼넌트 예시화면용이므로 페이지 제작시 적용하지 않음 -->
-    <link rel="stylesheet" type="text/css" href="../com/css/cm.guide.css">
+    <link rel="stylesheet" href="">
     <!-- [E] PAGES - STYLE -->
 
     <!-- [S] LIBRARY - SCRIPT -->
-    <script src="../../asset/com/js/lib/lib.jquery-3.6.3.min.js"></script>
-    <script src="../../asset/com/js/lib/lib.jquery-ui-1.13.2.js"></script>
+    <script src="../../asset/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../../asset/js/lib/lib.jquery-ui-1.13.2.js"></script>
     <!-- [E] LIBRARY - SCRIPT -->
+
+    <!-- [S] @TEMP - GUIDE STYLE -->
+    <link rel="stylesheet" href="../com/css/cm.guide.css">
+    <!-- [E] @TEMP - GUIDE STYLE -->
 </head>
 <body>
     <div id="cp-wrap">
+      
         <div id="cp-container">
             <h1 class="cp-tit dep01">팝업/툴팁</h1>
 
@@ -35,7 +39,8 @@
                     <button class="btn btn-size md bg _modalBtn" data-modal="modal2">Center Modal</button>
                     <button class="btn btn-size md bg _modalBtn" data-modal="modal3">Left Modal</button>
                     <button class="btn btn-size md bg _modalBtn" data-modal="modal4">Bottom Modal</button>
-                    <button class="btn btn-size md bg _toastBtn" data-toast="토스트 팝업메세지를 출력" >토스트팝업</button>
+                    <button class="btn btn-size md bg _modalBtn" data-modal="modal5">Full Modal</button>
+                    <!-- <button class="btn btn-size md bg _toastBtn" data-toast="토스트 팝업메세지를 출력" >토스트팝업</button> -->
                 </div>
 
                 <div class="modalPop _top" modal-target="modal1">
@@ -59,10 +64,36 @@
                     <div class="modalWrap">
                         <div class="modal-header">
                             <!-- <a href="#" class="ico ico-his-prev" role="button"><span class="hide">이전페이지</span></a> -->
-                            <h1 class="mp-title dep01">Center Modal</h1>
+                            <h1 class="mp-title dep01">
+                              <div class="tooltipWrap" tip-pos="fixed">
+                                Center Modal
+                                <a href="javascript:;" class="ico ico-tooltip"
+                                  aria-role="button"
+                                  data-focus="false"
+                                  data-direction="bottom"
+                                  tip-maxWidth="160"
+                                  data-message="ToolTip Default :<br><br> 일이삼사오육칠팔구십일이삼사오<br>ToolTip message"
+                                  data-toggle="tooltip">
+                                  <span class="hide">툴팁</span>
+                                </a>
+                              </div>
+                            </h1>
                             <a href="#" class="btn-close-pop ico ico-pop-close" role="button"><span class="hide">창닫기</span></a>
                         </div>
-                        <div class="modal-container"><p>Center Modal Content</p></div>
+                        <div class="modal-container">
+                          <div style="background-color: rgb(0, 255, 179); height:1000px;">Center Modal Content
+                            <div class="tooltipWrap">Center Modal ContentCenter
+                              <a href="javascript:;" class="ico ico-tooltip"
+                                aria-role="button"
+                                data-focus="false"
+                                data-direction="left"
+                                data-message="ToolTip message : Default <br> ToolTip message <br> ToolTip message"
+                                data-toggle="tooltip">
+                                <span class="hide">툴팁</span>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
                         <div class="modal-footer">
                           <div class="btnWrap grow">
                               <button class="btn btn-size md type2 bg">확인</button>
@@ -79,7 +110,7 @@
                             <h1 class="mp-title dep01">Left Modal</h1>
                             <a href="#" class="btn-close-pop ico ico-pop-close" role="button"><span class="hide">창닫기</span></a>
                         </div>
-                        <div class="modal-container"><p>Left Modal Content</p></div>
+                        <div class="modal-container"><p style="background-color: red; height:1000px;">Left Modal Content</p></div>
                         <div class="modal-footer">
                             <div class="btnWrap grow">
                                 <button class="btn btn-size md type2 bg">확인</button>
@@ -93,10 +124,39 @@
                     <div class="modalWrap">
                         <div class="modal-header">
                             <!-- <a href="#" class="ico ico-his-prev" role="button"><span class="hide">이전페이지</span></a> -->
-                            <h1 class="mp-title dep01">Bottom Modal</h1>
+                            <h1 class="mp-title dep01">
+                              <div class="tooltipWrap" tip-pos="fixed">
+                                Bottom Modal
+                                <a href="javascript:;" class="ico ico-tooltip"
+                                  aria-role="button"
+                                  data-focus="false"
+                                  data-direction="left"
+                                  data-message="ToolTip Default :<br><br> 일이삼사오육칠팔구십일이삼사오<br>ToolTip message"
+                                  data-toggle="tooltip">
+                                  <span class="hide">툴팁</span>
+                                </a>
+                              </div>
+                            </h1>
                             <a href="#" class="btn-close-pop ico ico-pop-close" role="button"><span class="hide">창닫기</span></a>
                         </div>
-                        <div class="modal-container"><p style="height:1000px; background:yellow">Bottom Modal Content</p></div>
+                        <div class="modal-container">
+                          <div style="height:1000px; background:yellow">
+                            <button class="btn btn-size md bg _modalBtn" data-modal="networkError">networkError</button>
+                            Bottom Modal Content
+                            <div class="tooltipWrap">
+                              Bottom Modal
+                              <a href="javascript:;" class="ico ico-tooltip"
+                                aria-role="button"
+                                data-focus="false"
+                                data-direction="bottom"
+                                data-message="ToolTip Default :<br><br> 일이삼사오육칠팔구십일이삼사오<br>ToolTip message"
+                                data-toggle="tooltip">
+                                <span class="hide">툴팁</span>
+                              </a>
+                            </div>
+                            
+                          </div>
+                        </div>
                         <div class="modal-footer">
                             <div class="btnWrap grow">
                                 <button class="btn btn-size md type2 bg">확인</button>
@@ -105,7 +165,68 @@
                         </div>
                     </div>
                 </div>
+            
+                <div class="modalPop _full" modal-target="modal5">
+                  <div class="modalWrap">
+                      <div class="modal-header">
+                          <!-- <a href="#" class="ico ico-his-prev" role="button"><span class="hide">이전페이지</span></a> -->
+                          <h1 class="mp-title dep01">Full Modal</h1>
+                          <a href="#" class="btn-close-pop ico ico-pop-close" role="button"><span class="hide">창닫기</span></a>
+                      </div>
+                      <div class="modal-container">
+                        <p style="height:1000px; background:yellow">
+                          <button class="btn btn-size md bg _modalBtn" data-modal="networkError">networkError</button>
+                          Bottom Modal Content
+                        </p>
+                      </div>
+                      <div class="modal-footer">
+                          <div class="btnWrap grow">
+                              <button class="btn btn-size md type2 bg">확인</button>
+                              <button class="btn btn-size md bg btn-close-pop">취소</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
 
+              <!-- [S] AlertPop : 네트워크 오류 -->
+              <div class="modalPop _alert _center" modal-target="networkError">
+                <div class="modalWrap">
+                    <div class="modal-header">
+                        <!-- <h1 class="mp-title">AlertPop</h1> -->
+                        <a href="javascript:void(0);" class="btn-close-pop ico ico-close" role="button"><span class="hide">창닫기</span></a>
+                    </div>
+                    <div class="modal-container">
+                      <p class="alert-msg">
+                        현재 네트워크가 불안정하여<br>
+                        접속이 원할하지 않습니다
+                      </p>
+                      <p class="alert-msg sub">
+                        이용에 불편을 드려 죄송합니다<br>
+                        잠시 후 다시 시도해 주세요
+                      </p>
+                    </div>
+                    <div class="modal-footer">
+                      <div class="btnWrap grow">
+                        <button class="btn btn-size md bg">취소</button>
+                        <button class="btn btn-size md type2 bg btn-close-pop">확인</button>
+                          <!-- 창닫기 .btn-close-pop 클래스 적용 -->
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <!--// [E] AlertPop : 네트워크 오류 -->
+
+            </section>
+
+            <section class="cp-content">
+              <h2 class="cp-tit dep02">toast POP</h2>
+              <button class="btn btn-size md bg _toastBtn" data-toast="토스트 팝업메세지를 출력" >토스트팝업</button>
+              <!--[S] 토스트 팝업 출력 : WAH 고려하는 프로젝트일 경우 토스트팝업 메세지는 항상 문서 최상단에 존재해야 함 -->
+              <div class="toastWrap" role="alert" aria-hidden="true">
+                <div class="toast-msg">토스트 팝업메세지를 출력</div>
+                <a class="btn ico-close" href="#" aria-label="Close" aria-hidden="true"><span class="hide">토스트팝업닫기</span></a>
+              </div>
+              <!--// [E] 토스트 팝업 출력-->
             </section>
 
             <section class="cp-content">
@@ -116,6 +237,7 @@
                   aria-role="button"
                   data-focus="false"
                   data-direction="default"
+                  tip-maxWidth="200"
                   data-message="ToolTip Default :<br><br> 일이삼사오육칠팔구십일이삼사오<br>ToolTip message"
                   data-toggle="tooltip">
                   <span class="hide">툴팁</span>
@@ -127,6 +249,7 @@
                   aria-role="button"
                   data-focus="false"
                   data-direction="default"
+                  tip-maxWidth="160"
                   data-message="ToolTip message : Default <br> ToolTip message <br> ToolTip message"
                   data-toggle="tooltip">
                   <span class="hide">툴팁</span>
@@ -252,7 +375,20 @@
     </div>
 
 <!-- [S] PAGES - SCRIPT -->
-<script src="../../asset/com/js/ui.component.js"></script>
+<script src="../../asset/js/ui.component.js"></script>
+<script>
+  // 팝업 강제호출
+  // COMPONENT_UI.modalPop.showModal($('[data-modal="networkError"]'));
+
+  // 토스트팝업 호출
+  COMPONENT_UI.toast.toastPop();
+  // 특정 위치 클릭시
+  $('._toastBtn').on('click', function() {
+    COMPONENT_UI.toast.returnToast('._toastBtn'); // 여기서 body를 포커스 대상을 지정
+  });
+
+
+</script>
 <!-- [E] PAGES - SCRIPT -->
 </body>
 </html>

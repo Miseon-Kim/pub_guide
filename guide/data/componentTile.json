@@ -3,6 +3,14 @@
         "directory": "./component"
     },
     {   
+        "id": "@svg_urlEncoder",
+        "name": "SVG url-encoder"
+    },
+    {   
+        "id": "@loading",
+        "name": "로딩"
+    },
+    {   
         "id": "button",
         "name": "버튼"
     },
@@ -42,6 +50,14 @@
         "id": "swiper3",
         "name": "Swiper v3.4.2"
     },
+    {
+        "id": "swiperV8",
+        "name": "Swiper v8.4.7"
+    },
+    {
+        "id": "page-scrollTop",
+        "name": "페이지 Go to Top"
+    },    
     {
         "id": "table",
         "name": "[웹접근성] TABLE"

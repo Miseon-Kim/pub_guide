@@ -8,18 +8,21 @@
     <title>버튼</title>
     
     <!-- [S] PUBLISH COMMON STYLE -->
-    <link rel="stylesheet" href="../../asset/com/css/cm.common.css">
+    <link rel="stylesheet" href="../../asset/css/cm.common.css">
     <!-- [E] PUBLISH COMMON STYLE -->
 
     <!-- [S] PAGES - STYLE -->
-    <!-- D/P : 컴퍼넌트 예시화면용이므로 페이지 제작시 적용하지 않음 -->
-    <link rel="stylesheet" type="text/css" href="../com/css/cm.guide.css">
+    <link rel="stylesheet" href="">
     <!-- [E] PAGES - STYLE -->
 
     <!-- [S] LIBRARY - SCRIPT -->
-    <script src="../../asset/com/js/lib/lib.jquery-3.6.3.min.js"></script>
-    <script src="../../asset/com/js/lib/lib.jquery-ui-1.13.2.js"></script>
+    <script src="../../asset/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../../asset/js/lib/lib.jquery-ui-1.13.2.js"></script>
     <!-- [E] LIBRARY - SCRIPT -->
+
+    <!-- [S] @TEMP - GUIDE STYLE -->
+    <link rel="stylesheet" href="../com/css/cm.guide.css">
+    <!-- [E] @TEMP - GUIDE STYLE -->
 </head>
 <body>
     <div id="cp-wrap">
@@ -41,6 +44,9 @@
                         <button class="btn btn-size md bg">기본BTN</button>
                         <button class="btn btn-size md bg type2">긍정BTN</button>
                         <button class="btn btn-size md bg type3">부정BTN</button>
+                        <button test-btn="true" class="btn btn-size md bg" btn-active="loading">기본BTN</button>
+                        <button test-btn="true" class="btn btn-size md bg type2" btn-active="loading">긍정BTN</button>
+                        <button test-btn="true" class="btn btn-size md bg type3" btn-active="loading">부정BTN</button>
                     </div>
                 </div>
             </section>
@@ -180,5 +186,40 @@
 
         </div>
     </div>
+<!-- [S] PAGES - SCRIPT -->
+<script src="../../asset/js/ui.component.js"></script>
+<script>
+    // callback을 통한 버튼 상태 변경 예시
+    function changeBtnActiveState(newState) {
+        $('[test-btn="true"]').attr("btn-active", newState);
+        COMPONENT_UI.btnFn.btnStatus();
+    }
+
+    // 상태를 계속 변경하는 함수
+    function toggleBtnActiveState() {
+        const currentState = $('[test-btn="true"]').attr("btn-active");
+
+        // 현재 상태에 따라 다음 상태 결정
+        let nextState;
+        if (currentState === "true") {
+            nextState = "false"; // true일 때는 false로
+        } else if (currentState === "false") {
+            nextState = "loading"; // false일 때는 loading으로
+        } else {
+            nextState = "true"; // loading일 때는 true로
+        }
+
+        changeBtnActiveState(nextState);
+    }
+
+    // 5초마다 btn-active 상태를 변경
+    setInterval(toggleBtnActiveState, 3000);
+
+    // 초기 상태 설정 (optional)
+    changeBtnActiveState("false"); // 시작할 때 상태를 true로 설정
+
+
+</script>
+<!-- [E] PAGES - SCRIPT -->
 </body>
 </html>

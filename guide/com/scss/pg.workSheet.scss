@@ -2,7 +2,37 @@
 /****************************************/
 /*	PART: IMPORT CSS
 /****************************************/
-@import '../../../asset/com/scss/cm.common';
+@import '../../../asset/scss/cm.common';
+
+// SVG ICON
+@function pgSvgIcon($iconName, $color:666, $bgPosition:50% 50%, $bgRepeat: no-repeat) {
+    $iconList: (
+    // Guide Search BTN
+    btnPgSearch: "%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 513.749 513.749'%3E%3Cpath fill='%23#{$color}' d='M504.352,459.061l-99.435-99.477c74.402-99.427,54.115-240.344-45.312-314.746S119.261-9.277,44.859,90.15 S-9.256,330.494,90.171,404.896c79.868,59.766,189.565,59.766,269.434,0l99.477,99.477c12.501,12.501,32.769,12.501,45.269,0 c12.501-12.501,12.501-32.769,0-45.269L504.352,459.061z M225.717,385.696c-88.366,0-160-71.634-160-160s71.634-160,160-160 s160,71.634,160,160C385.623,314.022,314.044,385.602,225.717,385.696z'/%3E%3C/svg%3E",
+
+    btnPgSearchDark:"%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' id='Capa_1' x='0px' y='0px' viewBox='0 0 513.749 513.749' style='enable-background:new 0 0 513.749 513.749;' xml:space='preserve' width='512' height='512'%3E%3Cpath fill='%23#{$color}' d='M504.352,459.061l-99.435-99.477c74.402-99.427,54.115-240.344-45.312-314.746S119.261-9.277,44.859,90.15 S-9.256,330.494,90.171,404.896c79.868,59.766,189.565,59.766,269.434,0l99.477,99.477c12.501,12.501,32.769,12.501,45.269,0 c12.501-12.501,12.501-32.769,0-45.269L504.352,459.061z M225.717,385.696c-88.366,0-160-71.634-160-160s71.634-160,160-160 s160,71.634,160,160C385.623,314.022,314.044,385.602,225.717,385.696z'/%3E%3C/svg%3E",
+
+    btn_search_cancel:"%3Csvg xmlns='http://www.w3.org/2000/svg' id='Outline' viewBox='0 0 24 24' width='512' height='512'%3E%3Cpath fill='%23#{$color}' d='M16,8a1,1,0,0,0-1.414,0L12,10.586,9.414,8A1,1,0,0,0,8,9.414L10.586,12,8,14.586A1,1,0,0,0,9.414,16L12,13.414,14.586,16A1,1,0,0,0,16,14.586L13.414,12,16,9.414A1,1,0,0,0,16,8Z'/%3E%3Cpath fill='%23#{$color}' d='M12,0A12,12,0,1,0,24,12,12.013,12.013,0,0,0,12,0Zm0,22A10,10,0,1,1,22,12,10.011,10.011,0,0,1,12,22Z'/%3E%3C/svg%3E%0A",
+
+    currentAfter: "%3Csvg xmlns='http://www.w3.org/2000/svg' id='Outline' viewBox='0 0 24 24'%3E%3Cpath fill='%23#{$color}' d='M6.41,16H17.59a1,1,0,0,0,.7-1.71L12.71,8.71a1,1,0,0,0-1.42,0L5.71,14.29A1,1,0,0,0,6.41,16Z'/%3E%3C/svg%3E",
+
+    btn_guide_top: "%3Csvg xmlns='http://www.w3.org/2000/svg' id='Outline' viewBox='0 0 24 24'%3E%3Cpath fill='%23#{$color}' d='M6.41,16H17.59a1,1,0,0,0,.7-1.71L12.71,8.71a1,1,0,0,0-1.42,0L5.71,14.29A1,1,0,0,0,6.41,16Z'/%3E%3C/svg%3E",
+
+    pgAlert_btnActive:"%3Csvg xmlns='http://www.w3.org/2000/svg' id='Outline' viewBox='0 0 24 24' width='512' height='512'%3E%3Cpath fill='%23#{$color}' d='M16,8a1,1,0,0,0-1.414,0L12,10.586,9.414,8A1,1,0,0,0,8,9.414L10.586,12,8,14.586A1,1,0,0,0,9.414,16L12,13.414,14.586,16A1,1,0,0,0,16,14.586L13.414,12,16,9.414A1,1,0,0,0,16,8Z'/%3E%3Cpath fill='%23#{$color}' d='M12,0A12,12,0,1,0,24,12,12.013,12.013,0,0,0,12,0Zm0,22A10,10,0,1,1,22,12,10.011,10.011,0,0,1,12,22Z'/%3E%3C/svg%3E%0A",
+
+    fd_newWindow:"%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50' enable-background='new 0 0 50 50'%3E%3Cpath fill='%23#{$color}' d='M 7 7 C 5.3 7 4 8.3 4 10 L 4 38 L 6 36 L 6 15 L 44 15 L 44 40 C 44 40.6 43.6 41 43 41 L 11 41 L 9 43 L 43 43 C 44.7 43 46 41.7 46 40 L 46 10 C 46 8.3 44.7 7 43 7 L 7 7 z M 7 9 L 43 9 C 43.6 9 44 9.4 44 10 L 44 13 L 6 13 L 6 10 C 6 9.4 6.4 9 7 9 z M 8 10 C 7.4477153 10 7 10.447715 7 11 C 7 11.552285 7.4477153 12 8 12 C 8.5522847 12 9 11.552285 9 11 C 9 10.447715 8.5522847 10 8 10 z M 11 10 C 10.447715 10 10 10.447715 10 11 C 10 11.552285 10.447715 12 11 12 C 11.552285 12 12 11.552285 12 11 C 12 10.447715 11.552285 10 11 10 z M 14 10 C 13.447715 10 13 10.447715 13 11 C 13 11.552285 13.447715 12 14 12 C 14.552285 12 15 11.552285 15 11 C 15 10.447715 14.552285 10 14 10 z M 11 24 L 11 26 L 19.59375 26 L 4.09375 41.5 L 5.5 42.90625 L 21 27.40625 L 21 36 L 23 36 L 23 25 L 23 24 L 22 24 L 11 24 z' /%3E%3C/svg%3E%0A",
+
+    fd_disconnect:"%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50' enable-background='new 0 0 50 50'%3E%3Cpath d='M 12 6 C 10.3 6 9 7.3 9 9 L 9 39 L 11 37 L 11 9 C 11 8.4 11.4 8 12 8 L 38 8 C 38.6 8 39 8.4 39 9 L 39 41 C 39 41.6 38.6 42 38 42 L 16 42 L 14 44 L 38 44 C 39.7 44 41 42.7 41 41 L 41 9 C 41 7.3 39.7 6 38 6 L 12 6 z M 16 25 L 16 27 L 24.59375 27 L 9.09375 42.5 L 10.5 43.90625 L 26 28.40625 L 26 37 L 28 37 L 28 26 L 28 25 L 27 25 L 16 25 z' fill='%23#{$color}' /%3E%3C/svg%3E%0A",
+
+    
+
+    );
+    $svgIcon: map-get($iconList, $iconName);
+    $backgroundImage: url("data:image/svg+xml;charset=utf8,#{$svgIcon}");
+    @return $backgroundImage $bgPosition $bgRepeat;
+    // @return url("data:image/svg+xml;charset=utf8,#{$svgIcon}");
+    //background: svgIcon(ico_qCircle);
+}
 /****************************************/
 /*	PART: work sheet PAGE STYLE
 /****************************************/
@@ -32,7 +62,7 @@ $pgTarget:'.pg_target';
 $pgSrch:'.pg_search';
 $pgHisory:'.remark';
 $pgDivice:'.frame_device';
-%transition3s {@include transition(.3s, all, ease-in-out);}
+// %transition3s {@include transition(.3s, all, ease-in-out);}
 /*****************************************************************
   Pub Guide
 *****************************************************************/
@@ -44,11 +74,12 @@ $pgDivice:'.frame_device';
         & > ul {
             white-space:nowrap; overflow:auto;
             & > li {
-                @include display(inline-block);
-                border-right:.1rem solid $color-gray7; vertical-align:top;
+                display:inline-block;
+                @include line(border, .1rem solid $color-gray7, right);
+                @include align(valign, top);
                 & > a{
-                    @include display(block);
-                    @include height(5rem) {line-height:5rem} padding:0 5rem;
+                    display:block;
+                    height:5rem; line-height:5rem; padding:0 5rem;
                 }
                 &.active {
                     & > a{background-color:$color-blue3; color:$color-white;}
@@ -65,24 +96,24 @@ $pgDivice:'.frame_device';
     & + #{$pg_h} {margin-top:1rem;}
     @include el-content(before) {content:'#';}
     @include el-content(after) {
-        height:0.4em; background:$color-gray7; margin-top:-.4rem; z-index:-1;
+        height:.4rem; background:$color-gray7; margin-top:-.4rem; z-index:-1;
     }
 }
 
 #{$pg_h1}, #{$pg_h2}, #{$pg_h3} {
-    color:#01407e;
+    color:$color-blue6;
     @include el-content(after) {background-color:#01407e33;}
 }
-#{$pg_h1} {font-size:var(--space-xl);}
-#{$pg_h2} {font-size:var(--space-lg);}
-#{$pg_h3} {font-size:var(--space-mx);}
+#{$pg_h1} {@include fontSize(xxxl);}
+#{$pg_h2} {@include fontSize(xl);}
+#{$pg_h3} {@include fontSize(lg);}
 
 /*****************************************************************
   Header
 *****************************************************************/
 #{$pgHeader} {
-    @include display(flex);
-    @include pos-offset-l(0,0) {position:fixed; z-index:100;}
+    @include flex;
+    @include pos-offset(fixed, $top:0, $left:0, $z-index:100);
     @include el-size(100%, 5.4rem);
     padding:0 2rem;
     background-color:$color-blue3;
@@ -90,29 +121,32 @@ $pgDivice:'.frame_device';
 
     #{$pg} {
         &_util, h1 {
-            @include display(inline-flex) {align-items:center;}
-            width:100%; vertical-align:middle;
+            display:inline-flex; align-items:center;
+            width:100%;
+            @include align(valign, middle);
         }
         &_util {
             #{$pgSrch}, .switch, .pg_project, .btn_responsive{
-                @include pos(relative);
+                @include pos-offset(relative);
                 margin-left:2rem;
             }
             #{$pg} {
                 &_search{
                     width:20rem; margin-left:auto;
                     #btnPgSearch{
-                        @include pos-offset-r(0,0); @include el-size(4rem, 3rem);
-                        background-image: svgIcon(btnPgSearch);
-                        background-size:1.6rem 1.6rem; background-repeat:no-repeat; background-position:50% 50%;
+                        @include pos-offset($top:0, $right:0);
+                        @include el-size(4rem, 3rem);
+                        background: pgSvgIcon(btnPgSearch);
+                        background-size:1.6rem 1.6rem; 
                         opacity:.5; @extend %transition3s;
 
                         &:hover, &:focus {opacity:1;}
                     }
 
                     input[type=text]{
-                        @include el-size(100%, 3rem); padding:0 6rem 0 1.5rem; outline:none;
-                        background-color:rgba(255, 255, 255, 0.3); border:none; border-radius:3rem;
+                        @include el-size(100%, 3rem); padding:0 6rem 0 1.5rem;
+                        @include line(outline, none); @include line(border, none);
+                        background-color:rgba(255, 255, 255, 0.3); border-radius:3rem;
                         color:$color-white;
 
                         &:focus{background-color:rgba(255, 255, 255, 0.6)}
@@ -121,34 +155,36 @@ $pgDivice:'.frame_device';
                         &::-ms-input-placeholder{color:$color-gray6;}
                     }
                     .svgIcon {
-                        @include display(inline-block); @include el-size(4rem, 4rem);
+                        display:inline-block; @include el-size(4rem, 4rem);
                         
-                        &.check {background-image: icon(check);}
+                        // &.check {background-image: icon(check);}
                     }
                     .btn_search_del {
-                        @include pos-offset-r(0, 3rem); @include el-size(3rem, 3rem);
-                        background-image: svgIcon(btn_search_cancel, 333);
-                        background-size:1.4rem 1.4rem; background-position:50% 50%; background-repeat:no-repeat;
+                        @include pos-offset($top:0, $right:3rem);
+                        @include el-size(3rem, 3rem);
+                        background: pgSvgIcon(btn_search_cancel, 333);
+                        background-size:1.4rem 1.4rem;
                     }
                 }
             }
 
             #{$btn} {
                 &_nav {
-                    @include display(none);
-                    @include pos-offset-r(.5rem, 1rem) {z-index:999;}
+                    display:none;
+                    @include pos-offset($top:.5rem, $right:1rem, $z-index:-9999px);
                     @include el-size(4rem, 4rem);
                     background:none;
     
                     span{
-                        @include pos-offset-l(50%, 50%) {text-indent:-9999px;}
+                        @include pos-offset($top:50%, $left:50%);
                         @include el-size(2.8rem, 2rem);
+                        text-indent:-9999px;
                         margin:-.1rem 0 0 -1.4rem;
                         background-color:rgba(255,255,255,1);
                         @extend %transition3s;
     
                         @include el-content(both) {
-                            @include pos(absolute) {left:0;}
+                            @include pos-offset($left:0);
                             @include el-size(2.8rem, 2rem);
                             background-color:rgba(255,255,255,1);
                             @extend %transition3s;
@@ -159,14 +195,14 @@ $pgDivice:'.frame_device';
                 }
 
                 &_responsive {
-                    @include pos(relative) {left:0;}
+                    @include pos-offset(relative, $left:0);
                     @include el-size(2.5rem, 4rem);
-                    border:.1rem solid $color-white; border-radius:.4rem;
+                    @include line(border, .1rem solid $color-white, $radius:.4rem);
                     background:none; @include overflow(both, hidden);
                     @extend %transition3s;
 
                     @include el-content(both) {
-                        @include pos(absolute) {left:0;}
+                        @include pos-offset($left:0);
                         @include el-size(100%, .1rem);
                         background-color:$color-white;
                         @extend %transition3s;
@@ -175,13 +211,13 @@ $pgDivice:'.frame_device';
                     &::after{width:100%; bottom:.6rem;}
                     
                     & > i {
-                        @include pos(absolute) {top:.3rem; right:.8rem}
+                        @include pos-offset($top:.3rem, $right:.8rem);
                         @include el-size(.6rem, .1rem);
                         background-color:$color-white; border-radius:100%;
                         @extend %transition3s;
 
                         @include el-content(both) {
-                            @include pos(absolute) {top:0;}
+                            @include pos-offset($top:0);
                             @include el-size(.4rem, .4rem);
                             background-color:$color-white; border-radius:100%;
                             @extend %transition3s;
@@ -192,7 +228,7 @@ $pgDivice:'.frame_device';
                             @extend %transition3s;
                         }
                         & > i{
-                            @include pos(absolute) {top:3.1rem; left:.2rem;}
+                            @include pos-offset($top:3.1rem, $left:.2rem);
                             @include el-size(.2rem, .2rem);
                             background-color:$color-white; border-radius:100%;transform:scale(1);
                             @extend %transition3s;
@@ -206,23 +242,24 @@ $pgDivice:'.frame_device';
         
     h1 {
         @include el-size(11rem, 5.4rem);
-        background:url(./../../img/logo.png) 0 50% no-repeat; background-size:11rem auto;
+        $logoImgURL:"../../../guide/img/";
+        @include bgIco($url:$logoImgURL, $file:logo, $pos:0 50%, $size:11rem auto);
         opacity:.5;
     }
 
     .switch {
-        @include pos(relative);
+        @include pos-offset(relative);
         @include el-size(30rem, 5.4rem);
         padding:.4rem; @include overflow(both, hidden);
         box-sizing:border-box;
 
         @include el-content(after) {
-            @include pos-offset-l(0,0) {right:0; bottom:0; z-index:-2;}  
+            @include pos-offset($right:0, $bottom:0, $z-index:-2);
         }
 
         & > .bar {
             content:'';
-            @include pos(absolute) {top:0; z-index:-1;}
+            @include pos-offset($top:0, $z-index:-1);
             height:5.4rem;
             background-color:$color-gray2;
             transform:scale(0);
@@ -231,13 +268,15 @@ $pgDivice:'.frame_device';
         
         
         & > ul {
-            @include display(flex);
+            @include flex;
             & > li {
                 flex:1;
                 & > a {
-                    @include display(block);
-                    @include height(5rem) {line-height:4.8rem;}
-                    font-size:var(--space-ms); color:$color-white;text-align:center; text-decoration:none;
+                    display:block;
+                    height:5rem; line-height:4.8rem;
+                    @include font($color:$color-white);
+                    @include align(text, center);
+                    text-decoration:none;
                     opacity:.7;
                     @extend %transition3s;
                 }
@@ -271,7 +310,7 @@ $pgDivice:'.frame_device';
 }
 
 .no_scroll {
-    @include pos(fixed); @include overflow(both, hidden);
+    @include pos-offset(fixed); @include overflow(both, hidden);
 
     #{$pg} {
         &_util {
@@ -288,17 +327,19 @@ $pgDivice:'.frame_device';
 
 #{$pgProject} {
     .current {
-        @include pos(relative); @include overflow(both, hidden);
-        @include height(3rem) {line-height:3rem;}
+        @include pos-offset(relative); @include overflow(both, hidden);
+        height:3rem; line-height:3rem;
         padding:0 5rem 0 2.5rem;
-        font-weight:700; color:$color-black; text-align:left;
+        font-weight:700; color:$color-black;
+        @include align(text, left);
         background-color:$color-white; opacity:.6;
         border-radius:3rem;
 
         @include el-content(after) {
-            @include pos-offset-r(0,0); @include el-size(.4rem, .3rem);            
-            background-image: svgIcon(currentAfter, 666);            
-            background-size:1.5rem 1.5rem; background-repeat:no-repeat; background-position:50% 50%;
+            @include pos-offset($top:0, $right:0);
+            @include el-size(.4rem, .3rem);            
+            background: pgSvgIcon(currentAfter, 666);
+            background-size:1.5rem 1.5rem;
             transform:rotate(180deg); @extend %transition3s;
         }
 
@@ -309,24 +350,24 @@ $pgDivice:'.frame_device';
 
     #{$pg} {
         &_list{
-            @include display(none); @include overflow(both, hidden); 
-            @include pos-offset-l(3.5rem, 0) {right:0; z-index:100;}
+            display:none; @include overflow(both, hidden); 
+            @include pos-offset ($top:3.5rem, $left:0, $right:0, $z-index:100);
             background-color:$color-white; box-shadow:.2rem .2rem .2rem 0 rgb(0 0 0 / 10%); border-radius:1.5rem;
             
 
             li {
-                border-bottom:.1rem solid $color-light-gray1;
+                @include line(border, .1rem solid $color-light-gray1, bottom);
                 %lstActive-aColor {
                     background-color:$color-light-gray2;color:$color-black;
                     @include el-content(before) {
-                        @include pos-offset-l(0,0) {right:0; bottom:0; z-index:-1;}
+                        @include pos-offset($top:0, $left:0, $right:0, $bottom:0, $z-index:-1);
                         background-color:$color-white;
                     }
                 }
 
                 a {
-                    @include display(block); @include pos(relative);
-                    @include height(3rem) {line-height:3rem;}
+                    display:block; @include pos-offset(relative);
+                    height:3rem; line-height:3rem;
                     padding:0 2.5rem; color:$color-gray3;
                     &:hover {@extend %lstActive-aColor;}
                 }                
@@ -338,10 +379,9 @@ $pgDivice:'.frame_device';
 
 #{$btn} {
     &_util{
-        @include display(none);
-        @include pos-offset-r(0, 0) {position:fixed;}
+        display:none;
+        @include pos-offset(fixed, $top:0, $right:0, $z-index:101);
         @include el-size(6.5rem, 5rem);
-        z-index:101;
         .bar{
             fill:none; stroke:$color-white; stroke-width:2;
             @include transition(.3s, all, cubic-bezier(0.4, 0, 0.2, 1));
@@ -370,9 +410,9 @@ html.util_show {
   Nav
 *****************************************************************/
 #{$pgNav} {
-    @include pos-offset-l(6.1rem, 0){position:fixed; bottom:0; z-index:10;}
+    @include pos-offset(fixed, $top:6.1rem, $left:0, $bottom:0, $z-index:10);
     width:20rem;
-    border-right:.1rem solid $color-light-gray1;
+    @include line(border, .1rem solid $color-light-gray1, right);
     background-color:$color-white;
     @include overflow(y, auto);
 
@@ -382,12 +422,14 @@ html.util_show {
     & > ul{
         margin-top:2rem;
         & > li {
-            @include pos(relative);
+            @include pos-offset(relative);
 
             & > a{
-                @include display(block); @include pos(relative);
-                padding:1rem 2rem; border-right:0 solid $color-blue2;
-                font-size:var(--space-mx); color:$color-gray3; text-align:right;
+                display:block; @include pos-offset(relative);
+                padding:1rem 2rem;
+                @include line(border, 0 solid $color-blue2, right);
+                @include font($color:$color-gray3);
+                @include align(text, right);
                 @extend %transition3s;
             }
 
@@ -397,12 +439,12 @@ html.util_show {
             &.active > a{ border-width:.5rem; font-weight:500; color:$color-blue2;}
             & > ul {
                 padding:1rem 0; border-style:dotted; border-color:$color-gray6;
-                text-align:right;
+                @include align(text, right);
                 & > li {
                     & > a {
-                        @include display(block); @include pos(relative);
+                        display:block; @include pos-offset(relative);
                         padding:.5rem 3rem .5rem 2rem;
-                        font-size:var(--space-ms); color:$color-gray3;
+                        @include font($color:$color-gray3);
                     }
                     &:hover > a, &.active > a{color:$color-blue2;}
                 }
@@ -414,12 +456,13 @@ html.util_show {
                 &:last-child {margin-top:0;}
                 & > a {
                     padding:1rem; background-color:$color-light-gray2;
-                    border:.1rem solid $color-light-gray1; border-radius:.5rem;
-                    font-size:var(--space-ms); text-align:center;
+                    @include line(border, .1rem solid $color-light-gray1, $radius:.5rem);
+                    @include font;
+                    @include align(text, center);
                 }
                 &:hover {
                     & > a{
-                        border:.1rem solid $color-gray3; background-color:$color-gray4; color:$color-white;
+                        @include line(border, .1rem solid $color-gray3);background-color:$color-gray4; color:$color-white;
                     }
                 }
             }
@@ -440,18 +483,20 @@ html.util_show {
 }
 
 #{$pgTit} {
-    @include display(flex);
-    @include pos(fixed) {top:5.4rem; left:0; right:0;}
+    @include flex;
+    @include pos-offset(fixed, $top:5.4rem, $left:0, $right:0, $z-index:10);
     padding:.8rem 2rem; background-color:$color-gray2; min-height:4.6rem;
     @extend %transition3s; transition-duration: .8s;
-    z-index:10;
+    
     h2, #{$pgStatus} {
-        @include display(inline-flex) {align-items:center;}
-        width:100%; vertical-align:middle; @extend %transition3s;
+        display:inline-flex; align-items:center;
+        width:100%;
+        @include align(valing, middle);
+        @extend %transition3s;
     }
     h2 {
-        @include width(20rem);
-        font-size:var(--space-md); font-weight:700; color:$color-white;
+        width:20rem;
+        @include font(md, $fontweight:700, $color:$color-white);
         text-shadow:.1rem .1rem .2rem rgba(0, 0, 0, 0.5);
         @extend %transition3s;
     }
@@ -470,12 +515,12 @@ html.util_show {
 
 #{$pgSection} {
     margin-top:3rem; padding:0 2rem; @include overflow(both, hidden);
-    border:.1rem solid $color-light-gray1; border-radius:1rem;
+    @include line(border, .1rem solid $color-light-gray1, $radius:1rem);
 
     & > h3 {
-        @include pos(relative); padding:2rem;
-        border-bottom:.1rem solid $color-light-gray1;background-color:$color-white;
-        font-size:var(--space-mx); font-weight:500; color:$color-gray2;
+        @include pos-offset(relative); padding:2rem;
+        @include line(border, .1rem solid $color-light-gray1, bottom);background-color:$color-white;
+        @include font(lg, $color:$color-gray2);
     }
 
     #{$pgGuide} {
@@ -507,18 +552,19 @@ html.util_show {
                 .browser {
                     @include clearfix;
                     li {
-                        float:left; @include height(5rem){line-height:4.8rem;}
+                        float:left; height:5rem; line-height:4.8rem;
                         margin:.5rem 1rem 0 0; padding:0 1.5rem 0 5rem;
                         background-color:rgba(255,255,255,0.3); background-position:1rem 50%; background-repeat:no-repeat; background-size:calc(50rem/10) auto;
                         border-radius:5rem; box-shadow:.1rem .1rem .1rem 0 rgba(0,0,0,0.3);
 
-                        &.ie{background-image:url(./../img/ico_browser_ie.png)}
-                        &.chrome{background-image:url(./../img/ico_browser_chrome.png)}
-                        &.firefox{background-image:url(./../img/ico_browser_firefox.png)}
-                        &.safari{background-image:url(./../img/ico_browser_safari.png)}
-                        &.opera{background-image:url(./../img/ico_browser_opera.png)}
+                        $bgIcoURL:'./../img/';
+                        &.ie{background-image:url($bgIcoURL + 'ico_browser_ie.png')}
+                        &.chrome{background-image:url($bgIcoURL + 'ico_browser_chrome.png')}
+                        &.firefox{background-image:url($bgIcoURL + 'ico_browser_firefox.png')}
+                        &.safari{background-image:url($bgIcoURL + 'ico_browser_safari.png')}
+                        &.opera{background-image:url($bgIcoURL + 'ico_browser_opera.png')}
 
-                        span{@include display(inline-block); text-indent:-9999px}
+                        span{display:inline-block; text-indent:-9999px}
                     }
                 }
                 
@@ -539,8 +585,8 @@ html.util_show {
                     &:first-child{margin-top:0;}
                     h4 {
                         padding-bottom:1rem;
-                        border-bottom:.1rem solid rgba(0,0,0,0.3);
-                        font-size:var(--space-mx); font-weight:500; color:$color-black;
+                        @include line(border,.1rem solid rgba(0,0,0,0.3), bottom);
+                        @include font(lg, $color:$color-black);
                     }
                 
                     .color {
@@ -550,13 +596,16 @@ html.util_show {
                 
                             .color {
                                 &_item{
-                                    @include pos(relative) {float:left; @include overflow(both, hidden);}
+                                    @include pos-offset(relative); 
+                                    float:left;
+                                    @include overflow(both, hidden);
                                     @include el-size(30rem, 12rem);
                                     margin-right:2rem;
                                     box-shadow:.1rem .1rem .1rem 0 rgba(0,0,0,0.3);
                 
                                     @include el-content(before) {
-                                        @include pos(absolute) {top:-2.5rem;right:-2.5rem; height:5rem;}
+                                        @include pos-offset($top:-2.5rem, $right:-2.5rem);
+                                        height:5rem;
                                         background-color:rgba(255,255,255,0.5);transform: rotate(45deg);
                                     }
                                     &.pgr{width:20rem;}
@@ -565,8 +614,8 @@ html.util_show {
                                         padding:1rem 0 0 2rem;
                                         li {
                                             padding:.8rem 0;
-                                            span {@include display(block); color:rgba(255,255,255,0.5)}
-                                            strong {@include display(block); margin-top:.5rem; color:$color-white;}
+                                            span {display:block; color:rgba(255,255,255,0.5)}
+                                            strong {display:block; margin-top:.5rem; color:$color-white;}
                                         }
                                     }
                 
@@ -584,17 +633,18 @@ html.util_show {
             
 
             h4 {
-                position:relative; font-size:var(--space-lg); font-weight:500; color:$color-blue3;
+                @include pos-offset(relative);
+                @include font(xl, $color:$color-blue3);
             }
 
             div + h4 {margin-top:3rem;}
             .head{font-weight:500; color:$color-black;}
             .list {
                 li{
-                    @include pos(relative);
+                    @include pos-offset(relative);
                     line-height:1.8rem; padding:.3rem .5rem .3rem 1rem;color:$color-black;
                     @include el-content(before) {
-                        @include pos(absolute) {top:1.1rem;left:0;}
+                        @include pos-offset($top:1.1rem, $left:0);
                         @include el-size(.3rem, .3rem);
                         background-color:$color-black;
                     }
@@ -611,39 +661,33 @@ html.util_show {
 
 
 .btm {
+    &_guide {
+        margin-top:1rem;
+        @include font(xs, $color:$color-gray3);
+
+        &_top {
+            @include pos-offset($top:.8rem, $left:.8rem);
+            @include el-size(3rem, 3rem);background-color:$color-blue2;
+            background: pgSvgIcon(btn_guide_top); background-size:1.5rem 1.5rem;
+            border-radius:100%; transform:scale(0);
+            @extend %transition3s;
+        }
+    }
+
     &_btn_set {
-        @include pos(fixed) {bottom:2rem; right:2rem;}
+        @include pos-offset(fixed, $bottom:2rem, $right:2rem);
         @include el-size(4.6rem, 4.6rem);
-        border:.2rem solid $color-blue2;
+        @include line(border, .2rem solid $color-blue2);
         background-color:$color-white; border-radius:1rem;
         @extend %transition3s;
         
         &.active{
             width:8.5rem;
             background-color:$color-blue2;
-            .btn_guide_top{
-                background:$color-white svgIcon(btn_guide_top, 0048ff) 50% 50%;
-                transform:scale(1); opacity:1;}
+            .btn_guide_top{background:$color-white; background:pgSvgIcon(btn_guide_top, 0048ff); transform:scale(1);}
             .btn_light_mode::after {background:$color-blue2;}
-            
         }
         button{outline:none;}
-
-        .btn{
-            &_guide {
-                margin-top:1rem;
-                font-size:var(--space-sm); color:$color-gray3;
-        
-                &_top {
-                    @include pos(absolute) {top:.6rem; left:.8rem;}
-                    @include el-size(3rem, 3rem);
-                    background:$color-blue2 svgIcon(btn_guide_top, $color-white) 50% 50%; background-size:1.5rem 1.5rem;
-                    border-radius:100%; transform:scale(0); opacity:0;
-                    @extend %transition3s;
-                }
-            }
-        }
-        
     }
 }
 
@@ -651,10 +695,9 @@ html.util_show {
 #{$btn} {
     &_guide {
         &_top {
-            @include pos(absolute) {top:.6rem; left:.6rem;}
+            @include pos-offset($top:.6rem, $left:.6rem);
             @include el-size(3rem, 3rem);background-color:$color-blue2;
-            background-image: svgIcon(btn_guide_top); background-size:1.5rem 1.5rem;
-            background-repeat:no-repeat; background-position:50% 50%;
+            background:pgSvgIcon(btn_guide_top); background-size:1.5rem 1.5rem;
             border-radius:100%;transform:scale(0);
             @extend %transition3s;
         }
@@ -662,25 +705,25 @@ html.util_show {
 
     &_light {
         &_mode{
-            @include pos(absolute) {top:.6rem; right:.6rem;}
+            @include pos-offset($top:.6rem, $right:.6rem);
             @include el-size(3rem, 3rem);
 
             @include el-content(before) {
-                @include pos-offset-l(.5rem, .5rem);
+                @include pos-offset($top:.5rem, $left:.5rem);
                 @include el-size(2rem, 2rem);
                 background-color:$color-blue4; border-radius:100%;
                 @extend %transition3s;
             }
 
             @include el-content(after) {
-                @include pos-offset-l(0, 1.2rem);
+                @include pos-offset($top:0, $left:1.2rem);
                 @include el-size(2rem, 2rem);
                 background-color:$color-white; border-radius:100%;
                 @extend %transition3s; transform-origin:top right;
             }
 
             & > i {
-                @include pos-offset-l(0, 50%);
+                @include pos-offset($top:0, $left:50%);
                 @include el-size(.2rem, 3rem); margin-left:-.1rem;
 
                 &:nth-child(1){transform:rotate(45deg)}
@@ -688,7 +731,7 @@ html.util_show {
                 &:nth-child(3){transform:rotate(135deg)}
 
                 @include el-content(both) {
-                    @include pos(absolute) {left:0}
+                    @include pos-offset($left:0);
                     @include el-size(.2rem, .3rem);
                     background-color:$color-yellow3; border-radius:100%;
                     transform:scale(0); @extend %transition3s;
@@ -705,19 +748,21 @@ html.util_show {
 *****************************************************************/
 #{$pgBoard} {
     &_tab {
-        @include pos-offset-l(9.9rem, 0) {position:fixed; right:0; @include overflow(both, hidden); z-index:10;}
+        @include pos-offset(fixed, $top:9.9rem, $left:0, $right:0, $z-index:10);
+        @include overflow(both, hidden);
         padding:1rem 2rem; background-color:$color-light-blue1;
         @extend %transition3s;
 
         ul {
-            @include display(flex); white-space:nowrap;
+            @include flex; white-space:nowrap;
             li {
-                box-flex:1; -webkit-box-flex:1;
+                box-flex:1;
                 & + li {margin-left:1rem;}
 
                 & > button, & > a {
-                    @include height(4rem) {line-height:3.6rem;} padding:0 2rem;
-                    background-color:$color-white; color:$color-gray3; text-align:center;
+                    height:4rem; line-height:3.6rem; padding:0 2rem;
+                    background-color:$color-white; color:$color-gray3;
+                    @include align(text, center);
                     border-radius:.5rem;
                     
                     // CSS Paint API
@@ -738,13 +783,13 @@ html.util_show {
         .swiper-slide {width:auto;}
     }
     &_panel{
-        @include display(none);
+        display:none;
         
     }
 }
 
 .pg_board_panel.active,
-.pg_content.searcher .pg_board_panel{@include display(block);}
+.pg_content.searcher .pg_board_panel{display:block;}
 
 #{$htmlM} {
     #{$pgBoard} {
@@ -756,12 +801,12 @@ html.util_show {
     &.searcher {
         #{$pgBoard} {
             &_panel {
-                .pg_status{@include display(none);}
-                &.active .pg_status {@include display(block);}
+                .pg_status{display:none;}
+                &.active .pg_status {display:block;}
             }
         }
         .search_title {
-            @include display(block);
+            display:block;
         }
     }
     .search_title {display:none;}
@@ -772,22 +817,24 @@ html.util_show {
 *****************************************************************/
 #{$pgStatus} {
     #{pgCount}, .pg_project_ing {
-        @include display(inline-flex) {align-items:center; vertical-align:middle;}
+        display:inline-flex; align-items:center;
+        @include align(valign, middle);
     }
     #{pgCount} {
-        margin-right:2rem; text-align:center;
+        margin-right:2rem;
+        @include align(text, center);
         &:first-child{margin-left:auto;}
         & > span {
-            @include display(block);
-            @include height(2rem) {line-height:2rem;}
-            font-size:var(--space-xs); color:$color-gray6;
+            display:block;
+            height:2rem; line-height:2rem;
+            @include font(xs, $color:$color-gray6);
             @extend %transition3s;
         }
         & > strong{
-            @include display(block);
-            @include height(3.5rem) {line-height:3.3rem;}
+            display:block;
+            height:3.5rem; line-height:3.3rem;
             margin-left:.5rem;
-            font-size:var(--space-ms); font-weight:bold; color:$color-white;
+            @include font(xs,$fontweight:700, $color:$color-white);
             text-shadow:.1rem .1rem .2rem rgba(0, 0, 0, 0.5);
             @extend %transition3s;
         }
@@ -795,25 +842,28 @@ html.util_show {
 
     #{$pgProject} {
         &_ing{
-            @include pos(relative);
+            @include pos-offset(relative);
             @include el-size(25rem, 3rem);
             @extend %transition3s;
 
             .ing {
-                @include pos-offset-l(.5rem, 0){z-index:10;}
-                @include width;
-                font-size:var(--space-ms); text-align:center; font-weight:500; color:$color-white;
+                @include pos-offset($top:.5rem, $left:0, $z-index:10);
+                width:100%;
+                @include font($color:$color-white);
+                @include align(text, center);
                 text-shadow:.1rem .1rem .1rem rgba(0,0,0,0.4);
                 @extend %transition3s;
             }
             .pgraph {
-                @include pos(relative); @include display(block); @include el-size(100%, 100%);
+                display:block;
+                @include pos-offset(relative); @include el-size(100%, 100%);
                 background-color:rgba(255,255,255,0.05);
                 box-shadow:inset .1rem .1rem 1.1rem 0 rgba(0,0,0,0.3);
                 @include overflow(both, hidden);
 
                 .bar {
-                    @include pos-offset-l(0, 0); @include el-size(0, 100%); @include overflow(both, hidden);
+                    @include pos-offset($top:0, $left:0);
+                    @include el-size(0, 100%); @include overflow(both, hidden);
                     background:$color-green2; border-radius:.3rem;
                     box-shadow:.1rem .1rem .1rem 0 rgba(0,0,0,0.3);
                     @include transition(1s, width, ease-in-out);
@@ -825,8 +875,8 @@ html.util_show {
 
 #{$srch} {
     &_title {
-        @include pos-offset-l(11rem,0){position:fixed; right:0; z-index:10;}
-        @include height(4rem){line-height:4rem;} padding:0 2rem;
+        @include pos-offset(fixed, $top:11rem, $left:0, $right:0, $z-index:10);
+        height:4rem; line-height:4rem; padding:0 2rem;
         background-color:$color-black; color:$color-white;
         animation:titleShow 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         @extend %transition3s;
@@ -837,14 +887,14 @@ html.util_show {
         }
 
         .btn_search_cancel {
-            @include pos-offset-r(0, 0); @include height(4rem){line-height:4rem;}
+            @include pos-offset($top:0, $right:0); height:4rem; line-height:4rem;
             padding:0 4.4rem 0 2rem;
             background-color:$color-valid;
             color:$color-white; font-weight:700;
 
             @include el-content(after) {
-                @include pos-offset-r(.6rem, 2rem); @include el-size(2.4rem, 2.4rem);
-                background-image: svgIcon(btn_search_cancel); background-size:1.4rem 1.4rem; background-position:50% 50%; background-repeat:no-repeat;
+                @include pos-offset($top:.6rem, $right:2rem); @include el-size(2.4rem, 2.4rem);
+                background:pgSvgIcon(btn_search_cancel); background-size:1.4rem 1.4rem;
             }
         }
     }
@@ -862,9 +912,9 @@ html.util_show {
 
 .panel {
     &_head{
-        @include pos-offset-l(15.9rem, 0){position:fixed; right:0; z-index:10;}
-        height:4rem; padding:0 52rem 0 2rem;
-        background-color:$color-light-blue1; text-align:right;
+        @include pos-offset(fixed, $top:15.9rem, $left:0, $right:0, $z-index:10);
+        height:4rem; padding:0 52rem 0 2rem; @include align(text, right);
+        background-color:$color-light-blue1;
         box-shadow:0 .3rem .5rem -.1rem rgba(0,0,0,.3);
         @extend %transition3s;
         
@@ -877,24 +927,25 @@ html.util_show {
 
 #{$pgAlert} {
     &_btn_set{
-        text-align:right;
+        @include align(text, right);
         button {
-            @include display(inline-block); @include height(3rem) {line-height:2.7rem;}
+            display:inline-block; height:3rem; line-height:2.7rem;
             margin-top:-.5rem; padding:0 2rem; border-radius:0 0 .5rem .5rem;
-            font-size:var(--space-ms); color: rgba(255, 255, 255, 0.75);
+            @include font($color: rgba(255, 255, 255, 0.75));
             @extend %transition3s;
 
             & + button {margin-left:1rem;}
             &.active {
                 @include el-content(after) {
-                    @include display(inline-block); @include el-size(1.8rem, 1.8rem);
+                    display:inline-block; @include el-size(1.8rem, 1.8rem);
                     margin:-.3rem 0 0 1rem;
-                    background-image: svgIcon(pgAlert_btnActive);
-                    background-size:1.8rem 1.8rem; background-repeat:no-repeat;background-position:50% 50%; vertical-align:middle;
+                    background:pgSvgIcon(pgAlert_btnActive);
+                    background-size:1.8rem 1.8rem;
+                    @include align(valign, middle);
                 }
             }
 
-            strong{font-size:var(--space-md); color:$color-yellow3; font-weight:700;}
+            strong{@include font(md, $color:$color-yellow3, $fontweight:700);}
             &.btn_design{background-color:$color-violet;}
             &.btn_plan{background-color:$color-green;}
             &.btn_wa{background-color:$color-brown;}
@@ -902,69 +953,75 @@ html.util_show {
     }
 }
 
-.pg_content.searcher .panel_head{@include display(none);}
+.pg_content.searcher .panel_head{display:none;}
 
 #{$pgTarget} {
-    @include pos(relative); height:3rem; padding:.5rem;
-    background-color:$color-white; border-radius:3rem;@include overflow(both, hidden);
+    @include pos-offset(relative); height:3rem; padding:.5rem;
+    background-color:$color-white; border-radius:3rem;
+    @include overflow(both, hidden);
 
     ul {
-        @include display(flex) {white-space:nowrap;}
+        @include flex; white-space:nowrap;
         li {
-            &.swiper-slide {width:auto;}
             & + li {margin-left:.5rem;}
         }
     }
 
     a {
-        @include display(block);
-        @include height(2rem) {line-height:2rem;} padding:0 1rem;background-color:$color-light-blue1; border-radius:2rem;font-size:var(--space-sm); color:$color-gray2;
+        display:block;
+        height:2rem; line-height:2rem; padding:0 1rem;background-color:$color-light-blue1; border-radius:2rem;
+        @include font(xs, $color:$color-gray2);
 
-        &.active{background-color:$color-blue3;color:$color-white;}
+        &.active{background-color:$color-blue3; color:$color-white;}
     }
 
 }
 
 #{$pg} {
     &_status {
-        @include display(flex);
-        @include pos(absolute) {bottom:1.5rem; right:2rem;}
+        @include flex;
+        @include pos-offset($bottom:1.5rem, $right:2rem);
         height:2rem;
         
         & > span {
-            @include display(inline-flex);
-            vertical-align:middle;
+            display:inline-flex;
+            @include align(valign, middle);
             &.num {
-                @include pos(relative);
-                margin-right:2rem; font-size:var(--space-sm);color:$color-gray3; vertical-align:middle;
+                @include pos-offset(relative);
+                margin-right:2rem;
+                @include font(xs, $color:$color-gray3);
+                @include align(valign, middle);
 
                 & + .num {
                     @include el-content(before) {
-                        @include pos-offset-l(.6rem, -1rem);
+                        @include pos-offset($top:.6rem, $left:-1rem);
                         @include el-size(.2rem, 1rem);
                         background-color:rgba(0,0,0,.2);
                     }
                 }
                 strong {
                     padding-left:.5rem;
-                    font-size:var(--space-ms);color:$color-black; font-weight:700;
+                    @include font($color:$color-black, $fontweight:700);
                 }
             }
         }
 
         &_box{
-            @include pos(relative);
+            @include pos-offset(relative);
             @include el-size(20rem, 2rem);
-            background-color:$color-white; vertical-align:middle;border-radius:3rem; @include overflow(both, hidden);
+            background-color:$color-white;
+            @include align(valign, middle);
+            border-radius:3rem; @include overflow(both, hidden);
 
             .ing {
-                @include pos-offset-l(0, 50%);
+                @include pos-offset($top:0, $left:50%);
                 width:18rem; margin-left:-9rem;
-                text-align:center; font-size:var(--space-sm); font-weight:500; color:$color-black;
+                @include align(text, center);
+                @include font(xs, $color:$color-black);
             }
 
             .bar {
-                @include pos-offset-l(0, 0);
+                @include pos-offset($top:0, $left:0);
                 @include el-size(0, 2rem);
                 background-color:#fed03a;
                 @extend %transition3s;
@@ -984,15 +1041,15 @@ html.util_show {
         text-align:center;
         thead {
             th {
-                @include pos(relative); padding:.7rem .5rem;background-color:$color-white;
-                font-weight:700; font-size:var(--space-ms); color:$color-gray3;
+                @include pos-offset(relative); padding:.7rem .5rem;background-color:$color-white;
+                @include font($color:$color-gray3, $fontweight:700);
 
                 button {
-                    @include pos-offset-r(0, 0);
+                    @include pos-offset($top:0, $right:0);
                     @include el-size(1.6rem, 1.6rem);background-color:$color-light-gray1;
 
                     @include el-content(both) {
-                        @include pos-offset-l(50%, 50%);
+                        @include pos-offset($top:50%, $left:50%);
                         @include el-size(.8rem, .2rem);
                         margin:-.1rem 0 0 -.3rem;
                         background-color:$color-gray3;
@@ -1003,8 +1060,8 @@ html.util_show {
 
                 select {
                     @include el-size(100%, 2.7rem) {line-height:2.5rem;}
-                    border:none; background-color:$color-white;font-weight:700; font-size:var(--space-sm); color:$color-gray3;
-                    @include align(text, center);
+                    border:none; background-color:$color-white;
+                    @include font(xs, $color:$color-gray3, $fontweight:700);
                 }
             }
 
@@ -1014,31 +1071,23 @@ html.util_show {
         tbody {
             tr:hover td{background-color:$color-light-gray4; color:$color-gray3;}
             td {
-                @include pos(relative);
-                line-height:2rem; margin-top:.1rem; padding:.7rem .5rem;
+                @include pos-offset(relative);
+                margin-top:.1rem; padding:.7rem .5rem;
                 background-color:$color-light-gray3;
-                font-size:var(--space-ms); color:$color-gray3;vertical-align:middle; word-break:keep-all;
+                @include font($color:$color-gray3, $lheight:2rem);
+                @include align(valign, middle); word-break:break-all;
 
-                &.deps, &.name {text-align:left;}
+                &.deps, &.name {@include align(text, left);}
                 %pgTbletdSpan {
-                    @include display(inline-block);
-                    @include el-size(6rem, 2.2rem) {line-height:2rem;}
-                    font-size:var(--space-sm); color:$color-gray3;
-                }
-                .schedule {
-                    @include display(block);
-                    padding:.5rem 0;
-                    &.schedule_s {color:$color-brown3;}
-                    &.schedule_e {
-                        color:$color-brown;
-                        @include line(border, 1px $color-gray6 dashed, top);
-                    }
+                    display:inline-block;
+                    @include el-size(6rem, 2.2rem);
+                    @include font(xs, $color:$color-gray3, $lheight:2rem);
                 }
                 &.type {
                     & > span {
                         @extend %pgTbletdSpan;
                         background-color:$color-white;
-                        border:.1rem solid $color-gray4; border-radius:2.2rem;
+                        @include line(border, .1rem solid $color-gray4, $radius:2.2rem);
                     }
                 }
                 &.complete {
@@ -1046,24 +1095,21 @@ html.util_show {
                         @extend %pgTbletdSpan;background-color:$color-light-gray1;
                         border-radius:2.2rem;
 
-                        &.ready{background-color:$color-light-gray1; color:$color-gray4;}
-                        &.ing{background-color:$color-light-green2; color:$color-black;}
-                        &.done{background-color:$color-yellow3; color:$color-black; font-weight:700;}
+                        &.ing{background-color:$color-light-blue1; color:$color-black;}
+                        &.done{background-color:$color-yellow3; color:$color-black;}
                         &.del{background-color:$color-gray3; color:$color-white; font-weight:700;}
                         &.hold{background-color:$color-light-brown1; color:$color-white;font-weight:700;}
-                        &.msg{background-color:$color-brown; color:$color-white;font-weight:700;}
-                        
                     }
                 }
                 &.etc{width:15rem;}
 
                 a {
-                    @include display(block);
+                    display:block;
                     margin:-.7rem -5rem; padding:.7rem .5rem;
                     height:100%; font-weight:500; color:$color-black;text-decoration:underline;
 
                     // &.btn_hover {
-                    //     @include display(none); @include pos-offset-r(0, -5.5rem);
+                    //     display:none; @include pos-offset($top:0, $right:-5.5rem);
                     //     @include el-size(50%, 100%);
                     //     font-size:0; color:transparent; background-color:$color-gray6;
                     //     margin:0; padding:0; border-radius:0 1rem 1rem 0;
@@ -1076,7 +1122,7 @@ html.util_show {
                 td{
                     padding:10rem 0; background-color:$color-gray3;
                     i.no_data {
-                        @include display(block); @include el-size(2rem, 2rem); margin:0 auto 1rem;
+                        display:block; @include el-size(2rem, 2rem); margin:0 auto 1rem;
                         // url(./../img/ico_nodata.gif) no-repeat
                     }
                 }
@@ -1085,7 +1131,7 @@ html.util_show {
                 td {
                     &.id {
                         @include el-content(before) {
-                            @include pos-offset-l(0,0) {bottom:0; right:0;}
+                            @include pos-offset($top:0, $left:0, $bottom:0, $right:0);
                         }
                     }
                 }
@@ -1093,7 +1139,8 @@ html.util_show {
             tr.hr {
                 th {
                     padding:1rem 2rem; background-color:$color-light-yellow1;
-                    font-size:var(--space-ms); color:$color-black; text-align:left;
+                    @include font($color:$color-black);
+                    @include align(text, left);
                 }
             }
             .complete {
@@ -1104,7 +1151,7 @@ html.util_show {
             }
             .focus {
                 td {
-                    background-color:$color-gray2; color:$color-white;transition:0.4s;
+                    background-color:$color-gray2; color:$color-white; transition:0.4s;
                     & > a {color:$color-white;}
                 }
             }
@@ -1113,7 +1160,7 @@ html.util_show {
     }
 
     .highlight {
-        @include display(inline-block); @include pos(relative);
+        display:inline-block; @include pos-offset(relative);
 
         @include el-content(after) {
             height:.5rem; margin-top:-.7rem; background-color:rgba(255,100,0,0.7)
@@ -1121,7 +1168,7 @@ html.util_show {
     }
 
     &_scroll {
-        @include display(none); @include pos(fixed) {left:23rem; right:3rem; bottom:0; z-index:1;}
+        display:none; @include pos-offset(fixed, $left:23rem, $right:3rem, $bottom:0, $z-index:1);
         background:$color-white; opacity:0.6;
 
         & > div {
@@ -1130,14 +1177,14 @@ html.util_show {
             @extend %transition3s;
         }
     }
-    &.catch + .pg_board_scroll{@include display(block);}
+    &.catch + .pg_board_scroll{display:block;}
 
     &.list {
         table {
             tbody {
                 td, th {
                     padding:1.2rem 1rem; background-color:$color-white;
-                    text-align:left; vertical-align:middle;
+                    @include align(text, left); @include align(valign, middle);
                 }
             }
         }
@@ -1146,31 +1193,32 @@ html.util_show {
 
 #{$htmlM} {
     #{$pgBoard} {
-        table tbody td a.btn_hover{@include display(block);}
+        table tbody td a.btn_hover{display:block;}
     }
 }
 
 #{$pgGrid} {
-    border-top:.2rem solid $color-brown2;
+    @include line(border, .2rem solid $color-brown2, top);
     table {
         thead {
             th {
                 line-height:1.8rem; padding:1rem;
                 background-color:$color-light-gray2;
-                font-weight:700;color:$color-gray3;
+                font-weight:700; color:$color-gray3;
             }
         }
         tbody {
             th, td {
-                line-height:1.8rem; margin-top:.1rem; padding:1rem;
-                background-color:$color-white; color:$color-gray3;
-                vertical-align:middle; word-break:break-all;
+                margin-top:.1rem; padding:1rem;
+                background-color:$color-white;
+                line-height:1.8rem; color:$color-gray3; word-break:break-all;
+                @include align(valign, middle);
             }
 
             tr {
                 &.del td {
                     @include el-content(after) {
-                        @include pos-offset-l(50%, 0) {right:0;}
+                        @include pos-offset($top:50%, $left:0, $right:0);
                         height:1rem; margin-top:-.5rem;
                         background-color:rgba(0,0,0,0.2);
                     }
@@ -1178,7 +1226,7 @@ html.util_show {
 
                 &.hold td {
                     @include el-content(after) {
-                        @include pos-offset-l(50%, 0) {right:0;}
+                        @include pos-offset($top:50%, $left:0, $right:0);
                         height:1rem; margin-top:-.5rem;
                         background-color:rgba(255,211,56,0.2);
                     }
@@ -1194,32 +1242,34 @@ html.util_show {
 #{$pgContent} {
     &.searcher {
         #{$pgBoard} {
-            border-top:none;
+            @include line(border, none);
 
             &_panel {
                 &+& {margin-top:2rem;}
             }
         }
 
-        .pg_status {@include display(none!important);}
+        .pg_status {display:none!important;}
     }
 
     table {
         #{$pgHisory} {
             cursor:pointer;
             & > li {
-                @include display(none); @include pos(relative);
-                padding-right:3rem; text-align:left;
+                display:none; @include pos-offset(relative);
+                @include align(text, left);
+                padding-right:3rem;
                 @include ellipsis(1, auto);
 
                 @include el-content(after) {
                     content:'!';
-                    @include pos-offset-r(.2rem, 0);
-                    @include el-size(1.6rem, 1.6rem) {line-height:1.8rem;}
-                    font-size:var(--space-xs); font-weight:700; color:$color-gray4; text-align:center;
+                    @include pos-offset($top:.2rem, $right:0);
+                    @include el-size(1.6rem, 1.6rem);
+                    @include font(xs, $fontweight:700, $color:$color-gray4, $lheight:1.8rem);
+                    @include align(text, center);
                     background-color:$color-light-gray1; border-radius:100%;
                 }
-                &:first-child{@include display(block);}
+                &:first-child{display:block;}
 
                 &.design{color:$color-violet; font-weight:700;}
                 &.plan{color:$color-green; font-weight:700;}
@@ -1231,7 +1281,8 @@ html.util_show {
 
 #{$pgHisory} {
     &_pop {
-        @include pos-offset-l(50%, 50%){position:fixed; transform:translate(-50%,-50%); @include overflow(y, auto); z-index:1000;}
+        @include pos-offset(fixed, $top:50%, $left:50%, $z-index:1000);
+        transform:translate(-50%,-50%); @include overflow(y, auto);
         min-width:25rem; max-width:50rem; max-height:30rem; padding:2rem;
         background-color:$color-white; border-radius:1rem;
         box-shadow: .5rem .5rem 15rem .5rem $color-black;
@@ -1239,30 +1290,31 @@ html.util_show {
         animation:remarkPop 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 
         & > h2 {
-            padding-bottom:1.5rem; border-bottom:.1rem solid $color-gray6;
-            font-size:var(--space-md); color:$color-black;
+            padding-bottom:1.5rem;
+            @include line(border, .1rem solid $color-gray6, bottom);
+            @include font($color:$color-black);
         }
 
         & > .history{
             padding-top:1rem;
             li{
-                @include pos(relative); padding:.5rem 0 .5rem 1rem;
+                @include pos-offset(relative); padding:.5rem 0 .5rem 1rem;
 
                 &.design{color:$color-violet; font-weight:700;}
                 &.plan{color:$color-green; font-weight:700;}
                 &.wa{color:$color-brown; font-weight:700;}
 
                 @include el-content(before) {
-                    @include pos-offset-l(1.1rem, 0);
+                    @include pos-offset($top:1.1rem, $left:0);
                     @include el-size(.3rem, .3rem);
                     background-color:$color-gray3; border-radius:100%;
                 }
             }
         }
         .btn_search_del {
-            @include pos-offset-r(1rem,1rem);
+            @include pos-offset($top:1rem, $right:1rem);
             @include el-size(2rem, 2rem);
-            background-image: svgIcon(btn_search_cancel, 666); background-size:2rem;
+            background-image: pgSvgIcon(btn_search_cancel, 666); background-size:2rem;
         }
     }
 }
@@ -1273,7 +1325,8 @@ html.util_show {
 }
 
 %dimBg {
-    @include pos-offset-l(0,0) {position:fixed; @include overflow(both, hidden); z-index:999;}
+    @include pos-offset(fixed, $top:0, $left:0, $z-index:999);
+    @include overflow(both, hidden);
     @include el-size(100%, 100%);
     background-color: rgba(0, 0, 0, 0.5);
 }
@@ -1289,15 +1342,16 @@ html.util_show {
 #{$pgLayout} {
     padding-top:3rem;
     div {
-        @include pos(relative); margin-top:4rem; padding:4rem 1.5rem 1.5rem;
-        border:.2rem solid $color-light-gray1;
+        @include pos-offset(relative); margin-top:4rem; padding:4rem 1.5rem 1.5rem;
+        @include line(border, .2rem solid $color-light-gray1);
         @extend %transition3s;
 
         @include el-content(before) {
-            @include pos-offset-l(-2.7rem, -.2rem);
-            @include el-size(13rem, 2.5rem) {line-height:2.5rem;}
+            @include pos-offset($top:-2.7rem, $left:-.2rem);
+            @include el-size(13rem, 2.5rem);
+            @include font($color:$color-gray3, $lheight:2.5rem);
             background-color:$color-light-gray1; border-radius:.8rem .8rem 0 0;
-            color:$color-gray3; text-align:center;
+            @include align(text, center);
             @extend %transition3s;
         }
     }
@@ -1329,7 +1383,10 @@ html.util_show {
         &_content{
             padding:1.5rem;
             & > div {
-                margin:0; padding:8rem 0; border:none; background-color:rgba(255,255,255,0.3);font-size:var(--space-mx); color:$color-white; text-align:center;
+                margin:0; padding:8rem 0; background-color:rgba(255,255,255,0.3);
+                @include line(border, none);
+                @include font(lg, $color:$color-white);
+                @include align(text, center);
                 @extend %transition3s;
 
                 @include el-content(before) {content:'div#contents'; width:1.5rem;}
@@ -1359,7 +1416,8 @@ html.util_show {
   Device Frame
 *****************************************************************/
 #{$pgDivice} {
-    @include pos-offset-r(7rem, -100%) {position:fixed; width:37rem; z-index:11;}
+    @include pos-offset(fixed, $top:7rem, $right:-100%, $z-index:11);
+    width:37rem;
     @extend %transition3s;
 
     &.pop {
@@ -1369,12 +1427,12 @@ html.util_show {
     &.fixed .head{cursor:pointer!important;}
 
     .head {
-        @include pos(relative); @include overflow(both, hidden);
+        @include pos-offset(relative); @include overflow(both, hidden);
         height:5rem; padding:0 5.5rem;
         background-color:$color-brown3;
 
         @include el-content(after) {
-            @include pos-offset-l(50%, 50%); @include el-size(.2rem, .2rem);
+            @include pos-offset($top:50%, $left:50%); @include el-size(.2rem, .2rem);
             border-radius:100%; background-color:rgba(0,0,0,.3); opacity:0;
             transform:translate(-50%, -50%);
         }
@@ -1385,46 +1443,47 @@ html.util_show {
         }
 
         & > button, & > a {
-            @include pos(absolute) {top:0;} @include el-size(5rem, 5rem);
+            @include pos-offset($top:0);
+            @include el-size(5rem, 5rem);
         }
 
         & > a {
             &.newWindow {
                 left:0;
-                background-image: svgIcon(fd_newWindow);
-                background-position:50% 50%; background-size:3rem 3rem; background-repeat:no-repeat;
+                background:pgSvgIcon(fd_newWindow); background-size:3rem 3rem;
             }
         }
 
         & > button {
             &.disconnect{
                 right:0;
-                background-image: svgIcon(fd_disconnect); background-position:50% 50%;  background-size:3rem 3rem; background-repeat:no-repeat;
+                background:pgSvgIcon(fd_disconnect); background-size:3rem 3rem; 
             }
         }
 
         & > h2 {
-            padding-top:.9rem; text-align:center;
+            padding-top:.9rem;
+            @include align(text, center);
             @include ellipsis(1, auto);
 
             & > span {
-                @include display(block); width:100%; padding:.3rem 0;
-                font-size:var(--space-xs); font-weight:500; color:$color-white;
+                display:block; width:100%; padding:.3rem 0;
+                @include font(xs, $color:$color-white);
                 @include ellipsis(1, auto);
-                & + span{font-size:var(--space-xs); }
+                & + span{@include font(xs);}
             }
         }
     }
 
     .device {
-        @include pos(relative); padding:.5rem; background-color:$color-brown3;
+        @include pos-offset(relative); padding:.5rem; background-color:$color-brown3;
         .btn_size_set {
-            @include display(flex); width:100%; padding-bottom:.5rem;
+            @include flex; width:100%; padding-bottom:.5rem;
 
             button{
                 box-flex:1; -webkit-box-flex:1; justify-content:center; align-items:center;
                 @include el-size(100%, 2rem); background-color:$color-brown2;
-                font-size:var(--space-xs); font-weight:bold; color:$color-white;
+                @include font(xs, $fontweight:700, $color:$color-white);
 
                 & + button {margin-left:.3rem;}
             }
@@ -1449,9 +1508,7 @@ html.util_show {
 }
 .component {
     &-lst {
-        @include display(flex);
-        @include flex;
-        flex-wrap:wrap;
+        @include flex($wrap:wrap);
 
         & > li {
             margin-bottom:4rem;
@@ -1462,17 +1519,15 @@ html.util_show {
     &-wrap {
         min-width:375px;
         & ~ & {margin-left:2rem;}
-        & > iframe {width:100%; height:64rem; border:.2rem $color-gray2 solid;}
+        & > iframe {width:100%; height:64rem; @include line(border, .2rem $color-gray2 solid);}
     }
 
     &-item {
         margin-bottom:2rem;
-        @include display(flex) {
-            flex-wrap: wrap;
-        };
-        & > * {padding:1.5rem 1rem; border-top:1px $color-gray1 solid; @include webfont("roboto", 400)}
+        @include flex ($wrap:wrap);
+        & > * {padding:1.5rem 1rem; @include line(border, 1px $color-gray1 solid, -top); @include webfont("roboto", 400)}
         & > dt {
-            @include flexbox(0, 0, 20%);
+            flex:0 0 20%;
             
             &:first-child {
                 border:0;
@@ -1480,7 +1535,7 @@ html.util_show {
             }
         }
         & > dd {
-            @include flexbox(0, 0, 80%);
+            flex:0 0 80%;
         }
     }
 }
@@ -1503,8 +1558,8 @@ html.util_show {
             @include el-content(before){
                 color:$color-orange;
                 margin-right:1rem;
-                @include display(inline-block);
-                @include align(vertical, middle);
+                display:inline-block;
+                @include align(valign, middle);
                 content:"\f02e";
                 @include webfont('iconFont', 900);
             }
@@ -1536,7 +1591,7 @@ html.util_show {
                 &.dep01{@include fontSize("xxl");padding-bottom:.5rem; margin-bottom:1.5rem;}
                 &.dep02{
                     @include fontSize("lg"); background:$color-tbl-thead; padding:.5rem 1rem;
-                    @include el-content(before){display:none;}
+                    @include el-content(before, none);
                 }
                 &.dep03{@include fontSize("md");}
 
@@ -1554,14 +1609,14 @@ html.util_show {
         width:100%;
         th, td {
             padding:1rem;
-            border-top:1px $color-gray1 solid;
+            @include line(border, .1rem $color-gray1 solid, top);
         }
 
         th {background:$color-light-gray1;}
         td {background:$color-light-gray2;}
 
         tbody {
-            tr:first-child > th, tr:first-child > td {@include line(border, 1px #222 solid, top)}
+            tr:first-child > th, tr:first-child > td {@include line(border, .1rem #222 solid, top)}
         }
         
         thead + tbody {
@@ -1571,7 +1626,7 @@ html.util_show {
 }
 
 #{$hr} {
-    &.divice {@include display(block); visibility:visible; background:$color-gray5; border:none; height:1px;}
+    &.divice {display:block; visibility:visible; background:$color-gray5; border:none; height:1px;}
 }
 
 /*****************************************************************
@@ -1621,7 +1676,7 @@ html.util_show {
             &_util {
                 #{$pgSrch} {
                     #btnPgSearch{
-                        background-image: svgIcon(btnPgSearchDark, ddd);
+                        background:pgSvgIcon(btnPgSearchDark, ddd);
                     }
     
                     input[type=text] {
@@ -1632,7 +1687,7 @@ html.util_show {
                     }
 
                     .btn_search_del {
-                        background-image: svgIcon(btn_search_cancel, ddd);
+                        background:pgSvgIcon(btn_search_cancel, ddd);
                 }
                 }
             }
@@ -1661,7 +1716,7 @@ html.util_show {
         &_util {
             #{$pgSrch} {
                 #btnPgSearch{
-                    background-image: svgIcon(btnPgSearchDark, 666);
+                    background:pgSvgIcon(btnPgSearchDark, 666);
                 }
 
                 input[type=text] {
@@ -1716,7 +1771,7 @@ html.util_show {
     }
 
     #{$pgDivice} {
-        border:.2rem solid $color-darkMode3;
+        @include line(border, .2rem solid $color-darkMode3);
         .head, .device {background-color:$color-black;}
         .device {
             .btn_size_set button{background-color:$color-darkMode3;}
@@ -1732,4 +1787,4 @@ html.util_show {
 }
 
 // media Query import
-@import '../../../asset/com/scss/mediaquery';
+// @import '../../../asset/scss/mediaquery';

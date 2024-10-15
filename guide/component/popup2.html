@@ -1,0 +1,578 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui, viewport-fit=cover, user-scalable=no">
+    <title>팝업/알럿/토스트</title>
+    
+    <!-- [S] PUBLISH COMMON STYLE -->
+    <link rel="stylesheet" href="../../asset/css/cp.popup2.css">
+    <!-- [E] PUBLISH COMMON STYLE -->
+
+    <!-- [S] PAGES - STYLE -->
+    <link rel="stylesheet" href="">
+    <!-- [E] PAGES - STYLE -->
+
+    <!-- [S] LIBRARY - SCRIPT -->
+    <script src="../../asset/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../../asset/js/lib/lib.jquery-ui-1.13.2.js"></script>
+    <!-- [E] LIBRARY - SCRIPT -->
+
+    <!-- [S] @TEMP - GUIDE STYLE -->
+    <link rel="stylesheet" href="../com/css/cm.guide.css">
+    <!-- [E] @TEMP - GUIDE STYLE -->
+</head>
+<body>
+    <div id="cp-wrap">
+        <div id="cp-container">
+            <h1 class="cp-tit dep01">팝업/툴팁</h1>
+
+            <section class="cp-content">
+                <h2 class="cp-tit dep02">POPUP</h2>
+
+                <div class="btnWrap">
+                    <button class="btn btn-size md bg _modalBtn" data-modal="modal1">Top Modal</button>
+                    <button class="btn btn-size md bg _modalBtn" data-modal="modal2">Center Modal</button>
+                    <button class="btn btn-size md bg _modalBtn" data-modal="modal3">Left Modal</button>
+                    <button class="btn btn-size md bg _modalBtn" data-modal="modal4">Bottom Modal</button>
+                    <button class="btn btn-size md bg _modalBtn" data-modal="modal5">Full Modal</button>
+                    <button class="btn btn-size md bg _toastBtn" data-toast="토스트 팝업메세지를 출력" >토스트팝업</button>
+                </div>
+
+                <div class="modalPop _top" modal-target="modal1">
+                    <div class="modalWrap">
+                        <div class="modal-header">
+                            <a href="#" class="ico ico-his-prev" role="button"><span class="hide">이전페이지</span></a>
+                            <h1 class="mp-title dep01">Top Modal</h1>
+                            <a href="#" class="btn-close-pop ico ico-pop-close" role="button"><span class="hide">창닫기</span></a>
+                        </div>
+                        <div class="modal-container"><p>Top Modal Content</p></div>
+                        <div class="modal-footer">
+                            <div class="btnWrap grow">
+                                <button class="btn btn-size md type2 bg">확인</button>
+                                <button class="btn btn-size md bg btn-close-pop">취소</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="modalPop _center" modal-target="modal2">
+                    <div class="modalWrap">
+                        <div class="modal-header">
+                            <!-- <a href="#" class="ico ico-his-prev" role="button"><span class="hide">이전페이지</span></a> -->
+                            <h1 class="mp-title dep01">Center Modal</h1>
+                            <a href="#" class="btn-close-pop ico ico-pop-close" role="button"><span class="hide">창닫기</span></a>
+                        </div>
+                        <div class="modal-container"><p>Center Modal Content</p></div>
+                        <div class="modal-footer">
+                          <div class="btnWrap grow">
+                              <button class="btn btn-size md type2 bg">확인</button>
+                              <button class="btn btn-size md bg btn-close-pop">취소</button>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+            
+                <div class="modalPop _left" modal-target="modal3">
+                    <div class="modalWrap">
+                        <div class="modal-header">
+                            <a href="#" class="ico ico-his-prev" role="button"><span class="hide">이전페이지</span></a>
+                            <h1 class="mp-title dep01">Left Modal</h1>
+                            <a href="#" class="btn-close-pop ico ico-pop-close" role="button"><span class="hide">창닫기</span></a>
+                        </div>
+                        <div class="modal-container"><p>Left Modal Content</p></div>
+                        <div class="modal-footer">
+                            <div class="btnWrap grow">
+                                <button class="btn btn-size md type2 bg">확인</button>
+                                <button class="btn btn-size md bg btn-close-pop">취소</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="modalPop _bottom" modal-target="modal4">
+                    <div class="modalWrap">
+                        <div class="modal-header">
+                            <!-- <a href="#" class="ico ico-his-prev" role="button"><span class="hide">이전페이지</span></a> -->
+                            <h1 class="mp-title dep01">Bottom Modal</h1>
+                            <a href="#" class="btn-close-pop ico ico-pop-close" role="button"><span class="hide">창닫기</span></a>
+                        </div>
+                        <div class="modal-container"><p style="height:1000px; background:yellow">Bottom Modal Content</p></div>
+                        <div class="modal-footer">
+                            <div class="btnWrap grow">
+                                <button class="btn btn-size md type2 bg">확인</button>
+                                <button class="btn btn-size md bg btn-close-pop">취소</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+            
+                <div class="modalPop _full" modal-target="modal5">
+                  <div class="modalWrap">
+                      <div class="modal-header">
+                          <!-- <a href="#" class="ico ico-his-prev" role="button"><span class="hide">이전페이지</span></a> -->
+                          <h1 class="mp-title dep01">Full Modal</h1>
+                          <a href="#" class="btn-close-pop ico ico-pop-close" role="button"><span class="hide">창닫기</span></a>
+                      </div>
+                      <div class="modal-container">
+                        <p style="height:1000px; background:yellow">
+                          <button class="btn btn-size md bg _modalBtn" data-modal="networkError">networkError</button>
+                          Bottom Modal Content
+                        </p>
+                      </div>
+                      <div class="modal-footer">
+                          <div class="btnWrap grow">
+                              <button class="btn btn-size md type2 bg">확인</button>
+                              <button class="btn btn-size md bg btn-close-pop">취소</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- [S] AlertPop : 네트워크 오류 -->
+              <div class="modalPop _alert" modal-target="networkError">
+                <div class="modalWrap">
+                    <div class="modal-header">
+                        <h1 class="mp-title">AlertPop</h1>
+                        <a href="javascript:void(0);" class="btn-close-pop ico ico-close" role="button"><span class="hide">창닫기</span></a>
+                    </div>
+                    <div class="modal-container">
+                      <p class="alert-msg">
+                        현재 네트워크가 불안정하여<br>
+                        접속이 원할하지 않습니다
+                      </p>
+                      <p class="alert-msg sub">
+                        이용에 불편을 드려 죄송합니다<br>
+                        잠시 후 다시 시도해 주세요
+                      </p>
+                    </div>
+                    <div class="modal-footer">
+                      <div class="btnWrap grow">
+                        <button class="btn btn-size md bg">취소</button>  
+                        <button class="btn btn-size md type2 bg btn-close-pop">확인</button>
+                          <!-- 창닫기 .btn-close-pop 클래스 적용 -->
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <!--// [E] AlertPop : 네트워크 오류 -->
+
+            </section>
+
+        </div>
+    </div>
+
+<!-- [S] PAGES - SCRIPT -->
+<!-- <script src="../../asset/js/ui.component.js"></script> -->
+ <script>
+var COMPONENT_UI = (function (cp, $) {
+  
+  cp.modalPop = {
+        constEl: {
+            btnModal: "._modalBtn", // 모달 버튼 선택자
+            dimmedEl: $('<div class="dimmed" aria-hidden="true"></div>') // dimmed 배경 요소
+        },
+        isOpen: false, // 모달 열림 상태를 관리하는 플래그
+        init: function() {
+            this.openPop(); // 모달 열기 이벤트 초기화
+            this.closePop(); // 모달 닫기 이벤트 초기화
+            this.toastPop(); // 토스트 팝업 초기화
+        },
+    
+        openPop: function () {
+            const self = this,
+                btnModal = this.constEl.btnModal;
+                
+            $('html, body').on('click', btnModal, function() {
+
+                if (!self.isOpen) { // 모달이 열려 있지 않은 경우에만 실행
+                    $(this).addClass('_rtFocus'); // 포커스 클래스 추가
+                    self.showModal($(this)); // 모달 표시
+                    self.layerFocusControl($(this)); // 포커스 제어
+                }
+            });
+        },
+        
+        showModal: function ($btn) {
+            const self = this,
+                dimmedEl = this.constEl.dimmedEl;
+            const target = $btn.attr('data-modal');
+            const $modal = $('.modalPop[modal-target="' + target + '"]');
+            var $modalWrap = $modal.find("> .modalWrap");
+            var modalWrapClass = $modal.attr('class');
+            var modalWidth = '';
+            var modalHeight = '';
+    
+            modalWidth = $modal.outerWidth();              
+            winHeight = $(window).height();
+        
+            if (modalWrapClass.indexOf('_top') !== -1) {
+                $modal.addClass('_is-active');
+                modalHeight = $modalWrap.outerHeight();
+    
+                $modalWrap.css({
+                    'height': modalHeight + 'px',
+                    'transition': 'opacity 250ms cubic-bezier(.86, 0, .07, 1)'
+                });
+                $modal.animate({
+                    top: '0'
+                }, 300).show();
+            } else if (modalWrapClass.indexOf('_left') !== -1) {
+                $modal.addClass('_is-active');                
+    
+                modalTitHeight = $modalWrap.find(" > .modal-header").outerHeight();
+                modalConHeight = $modalWrap.find(" > .modal-container").outerHeight();
+                modalBtnHeight = $modalWrap.find(" > .modal-footer").outerHeight();
+    
+                modalConMaxHeight = winHeight - modalTitHeight - modalBtnHeight - 40                
+    
+                if (modalConHeight > winHeight) {
+                    $modalWrap.css({
+                        'height': 100 + 'vh',
+                        'transition': 'opacity 250ms cubic-bezier(.86, 0, .07, 1)'
+                    }).find('> .modal-container').css({
+                        'height': modalConMaxHeight + 'px',
+                    }).attr("tabindex","0");
+                    $modal.addClass("_scroll").animate({
+                        left: '0',
+                    }, 300).show();
+                } else {
+                    $modal.animate({
+                        left: '0',
+                        height:'100%',
+                    }, 300).show();
+                }
+                
+            } else if (modalWrapClass.indexOf('_center') !== -1) {
+                $modal.addClass('_is-active');
+    
+                modalHeight = $modalWrap.outerHeight();
+    
+                modalTitHeight = $modalWrap.find(" > .modal-header").outerHeight();
+                modalConHeight = $modalWrap.find(" > .modal-container").outerHeight();
+                modalBtnHeight = $modalWrap.find(" > .modal-footer").outerHeight();
+                
+                if (modalHeight > winHeight) {
+                    $modal.addClass('_scroll').css({
+                        'margin-left': -modalWidth / 2 + 'px',
+                        'margin-top': -(winHeight - 100) / 2 + 'px',
+                        'max-height': winHeight - 100 + 'px',
+                        'height': ''
+                    }, 100).show();
+                    $modalWrap
+                    .css({
+                        'max-height': winHeight - 100 + 'px',
+                    })
+                    .find(" > .modal-container").css({
+                        'max-height': winHeight - (modalTitHeight + modalBtnHeight) - 160 + 'px'
+                    }).attr("tabindex", "0");
+                } else {
+                    $modal.css({
+                        'margin-left': -modalWidth / 2 + 'px',
+                        'margin-top': -modalHeight / 2 + 'px',
+                        'height': modalHeight + 'px',
+                    }, 100).show();
+                }
+            } else if (modalWrapClass.indexOf('_bottom') !== -1) {
+                $modal.addClass('_is-active');
+                modalHeight = $modalWrap.outerHeight();
+    
+                modalTitHeight = $modalWrap.find(" > .modal-header").outerHeight();
+                modalConHeight = $modalWrap.find(" > .modal-container").outerHeight();
+                modalBtnHeight = $modalWrap.find(" > .modal-footer").outerHeight();
+    
+                if (modalHeight > winHeight) {
+                    $modal.addClass('_scroll').css({
+                        'max-height': winHeight - 100 + 'px',
+                        'height': ''
+                    })
+                    .animate({
+                        'bottom': '0',
+                        'transition': 'opacity 250ms cubic-bezier(.86, 0, .07, 1)'
+                    }, 300).show();
+                    $modalWrap
+                    .css({
+                        'max-height': winHeight - 100 + 'px',
+                    })
+                    .find(" > .modal-container").css({
+                        'max-height': winHeight - (modalTitHeight + modalBtnHeight) - 160 + 'px'
+                    }).attr("tabindex", "0");
+                } else {
+                    $modal.css({
+                        'height': modalHeight + 'px',
+                    })
+                    .animate({
+                        'bottom': '0',
+                        'transition': 'opacity 250ms cubic-bezier(.86, 0, .07, 1)'
+                    }, 300).show();
+                }
+            } else if (modalWrapClass.indexOf('_full') !== -1) {
+                $modal.addClass('_is-active');
+    
+                modalHeight = $modalWrap.outerHeight();
+    
+                modalTitHeight = $modalWrap.find(" > .modal-header").outerHeight();
+                modalConHeight = $modalWrap.find(" > .modal-container").outerHeight();
+                modalBtnHeight = $modalWrap.find(" > .modal-footer").outerHeight();
+                
+                if (modalHeight > winHeight) {
+                    $modal.addClass('_scroll').show();
+                    $modalWrap
+                    .find(" > .modal-container").css({
+                        'max-height': winHeight - (modalTitHeight + modalBtnHeight) - 80 + 'px'
+                    }).attr("tabindex", "0");
+                } else {
+                    $modal.show();
+                }
+            } else if (modalWrapClass.indexOf('_alert') !== -1) {
+                $modal.addClass('_is-active');
+    
+                modalHeight = $modalWrap.outerHeight();
+    
+                modalTitHeight = $modalWrap.find(" > .modal-header").outerHeight();
+                modalConHeight = $modalWrap.find(" > .modal-container").outerHeight();
+                modalBtnHeight = $modalWrap.find(" > .modal-footer").outerHeight();
+                
+                if (modalHeight > winHeight) {
+                    $modal.addClass('_scroll').show();
+                    $modalWrap
+                    .css({
+                        'max-height': winHeight - 100 + 'px',
+                    })
+                    .find(" > .modal-container").css({
+                        'max-height': winHeight - (modalTitHeight + modalBtnHeight) - 160 + 'px'
+                    }).attr("tabindex", "0");
+                } else {
+                    $modal.show();
+                }
+            }
+            $modal.attr({'aria-hidden': 'false'});
+            $modalWrap.attr({'role': 'dialog', 'aria-modal': 'true'})
+                    .find('a, *[role="button"], button, h1, h2, h3, h4, h5, h6').first().each(function() {
+                        if ($(this).is('h1, h2, h3, h4, h5, h6')) {
+                            $(this).attr('tabindex', '0');
+                        }
+                    });
+                    // $modalWrap.attr({'tabindex': '0'}).focus();
+                    
+            setTimeout(function() {
+                $modalWrap.find(".ico-his-prev").focus()
+                var firstFocusable;
+            
+                // .modal-header가 있을 경우
+                if ($modalWrap.find('.modal-header').length) {
+                    firstFocusable = $modalWrap.find('.modal-header').find('a.ico-his-prev, a, *[role="button"], button, h1, h2, h3, h4, h5, h6').first();
+                } else {
+                    // .modal-header가 없을 경우
+                    firstFocusable = $modalWrap.find('a.ico-his-prev, a, *[role="button"], button, h1, h2, h3, h4, h5, h6').first();
+                }
+            
+                if (firstFocusable.length) {
+                    firstFocusable.focus();
+                }
+            }, 300);
+            // dimmedEl.remove(); 
+            $('body').addClass('no-scroll').append(dimmedEl);    
+            
+        },
+        
+        closePop: function() {
+            const self = this;
+            $('.modalPop').on('click', '.btn-close-pop', function() {
+                var $modal = $(this).closest('.modalPop'); // 닫으려는 모달 선택
+                var $modalWrap = $modal.find("> .modalWrap"); // 모달 래퍼 선택
+                var modalWrapClass = $modal.attr('class'); // 모달 클래스 가져오기
+                if (modalWrapClass.indexOf('_top') !== -1) {
+                    $modal.animate({ top: '-100%' }, 300, function() {
+                        $modal.removeClass('_is-active').hide();
+                        self.isOpen = false; // 모달 닫힘 상태로 변경
+                    });
+                } else if (modalWrapClass.indexOf('_left') !== -1) {
+                    $modal.animate({ left: '-100%' }, 300, function() {
+                        $modal.removeClass('_is-active').hide();
+                        self.isOpen = false; // 모달 닫힘 상태로 변경
+                    });
+                    $modalWrap.css({
+                        'max-height': '', 'height': '', 'transition': ''
+                    }).find(" > .modal-container").css({
+                        'height': ''
+                    }).removeAttr("tabindex");
+                } else if (modalWrapClass.indexOf('_center') !== -1) {
+                    $modal.removeClass('is-active').css({
+                        'height': '', 'max-height': '', 'margin': '',
+                    }).hide();
+                    $modalWrap.css({
+                        'max-height': '',
+                    }).find(" > .modal-container").css({
+                        'max-height': ''
+                    }).removeAttr("tabindex");
+                    self.isOpen = false; // 모달 닫힘 상태로 변경
+                } else if (modalWrapClass.indexOf('_bottom') !== -1) {
+                    $modal.animate({ bottom: '-100%' }, 300, function() {
+                        $modal.removeClass('_is-active').css({
+                            'height': '', 'max-height': ''
+                        }).hide();
+                        $modalWrap.css({
+                            'max-height': '',
+                        }).find(" > .modal-container").css({
+                            'max-height': ''
+                        }).removeAttr("tabindex");
+                        self.isOpen = false; // 모달 닫힘 상태로 변경
+                    });
+                } else if (modalWrapClass.indexOf('_full') !== -1) {
+                    $modal.removeClass('is-active').hide();
+                    $modalWrap.find(" > .modal-container").css({
+                        'max-height': ''
+                    }).removeAttr("tabindex");
+                    self.isOpen = false; // 모달 닫힘 상태로 변경
+                } else if (modalWrapClass.indexOf('_alert') !== -1) {
+                    $modal.removeClass('is-active').hide();
+                    $modalWrap.css({
+                        'max-height': '',
+                    }).find(" > .modal-container").css({
+                        'max-height': ''
+                    }).removeAttr("tabindex");
+                    self.isOpen = false; // 모달 닫힘 상태로 변경
+                }
+    
+                // 포커스 관리
+                self.rtFocus($(this));
+                $modal.attr({'aria-hidden': 'true'});
+                $modalWrap.attr({'aria-modal': 'false'}).removeAttr('tabindex')
+                    .find('a, button, h1, h2, h3, h4, h5, h6').first().removeAttr('tabindex');
+                $('body').removeClass('no-scroll'); // 스크롤 활성화
+                $(this).closest('.modalPop').prev().focus(); // 이전 요소에 포커스
+                $('.dimmed').remove(); // dimmed 요소 제거
+            });
+        },
+  
+        // 탭으로 포커스 이동 시 팝업이 열린상태에서 팝업 내부해서만 돌도록 제어하는 함수
+        layerFocusControl: function ($btn) {
+            // var target = $btn.attr('data-modal');
+            // var $modal = $('.modalPop[modal-target="' + target + '"]');
+            const target = $btn.attr('data-modal') || $btn.attr('data-select');
+            const $modal = $('.modalPop[modal-target="' + target + '"], .modalPop[select-target="' + target + '"]');
+            var $modalWrap = $modal.find("> .modalWrap");
+            
+            var $firstEl = $modalWrap.find('a, button, h1, h2, h3, h4, h5, h6, input, textarea, select, [tabindex]:not([tabindex="-1"])').first();
+            var $lastEl = $modalWrap.find('a, button, h1, h2, h3, h4, h5, h6, input, textarea, select, [tabindex]:not([tabindex="-1"])').last();
+            
+            $modalWrap.on("keydown", function (e) {
+                if (e.keyCode == 9) {
+                if (e.shiftKey) { // shift + tab
+                    if ($(e.target).is($firstEl)) {
+                        $lastEl.focus();
+                        e.preventDefault();
+                        }
+                    } else { // tab
+                        if ($(e.target).is($lastEl)) {
+                        $firstEl.focus();
+                        e.preventDefault();
+                        }
+                    }
+                }
+            });
+        },
+  
+        rtFocus: function(){
+            setTimeout(function() {
+                $('._rtFocus').focus();
+                $('._rtFocus').removeClass('_rtFocus');
+            }, 300);
+        },
+  
+        // toast pop
+        toastPop: function() {
+            const self = this;
+            
+            function createToast(toastMsg) {
+                const toastWrapTemplate = $('<div>', {
+                'class': 'toastWrap',
+                'role': 'alert',
+                'aria-live': 'assertive',
+                'tabindex': '0'
+                }).append(
+                    $('<div>', {'class': 'toast-msg'}).html(toastMsg),
+                    $('<a>', {
+                        'class': 'btn ico-close',
+                        'href': '#',
+                        'aria-label': 'Close'
+                    }).attr("tabindex", "-1").append(
+                        $('<span>', {'class': 'hide'}).text('토스트팝업닫기')
+                    )
+                );
+            
+                $('body').append(toastWrapTemplate);
+            
+                const toast = $('.toastWrap');
+                const $icoClose = $('.ico-close');
+                
+                toast.on('keydown', function(event) {
+                    toast.addClass('_is-keyEvent');                
+                    $icoClose.addClass('_is-active').attr("tabindex", "0");
+                    if (event.key === 'Escape') {
+                        $icoClose.click();
+                    } else if (event.key === 'Tab') {
+                        event.preventDefault();
+                        const focusableElements = toast.find('.ico-close._is-active, [tabindex]');
+                        const $firstElement = focusableElements.first();
+                        const $lastElement = focusableElements.last();
+                        if (event.shiftKey) {
+                            $lastElement.focus();
+                        } else {
+                            $firstElement.focus();
+                        }
+                    }
+                });
+                
+                const closeClickHandler = function() {
+                    toast.removeClass('_is-keyEvent');
+                    
+                    toast.fadeOut(function() {
+                    if (toast.hasClass('toastWrap')) {
+                        toast.remove();
+                    }
+                    $('._toastBtn._rtFocus').focus().removeClass('_rtFocus');
+                    });
+                };
+                
+                $icoClose.on('click', closeClickHandler);
+                
+                const focusableElements = toast.find('.ico-close._is-active, [tabindex]');
+                focusableElements.first().focus();
+                
+                const timer = setTimeout(function() {
+                    if (toast.hasClass('_is-keyEvent')) {
+                        return;
+                    }
+                    closeClickHandler();
+                }, 3000);
+            }
+            
+            $('._toastBtn').on('click', function() {
+                $('._toastBtn._rtFocus').removeClass('_rtFocus');
+                $(this).addClass('_rtFocus');
+            
+                const toastMsg = $(this).attr('data-toast');
+                createToast(toastMsg);
+            });
+        }
+        
+    },
+  cp.init = function () {
+        cp.uaCheck.init();
+        cp.modalPop.init();
+    };
+
+    return cp;
+  }(window.COMPONENT_UI || {}, jQuery));
+  COMPONENT_UI.modalPop.init();
+ </script>
+<!-- [E] PAGES - SCRIPT -->
+</body>
+</html>

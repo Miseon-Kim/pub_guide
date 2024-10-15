@@ -2,8 +2,8 @@
 /****************************************/
 /*	PART: IMPORT CSS
 /****************************************/
-@import '../../../asset/com/scss/variables';
-@import '../../../asset/com/scss/mixin';
+@import '../../../asset/scss/variables';
+@import '../../../asset/scss/mixin';
 
 /****************************************/
 /*	PART: GUIDE PAGE STYLE
@@ -27,9 +27,10 @@
         &:focus,
         &:hover,
         &:active {
-            width:auto; height:2.8rem; margin:0; padding:.8rem 0;  
-            background:$color-black; @include fontSize("base"); line-height:1.2rem; color:$color-white;
-            z-index:$zIndex-15; box-sizing:border-box;
+            width:auto; height:2.8rem; margin:0; padding:.8rem 0;
+            background:$color-black;
+            @include font($color:$color-white, $lheight:1.2rem);
+            z-index:15; box-sizing:border-box;
         }
     }
     
@@ -52,16 +53,17 @@
     &-hgroup {
         padding:2.5rem 2rem 2rem;
         .wgTit01 {
-            font-size:var(--space-mx);
+            @include font(lg);
             @include el-content(before, inline-block) {
                 content:'\f550';
-                font-family:'iconFont'; color:#302CA4; font-size:var(--space-ms);
-                margin-right:0.5rem; vertical-align:middle;
+                @include font($color:#302CA4, $fontName:'iconFont');
+                margin-right:0.5rem;
+                @include align(valign, middle);
             }
         }
     }
     &-fxWrap {
-        @include display(flex);
+        @include flex;
         & ~ & {margin-top:4rem;}
     }
     &-rowWrap {
@@ -81,14 +83,16 @@
         }
     }
     
-    &-contBoxWrap {@include display(flex); padding:0 2rem;}
+    &-contBoxWrap {@include flex; padding:0 2rem;}
     &-contBody {
         width:100%;
-        background:$color-white; color:$color-gray1; border:1px solid $color-white; box-shadow: 0 0 13px 0 rgba(82,63,105,.1);
+        background:$color-white; color:$color-gray1;
+        @include line(border, 1px solid $color-white);
+        box-shadow: 0 0 13px 0 rgba(82,63,105,.1);
 
         & > dt {
             padding:2rem; font-size:1.5rem;
-            & + dd {border-top:1px solid #ebedf2;}
+            & + dd {@include line(border, 1px solid #ebedf2, top);}
         }
         & > dd {
             padding:2rem;
@@ -96,7 +100,7 @@
         }
     }
     &-TxtTit {
-        @include display(inline-block);
+        display:inline-block;
         padding:0.5rem 1rem; margin-bottom:0.5rem;
         background:#E8E9FB; color:#4d5cf2; border-radius:0.5rem;
     }
@@ -108,8 +112,7 @@
     &-lst-bar {
         & > li, .wg-ico {text-indent:-0.5rem; margin-left:0.5rem;}
         & > li {
-            @include el-content(before) {
-                @include display(inline-block);
+            @include el-content(before, inline-block) {
                 content:'-'; margin-right:0.5rem;
             }
             & ~ li {margin-top:0.5rem;}
@@ -140,17 +143,17 @@
     }
 
     &-splitWrap {
-        @include display(flex); flex-wrap:wrap;
+        @include flex($wrap:wrap);
         &.col2 {
             & > li {
-                @include display(inline-block);
+                display:inline-block;
                 flex-direction: column; width:48%; padding:0 0.5rem 0.5rem;
                 &:nth-child(even) {margin-left:1%;}
                 &.wg-split-none {flex-direction:row; display:block; width:100%; margin:0;}
             }
             &.wg-lst-bar > li ~ li {margin-top:0;}
             & > .colSec {
-                @include display(inline-block);
+                display:inline-block;
                 flex-direction: column;
                 width:49%; padding:0 0.5rem 0.5rem;
 
@@ -172,9 +175,9 @@
     border-radius: .5rem .5rem 0 0;
     .nav{
         &-lst {
-            @include display(flex);
+            @include flex;
             & > li > a {
-                @include display(block);
+                display:block;
                 padding:1rem;
                 text-align:center;
                 @include transition(0.5s, color, ease);
@@ -218,7 +221,6 @@
 
 .component {
     &-lst {
-        @include display(flex);
         @include flex;
         flex-wrap:wrap;
 
@@ -233,12 +235,10 @@
 
     &-item {
         margin-bottom:2rem;
-        @include display(flex) {
-            flex-wrap: wrap;
-        };
+        @include flex($wrap:wrap);
         & > * {padding:1.5rem 1rem; border-top:1px $color-gray1 solid; @include webfont("roboto", 400)}
         & > dt {
-            @include flexbox(0, 0, 20%);
+            flex:0 0 20%;
             
             &:first-child {
                 border:0;
@@ -246,30 +246,30 @@
             }
         }
         & > dd {
-            @include flexbox(0, 0, 80%);
+            flex:0 0 80%;
         }
     }
 }
 
 .cp {
+    &-wrap {margin:2rem;}
     // title
     &-tit {
         &.dep01{@include fontSize("xxl");}
         &.dep02{
             @include fontSize("lg");
             @include el-content(before){
-                // @include display(inline-block);
                 background:$color-green2;
                 width:1.5rem; height:.3rem;
             }
+            & + [class*="-wrap"]:not([class*="tab"]) {margin-top:1rem;}
         }
         &.dep03{
             margin-bottom:1rem;
             @include fontSize("md");
-            @include el-content(before){
+            @include el-content(before, inline-block){
                 color:$color-orange;
                 margin-right:1rem;
-                @include display(inline-block);
                 @include align(vertical, middle);
                 content:"\f02e";
                 @include webfont('iconFont', 900);
@@ -345,20 +345,20 @@
 }
 
 #{$hr} {
-    &.divice {@include display(block); visibility:visible; background:$color-gray5; border:none; height:1px;}
+    &.divice {display:block; visibility:visible; background:$color-gray5; border:none; height:1px;}
 }
 
 /* TABLE */
 .cp-tbl {
-    @include display(flex) {justify-content:start;}
-    @include fontSize("xs"); font-weight: 400; margin-top:1rem;
+    @include flex($j-content:start);
+    @include font("xs", $fontweight:normal); margin-top:1rem;
 
     #{$tbl} {
         &Wrap {
         & > p:first-child {margin-top:0;}
         p {margin:4rem 0 1rem;}
         table{
-            @include width;
+            width:100%;
             & + table {margin-top:2rem;}
     
             th, td {padding:1rem; @include line(border, .1rem $color-gray5 solid);}
@@ -376,16 +376,16 @@
         }
 
         caption {
-            @include pos(relative !important);
+            @include pos-offset(relative !important);
             padding:1.5rem 1rem .5rem !important;
             background-color:$color-gray6;
             font-size:var(--space-xs) !important;
             @include line(border, 1px $color-gray8 solid !important);
         
-            @include el-content(before) {                
+            @include el-content(before, inline-block !important) {                
                 background-color:$color-gray5;
-                @include display(inline-block !important) {content:'Table Caption' !important;}
-                @include pos-offset-l(-.5rem !important, -.5rem !important);
+                content:'Table Caption' !important;
+                @include pos-offset($top:-.5rem !important, $left:-.5rem !important);
                 padding:.3rem 1rem;
             }
         
@@ -403,43 +403,39 @@
     }
 
     .desc {
-        @include display(none);
-        @include width(50rem);
-        background:$color-light-green1; padding:15px;
+        display:none;
+        width:50rem;
+        background:$color-light-green1; padding:1.5rem;
         margin-right:5rem;
         @include line(border, .1rem $color-light-green2 solid);
 
         p {
-        @include el-content(before) {
-            @include display(inline-block);
+        @include el-content(before, inline-block) {
             @include el-size(.2rem, 1rem);
             background-color:$color-orange;
             margin-right:5px;
         }
-        & ~ p, & ~ ul {margin-top:10px;}
+        & ~ p, & ~ ul {margin-top:1rem;}
         }
     }
 
     ul{
-        p{
-        @include el-content(before){@include display(none);}
-        }
+        p{@include el-content(before, none);}
     }
 
     b {color:$color-red;}
     strong {
-        color:$color-green;
-        font-weight: bold;
+        color:$color-green; font-weight:700;
         & + div, & + ul {margin-top:1rem;}
     }
 
     .bul{
         & > li {
-        @include pos(relative);
+        @include pos-offset(relative);
         margin:.2rem 0 0; padding:0 0 .4rem 1.3rem; color:$color-black;
 
         @include el-content(before) {
-            @include pos-offset-l(.7rem, .5rem);
+            @include pos-offset($top:.7rem, $left:.5rem);
             @include el-size(.3rem, .3rem);
             border-radius: 100%; background-color:$color-blue2;
         }
@@ -449,10 +445,10 @@
         counter-reset: number 0;
         & > li {
         padding:10px 0; @include line(border, .1rem $color-light-green2 solid, top);
-        @include el-content(before) {
-            @include display(inline-block){content:'CASE' counter(number);}
+        @include el-content(before, inline-block) {
+            content:'CASE' counter(number);
             counter-increment: number;
-            color:$color-white; font-weight:400; font-size:var(--space-3xs);
+            @include font(xxs, $color:$color-white);
             background-color:$color-green;
             padding:.3rem .5rem; margin-right:.5rem; border-radius:.3rem;
             @include align(valign, top);

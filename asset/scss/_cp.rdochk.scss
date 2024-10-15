@@ -1,0 +1,440 @@
+@import 'mixin';
+
+#{$field} {
+    input[type=checkbox] {
+        @include pos-offset($top:0, $left:0);
+        visibility: hidden; width:0; height:0;
+        background:transparent; opacity:0; border:0;
+        &:checked {
+            & ~ .field-icon {
+                background: svgIconForm(chk-circle-fill, 0048ff);
+            }
+            &[readonly] ~ .field-icon, .readonly ~ .field-icon,
+            &[disabled] ~ .field-icon, .disabled ~ .field-icon {background: svgIconForm(chk-circle-fill, aaa);}
+        }
+        &[readonly] ~ .field-icon, .readonly ~ .field-icon,
+        &[disabled] ~ .field-icon, .disabled ~ .field-icon {background: svgIconForm(chk-circle, aaa);}
+        &[disabled] ~ .field-label,
+        &[disabled] ~ .field-icon, .disabled ~ .field-icon {opacity:.35;}
+    }
+    &-checkbox {
+        @include flex;
+        #{$field} {
+            &-label {display:inline-block; margin-bottom:0; @include align(valign, middle);}
+            &-icon:not(.field-switch) {
+                display:inline-block;
+                width:2rem; min-width:2rem; height:2rem;
+                background: svgIconForm(chk-circle);
+                @include align(valign, middle); margin-right:.5rem;
+            }
+        }
+        & ~ .field-checkbox {margin-left:2rem;}
+    }
+
+    &.line, .line {
+        input[type=checkbox] {
+            &:checked {
+                & ~ .field-icon {
+                    background: svgIconForm(chk-line-circle, 0048ff);
+                }
+                &[readonly] ~ .field-icon, .readonly ~ .field-icon,
+                &[disabled] ~ .field-icon, .disabled ~ .field-icon {background: svgIconForm(chk-line-circle, aaa);}
+            }
+            &[readonly] ~ .field-icon, .readonly ~ .field-icon,
+            &[disabled] ~ .field-icon, .disabled ~ .field-icon {background: svgIconForm(chk-line, aaa);}
+        }
+        #{$field} {
+            &-checkbox {
+                #{$field} {
+                    &-icon {
+                        display:inline-block;
+                        width:2rem; min-width:2rem; height:2rem;
+                        background: svgIconForm(chk-line);
+                        @include align(valign, middle); margin-right:.5rem;
+                    }
+                }
+
+                &.line-lg {
+                    #{$field} {
+                        &-icon {
+                            display:inline-block;
+                            width:2rem; min-width:2rem; height:2rem;
+                            background: svgIconForm(chk-line-lg);
+                            @include align(valign, middle); margin-right:.5rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.c-line, .c-line {
+        input[type=checkbox] {
+            &:checked {
+                & ~ .field-icon {
+                    background: svgIconForm(chk-line-circle, 0048ff);
+                }
+                &[readonly] ~ .field-icon, .readonly ~ .field-icon,
+                &[disabled] ~ .field-icon, .disabled ~ .field-icon {background: svgIconForm(chk-line-circle, aaa);}
+            }
+            &[readonly] ~ .field-icon, .readonly ~ .field-icon,
+            &[disabled] ~ .field-icon, .disabled ~ .field-icon {background: svgIconForm(chk-line, aaa);}
+        }
+        #{$field} {
+            &-checkbox {
+                #{$field} {
+                    &-icon {
+                        display:inline-block;
+                        width:2rem; min-width:2rem; height:2rem;
+                        background: svgIconForm(chk-line);
+                        @include align(valign, middle); margin-right:.5rem;
+                    }
+                }
+
+                &.c-line-lg {
+                    #{$field} {
+                        &-icon {
+                            display:inline-block;
+                            width:2rem; min-width:2rem; height:2rem;
+                            background: svgIconForm(chk-line-lg);
+                            @include align(valign, middle); margin-right:.5rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.square, .square {
+        input[type=checkbox] {
+            &:checked {
+                & ~ .field-icon {
+                    background: svgIconForm(chk-square-fill, 0048ff);
+                }
+                &[readonly] ~ .field-icon, .readonly ~ .field-icon,
+                &[disabled] ~ .field-icon, .disabled ~ .field-icon {background: svgIconForm(chk-square-fill, aaa);}
+            }
+            &[readonly] ~ .field-icon, .readonly ~ .field-icon,
+            &[disabled] ~ .field-icon, .disabled ~ .field-icon {background: svgIconForm(chk-square, aaa);}
+        }
+        #{$field} {
+            &-checkbox {
+                #{$field} {
+                    &-icon {
+                        display:inline-block;
+                        width:2rem; min-width:2rem; height:2rem;
+                        background: svgIconForm(chk-square);
+                        @include align(valign, middle); margin-right:.5rem;
+                    }
+                }
+
+                &.c-line-lg {
+                    #{$field} {
+                        &-icon {
+                            display:inline-block;
+                            width:2rem; min-width:2rem; height:2rem;
+                            background: svgIconForm(chk-line-lg);
+                            @include align(valign, middle); margin-right:.5rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.s-line, .s-line {
+        input[type=checkbox] {
+            &:checked {
+                & ~ .field-icon {
+                    background: svgIconForm(chk-line-square, 0048ff);
+                }
+                &[readonly] ~ .field-icon, .readonly ~ .field-icon,
+                &[disabled] ~ .field-icon, .disabled ~ .field-icon {background: svgIconForm(chk-line-square, aaa);}
+            }
+            &[readonly] ~ .field-icon, .readonly ~ .field-icon,
+            &[disabled] ~ .field-icon, .disabled ~ .field-icon {background: svgIconForm(chk-line-lg, aaa);}
+        }
+        #{$field} {
+            &-checkbox {
+                #{$field} {
+                    &-icon {
+                        display:inline-block;
+                        width:2rem; min-width:2rem; height:2rem;
+                        background: svgIconForm(chk-line);
+                        @include align(valign, middle); margin-right:.5rem;
+                    }
+                }
+
+                &.s-line-lg {
+                    #{$field} {
+                        &-icon {
+                            display:inline-block;
+                            width:2rem; min-width:2rem; height:2rem;
+                            background: svgIconForm(chk-line-lg);
+                            @include align(valign, middle); margin-right:.5rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &-switch {
+        & ~ .field-switch {margin-left:1rem;}
+        @include pos-offset(relative); display:inline-block;
+        width:5rem; height:2.4rem;
+
+        #{$field} {
+            &-icon {
+                display:inline-block;
+                @include pos-offset($right:0, $bottom:0);
+                width:5rem; height:2rem; cursor: pointer;                
+                // @include line(border, .2rem solid $color-gray4, $radius:2.4rem);
+                background:$color-gray4 !important; border-radius: 2.4rem;
+                transition:.4s;
+
+                @include el-content(before) {
+                    
+                    @include pos-offset($top:50%, $left:.4rem); transform: translate(0, -50%);
+                    width:1rem; height:1rem;
+                    background-color:$color-white; border-radius: 50%;
+                    transition: .4s;
+                }
+                @include el-content(after) {
+                    @include pos-offset($top:50%, $right:.6rem); transform: translate(0, -50%);
+                    transition: 1s;
+                }
+            }
+        }
+
+        input {
+            &:checked {
+                & ~ .field-icon {
+                    background:$color-blue !important;
+                    border-color:$color-blue;
+                    @include el-content(before) {
+                        background-color:$color-white; 
+                        @include pos-offset($top:50%, $left:calc(100% - 1.4rem)); transform: translate(0, -50%);
+                    }
+                    @include el-content(after) {
+                        @include pos-offset($top:50%, $left:.6rem); transform: translate(0, -50%);
+                    }
+                }
+                &[readonly] ~ .field-icon, .readonly ~ .field-icon {opacity:.8;}
+            }
+            &[readonly] ~ .field-icon, .readonly ~ .field-icon {opacity:.8;}
+        }
+
+        &.txt {
+            #{$field} {
+                &-icon {
+                    @include el-content(after) {
+                        content:'OFF'; color:$color-white;
+                    }
+                }
+            }
+
+            input:checked ~ .field-icon {
+                @include el-content(after) {
+                    content:'ON'; color:$color-white;
+                }
+            }
+        }
+
+        &.lg {
+            width:6rem; height:3.4rem;
+            #{$field} {
+                &-icon {
+                    @include pos-offset($right:0, $bottom:0);
+                    width:6rem; height:3.4rem; border-radius:3.4rem;
+
+                    @include el-content(before) {
+                        width:2.4rem; height:2.4rem;
+                    }
+                }
+            }
+            input:checked ~ .field-icon {
+                @include el-content(before) {
+                    @include pos-offset($top:50%, $left:calc(100% - 2.8rem)); transform: translate(0, -50%);
+                }
+            }
+        }
+    }
+
+    .textBox{
+        #{$field} {
+          &-checkbox {
+            width: 100%;
+      
+            & ~ .field-checkbox {margin-left:1rem;}
+          }
+          &-label {
+            display:block;
+            padding:1.5rem 0; width: 100%;
+            @include line(border, .1rem solid $color-gray3, $radius:.4rem);
+            @include align(text, center);
+          }
+          &-radio {
+            width: 100%;
+      
+            #{$field} {
+              &-label {
+                .field-icon {                  
+                  display: block; margin: 0 auto .4rem;
+                  width:2rem; height:2rem;
+                  background: svgIconForm(chk-circle);
+                  @include line(border, none);
+                }
+              }
+            }
+            & ~ .field-radio {margin-left:1rem;}
+          }
+        }
+      
+        input[type=checkbox] {
+            & ~ .field-label{
+              padding: 10px; border:none;
+              @include line(outline, .1rem solid $color-gray5, $radius:.4rem);
+            }
+            &:checked {
+              & ~ .field-label {
+                // border-color:$color-blue;
+                outline:.2rem solid $color-blue;
+              }
+              &[readonly] ~ .field-label, .readonly ~ .field-label,
+              &[disabled] ~ .field-label, .disabled ~ .field-label {
+                border-color:$color-gray5;
+                // @include line(border, .1rem solid $color-gray5);
+                color: $color-gray5;
+                }
+            }
+            &[readonly] ~ .field-label, .readonly ~ .field-label,
+            &[disabled] ~ .field-label, .disabled ~ .field-label {
+                border-color:$color-gray5;
+                // @include line(border, .1rem solid $color-gray5);
+                color: $color-gray5;
+            }
+        }
+      
+        input[type=radio] {
+            &:checked {
+              & ~ .field-label {
+                .field-icon {
+                  @include el-content(before, none);
+                  background: svgIconForm(chk-circle-fill, 0048ff); border:none; z-index:2;
+                }
+              }
+              & ~ .field-label {border: .1rem solid $color-blue; box-shadow:none; z-index:1;}
+            }
+            &[readonly] ~ .field-label, .readonly ~ .field-label,
+            &[disabled] ~ .field-label, .disabled ~ .field-label{border: .1rem solid $color-gray5; color: $color-gray5;}
+            &[readonly] ~ .field-label .field-icon, .readonly ~ .field-label .field-icon,
+            &[disabled] ~ .field-label .field-icon, .disabled ~ .field-label .field-icon {background: svgIconForm(chk-circle, aaa);}
+          }
+      }
+
+    input[type=radio] {
+        @include pos-offset($top:0, $left:0);
+        visibility: hidden; width:0; height:0;
+        background-color:transparent; opacity:0; border:0;
+        &:checked ~ .field-icon {
+            // background: svgIconForm(chk-circle-fill, 0048ff);
+            @include pos-offset(relative);
+            @include line(border, .3rem solid $color-blue);
+            @include el-content(before){
+                @include pos-offset($top:50%, $left:50%); transform: translate(-50%, -50%);
+                width:1rem; height:1rem;
+                background:$color-blue; border-radius:100%;
+            }
+        }
+        &[readonly] ~ .field-icon, .readonly ~ .field-icon,
+        &[disabled] ~ .field-icon, .disabled ~ .field-icon {
+            // background: svgIconForm(chk-circle-fill, 999);
+            background:transparent;
+            border-color:$color-gray5;
+            // @include line(border, .3rem solid $color-gray5);
+            @include el-content(before) {background:$color-gray5;}
+        }
+        &[disabled] ~ .field-label,
+        &[disabled] ~ .field-icon, .disabled ~ .field-icon {opacity:.5;}
+    }
+    &-radio {
+        @include flex;
+        #{$field} {
+            &-label {display:inline-block; margin-bottom:0; @include align(valign, middle);}
+            &-icon {
+                display:inline-block;
+                width:2rem; min-width:2rem; height:2rem;
+                border:.3rem solid $color-gray3; border-radius:100%;
+                @include align(valign, middle); margin-right:.5rem;
+            }
+        }
+        & ~ .field-radio {margin-left:2rem;}
+    }
+
+    &-group {
+        &.opt-box {
+            justify-content: center; align-items: center; width: 100%; flex-wrap: wrap;
+            &.chk {padding-top:3.5rem;}
+
+            #{$field} {
+                &-radio, &-checkbox {
+                    width: 100%; flex:1;
+                    &:first-child {
+                        .field-label {border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;}
+                    }
+        
+                    &:last-child {
+                        .field-label {border-top-right-radius: .5rem; border-bottom-right-radius: .5rem;}
+                    }
+                }
+                &-radio ~ .field-radio, &-checkbox ~ .field-checkbox {margin:0; margin-left:-1px;}
+                &-label {
+                    display:block;
+                    padding:1.5rem; width: 100%; text-align:center;
+                    box-shadow: inset 0 0 0 .1rem $color-gray3;
+
+                    & + .field-label {margin-left: -.1rem;}
+                }
+
+                &-checkbox {
+                    @include flex(inline-flex, $direction:column, $j-content:center, $al-items: center);
+                    #{$field} {
+                        &-label {padding:4.5rem 1.5rem 1.5rem;}
+                        &-icon {
+                            width:2rem; min-width:2rem; height:2rem;
+                            background: svgIconForm(chk-circle);
+                            @include align(valign, top); margin-right:.5rem; margin-bottom:-3.5rem; z-index:2;
+                        }
+                    }
+                    & ~ .field-radio {margin-left:2rem;}
+                }
+            }
+
+            input[type=radio] {
+                &:checked {
+                    & ~ .field-icon {
+                        @include el-content(before, none);
+                        background: svgIconForm(chk-circle-fill, fff); border:none; z-index:2;
+                    }
+                    & ~ .field-label {background:$color-blue; box-shadow:none; color:$color-white; z-index:1;}
+                    &[readonly] ~ .field-icon, .readonly ~ .field-icon,
+                    &[disabled] ~ .field-icon, .disabled ~ .field-icon {
+                        background-color: #aaa;
+                        // background: svgIconForm(chk-circle-fill, aaa);
+                    }
+                }
+                &[readonly] ~ .field-icon, .readonly ~ .field-icon,
+                &[disabled] ~ .field-icon, .disabled ~ .field-icon {
+                    background-color: #aaa;
+                    //background: svgIconForm(chk-circle, aaa); 
+                }
+                &[disabled] ~ .field-label,
+                &[disabled] ~ .field-icon, .disabled ~ .field-icon {opacity:.35;}
+            }
+            
+        }
+    }
+}
+
+._readonly, ._disabled {pointer-events:none;}

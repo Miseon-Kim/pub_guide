@@ -8,18 +8,21 @@
     <title>폼요소 : INPUT</title>
     
     <!-- [S] PUBLISH COMMON STYLE -->
-    <link rel="stylesheet" href="../../asset/com/css/cm.common.css">
+    <link rel="stylesheet" href="../../asset/css/cm.common.css">
     <!-- [E] PUBLISH COMMON STYLE -->
 
     <!-- [S] PAGES - STYLE -->
-    <!-- D/P : 컴퍼넌트 예시화면용이므로 페이지 제작시 적용하지 않음 -->
-    <link rel="stylesheet" type="text/css" href="../com/css/cm.guide.css">
+    <link rel="stylesheet" href="">
     <!-- [E] PAGES - STYLE -->
 
     <!-- [S] LIBRARY - SCRIPT -->
-    <script src="../../asset/com/js/lib/lib.jquery-3.6.3.min.js"></script>
-    <script src="../../asset/com/js/lib/lib.jquery-ui-1.13.2.js"></script>
+    <script src="../../asset/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../../asset/js/lib/lib.jquery-ui-1.13.2.js"></script>
     <!-- [E] LIBRARY - SCRIPT -->
+
+    <!-- [S] @TEMP - GUIDE STYLE -->
+    <link rel="stylesheet" href="../com/css/cm.guide.css">
+    <!-- [E] @TEMP - GUIDE STYLE -->
 </head>
 <body>
     <div id="cp-wrap">
@@ -33,9 +36,6 @@
                     <div class="field-outline">
                       <div class="field-input grow _input">
                         <input type="text" placeholder="기본동작 INPUT" title="">
-                        <button type="button" class="field-btn _input-clear _active  ico ico-clear">
-                          <span class="hide">입력값삭제</span>
-                        </button>
                       </div>
                     </div>
                     <div class="field-outline">
@@ -149,12 +149,12 @@
                   </div>
 
                   <div class="field">
-                    <label class="field-label">특문 커스텀 : password 부분입력</label>
+                    <label class="field-label" for="passType">특문 커스텀 : password 부분입력</label>
                     <div class="field-outline pw-group">
                       <div class="field-input grow _input">
-                        <label class="_secureTxt" data-length="4" data-secureLine="2">
-                          <input type="password" class="_format _password" placeholder="" maxlength="2">
-                        </label>
+                        <div class="_secureTxt" data-length="4" data-secureLine="2">
+                          <input type="password" id="passType" class="_format _password" placeholder="" maxlength="2">
+                        </div>
                       </div>
                     </div>
                     <p class="field-msg">
@@ -169,9 +169,9 @@
 
             <section class="cp-content">
               <h2 class="cp-tit dep02">PLACEHODER TYPE</h2>
-              <div class="field _label invalid">
-                <label class="field-label">기본INPUT</label>
+              <div class="field _label invalid">                
                 <div class="field-outline">
+                  <label class="field-label">기본INPUT</label>
                   <div class="field-input grow _input">
                     <input type="text" placeholder="기본동작 INPUT" id="label1" title="" data-target="label1">
                   </div>
@@ -181,15 +181,15 @@
                 </p>
               </div>
 
-              <div class="field _label">
-                <label class="field-label">휴대폰번호 입력</label>
+              <div class="field _label">                
                 <div class="field-outline">
+                  <label class="field-label">휴대폰번호 입력</label>
                   <div class="field-input grow _input">
-                    <input type="tel" class="_format _number" id="mobileNum1" placeholder="휴대전화 앞자리" maxlength="3">
+                    <input type="tel" class="_format _number" placeholder="휴대전화 앞자리" maxlength="3">
                   </div>
                   <span class="field-txt">-</span>
                   <div class="field-input grow _input">
-                    <input type="tel" class="_format _number" id="mobileNum2"  placeholder="휴대전화 중간자리" maxlength="4">
+                    <input type="tel" class="_format _number" placeholder="휴대전화 중간자리" maxlength="4">
                   </div>
                   <span class="field-txt">-</span>
                   <div class="field-input grow _input">
@@ -208,11 +208,11 @@
                 <label class="field-label">휴대전화번호</label>
                 <div class="field-outline">
                   <div class="field-input grow _input">
-                    <input type="tel" class="_format _number" id="num1" placeholder="휴대전화 앞자리" maxlength="3">
+                    <input type="tel" class="_format _number" id="phoneNum1" placeholder="휴대전화 앞자리" maxlength="3">
                   </div>
                   <span class="field-txt">-</span>
                   <div class="field-input grow _input">
-                    <input type="tel" class="_format _number" placeholder="휴대전화 중간자리" maxlength="4">
+                    <input type="tel" class="_format _number" id="phoneNum2" placeholder="휴대전화 중간자리" maxlength="4">
                   </div>
                   <span class="field-txt">-</span>
                   <div class="field-input grow _input">
@@ -245,10 +245,10 @@
               </div>
 
               <div class="field">
-                <label class="field-label" for="auth_num">인증요청-버튼적용</label>
+                <label class="field-label" for="auth_num2">인증요청-버튼적용</label>
                 <div class="field-outline auth">
                   <div class="field-input grow _input">
-                    <input type="tel" class="_format _number" id="auth_num" placeholder="인증번호" maxlength="6">
+                    <input type="tel" class="_format _number" id="auth_num2" placeholder="인증번호" maxlength="6">
                     <!-- <span class="auth-time">03:00</span> -->
                   </div>
                   <button class="btn btn-size s bg btn-auth">인증요청</button>
@@ -262,10 +262,10 @@
               </div>
 
               <div class="field">
-                <label class="field-label" for="auth_num">인증번호입력</label>
+                <label class="field-label" for="auth_num3">인증번호입력</label>
                 <div class="field-outline auth">
                   <div class="field-input grow _input">
-                    <input type="tel" class="_format _number" id="auth_num" placeholder="인증번호" maxlength="6">
+                    <input type="tel" class="_format _number" id="auth_num3" placeholder="인증번호" maxlength="6">
                     <span class="auth-time">03:00</span>
                   </div>
                 </div>
@@ -285,9 +285,9 @@
                   </div>
                   <span class="field-txt">-</span>
                   <div class="field-input grow _input">
-                    <label class="_secureTxt _num" data-length="7" data-secureLine="1">
+                    <div class="_secureTxt _num" data-length="7" data-secureLine="1">
                       <input type="password" class="_format _password" placeholder="" maxlength="1">
-                    </label>
+                    </div>
                   </div>
                 </div>
                 <p class="field-msg">
@@ -323,8 +323,8 @@
               <div class="field range-slider">
                 <label class="field-label">메세지 출력</label>
                 <div class="field-input">
-                  <input type="range" min="0" max="100" value="50" step="10" class="_range" />
-                  <div class="range-info"><span class="_value" range-value="70">메세지 출력</span></div>
+                  <input type="range" min="0" max="100" value="50" step="10" class="_range" arrow-min="10" arrow-max="90" />
+                  <div class="range-info"><span class="_value" range-value="메세지 출력" inner-value="true"></span></div>
                 </div>
               </div>
             </section>
@@ -357,7 +357,11 @@
                 <div class="field-input">
                   <input type="range" min="0" max="10000" value="2500" step="1" class="min-range" />
                   <input type="range" min="0" max="10000" value="8500" step="1" class="max-range" />
-                  <!-- <div class="range-info"><span class="_value"></span></div> -->
+
+                  <!-- range-value="" 값이 있을 때 메세지 출력 -->
+                  <div class="doublerange-info min"><span class="_value-min" range-value="메세지출력" inner-value="true"></span></div>
+                  <!-- <div class="doublerange-info min"><span class="_value-min"></span></div> -->
+                  <div class="doublerange-info max"><span class="_value-max">메세지 출력</span></div>
                 </div>
               </div>
             </section>
@@ -368,7 +372,7 @@
     <div class="test"></div>
 
 <!-- [S] PAGES - SCRIPT -->
-<script src="../../asset/com/js/ui.component.js"></script>
+<script src="../../asset/js/ui.component.js"></script>
 <!-- [E] PAGES - SCRIPT -->
 </body>
 </html>

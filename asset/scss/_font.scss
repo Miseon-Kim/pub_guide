@@ -1,0 +1,226 @@
+/* WEB FONT */
+$iconfontURL:"../font/iconfont/fontawesome/";
+$robotoURL:"../font/webfonts/roboto/";
+$notoURL:"../font/webfonts/NotoSansKr/";
+$pretendURL:"../font/webfonts/Pretendard/";
+
+@font-face {
+  font-family: 'iconFont';
+  font-style: normal;
+  font-weight: 900;
+  font-display: auto;
+  src: local("fa-solid-900"),
+  url($iconfontURL + "fa-solid-900.eot?#iefix") format("embedded-opentype"), 
+  url($iconfontURL + "fa-solid-900.woff2") format("woff2"), 
+  url($iconfontURL + "fa-solid-900.woff") format("woff"), 
+  url($iconfontURL + "fa-solid-900.ttf") format("truetype"), 
+  url($iconfontURL + "fa-solid-900.svg#fontawesome") format("svg");  
+}  
+  
+.fa,
+.fas {
+  font-family: 'iconFont';
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: 'iconFont';
+  font-display: block;
+  src: local("fa-solid-900"),
+  url($iconfontURL + "fa-solid-900.woff2") format("woff2"),
+  url($iconfontURL + "fa-solid-900.ttf") format("truetype");
+}
+
+// roboto
+@font-face {
+	font-family: "roboto";
+	font-weight: 300;
+  font-style: normal;
+	font-display: swap;
+	src: local("Roboto-Light"),
+  url($robotoURL + "Roboto-Light.woff") format("woff"),
+	url($robotoURL + "Roboto-Light.woff2") format("woff2"),
+	url($robotoURL + "Roboto-Light.otf") format("opentype");
+}
+
+@font-face {
+	font-family: "roboto";
+	font-weight: 400;
+  font-style: normal;
+	font-display: swap;
+	src: local("Roboto-Regular"),
+  url($robotoURL + "Roboto-Regular.woff") format("woff"),
+	url($robotoURL + "Roboto-Regular.woff2") format("woff2"),
+	url($robotoURL + "Roboto-Regular.otf") format("opentype");
+}
+
+@font-face {
+	font-family: "roboto";
+	font-weight: 500;
+  font-style: normal;
+	font-display: swap;
+	src: local("Roboto-Medium"),
+  url($robotoURL + "Roboto-Medium.woff") format("woff"),
+	url($robotoURL + "Roboto-Medium.woff2") format("woff2"),
+	url($robotoURL + "Roboto-Medium.otf") format("opentype");
+}
+
+@font-face {
+	font-family: "roboto";
+	font-weight: 600;
+  font-style: normal;
+	font-display: swap;
+	src: local("Roboto-Bold"),
+  url($robotoURL + "Roboto-Bold.woff") format("woff"),
+	url($robotoURL + "Roboto-Bold.woff2") format("woff2"),
+	url($robotoURL + "Roboto-Bold.otf") format("opentype");
+}
+
+// NotoSansKR
+@font-face {
+	font-family: "NotoSansKR";
+	font-weight: 300;
+  font-style: normal;
+	font-display: swap;
+	src: local("NotoSansKR-Thin"),
+  url($notoURL + "NotoSansKR-Thin.woff") format("woff"),
+	url($notoURL + "NotoSansKR-Thin.woff2") format("woff2"),
+	url($notoURL + "NotoSansKR-Thin.otf") format("opentype");
+}
+
+@font-face {
+	font-family: "NotoSansKR";
+	font-weight: 400;
+  font-style: normal;
+	font-display: swap;
+	src: local("NotoSansKR-Light"),
+  url($notoURL + "NotoSansKR-Light.woff") format("woff"),
+	url($notoURL + "NotoSansKR-Light.woff2") format("woff2"),
+	url($notoURL + "NotoSansKR-Light.otf") format("opentype");
+}
+
+@font-face {
+	font-family: "NotoSansKR";
+	font-weight: 500;
+  font-style: normal;
+	font-display: swap;
+	src: local("NotoSansKR-Regular"),
+  url($notoURL + "NotoSansKR-Regular.woff") format("woff"),
+	url($notoURL + "NotoSansKR-Regular.woff2") format("woff2"),
+	url($notoURL + "NotoSansKR-Regular.otf") format("opentype");
+}
+
+@font-face {
+	font-family: "NotoSansKR";
+	font-weight: 600;
+  font-style: normal;
+	font-display: swap;
+	src: local("NotoSansKR-Medium"),
+  url($notoURL + "NotoSansKR-Medium.woff") format("woff"),
+	url($notoURL + "NotoSansKR-Medium.woff2") format("woff2"),
+	url($notoURL + "NotoSansKR-Medium.otf") format("opentype");
+}
+
+@font-face {
+	font-family: "NotoSansKR";
+	font-weight: 700;
+  font-style: normal;
+	font-display: swap;
+	src: local("NotoSansKR-Bold"),
+  url($notoURL + "NotoSansKR-Bold.woff") format("woff"),
+	url($notoURL + "NotoSansKR-Bold.woff2") format("woff2"),
+	url($notoURL + "NotoSansKR-Bold.otf") format("opentype");
+}
+
+@font-face {
+	font-family: "NotoSansKR";
+	font-weight: 800;
+  font-style: normal;
+	font-display: swap;
+	src: local("NotoSansKR-Black"),
+  url($notoURL + "NotoSansKR-Black.woff") format("woff"),
+	url($notoURL + "NotoSansKR-Black.woff2") format("woff2"),
+	url($notoURL + "NotoSansKR-Black.otf") format("opentype");
+}
+
+// Pretendard
+@font-face {
+	font-family: "Pretendard";
+	font-weight: 900;
+	font-display: swap;
+	src: local("Pretendard Black"),
+  url($pretendURL + "Pretendard-Black.subset.woff2") format("woff2"),
+	url($pretendURL + "Pretendard-Black.subset.woff") format("woff");
+}
+
+@font-face {
+	font-family: "Pretendard";
+	font-weight: 800;
+	font-display: swap;
+	src: local("Pretendard Bold"),
+	url($pretendURL + "Pretendard-Bold.subset.woff2") format("woff2"),
+	url($pretendURL + "Pretendard-Bold.subset.woff") format("woff");
+}
+
+@font-face {
+	font-family: "Pretendard";
+	font-weight: 700;
+	font-display: swap;
+	src: local("Pretendard SemiBold"),
+	url($pretendURL + "Pretendard-SemiBold.subset.woff2") format("woff2"),
+	url($pretendURL + "Pretendard-SemiBold.subset.woff") format("woff");
+}
+
+@font-face {
+	font-family: "Pretendard";
+	font-weight: 600;
+	font-display: swap;
+	src: local("Pretendard SemiBold"),
+	url($pretendURL + "Pretendard-SemiBold.subset.woff2") format("woff2"),
+	url($pretendURL + "Pretendard-SemiBold.subset.woff") format("woff");
+}
+
+@font-face {
+	font-family: "Pretendard";
+	font-weight: 500;
+	font-display: swap;
+	src: local("Pretendard Medium"),
+	url($pretendURL + "Pretendard-Medium.subset.woff2") format("woff2"),
+	url($pretendURL + "Pretendard-Medium.subset.woff") format("woff");;
+}
+
+@font-face {
+	font-family: "Pretendard";
+	font-weight: 400;
+	font-display: swap;
+	src: local("Pretendard Regular"),
+	url($pretendURL + "Pretendard-Regular.subset.woff2") format("woff2"),
+	url($pretendURL + "Pretendard-Regular.subset.woff") format("woff");;
+}
+
+@font-face {
+	font-family: "Pretendard";
+	font-weight: 300;
+	font-display: swap;
+	src: local("Pretendard Light"),
+	url($pretendURL + "Pretendard-Light.subset.woff2") format("woff2"),
+	url($pretendURL + "Pretendard-Light.subset.woff") format("woff");
+}
+
+@font-face {
+	font-family: "Pretendard";
+	font-weight: 200;
+	font-display: swap;
+	src: local("Pretendard ExtraLight"),
+	url($pretendURL + "Pretendard-ExtraLight.subset.woff2") format("woff2"),
+	url($pretendURL + "Pretendard-ExtraLight.subset.woff") format("woff");
+}
+
+@font-face {
+	font-family: "Pretendard";
+	font-weight: 100;
+	font-display: swap;
+	src: local("Pretendard Thin"),
+	url($pretendURL + "Pretendard-Thin.subset.woff2") format("woff2"),
+	url($pretendURL + "Pretendard-Thin.subset.woff") format("woff");
+}
