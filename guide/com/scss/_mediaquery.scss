@@ -1,0 +1,403 @@
+// tablet
+@media screen and (max-width: 768px) {
+
+    .btn_util{display:block !important;}
+    #{$pgHeader} {
+        h1 {height:5rem;} 
+        .pg_util{
+            display:block;
+            @include pos-offset(fixed, $top:0, $left:0, $right:0, $bottom:0, $z-index:10);
+            padding:4rem 2rem 2rem; background-color:$color-white;
+            align-items:inherit; box-sizing:border-box;
+            transform:translateX(100%); @include transition(.3s, all, ease-in-out);
+            
+            #{$pgSrch}, .switch, .pg_project .btn_responsive {width:100%; margin:0;}
+            #{$pgSrch} {
+                width:100%;
+                input[type=text]{
+                    height:5rem; padding-left:0;
+                    background-color:$color-white;
+                    @include line(border, .2rem solid $color-gray7, bottom, 0);
+                    color:$color-black;
+                    &:focus{border-color:$color-gray5;}
+                }
+                #btnPgSearch{height:5rem; background-image: svgIcon(btnPgSearch, 000);}
+                .btn_search_del{top:1rem;}
+            }
+        }
+    }
+
+    html.util_show #pgHeader .pg_util{transform:translateX(0);}
+    .pg_util #{$pgProject} {margin:0}
+
+    #{$pgProject} {
+        .current{display:none;}
+        .pg_list{
+            display:block !important;
+            border-width:.2rem 0 0; border-radius:0; box-shadow:none;
+            
+            %lstActive-aColor2 {background-color:$color-white; color:$color-gray3;}
+            li {
+                a {
+                    height:4rem; line-height:4rem;
+                    padding:0 1.5rem;
+                    &:hover {@extend %lstActive-aColor2;}
+                }
+                
+                &.active a {@extend %lstActive-aColor2;}
+            }
+        }
+    }
+
+    #{$pg} {
+        &_util {
+            .btn_nav{display:block;}
+            .btn_responsive{display:none;}
+            .open_no{top:.5rem; right:.5rem;}
+        }
+    }
+    
+    #pgHeader .switch{
+        @include el-size(100%, 4.4rem); margin-top:50px !important;
+        @include el-content(after) {
+            background:$color-gray4;
+            @include line(border, 0, $radius:4.4rem);
+        }
+
+        %switchBar {height:3.6rem; border-radius:3.6rem;}
+        & > .bar {top:.4rem;}
+        & > .bar, & > ul > li > a {@extend %switchBar;}
+        & > ul > li > a {color:$color-black; line-height:3.6rem;}
+    }
+
+    #{$darMode} {
+        #pgHeader .pg_util{background-color:$color-gray2;}
+        &.util_show .btn_util .bar{stroke:$color-white;}
+        .pg_util #{$pgSrch} input[type=text]{background-color:$color-gray2 !important}
+        #{$pgProject} {
+            %bgColorBlack {background-color:$color-black;}
+            .pg_list{
+                background-color:$color-gray2 !important;
+                li{
+                    border-color:$color-white; opacity:.9;
+                    a {
+                        color:$color-white;
+                        &:hover {@extend %bgColorBlack;}
+                    }
+                }
+                &.active a {@extend %bgColorBlack;}
+            }
+        }
+        .switch::after{border:none}
+    }
+
+    #{$pgNav} {
+        width:100%; top:50px; opacity:1;
+        background-color:$color-white;
+        @include overflow(both, auto);
+        transform:translate3d(-100%,0,0);
+        @include transition(.3s, all, ease-in-out);
+
+        
+        & > ul {
+            & > li {
+                & > a {color:$color-black;}
+                &:hover {
+                    & > a {
+                        @include line(border, 0 solid $color-green4, right);
+                    }
+                }
+
+                & > ul {
+                    @include pos-offset(relative, $top:inherit, $left:inherit);
+                    width:auto;
+                    border-width:1px 0; border-style:solid; border-color:rgba(255,255,255,0.2);
+                    background-color:rgba(255,255,255,0.1);
+
+                    & > li > a {@include font(ms, $color:$color-gray3);}
+                }
+                
+                &.active {
+                    & > a {color:$color-orange;}
+                    & > ul {
+                        display:block;
+                        & > li {
+                            & > a {
+                                padding:1rem 3rem;
+                                @include font(md); @include align(text, center);
+                            }
+                        }
+                    }
+                }
+                &.ex_link > a{border-color:$color-blue5; background-color:$color-white;color:$color-gray2;}
+            }
+        }
+    }
+    .no_scroll {
+        #{$pgNav} {
+            transform:translate3d(0,0,0); -webkit-transform:translate3d(0,0,0);
+        }
+    }
+
+    #{$pgWrap} {
+        padding-top:2.5rem;
+        #{$pgTit} {
+            top:0; left:50%; margin-left:-25%; padding:1rem 1.5rem; z-index:101; @include el-size(60%, 5rem);
+            
+            h2{width:15rem; @include font(md);}
+        }
+    }
+    #{$pgHeader} {height:5rem;}
+    
+    #{$pgContent} {
+        // padding-top:2rem;
+        & > h2 {@include font(mx);}
+    }
+    #{$pgContainer} {
+        padding:5rem 1rem 1rem;
+        #{$pgBoard} {
+            &_tab {top:5rem;}
+        }
+    }
+    #{$htmlM} {
+        #{$pgContainer} {margin:0;}
+        #{$pgTit} {
+            #{$pgProject} {
+                &_status{padding-right:0;}
+            }
+        }
+    }
+
+    #{$pgNav} + #{$pgContainer} {margin-left:0;}
+    
+    #{$pgSection} {
+        margin-top:1.5rem;
+        h3 {padding:1.5rem 1rem; @include font(s);}
+
+        #{$pgGuide} {
+            &_info{
+                padding:1.5rem 1rem;
+                h4, .head {@include font(s);}
+
+                .pg_item {margin-top:1.5rem;}
+            }
+        }
+
+    }
+
+    #{$pg} {
+        &_item {
+            .list {
+                li {
+                    padding:.3rem .5rem .3rem .7rem;
+                    line-height:1.4rem; @include font(sm);
+
+                    @include el-content(before) {
+                        @include pos-offset($top:.8rem, $left:0);
+                        @include el-size(.2rem, .2rem);
+                        background-color:$color-black;
+                    }
+                }
+            }
+
+            .browser {
+                li{
+                    height:3rem; line-height:3rem;
+                    margin:.5rem .5rem 0 0; padding:0 1rem 0 3.3rem;
+                    background-size:1.6rem 1.6rem; border-radius:30px;
+                    box-shadow:.1rem .1rem .1rem 0px rgba(0,0,0,0.3);
+                    @include font(sm);
+                }
+            }
+
+            h4+.tag{padding-top:0}
+
+            &_color {
+                .color_box {
+                    margin-top:0;
+                    .color_item {
+                        @include el-size(100%, 7rem); margin:1rem 0 0 0;
+                        ul {
+                            @include clearfix;
+                        }
+                        li {float:left;width:50%;}
+                    }
+                }
+            }
+        }
+    }
+
+    .util_show {
+        #{$pgHeader} {z-index:110;}
+        #{$pgWrap} {
+            #{$pgTit} {z-index:100;}
+        }
+    }
+
+    #{$pgBoard} {
+        top:9.5rem; overflow:visible; border-top:0;
+        
+        ul {
+            li {
+                & + & {margin-left:.5rem;}
+                button {
+                    height:3rem; line-height:3rem;
+                    padding:0 1rem; @include font(s);
+                }
+            }
+        }
+
+        table {
+            white-space:normal;table-layout:fixed;
+
+            thead {
+                th {
+                    // &:nth-child(2), &:nth-child(8), &:nth-child(12), &:nth-child(13) {display:table-cell;}
+                    &.id, &.name, &.complete, &.etc {display:table-cell}
+                    border-top:.2rem solid $color-gray3;
+                }
+            }
+            tbody {
+                td {
+                    padding:1rem;
+
+                    &.id, &.name, &.complete, &.etc {display:table-cell}
+                    &:nth-child(2), &:nth-child(8) {width:40% !important; max-width:40% !important;}
+                }
+                .hr th{padding:1.5rem 0}
+                .hr th, tr.no_data td{display:table-cell; text-align:center;}
+                tr.no_data td {padding:5rem 0;}
+            }
+
+            colgroup, th, td {display:none;}
+        }
+
+        &_scroll {display:none; left:0; right:0;}
+
+        &_tab {
+            padding:.5rem 1rem;
+            box-shadow:0 0.3rem 0.5rem -0.1rem rgba(0, 0, 0, 0.3);
+        }
+    }
+
+    #{$pgSrch} {
+        input[type=text] {
+            @include el-size(100%, 4rem);
+            padding:0; border-width:0 0 1px 0; border-radius:0;
+        }
+        #btnPgSearch{top:1.5rem; right:1.5rem; width:4rem; height:4rem;}
+        .btn_search_del{top:2.5rem;}
+    }
+
+    #{$pgStatus} {
+        #{$pg} {
+            &_count{display:none;}
+            &_project_ing{
+                @include el-size(100%, 2.5rem);
+                .ing{top:.5rem; @include font(sm);}
+            }
+        }
+    }
+    
+    #{$pgContent} {
+        &.searcher{padding-top:3rem;}
+    }
+    
+    #{$pgAlert} {
+        &_btn_set {
+            @include flex ($wrap: nowrap, $j-content:flex-end);
+            margin-right:-2rem;
+            
+            button {     
+                @include font(s); @include align(valign, middle);
+                border-radius:0 0 .5rem .5rem;
+                @include ellipsis(1, 3rem);
+                
+                & + button {margin-left:.5rem;}
+                &.active {
+                    @include el-content(after, none);
+                }
+                strong {@include font(md);}
+            }
+        }
+    }
+    
+    .panel_head{display:none;}
+
+    #{$srch} {
+        &_title {
+            height:3rem; line-height:3rem;
+            top:0; margin-top:-3.5rem;
+            @include font(s);
+            
+            .btn_search_cancel {
+                height:3rem; line-height:3rem;
+                @include font(sm);
+                padding:0 3.4rem 0 1.5rem;
+
+                @include el-content(after) {top:.2rem; right:1rem;}
+            }
+        }
+    }
+
+    #{$pgLayout} {
+        padding:1rem;
+        div {
+            margin-top:3rem; padding:3rem 1rem 1rem;
+            @include el-content(before) {
+                @include pos-offset($top:-2.1rem, $left:-.2rem);
+                @include el-size(100%, 2rem) {line-height:2rem;}
+                @include font(sm);
+            }
+        }
+
+        #{$pgLayout} {
+            &_content > div {padding:4rem 0; @include font(s);}
+        }
+    }
+
+    #{$pgDivice} {display:none;}
+}
+
+// mobile
+@media screen and (max-width: 414px) {
+    ::-webkit-scrollbar{display:none;}
+    body{-ms-overflow-style:none;}
+    
+    #{$pgWrap} {
+        #{$pgTit} {width:80%; margin-left:0; left:0;}        
+    }
+
+    #{$pgAlert} {
+        &_btn_set {
+            margin-right:0;
+            button {                
+                @include font(xs); padding:0 .8rem;
+                strong {@include font(2xs);}
+            }
+        }
+    }
+    #{$pgContent} {padding: 3rem 0rem;}
+    #{$pgBoard} {
+        table {
+            thead {
+                th {
+                    &:nth-child(1) {display:table-cell;}
+                    &:nth-child(3), &:nth-child(8) {display:none;}
+                }
+            }
+            tbody {
+                td {
+                    &:nth-child(1) {display:table-cell;}
+                    &.name {display:none;}
+                    &.id {
+                        max-width: 60% !important;
+                        width: 50% !important;
+                    }
+                    &.etc {width:10rem;}
+                }
+            }
+        }
+    }
+    .search_title {margin-top: -5.9rem;}
+}

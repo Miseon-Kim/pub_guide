@@ -4,6 +4,7 @@
 /****************************************/
 @import '../../../asset/scss/variables';
 @import '../../../asset/scss/mixin';
+@import 'import';
 
 /****************************************/
 /*	PART: GUIDE PAGE STYLE
@@ -27,10 +28,9 @@
         &:focus,
         &:hover,
         &:active {
-            width:auto; height:2.8rem; margin:0; padding:.8rem 0;
-            background:$color-black;
-            @include font($color:$color-white, $lheight:1.2rem);
-            z-index:15; box-sizing:border-box;
+            width:auto; height:2.8rem; margin:0; padding:.8rem 0;  
+            background:$color-black; @include fontSize("base"); line-height:1.2rem; color:$color-white;
+            z-index:$zIndex-15; box-sizing:border-box;
         }
     }
     
@@ -53,12 +53,11 @@
     &-hgroup {
         padding:2.5rem 2rem 2rem;
         .wgTit01 {
-            @include font(lg);
+            font-size:var(--space-mx);
             @include el-content(before, inline-block) {
                 content:'\f550';
-                @include font($color:#302CA4, $fontName:'iconFont');
-                margin-right:0.5rem;
-                @include align(valign, middle);
+                font-family:'iconFont'; color:#302CA4; font-size:var(--space-ms);
+                margin-right:0.5rem; vertical-align:middle;
             }
         }
     }
@@ -86,13 +85,11 @@
     &-contBoxWrap {@include flex; padding:0 2rem;}
     &-contBody {
         width:100%;
-        background:$color-white; color:$color-gray1;
-        @include line(border, 1px solid $color-white);
-        box-shadow: 0 0 13px 0 rgba(82,63,105,.1);
+        background:$color-white; color:$color-gray1; border:1px solid $color-white; box-shadow: 0 0 13px 0 rgba(82,63,105,.1);
 
         & > dt {
             padding:2rem; font-size:1.5rem;
-            & + dd {@include line(border, 1px solid #ebedf2, top);}
+            & + dd {border-top:1px solid #ebedf2;}
         }
         & > dd {
             padding:2rem;
@@ -112,7 +109,8 @@
     &-lst-bar {
         & > li, .wg-ico {text-indent:-0.5rem; margin-left:0.5rem;}
         & > li {
-            @include el-content(before, inline-block) {
+            @include el-content(before) {
+                display:inline-block;
                 content:'-'; margin-right:0.5rem;
             }
             & ~ li {margin-top:0.5rem;}
@@ -175,7 +173,7 @@
     border-radius: .5rem .5rem 0 0;
     .nav{
         &-lst {
-            @include flex;
+            display:flex;
             & > li > a {
                 display:block;
                 padding:1rem;
@@ -216,10 +214,88 @@
 
 // INDEX CONTENT
 .pg {
-    &-contentWrap {padding:2rem;}
-}
+    &-contentWrap, &-template {
+        padding:2rem;
 
-.component {
+        #{$btn} {
+            background:transparent;
+            &.txt {
+                & ~ & {margin-top:0;}
+                padding:0;
+                @include pos-offset(relative);
+                @include transition(0.5s, color, ease);
+                display:inline-block;
+                @include el-content(after){
+                    @include pos-offset($bottom:-.2rem);
+                    width:0;
+                }
+        
+                &:hover {                
+                    @include line-effect($color-green, after, center) {
+                        @include transition(0.3s, all, ease);
+                        height:.7rem;
+                        width:100%;
+                        background:$color-green2;
+                        opacity:.7;
+                        z-index:-1;
+                    };
+                }
+        
+        
+                
+            }
+            
+            &.uline {
+                padding:0 .2rem 0;
+    
+                @include el-content("before"){
+                    @include pos-offset($bottom:-.2rem, $left:0);
+                    @include el-size(100%, .1rem);
+                    background:$color-gray4;
+                    @include transition(0.5s, all, ease);
+                }
+                &:hover, &:focus {
+                    @include line-effect($color-gray1, before, center) {
+                        @include transition(0.5s, all, ease);
+                        width:0; opacity:0;
+                    }
+                }
+    
+                @include el-content("after"){
+                    @include el-size(0, .2rem);
+                }
+                
+                &:hover, &:focus {
+                    @include line-effect($color-gray1, after, center) {
+                        @include transition(0.3s, all, ease);
+                        background:$color-violet;
+                        @include el-size(100%, .2rem);
+                        z-index:1;
+                    }
+                }
+                /*
+                @include el-content(after){
+                    margin:0;
+                    width:100%; height:.1rem;
+                    background:$color-gray1;
+                    position:absolute; left:0; bottom:0;
+                }
+                */
+            }
+        }
+    }
+}
+.pg {
+    &-template {
+        .pg-tit {
+            &.h1 {
+                @include line(border, .3rem dashed $color-gray6, top);
+                padding:1.5rem 0 2.5rem;
+            }
+        }
+    }
+}
+.component, .template {
     &-lst {
         @include flex;
         flex-wrap:wrap;
@@ -235,8 +311,8 @@
 
     &-item {
         margin-bottom:2rem;
-        @include flex($wrap:wrap);
-        & > * {padding:1.5rem 1rem; border-top:1px $color-gray1 solid; @include webfont("roboto", 400)}
+        @include flex($wrap: wrap);
+        & > * {padding:1.5rem 1rem; border-top:1px $color-gray1 solid; @include font($fontName:"roboto");}
         & > dt {
             flex:0 0 20%;
             
@@ -252,17 +328,16 @@
 }
 
 .cp {
-    &-wrap {margin:2rem;}
     // title
     &-tit {
-        &.dep01{@include fontSize("xxl");}
+        &.dep01{@include fontSize("xl2");}
         &.dep02{
             @include fontSize("lg");
             @include el-content(before){
+                // display:inline-block;
                 background:$color-green2;
                 width:1.5rem; height:.3rem;
             }
-            & + [class*="-wrap"]:not([class*="tab"]) {margin-top:1rem;}
         }
         &.dep03{
             margin-bottom:1rem;
@@ -272,7 +347,7 @@
                 margin-right:1rem;
                 @include align(vertical, middle);
                 content:"\f02e";
-                @include webfont('iconFont', 900);
+                @include font($fontweight:900, $fontName:"iconFont");
             }
         }
         & + .btnWrap {margin-top:2rem;}
@@ -291,13 +366,13 @@
 
                 & > .toolTip_wrap {margin:2rem 0;}
                 
-                .field + .field {margin:2rem 0;}
+                // .field + .field {margin:2rem 0;}
                 
             }
 
             &-tit {
                 &.dep01{
-                    @include fontSize("xxl");padding-bottom:.5rem; margin-bottom:1.5rem;
+                    @include fontSize("xl2");padding-bottom:.5rem; margin-bottom:1.5rem;
                     .info {
                         @include fontSize("xs");
                         color:#ff0000;
@@ -308,13 +383,31 @@
                 }
                 &.dep02{
                     @include fontSize("lg"); background:$color-tbl-thead; padding:.5rem 1rem;
-                    @include el-content(before){display:none;}
+                    @include el-content(before, none);
                 }
                 &.dep03{@include fontSize("md");}
 
                 & + .component {margin-top:.5rem;}
                 & + .field {margin-top:2rem;}
             }
+        }
+    }
+}
+
+.ico {
+    &-gopage {
+        @include fontICO ("before", "\f2d2");
+        }
+    &-viewsource {
+        @include fontICO ("before", "\f06e");
+        }
+    &-pop {
+        &-close {
+            @include el-size(2.4rem, 2.4rem);
+            background: svgIcon(ico_close, 666);
+        }
+        &.af {
+            @include fontICO ("after", "\f08e");
         }
     }
 }
@@ -351,7 +444,7 @@
 /* TABLE */
 .cp-tbl {
     @include flex($j-content:start);
-    @include font("xs", $fontweight:normal); margin-top:1rem;
+    @include fontSize("xs"); font-weight: 400; margin-top:1rem;
 
     #{$tbl} {
         &Wrap {
@@ -405,27 +498,31 @@
     .desc {
         display:none;
         width:50rem;
-        background:$color-light-green1; padding:1.5rem;
+        background:$color-light-green1; padding:15px;
         margin-right:5rem;
         @include line(border, .1rem $color-light-green2 solid);
 
         p {
-        @include el-content(before, inline-block) {
+        @include el-content(before) {
+            display:inline-block;
             @include el-size(.2rem, 1rem);
             background-color:$color-orange;
             margin-right:5px;
         }
-        & ~ p, & ~ ul {margin-top:1rem;}
+        & ~ p, & ~ ul {margin-top:10px;}
         }
     }
 
     ul{
-        p{@include el-content(before, none);}
+        p{
+        @include el-content(before, none);
+        }
     }
 
     b {color:$color-red;}
     strong {
-        color:$color-green; font-weight:700;
+        color:$color-green;
+        font-weight: bold;
         & + div, & + ul {margin-top:1rem;}
     }
 
@@ -448,7 +545,7 @@
         @include el-content(before, inline-block) {
             content:'CASE' counter(number);
             counter-increment: number;
-            @include font(xxs, $color:$color-white);
+            @include font(xs3, $fontweight:400, $color:$color-white);
             background-color:$color-green;
             padding:.3rem .5rem; margin-right:.5rem; border-radius:.3rem;
             @include align(valign, top);

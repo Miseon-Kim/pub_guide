@@ -1,0 +1,46 @@
+@charset "utf-8";
+/****************************************/
+/*	PART: IMPORT CSS
+/****************************************/
+
+
+@import '../../../asset/scss/variables';
+@import '../../../asset/scss/mixin';
+@import 'pg.variables';
+@import 'font';
+@import 'reset';
+
+@mixin fontICO ($direction, $cont) {
+
+  @if($direction == before){
+      @include el-content("before"){
+          display:inline-block;
+          @include align(vertical, middle);
+          content:$cont;
+          @include font($fontweight:900, $fontName:'iconFont');
+          @content;
+      }
+
+  } @else if($direction == after){
+      @include el-content("after"){
+          display:inline-block;
+          @include align(vertical, middle);
+          content:$cont;
+          @include font($fontweight:900, $fontName:'iconFont');
+          margin-left:.5rem;
+          @content;
+      }
+  }
+}
+
+@mixin bg-gradient($type, $angle, $color1, $color2){
+  @if ($type == line) {
+      background:linear-gradient($angle, $color1, $color2);
+      @content;
+  } @else if ($type == circle) {
+      background:radial-gradient(circle, $color1, $color2);
+      @content;
+  }
+  
+}
+

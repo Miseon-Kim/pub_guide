@@ -721,7 +721,7 @@ var COMPONENT_UI = (function (cp, $) {
                     const rangeValueText = rangeValue.attr('range-value'); // Get the range-value text
                     const innerValue = rangeValue.attr('inner-value') === "true"; // Check for inner-value attribute
 
-                    console.log("newValue:", newValue, "newPosition:", newPosition);
+                    // console.log("newValue:", newValue, "newPosition:", newPosition);
 
                     // Update span text based on the presence of range-value
                     if (!rangeValueText) {
@@ -799,7 +799,7 @@ var COMPONENT_UI = (function (cp, $) {
                         // margin-right를 0 또는 elementWidth에 따라 설정
                         'margin-right': (parentWidth + infoElement.outerWidth()) < pixelPercentage ? `0` : `-${elementWidth}px`
                     });
-                    console.log(parentWidth, pixelPercentage, elementWidth);
+                    // console.log(parentWidth, pixelPercentage, elementWidth);
                 }
 
             }

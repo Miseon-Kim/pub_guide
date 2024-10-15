@@ -56,17 +56,18 @@ var makeBoard = function () {
     html += '<table>';
     html += '<caption>메뉴별 코딩리스트</caption>';
     html += '<colgroup>';
-    html += '<col style="width:50px">';
+    html += '<col style="width:40px">';
     html += '<col style="width:150px">';
     html += '<col style="width:90px">';
     html += '<col class="d1" style="width:auto">';
     html += '<col class="d2" style="width:auto">';
     html += '<col class="d3" style="width:auto">';
     html += '<col class="d4" style="width:auto">';
-    html += '<col style="width:300px">';
+    html += '<col style="width:250px">';
     html += '<col style="width:90px">';
-    html += '<col style="width:100px">';
-    html += '<col style="width:100px">';
+    html += '<col style="width:90px">';
+    html += '<col style="width:90px">';
+    html += '<col style="width:90px">';
     html += '<col style="width:80px">';
     html += '<col style="width:100px">';
     html += '</colgroup>';
@@ -80,22 +81,30 @@ var makeBoard = function () {
     html += '<th scope="col" class="deps d3">3Depth<button type="button" rel="d3"><span class="hide">숨기기</span></button></th>';
     html += '<th scope="col" class="deps d4">4Depth<button type="button" rel="d4"><span class="hide">숨기기</span></button></th>';
     html += '<th scope="col" class="name">화면명</th>';
-    html += '<th scope="col" class="worker">';
+    html += '<th scope="col" class="worker">작업자</th>';
+    // html += '<select>';
+    // html += '<option value="">작업자</option>';
+    // html += '</select>';
+    // html += '</th>';
+    // html += '<th scope="col" class="w_date">WBS</th>';
+    html += '<th scope="col" class="w_date">';
     html += '<select>';
-    html += '<option value="">작업자</option>';
+    html += '<option value="">WBS</option>';
     html += '</select>';
     html += '</th>';
+    // html += '<th scope="col" class="c_date">작업일</th>';
     html += '<th scope="col" class="c_date">';
     html += '<select>';
     html += '<option value="">작업일</option>';
     html += '</select>';
     html += '</th>';
-    html += '<th scope="col" class="m_date">';
+    html += '<th scope="col" class="m_date">수정일</th>';
+    // html += '<th scope="col" class="complete">상태</th>';
+    html += '<th scope="col" class="complete">';
     html += '<select>';
-    html += '<option value="">수정일</option>';
+    html += '<option value="">상태</option>';
     html += '</select>';
     html += '</th>';
-    html += '<th scope="col" class="complete">상태</th>';
     html += '<th scope="col" class="etc">비고</th>';
     html += '</tr>';
     html += '</thead>';
@@ -112,7 +121,7 @@ var makeBoard = function () {
     var $data = data;
     var tbodyHtml = '';
     var idx = 1;
-    var urlLink = '';
+    var urlLink = '../../v2/html';
     var createTr = function (obj) {
       var trHtml = '';
       if (obj.directory !== undefined && obj.directory !== '') {
@@ -122,10 +131,11 @@ var makeBoard = function () {
         trHtml += '<td class="no">' + idx + '</td>';
         idx += 1;
         if (obj.id) {
+          // trHtml += '<td class="id">' + obj.id + '</td>';
           if (obj.link) {
             trHtml += '<td class="id">' + obj.id + '</td>';
           } else {
-            trHtml += '<td class="id"><a href="' + urlLink + '/' + obj.id + '.html" target="_blank">' + obj.id + '</a></td>';
+            trHtml += '<td class="id"><a href="' + urlLink + '/' +obj.path+ '/' + obj.id + '.html" target="_blank">' + obj.id + '</a></td>';
           }
         } else {
           trHtml += '<td class="id"></td>';
@@ -156,7 +166,16 @@ var makeBoard = function () {
           trHtml += '<td class="depth4"></td>';
         }
         if (obj.name) {
-          trHtml += '<td class="name">' + obj.name + '</td>';
+          if (obj.link) {
+            trHtml += '<td class="name">' + obj.id + '</td>';
+          } else {
+            if(obj.path === undefined || obj.path === ''){
+              trHtml += '<td class="name"><a href="' + urlLink + '/' + obj.id + '.html" target="_blank">' + obj.name + '</a></td>';
+            } else {
+              trHtml += '<td class="name"><a href="' + urlLink + '/' + obj.path + '/' + obj.id + '.html" target="_blank">' + obj.name + '</a></td>';
+            }            
+          }
+          //trHtml += '<td class="name">' + obj.name + '</td>';
         } else {
           trHtml += '<td class="name"></td>';
         }
@@ -164,6 +183,11 @@ var makeBoard = function () {
           trHtml += '<td class="worker">' + obj.worker + '</td>';
         } else {
           trHtml += '<td class="worker"></td>';
+        }
+        if (obj.schedule) {
+          trHtml += '<td class="w_date"><span class="schedule schedule_s">' + obj.schedule[0].schedule_s + '</span><span class="schedule schedule_e">' + obj.schedule[0].schedule_e +'</span></td>'
+        } else {
+          trHtml += '<td class="w_date"></td>';
         }
         if (obj.workdate) {
           trHtml += '<td class="c_date">' + obj.workdate + '</td>';
@@ -176,16 +200,20 @@ var makeBoard = function () {
           trHtml += '<td class="m_date"></td>';
         }
         // if (obj.complete && obj.state == undefined) {
-        if (obj.state == 'complete') {
-          trHtml += '<td class="complete"><span class="done">' + obj.complete + '</span></td>';
+        if (obj.state == 'msg') {
+          trHtml += '<td class="complete"><span class="msg">' + obj.complete + '</span></td>';
+        } else if (obj.state === 'done') {
+          trHtml += '<td class="complete"><span class="done">완료</span></td>';
         } else if (obj.state === 'del') {
           trHtml += '<td class="complete"><span class="del">삭제</span></td>';
         } else if (obj.state === 'hold') {
           trHtml += '<td class="complete"><span class="hold">보류</span></td>';
         } else if (obj.workdate) {
-          trHtml += '<td class="complete"><span class="ing">검수중</span></td>';
-        } else {
-          trHtml += '<td class="complete"><span>대기중</span></td>';
+          trHtml += '<td class="complete"><span class="ing">작업중</span></td>';
+        }else if (obj.schedule) {
+          trHtml += '<td class="complete"><span class="ready">대기중</span></td>';
+        }  else {
+          trHtml += '<td class="complete"><span></span></td>';
         }
         if (obj.etc) {
           var remark = '';
@@ -194,15 +222,23 @@ var makeBoard = function () {
               remark += '<li class="design">' + this + '</li>';
             } else if (this.indexOf('기획확인') != -1) {
               remark += '<li class="plan">' + this + '</li>';
+            } else if (this.indexOf('이슈') != -1) {
+              remark += '<li class="issue">' + this + '</li>';
+            } else if (this.indexOf('지연') != -1) {
+              remark += '<li class="schedule">' + this + '</li>';
             } else if (this.indexOf('접근성') != -1) {
-              remark += '<li class="wa">' + this + '</li>';
+              remark += '<li class="wah">' + this + '</li>';
+            } else if (this.indexOf('기타') != -1) {
+              remark += '<li class="etc">' + this + '</li>';
             } else {
               remark += '<li>' + this + '</li>';
             }
           });
-          trHtml += '<td class="etc"><ul class="remark">' + remark + '</ul><a href="' + urlLink + '/' + obj.id + '.html" class="btn_hover" target="_blank">' + obj.id + '</a></td>';
+          trHtml += '<td class="etc"><ul class="remark">' + remark + '</ul>';
+          // trHtml += '<td class="etc"><ul class="remark">' + remark + '</ul><a href="' + urlLink + '/' + obj.id + '.html" class="btn_hover" target="_blank">' + obj.id + '</a></td>';
         } else {
-          trHtml += '<td class="etc"><a href="' + urlLink + '/' + obj.id + '.html" class="btn_hover" target="_blank">' + obj.id + '</a></td>';
+          // trHtml += '<td class="etc"><a href="' + urlLink + '/' + obj.id + '.html" class="btn_hover" target="_blank">' + obj.id + '</a></td>';
+          trHtml += '<td class="etc"></td>';
         }
       }
 
@@ -346,8 +382,11 @@ var guide = {
     $('.pg_board').each(function () {
       var _this = $(this);
       var dayArry = [];
+      var dayArry1 = [];
       var dayArry2 = [];
       var dayArry3 = [];
+      var dayArry4 = [];
+      
       $(this)
         .find('tbody td.c_date')
         .each(function () {
@@ -366,9 +405,27 @@ var guide = {
       });
 
       $(this)
+        .find('tbody td.w_date')
+        .each(function () {
+          var _txtW = $(this).find(".schedule_s").text();
+          if (!!_txtW) {
+            var _txtW1 = parseInt(_txtW.split('-').join(''));
+            var _classW = 'w_' + _txtW1;
+            $(this).closest('tr').addClass(_classW);
+            if (dayArry1.indexOf(_txtW1) == -1) {
+              dayArry1.push(_txtW1);
+            }
+          }
+        });
+      dayArry1.sort(function (a, b) {
+        return a - b;
+      });
+
+      $(this)
         .find('tbody td.m_date')
         .each(function () {
           var _txt3 = $(this).text();
+          // console.log(_txt3);
           if (!!_txt3) {
             var _txt4 = parseInt(_txt3.split('-').join(''));
             var _class2 = 'm_' + _txt4;
@@ -406,11 +463,42 @@ var guide = {
         return a - b;
       });
 
+      $(this)
+        .find('tbody td.complete')
+        .each(function () {
+          var _txt6 = $(this).text();
+          if (!!_txt6) {
+            var _class4 = _txt6;
+            // switch (_class4) {
+            //   case 'STATUS1':
+            // $doneVal = 'STATUS1'
+            // break;
+            // case 'STATUS2':
+            // $doneVal = 'STATUS2'
+            // break;
+            // }
+            $(this).closest('tr').addClass(_class4);
+            if (dayArry4.indexOf(_txt6) == -1) {
+              dayArry4.push(_txt6);
+            }
+          }
+        });
+        dayArry4.sort(function (a, b) {
+        return a - b;
+      });
+
       var $select = $(this).find('thead th.c_date select');
       if ($select.length) {
         for (var i in dayArry) {
           var opt = dayArry[i];
           $select.append('<option val="' + opt + '">' + opt + '</option>');
+        }
+      }
+      var $select1 = $(this).find('thead th.w_date select');
+      if ($select1.length) {
+        for (var j in dayArry1) {
+          var optW = dayArry1[j];
+          $select1.append('<option val="' + optW + '">' + optW + '</option>');
         }
       }
       var $select2 = $(this).find('thead th.m_date select');
@@ -425,6 +513,13 @@ var guide = {
         for (var j in dayArry3) {
           var opt3 = dayArry3[j];
           $select3.append('<option val="' + opt3 + '">' + opt3 + '</option>');
+        }
+      }
+      var $select4 = $(this).find('thead th.complete select');
+      if ($select4.length) {
+        for (var j in dayArry4) {
+          var opt4 = dayArry4[j];
+          $select4.append('<option val="' + opt4 + '">' + opt4 + '</option>');
         }
       }
 
@@ -481,27 +576,25 @@ var guide = {
     $('.pg_board thead th select').change(function () {
       var $thead = $(this).closest('thead');
       var $cVal = $thead.find('.c_date select').val();
+      var $wbsVal = $thead.find('.w_date select').val();
       var $mVal = $thead.find('.m_date select').val();
       var $wVal = $thead.find('.worker select').val();
+      var $doneVal = $thead.find('.complete select').val();
       var $tbody = $(this).closest('.pg_board').find('tbody');
-      if ($cVal == '' && $mVal == '' && $wVal == '') {
+     
+      if ($wbsVal == '' && $cVal == '' && $mVal == '' && $doneVal == '') {
         $tbody.find('tr').removeAttr('style');
-      } else if ($cVal != '' && $mVal != ''&& $wVal != '') {
+      } else if ($wbsVal != '' && $cVal != '' && $mVal != ''&& $doneVal != '') {
         $tbody.find('tr').not('.hr').hide();
-        $tbody.find('.c_' + $cVal + '.m_' + $mVal + $wVal).show();
-      } else {
+        $tbody.find('.c_' + $cVal + '.m_' + $mVal + $doneVal + '.w_' + $wbsVal).show();
+      }  else {
         $tbody.find('tr').not('.hr').hide();
+        if ($wbsVal != '') $tbody.find('.w_' + $wbsVal).show();
         if ($cVal != '') $tbody.find('.c_' + $cVal).show();
         if ($mVal != '') $tbody.find('.m_' + $mVal).show();
-        switch ($wVal) {
-          case 'PUB1':
-            $wVal = 'tba1'
-            break;
-          case 'PUB2':
-            $wVal = 'tba2'
-            break;
-        }
-        if ($wVal != '') $tbody.find('.' + $wVal).show();
+        // if ($wVal != '') $tbody.find('.' + $wVal).show();
+        if ($doneVal != '') $tbody.find('.' + $doneVal).show();
+        if ($wbsVal == '' && $cVal == '' && $doneVal == '') $tbody.find('tr').removeAttr('style');
       }
     });
   },
@@ -557,8 +650,8 @@ var guide = {
         });
         return length;
       };
-      var per = pageNum() === 0 ? 0 : Math.round((100 / pageNum()) * completeNum());
-      if (per === 100) Math.floor((100 / pageNum()) * completeNum());
+      var per = pageNum() === 0 ? 0 : Math.round((100 / (pageNum() - delNum())) * completeNum());
+      if (per === 100) Math.floor((100 / (pageNum() - delNum())) * completeNum());
       $this.find('.total .num').text(pageNum());
       $this.find('.working .num').text(ingNum());
       $this.find('.cp_num .num').text(completeNum());
@@ -566,14 +659,15 @@ var guide = {
       $this.find('.bar').css('width', per + '%');
     });
 
-    var totalPageNum = function () {
+    var totalPageNums = function () {
       var length = 0;
       $('table .no').each(function () {
-        //if (!$(this).closest('.del').length) length += 1;
+        // if (!$(this).closest('.del').length) length += 1;
         length += 1;
       });
       return length;
     };
+//     console.log(totalPageNum());
     var totalDelPageNum = function () {
       var length = 0;
       $('table .no').each(function () {
@@ -581,6 +675,14 @@ var guide = {
       });
       return length;
     };
+    //console.log(totalDelPageNum());
+    var totalPageNum = function () {
+      var _totalPageNums = totalPageNums(),
+         _totalDelPageNum = totalDelPageNum();
+        
+         return _totalPageNums - _totalDelPageNum;
+    }
+    // console.log(totalPageNum());
     var ingTotalNum = function () {
       var length = 0;
       $('table tr.working').each(function () {
@@ -597,7 +699,7 @@ var guide = {
     };
     var perTotal = totalPageNum() === 0 ? 0 : Math.round((100 / totalPageNum()) * completeTotalNum());
     if (perTotal === 100) Math.floor((100 / totalPageNum()) * completeTotalNum());
-    $('.pg_project_status .total .num').text(totalPageNum());
+    $('.pg_project_status .total .num').text(totalPageNums());
     $('.pg_project_status .del .num').text(totalDelPageNum());
     $('.pg_project_status .working .num').text(ingTotalNum());
     $('.pg_project_status .cp_num .num').text(completeTotalNum());
@@ -698,7 +800,8 @@ var guide = {
         $frameDevice.removeClass('pop').removeAttr('style');
       }
     });
-    $remark.on('click', function () {
+    $remark.on('click', function (e) {
+      e.preventDefault();
       var $clone = $(this).clone(),
         $remarkPop = '<div class="remark_pop"><a href="#" class="btn_search_del" role="button"><span class="hide">창닫기</span></a><h2>History</h2><div class="history"></div>',
         $dimmed = '<div class="dimmed"></div>';
@@ -706,7 +809,8 @@ var guide = {
       $('html, body').addClass('no_scroll');
       $('.remark_pop .history').append($clone);
     });
-    $(document).on('click', '.dimmed, .btn_search_del', function () {
+    $(document).on('click', '.dimmed, .btn_search_del', function (e) {
+      e.preventDefault();
       $('.remark_pop, .dimmed').remove();
       $('html, body').removeClass('no_scroll');
     });
@@ -780,7 +884,8 @@ var guide = {
         $('html.m .search_title').css('right', wrapP);
       }
     });
-    $btnPopDevice.off('click').on('click', function () {
+    $btnPopDevice.off('click').on('click', function (e) {
+      e.preventDefault();
       guide.mToggle();
       var $frameDevice = $('.frame_device'),
         _a = $('.pg_board table tbody td.id a');
@@ -961,24 +1066,45 @@ var guide = {
       var $this = $(this),
         $design = $this.find('.remark li.design'),
         $plan = $this.find('.remark li.plan');
-        $waCheck = $this.find('.remark li.wa');
+        $issue = $this.find('.remark li.issue');
+        $schedule = $this.find('.remark li.schedule');
+        $wah = $this.find('.remark li.wah');
+        $etc = $this.find('.remark li.etc');
       if ($design.length) {
         var num = $design.length,
           $btn = $this.find('.btn_design');
         $design.closest('tr').addClass('design');
-        if (!$btn.length) $this.find('.pg_alert_btn_set').append('<button type="button" class="btn_design">디자인확인 필요 <strong>[' + num + ']</strong></button>');
+        if (!$btn.length) $this.find('.pg_alert_btn_set').append('<button type="button" class="btn_design">디자인확인 필요<strong>[' + num + ']</strong></button>');
       }
       if ($plan.length) {
         var num = $plan.length,
           $btn = $this.find('.btn_plan');
         $plan.closest('tr').addClass('plan');
-        if (!$btn.length) $this.find('.pg_alert_btn_set').append('<button type="button" class="btn_plan">기획확인 필요 <strong>[' + num + ']</strong></button>');
+        if (!$btn.length) $this.find('.pg_alert_btn_set').append('<button type="button" class="btn_plan">기획확인 필요<strong>[' + num + ']</strong></button>');
       }
-      if ($waCheck.length) {
-        var num = $waCheck.length,
-          $btn = $this.find('.btn_wa');
-        $waCheck.closest('tr').addClass('wa');
-        if (!$btn.length) $this.find('.pg_alert_btn_set').append('<button type="button" class="btn_wa">접근성확인 필요 <strong>[' + num + ']</strong></button>');
+      if ($issue.length) {
+        var num = $issue.length,
+          $btn = $this.find('.btn_issue');
+        $issue.closest('tr').addClass('issue');
+        if (!$btn.length) $this.find('.pg_alert_btn_set').append('<button type="button" class="btn_issue">이슈<strong>[' + num + ']</strong></button>');
+      }
+      if ($schedule.length) {
+        var num = $schedule.length,
+          $btn = $this.find('.btn_schedule');
+        $schedule.closest('tr').addClass('schedule');
+        if (!$btn.length) $this.find('.pg_alert_btn_set').append('<button type="button" class="btn_schedule">일정확인 필요<strong>[' + num + ']</strong></button>');
+      }
+      if ($schedule.length) {
+        var num = $schedule.length,
+          $btn = $this.find('.btn_wah');
+        $schedule.closest('tr').addClass('wah');
+        if (!$btn.length) $this.find('.pg_alert_btn_set').append('<button type="button" class="btn_wah">접근성<strong>[' + num + ']</strong></button>');
+      }
+      if ($etc.length) {
+        var num = $etc.length,
+          $btn = $this.find('.btn_etc');
+        $etc.closest('tr').addClass('etc');
+        if (!$btn.length) $this.find('.pg_alert_btn_set').append('<button type="button" class="btn_etc">기타확인 필요 <strong>[' + num + ']</strong></button>');
       }
     });
     $('.pg_alert_btn_set').find('button').on('click', function (e) {
@@ -1004,14 +1130,44 @@ var guide = {
           $tr.show().siblings('tr.plan').find('.remark>li').removeAttr('style');
         }
       }
-      if ($this.hasClass('btn_wa')) {
+      if ($this.hasClass('btn_issue')) {
         $this.siblings().removeClass('active');
         if (!$this.hasClass('active')) {
           $this.addClass('active');
-          $tr.hide().siblings('tr.wa').show().find('.remark>li').show();
+          $tr.hide().siblings('tr.issue').show().find('.remark>li').show();
         } else {
           $this.removeClass('active');
-          $tr.show().siblings('tr.wa').find('.remark>li').removeAttr('style');
+          $tr.show().siblings('tr.issue').find('.remark>li').removeAttr('style');
+        }
+      }
+      if ($this.hasClass('btn_schedule')) {
+        $this.siblings().removeClass('active');
+        if (!$this.hasClass('active')) {
+          $this.addClass('active');
+          $tr.hide().siblings('tr.schedule').show().find('.remark>li').show();
+        } else {
+          $this.removeClass('active');
+          $tr.show().siblings('tr.schedule').find('.remark>li').removeAttr('style');
+        }
+      }
+      if ($this.hasClass('btn_wah')) {
+        $this.siblings().removeClass('active');
+        if (!$this.hasClass('active')) {
+          $this.addClass('active');
+          $tr.hide().siblings('tr.wah').show().find('.remark>li').show();
+        } else {
+          $this.removeClass('active');
+          $tr.show().siblings('tr.wah').find('.remark>li').removeAttr('style');
+        }
+      }
+      if ($this.hasClass('btn_etc')) {
+        $this.siblings().removeClass('active');
+        if (!$this.hasClass('active')) {
+          $this.addClass('active');
+          $tr.hide().siblings('tr.etc').show().find('.remark>li').show();
+        } else {
+          $this.removeClass('active');
+          $tr.show().siblings('tr.etc').find('.remark>li').removeAttr('style');
         }
       }
     });

@@ -1,0 +1,167 @@
+$webFont-url:'../font/webfonts/'; // font 경로설정(예시 :  url($font-url + 'fontName.woff2')
+$icoFont-url:'../font/iconfont/fontawesome/';
+$font-url:'../../../font/webfonts/';
+
+/* WEB FONT */  
+@font-face {
+	font-family: 'iconFont';
+	font-style: normal;
+	font-weight: 900;
+	font-display: auto;
+	src: url($icoFont-url + "fa-solid-900.eot");
+	src: url($icoFont-url + "fa-solid-900.eot?#iefix") format("embedded-opentype"), url($icoFont-url + "fa-solid-900.woff2") format("woff2"), url($icoFont-url + "fa-solid-900.woff") format("woff"), url($icoFont-url + "fa-solid-900.ttf") format("truetype"), url($icoFont-url + "fa-solid-900.svg#fontawesome") format("svg"); }
+
+.fa,
+.fas {
+	font-family: 'iconFont';
+	font-weight: 900; }
+
+	@font-face {
+	font-family: 'iconFont';
+	font-display: block;
+	src: url($icoFont-url + "fa-solid-900.woff2") format("woff2"), url($icoFont-url + "fa-solid-900.ttf") format("truetype"); }
+
+@font-face {
+	font-family: 'roboto';
+	src: url($webFont-url + 'Roboto-Light.woff') format('woff');
+	src: url($webFont-url + 'Roboto-Light.woff2');
+	src: url($webFont-url + 'Roboto-Light.otf');
+	font-weight: 300;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'roboto';
+	src: url($webFont-url + 'Roboto-Regular.woff') format('woff');
+	src: url($webFont-url + 'Roboto-Regular.woff2');
+	src: url($webFont-url + 'Roboto-Regular.otf');
+	font-weight: 400;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'roboto';
+	src: url($webFont-url + 'Roboto-Medium.woff') format('woff');
+	src: url($webFont-url + 'Roboto-Medium.woff2');
+	src: url($webFont-url + 'Roboto-Medium.otf');
+	font-weight: 500;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'roboto';
+	src: url($webFont-url + 'Roboto-Bold.woff') format('woff');
+	src: url($webFont-url + 'Roboto-Bold.woff2');
+	src: url($webFont-url + 'Roboto-Bold.otf');
+	font-weight: 600;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'NotoSansKR';
+	font-style: normal;
+	font-weight: 300;
+	src: url("../font/webfonts/NotoSansKR-Light.woff");
+	src: url("../font/webfonts/NotoSansKR-Light.otf");
+}
+
+@font-face {
+	font-family: 'NotoSansKR';
+	font-style: normal;
+	font-weight: 400;
+	src: url($webFont-url + 'NotoSansKR-Regular.eot');
+	src: url($webFont-url + 'NotoSansKR-Regular.woff');
+	src: url($webFont-url + 'NotoSansKR-Regular.otf');
+}
+
+@font-face {
+	font-family: 'NotoSansKR';
+	font-style: normal;
+	font-weight: 600;
+	src: url($webFont-url + 'NotoSansKR-Bold.woff');
+	src: url($webFont-url + 'NotoSansKR-Bold.otf');
+}
+
+@font-face {
+	font-family: "Nanum Square";
+	font-weight: 900;
+	font-display: swap;
+	src: local("Pretendard Bold"),
+  url($font-url + "Pretendard-Bold.subset.woff2") format("woff2"),
+	url($font-url + "Pretendard-Bold.subset.woff") format("woff"),
+	url($font-url + "Pretendard-Bold.otf") format("opentype");
+}
+
+@font-face {
+	font-family: "Nanum Square";
+	font-weight: 800;
+	font-display: swap;
+	src: local("Pretendard Bold"),
+	url($font-url + "Pretendard-Bold.subset.woff2") format("woff2"),
+	url($font-url + "Pretendard-Bold.subset.woff") format("woff"),
+	url($font-url + "Pretendard-Bold.otf") format("opentype");
+}
+
+@font-face {
+	font-family: "Nanum Square";
+	font-weight: 700;
+	font-display: swap;
+	src: local("Pretendard SemiBold"),
+	url($font-url + "Pretendard-SemiBold.subset.woff2") format("woff2"),
+	url($font-url + "Pretendard-SemiBold.subset.woff") format("woff"),
+	url($font-url + "Pretendard-SemiBold.otf") format("opentype");
+}
+
+@font-face {
+	font-family: "Nanum Square";
+	font-weight: 600;
+	font-display: swap;
+	src: local("Pretendard SemiBold"),
+	url($font-url + "Pretendard-SemiBold.subset.woff2") format("woff2"),
+	url($font-url + "Pretendard-SemiBold.subset.woff") format("woff"),
+	url($font-url + "Pretendard-SemiBold.otf") format("opentype");
+}
+
+@font-face {
+	font-family: "Nanum Square";
+	font-weight: 500;
+	font-display: swap;
+	src: local("Pretendard Medium"),
+	url($font-url + "Pretendard-Medium.subset.woff2") format("woff2"),
+	url($font-url + "Pretendard-Medium.subset.woff") format("woff"),
+	url($font-url + "Pretendard-Medium.otf") format("opentype");
+}
+
+@font-face {
+	font-family: "Nanum Square";
+	font-weight: 400;
+	font-display: swap;
+	src: local("Pretendard Regular"),
+	url($font-url + "Pretendard-Regular.subset.woff2") format("woff2"),
+	url($font-url + "Pretendard-Regular.subset.woff") format("woff"),
+	url($font-url + "Pretendard-Regular.otf") format("opentype");
+}
+
+@font-face {
+	font-family: "Nanum Square";
+	font-weight: 300;
+	font-display: swap;
+	src: local("Pretendard Light"),
+	url($font-url + "Pretendard-Light.subset.woff2") format("woff2"),
+	url($font-url + "Pretendard-Light.subset.woff") format("woff");
+}
+
+@font-face {
+	font-family: "Nanum Square";
+	font-weight: 200;
+	font-display: swap;
+	src: local("Pretendard ExtraLight"),
+	url($font-url + "Pretendard-ExtraLight.subset.woff2") format("woff2"),
+	url($font-url + "Pretendard-ExtraLight.subset.woff") format("woff");
+}
+
+@font-face {
+	font-family: "Nanum Square";
+	font-weight: 100;
+	font-display: swap;
+	src: local("Pretendard Thin"),
+	url($font-url + "Pretendard-Thin.subset.woff2") format("woff2"),
+	url($font-url + "Pretendard-Thin.subset.woff") format("woff");
+}
